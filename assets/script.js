@@ -1,8 +1,10 @@
 // Saged.club — minimal client-side behavior
 // 1) cookie consent banner (EU-compliant: nothing tracks before opt-in)
-// 2) smooth-scroll polish (browsers do this natively, but force focus for a11y)
+// 2) Meta Pixel — loaded only after consent
+// 3) smooth-scroll polish (browsers do this natively, but force focus for a11y)
 
 (function () {
+  const PIXEL_ID = '1533639615120579'; // Saged.club Pixel (created via Meta API 2026-05-11)
   const KEY = 'saged_consent_v1';
   const banner = document.getElementById('consent');
   const accept = document.getElementById('consent-accept');
@@ -23,9 +25,15 @@
   if (current === 'accepted') initTracking();
 
   function initTracking() {
-    // Meta Pixel + any other trackers go here.
-    // For now, leave as a no-op until PIXEL_ID is configured.
-    // The pixel <script> in the page <head> is commented out — uncomment + replace YOUR_PIXEL_ID after Phase 1.
+    if (window.fbq) return; // already initialized
+    // Standard Meta Pixel base code (loaded only after consent)
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', PIXEL_ID);
+    window.fbq('track', 'PageView');
   }
 
   // carousel — fade between slides, auto-advance every 6s, pause on hover/focus
