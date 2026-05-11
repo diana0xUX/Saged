@@ -27,7 +27,12 @@ body {
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
+
+img { max-width: 100%; height: auto; }
+iframe { max-width: 100%; }
 
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', Georgia, serif;
@@ -424,11 +429,52 @@ a:hover { color: var(--ink); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 800px) {
-  .hero { grid-template-columns: 1fr; padding-top: 1rem; }
+  .hero { grid-template-columns: 1fr; padding-top: 1rem; padding-bottom: 2rem; }
   .hero__media { order: -1; }
-  .about { grid-template-columns: 1fr; }
+  .hero__copy h1 { margin-top: 0.5em; }
+  .about { grid-template-columns: 1fr; gap: 2rem; }
   .three { grid-template-columns: 1fr; gap: 1.5rem; }
   .schedule__grid { grid-template-columns: repeat(2, 1fr); }
   .gallery__grid { grid-template-columns: repeat(2, 1fr); }
   .includes { columns: 1; }
+  .band { padding: 3rem var(--gutter); }
+  h1 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
 }
+
+@media (max-width: 560px) {
+  .topbar { padding: 1rem var(--gutter); }
+  .brand img { height: 32px; }
+  .hero { padding: 0.5rem var(--gutter) 2rem; }
+  .lead { font-size: 1.05rem; }
+  .schedule__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .map iframe { height: 260px; }
+  .cta { width: 100%; text-align: center; }
+  .testimonial { padding: 1.5rem; }
+  .testimonial blockquote { font-size: 1.05rem; }
+  .consent {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    width: auto;
+  }
+  details summary { font-size: 0.95rem; }
+  .schedule p, .footer p { font-size: 0.95rem; }
+}
+
+@media (max-width: 380px) {
+  body { font-size: 16px; }
+  .band { padding: 2rem var(--gutter); }
+  .topbar { padding: 0.75rem var(--gutter); }
+  .brand img { height: 28px; }
+}
+
+/* Tap target safety — every interactive element ≥44px */
+.cta, .channel, .btn-solid, .btn-ghost, .faq summary, .lang a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.faq summary { align-items: flex-start; }
+.lang a, .lang span { padding: 0.3rem 0.4rem; }
