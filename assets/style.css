@@ -146,6 +146,7 @@ a:hover { color: var(--ink); }
 .carousel__slide.is-active {
   opacity: 1;
   pointer-events: auto;
+  cursor: pointer;
 }
 .carousel__slide img,
 .carousel__slide video {
