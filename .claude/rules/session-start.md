@@ -1,1 +1,0 @@
-/home/alisher/fieldcraft/protocols/session-start.md

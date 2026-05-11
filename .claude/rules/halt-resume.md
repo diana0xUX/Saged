@@ -1,1 +1,0 @@
-/home/alisher/fieldcraft/protocols/halt-resume.md
