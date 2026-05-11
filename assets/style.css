@@ -205,6 +205,23 @@ a:hover { color: var(--ink); }
   margin-bottom: 0.5rem;
 }
 
+/* ---------- map embed ---------- */
+.map {
+  margin-top: 3rem;
+  max-width: var(--max);
+}
+.map iframe {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+.map__caption {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 /* ---------- gallery ---------- */
 .gallery {
   max-width: var(--max);
