@@ -38,3 +38,6 @@ data/cache/
 .claude/rules/
 inbox/
 *.MOV
+scripts/local/
+.campaign-ids
+# /tmp output files (creative/upload/adset jsons)
