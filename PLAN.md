@@ -6,14 +6,14 @@ Read `CLAUDE.md` first for context. This plan is intentionally lightweight — n
 
 ## Plan at a glance
 
-| Phase | Calendar | Goal | Deliverable |
-|---|---|---|---|
-| **0 — Audit** | Week 1, ~1 hour | Diagnose why the first €150 made zero bookings | `AUDIT.md` filled with findings |
-| **1 — Foundations** | Week 1–2 | Working landing page, tracking, consent banner | One-page bilingual site live, Pixel+CAPI verified |
-| **2 — Campaign rebuild** | Week 2 | Two ad sets (RU, UA) with localized creative + offer | Live campaign with proper objective + tracking |
-| **3 — Manual review loop** | Weeks 3–6 | Weekly read + creative iteration | 4 weekly reviews logged |
-| **4 — Decide what to scale** | Week 7 | Make a real decision about budget + automation | Go/no-go on next investment |
-| **5 — (Conditional) light automation** | Later | Only if Phase 4 says yes | Scheduled report + simple data pull |
+| Phase | Calendar | Goal | Deliverable | Status |
+|---|---|---|---|---|
+| **0 — Audit** | Day 1 | Diagnose why the first €150 made zero bookings | `AUDIT.md` filled with findings | ✅ **done 2026-05-11** |
+| **1 — Foundations** | Week 1–2 | Working landing page, tracking, consent banner | One-page bilingual site live, Pixel+CAPI verified | 🟡 landing live, tracking pending |
+| **2 — Campaign rebuild** | Week 2 | Two ad sets (RU, UA) with localized creative + offer | Live campaign with proper objective + tracking | ⏳ blocked by Phase 1 tracking |
+| **3 — Manual review loop** | Weeks 3–6 | Weekly read + creative iteration | 4 weekly reviews logged | ⏳ |
+| **4 — Decide what to scale** | Week 7 | Make a real decision about budget + automation | Go/no-go on next investment | ⏳ |
+| **5 — (Conditional) light automation** | Later | Only if Phase 4 says yes | Scheduled report + simple data pull | 🟢 `scripts/audit.py` ready (stdlib only) |
 
 ---
 
