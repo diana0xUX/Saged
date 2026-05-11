@@ -54,6 +54,10 @@ Phase 1 product: a single bilingual (RU/UA) landing page promoting **"Ceramics w
 - Merging RU + UA ad sets
 
 ## Working preferences for Claude
+
+**🔁 BILINGUAL MIRROR (non-negotiable)**: every content edit to `index.html` (RU) MUST be mirrored in `uk/index.html` (UA), and vice versa. Same sections, same structure, same images, same number of testimonials/IG embeds/FAQ items/etc. A diff in `<section>` count or `<h2>` count between the two files is a bug. Always edit both before committing.
+
+Other preferences:
 - Read `REPORT.md` for the plain-English current state before suggesting changes
 - Diana is a UX designer — use plain language, design analogies
 - One step at a time; don't batch big decisions

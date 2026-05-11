@@ -32,3 +32,4 @@ data/raw/
 data/cache/
 *.parquet
 *.duckdb
+.loop-state.json
