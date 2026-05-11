@@ -158,6 +158,44 @@ See `AUDIT.md` for the full breakdown.
 - Studio Maps: https://maps.app.goo.gl/RqsReEo929aeUAPN9
 
 
+## Asset Archive (outside repo)
+
+Photo + video originals live in `~/Documents/saged.old/`, not in the repo (large files).
+Treat as the canonical source when filling galleries or generating new derivatives.
+
+| Folder | Content | Use for |
+|---|---|---|
+| `Boosi photos/` | 66 photos, ~1 GB. Professional shoot of the **beads workshop**. | Past-event gallery, social proof imagery |
+| `Vaamos Photos/Fotos/` | 58 photos, ~207 MB. Professional shoot of the **clay/ceramics workshop**. | Past-event gallery, workshop-in-action shots |
+| `design/` | 93 designed graphics (IG posts, posters, logos) | Reference for brand voice; not raw photos |
+| `inbox/` (in saged.club) | Current-drop raw photos + videos from Koritsa | Active campaign assets before processing |
+
+All photos are Diana's (commissioned shoots). OK to use on saged.club + ad creatives.
+
+## Social-share card spec
+
+- **Dimensions**: 1200×630 JPEG (1.91:1 horizontal)
+- **Declared in HTML must match actual file** — `og:image:width` and `og:image:height` were
+  previously lying (2880×800 declared, file was 1286×1600). Verify on every update.
+- **Source photo**: `assets/images/workshop-1.jpg` (Koritsa teaching with candles) is the strongest
+  social card source — horizontal-friendly, warm, narrative.
+- **Cache busting**: after deploying a new OG image, Facebook caches the old one. Use the
+  [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) to force refresh.
+
+## Bilingual mirror parity check
+
+After any edit that touches structural HTML, verify RU/UA parity in seconds:
+
+```bash
+diff <(grep -oE '<section[^>]*class="[^"]+"|<h2[^>]*>[^<]+' index.html) \
+     <(grep -oE '<section[^>]*class="[^"]+"|<h2[^>]*>[^<]+' uk/index.html)
+# Expected: only RU↔UA text differences inside <h2>, identical section classes in identical positions.
+
+echo "RU: $(grep -c '<section' index.html) sections / $(grep -c '<h2' index.html) h2"
+echo "UA: $(grep -c '<section' uk/index.html) sections / $(grep -c '<h2' uk/index.html) h2"
+# Counts must match exactly.
+```
+
 ## CAPI access (resolved 2026-05-11)
 
 Discovery: the **existing System User token** (in `.env` as `META_ACCESS_TOKEN`) works as the Conversions API access token. No separate CAPI token needed.

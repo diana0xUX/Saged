@@ -93,6 +93,12 @@ in `uk/index.html` (UA), and vice versa. Same sections, same structure, same ima
 testimonials/IG embeds/FAQ items/etc. A diff in `<section>` count or `<h2>` count between the two
 files is a bug. Always edit both before committing.
 
+**TESTIMONIAL INTEGRITY (non-negotiable)**: testimonial content must come from a real, user-supplied
+source — Google review, IG comment, DM, email. NEVER fabricate a quote, even as "plausible filler."
+Placeholder slots must clearly self-label (e.g., `[Тестимониал — ждём из Instagram]`). If asked
+for N testimonials, write exactly N — pattern-completion bias has produced phantom slots before
+(see retro 2026-05-11).
+
 - Read `REPORT.md` for the plain-English current state before suggesting changes
 - Diana is a UX designer — use plain language, design analogies
 - One step at a time; don't batch big decisions
