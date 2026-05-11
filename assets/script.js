@@ -59,6 +59,10 @@
       show(parseInt(d.dataset.slide, 10));
       stop(); start();
     }));
+    slides.forEach(s => s.addEventListener('click', () => {
+      show(idx + 1);
+      stop(); start();
+    }));
     c.addEventListener('mouseenter', stop);
     c.addEventListener('mouseleave', start);
     c.addEventListener('focusin', stop);
