@@ -36,3 +36,5 @@ data/cache/
 
 # fieldcraft symlinks — machine-specific, recreated via scripts/setup-fieldcraft.sh
 .claude/rules/
+inbox/
+*.MOV
