@@ -255,6 +255,32 @@ a:hover { color: var(--ink); }
   background: var(--bg-sand);
 }
 
+/* ---------- workshop feel ---------- */
+.workshop-feel {
+  max-width: var(--max);
+  margin: 4rem auto;
+  padding: 0 var(--gutter);
+}
+.workshop-feel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.workshop-feel__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  background: var(--bg-sand);
+}
+@media (max-width: 700px) {
+  .workshop-feel__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- includes list ---------- */
 .includes {
   list-style: none;
