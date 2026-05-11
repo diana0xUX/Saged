@@ -80,10 +80,33 @@ a:hover { color: var(--ink); }
   width: auto;
   display: block;
 }
-.lang { display: flex; gap: 0.5rem; font-size: 0.9rem; }
-.lang__current { color: var(--ink); font-weight: 600; }
-.lang__alt { color: var(--muted); border: none; }
-.lang__alt:hover { color: var(--terracotta); }
+.lang {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  align-items: center;
+}
+.lang a, .lang span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  line-height: 1;
+}
+.lang__current {
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--bg-sand);
+}
+.lang__alt {
+  color: var(--muted);
+  border: none;
+  text-decoration: none;
+}
+.lang__alt:hover { color: var(--terracotta); background: var(--bg-sand); }
 
 /* ---------- hero ---------- */
 .hero {
@@ -470,11 +493,10 @@ a:hover { color: var(--ink); }
   .brand img { height: 28px; }
 }
 
-/* Tap target safety — every interactive element ≥44px */
-.cta, .channel, .btn-solid, .btn-ghost, .faq summary, .lang a {
+/* Tap target safety — every interactive element ≥44px (lang switch is intentionally smaller, 36px, to fit topbar) */
+.cta, .channel, .btn-solid, .btn-ghost, .faq summary {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
 }
 .faq summary { align-items: flex-start; }
-.lang a, .lang span { padding: 0.3rem 0.4rem; }
