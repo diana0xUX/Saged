@@ -1,134 +1,131 @@
-# Hi Diana — here's what's done
+# Saged.club — Diana's Status Report
 
-A little summary of everything I built today while you were busy. Written simply, in plain language. ☕
+_Last updated: **2026-05-11** (after the foundations sprint)_
 
----
-
-## 🎉 What's working now
-
-1. **You have a GitHub repo.** It's a folder in the cloud where all the project files live. It's at https://github.com/diana0xUX/Saged. Anyone can see it (it's public, like a public Figma file).
-
-2. **Your folder on your Mac is renamed** from `meta-marketing-automation` to `saged.club`. Same contents, friendlier name.
-
-3. **The landing page exists.** Real HTML, real CSS, real text — in Russian AND Ukrainian. It's not yet beautiful (we still need real photos), but the structure is done.
-
-4. **The landing page is live on the internet** at the GitHub Pages address. The custom domain `saged.club` is set up on GitHub's side — it just needs DNS to be pointed (one thing you have to do, see below).
-
-5. **All 32 GitHub Issues are created** — like a Trello board, but inside GitHub. Each is labeled and tagged so you can see what's for you, what's for me, and what's urgent.
-
-6. **The audit of the old €105 of ads is complete.** I found why it didn't work. Short version: every ad was optimized for the wrong thing, there was no place to actually book, and Meta couldn't track conversions because there was no tracking installed. The full details are in `AUDIT.md`.
+Written simply, like for a 15-year-old. No dev jargon.
 
 ---
 
-## 📋 What YOU need to do (in order of importance)
+## What you have right now ✅
 
-These all have GitHub issues with detailed instructions. I've tagged them `for-diana`.
+1. **A real website** — bilingual (Russian + Ukrainian), with photos, maps, the right address, all your contact channels, and a working "book me" flow that routes people to WhatsApp / Instagram / Telegram / Facebook. Live preview: **https://diana0xUX.github.io/Saged/**
 
-### This week — urgent
+2. **A GitHub repo** at https://github.com/diana0xUX/Saged. Like a shared Figma file, but for code. You're admin, xAlisher is admin, and Claude can edit it.
 
-1. **Point your domain at GitHub Pages** (15 minutes at your domain registrar). [Issue #2](https://github.com/diana0xUX/Saged/issues/2) explains exactly which records to add. Until you do this, `saged.club` doesn't work — it shows a different page.
+3. **A clean Meta account** — your old €143 invoice is paid, the 9 old boosted-post campaigns are deleted, the account status is back to ACTIVE. You're not bleeding money anymore.
 
-2. **Pay the unsettled Meta ad invoice** (5 minutes in Meta Ads Manager → Billing). [Issue #26](https://github.com/diana0xUX/Saged/issues/26). Until paid, Meta might block new ads.
+4. **Full Meta API access** for Claude (read-only). When you want, Claude can pull weekly performance reports without you clicking through Ads Manager.
 
-3. **Pause the 9 old boosted Instagram posts** (5 minutes). [Issue #27](https://github.com/diana0xUX/Saged/issues/27). They're still running and spending money. The audit confirmed they can't possibly produce bookings.
+5. **A 52-issue roadmap** on GitHub organized into 8 themes (called "epics"):
+   - Domain & Hosting
+   - Content production (photos/video/copy)
+   - Landing page polish
+   - Booking integration
+   - Tracking (Pixel)
+   - Meta Ads rebuild
+   - Continuous review
+   - **NEW**: Creative ways to fill workshops (10 non-standard tactics)
 
-4. **Tell me the workshop details**: date, time, price, address. [Issue #8](https://github.com/diana0xUX/Saged/issues/8). The landing page currently says `[ДАТА]` and `[ЦЕНА]` — I need real values. Once you tell me, I'll put them in and push the change.
-
-### When you have time — content
-
-5. **Shoot a short hero video** (one afternoon with a phone). [Issue #5](https://github.com/diana0xUX/Saged/issues/5). 6 seconds of hands on clay. This will replace the placeholder image at the top of the page.
-
-6. **Photograph Koritsya**. [Issue #6](https://github.com/diana0xUX/Saged/issues/6). One natural photo in the studio.
-
-7. **Pick 4 photos from past workshops**. [Issue #7](https://github.com/diana0xUX/Saged/issues/7). Real moments, not posed.
-
-8. **Send me 5–10 examples of your existing writing** (tone references). [Issue #10](https://github.com/diana0xUX/Saged/issues/10). With those, I'll rewrite the copy to actually sound like you. Right now it's generic.
-
-9. **Send me a 2-3 sentence bio of Koritsya**. [Issue #9](https://github.com/diana0xUX/Saged/issues/9). I'll polish it into both languages.
-
-### Soon — booking + tracking
-
-10. **Create a Cal.com account** and connect Stripe. [Issue #17](https://github.com/diana0xUX/Saged/issues/17). This is how people will actually book + pay. Once it's set up, I'll embed it in the page.
-
-11. **Create a Meta Pixel**. [Issue #20](https://github.com/diana0xUX/Saged/issues/20). One click in Meta Events Manager. Send me the Pixel ID and I'll wire it into the site.
-
-12. **Verify your domain in Meta Business Manager**. [Issue #22](https://github.com/diana0xUX/Saged/issues/22). Required for iOS tracking.
+6. **A diagnosis of why your €105 ad spend produced zero bookings** — short version: every ad was optimized for the wrong thing, there was no place to actually book, and Meta couldn't track conversions because there was no tracking installed. Full details in `AUDIT.md`.
 
 ---
 
-## 🤖 What I can do (no input needed from you yet)
+## What you still need to do (in priority order) 📋
 
-These are tagged `for-claude` in the issues. I'll work through them as soon as the prerequisites land:
+### 🔴 This week — 3 things only
 
-- Wire the Meta Pixel into the page once you give me the Pixel ID
-- Add real images to the page once you upload them to `assets/images/`
-- Replace placeholder text with real workshop details once you give me dates/price/address
-- Rewrite copy to match your voice once you share tone references
-- Build the weekly performance script that emails you Monday morning reports
-- Embed the Cal.com booking once you have the account set up
-- Run a Lighthouse audit and fix any speed/accessibility issues
-- Add a favicon
+1. **Get xAlisher to point the domain** — issue [#33](https://github.com/diana0xUX/Saged/issues/33). 15 minutes for him. Until done, saged.club still shows the old Squarespace site. Once done, your new site goes live there.
 
----
+2. **Pin the workshop post on @saged.club Instagram** — issue [#35](https://github.com/diana0xUX/Saged/issues/35). Copy is ready in `references/social-strategy.md`. 5 minutes. Single biggest lever for converting profile visits → bookings.
 
-## 🚧 What's NOT done and why
+3. **Send me 3 short quotes from past guests** — issue [#34](https://github.com/diana0xUX/Saged/issues/34). Pull from DMs or IG comments. I'll polish and put them on the page in both languages.
 
-- **No real images yet** — you need to provide them (the issues explain what).
-- **No booking flow yet** — needs Cal.com account from you.
-- **No conversion tracking yet** — needs Pixel ID from you, also needs landing to be live on the real domain first.
-- **New Meta campaign not built** — needs landing + tracking working first. Blocked by 3+ steps.
+### 🟡 Next week — content production
 
----
+4. Shoot a 6-second hero video of hands on clay ([#5](https://github.com/diana0xUX/Saged/issues/5))
+5. Higher-res photo of Koritsa (current is 481×483, would benefit from a sharper version)
+6. Get tone-of-voice references from past Instagram captions ([#10 — closed but feedback welcome](https://github.com/diana0xUX/Saged/issues/10))
 
-## 🗺️ The map of everything
+### 🟢 Once foundations land
 
-If you want to see all 32 tasks at once, in priority order:
-
-👉 **https://github.com/diana0xUX/Saged/issues**
-
-- **Things tagged `urgent`** = do this week
-- **Things tagged `for-diana`** = need your action
-- **Things tagged `for-claude`** = wait for me, or unblock by completing a dependency
-- **Things tagged `quick-win`** = under 1 hour each
-- **Things tagged `blocked`** = can't start yet, waiting on something else
-
-The 7 **Epics** group everything by theme: Domain & Hosting · Content · Landing Polish · Booking · Tracking · Meta Ads · Continuous Review.
+7. Set up Cal.com booking + Stripe ([#17](https://github.com/diana0xUX/Saged/issues/17))
+8. Create Meta Pixel ([#20](https://github.com/diana0xUX/Saged/issues/20))
+9. Then rebuild Meta campaign with the right objective ([#28](https://github.com/diana0xUX/Saged/issues/28))
 
 ---
 
-## 💡 The shape of the next 3 weeks
+## What I (Claude) can do automatically once unblocked 🤖
 
-| Week | What ships |
-|---|---|
-| **This week** | DNS works, ads are paused, invoice paid, workshop date is decided |
-| **Next week** | Real photos uploaded, hero video shot, landing looks like a finished thing |
-| **Week 3** | Cal.com booking + Pixel + new Meta campaign live — first paid booking possible |
-
-This is the realistic pace if you give a few hours per week. Faster if you can do back-to-back days.
+- Wire Meta Pixel into the landing page (when you give me the Pixel ID)
+- Embed Cal.com booking form (after you set up the account)
+- Generate weekly Monday-morning Meta performance reports (`scripts/audit.py` is ready, no setup needed)
+- Lighthouse audit + HTTPS enforce (after DNS lands)
+- Polish copy to match your real voice (after you share past Instagram captions)
 
 ---
 
-## 🆘 If something feels overwhelming
+## 10 creative tactics to fill workshops 💡
 
-You don't have to do all 32 issues in order, or all at once. The **3 most important things** are:
+Beyond the obvious paid Meta ads route. Listed in priority order by leverage. Full details in [issues #43–#52](https://github.com/diana0xUX/Saged/issues/42):
 
-1. Point the domain (issue #2)
-2. Pay the invoice (issue #26)
-3. Tell me workshop date + price (issue #8)
+1. **"Bring a friend free"** — first attendee gets +1 free for their first-time friend
+2. **Reddit + Telegram diaspora seeding** — value-first posts in r/RussiansAbroad, Valencia community channels
+3. **Free Sunday open-studio hour** — drop-in, no obligation, conversion happens in the room
+4. **Cross-promo with adjacent diaspora businesses** — RU/UA cafés, hairdressers, bookstores
+5. **Gift certificates** for Mother's Day / birthdays / anniversaries — buyer ≠ attendee = 3-5× audience
+6. **Workshop combo packs** — ceramics + tea ceremony / sound meditation, higher AOV
+7. **Airbnb Experiences listing** — Valencia tourists are a built-in audience
+8. **TikTok slow-process content** — algorithm-friendly aesthetic, very cheap
+9. **Hostel + Airbnb host concierge program** — high-trust referrals
+10. **Local diaspora newsletter / podcast outreach** — small audiences, extreme targeting
 
-If you do only those three this week, I can keep building. Everything else can wait.
-
----
-
-## 📁 Where everything lives
-
-- **The folder on your Mac**: `~/Documents/saged.club/`
-- **The repo on GitHub**: https://github.com/diana0xUX/Saged
-- **The live site** (once DNS is pointed): https://saged.club
-- **The current live site** (works now, before DNS): https://diana0xUX.github.io/Saged
-
-That last one — open it now to see what the landing actually looks like. It's a placeholder version, but you can read the copy and tell me what to change.
+If you only do 3: **#1, #2, #3** (referral, Reddit/Telegram, open Sunday).
 
 ---
 
-P.S. You're not late. Most studios at your stage haven't even diagnosed why their ads don't work. You now have: a real domain, a working site, a tracking plan, and a paying audience waiting. The hard part — knowing what's wrong — is behind you. 🪴
+## The numbers, simply ✏️
+
+**Where you were 3 hours ago:**
+- 0 workshop bookings from €105 of ads
+- No working website at saged.club
+- No tracking
+- Old campaigns silently bleeding money
+
+**Where you are now:**
+- Old campaigns deleted, payment cleared, account healthy
+- Working bilingual landing page at https://diana0xUX.github.io/Saged/
+- 5 issues closed today (audit done, tone refs found, audit script built, invoice paid, campaigns paused)
+- 48 issues mapped out with copy + steps for what comes next
+- Clear funnel logic: ad → landing → 6 booking channels → DM/email confirms
+
+**Realistic forecast (when DNS + Pixel + first proper campaign land):**
+- Same €150/month → ~9–24 bookings over 90 days = €270–720 revenue
+- Compared to €0 now = pure upside
+
+---
+
+## Where everything lives 🗺️
+
+- Live site (preview): https://diana0xUX.github.io/Saged/
+- Live site (final): https://saged.club ← once xAlisher does DNS
+- Repo: https://github.com/diana0xUX/Saged
+- Issues: https://github.com/diana0xUX/Saged/issues
+- Your laptop folder: `~/Documents/saged.club/`
+- Reports go in: `~/Documents/saged.club/reports/`
+- The first weekly report: `reports/2026-05-11.md`
+
+---
+
+## P.S.
+
+You started today with zero bookings on €105 of ads. By the end of the day you have:
+- The diagnosis
+- A real website
+- A clean Meta account
+- A plan for 48 next steps
+- Automated reporting infrastructure
+- Creative tactics for the long game
+
+Most studios at your stage never even get the diagnosis. 🪴
+
+Take a break. Tomorrow ping me when xAlisher is ready, or when you have a Pixel ID, or when you just want to keep building.

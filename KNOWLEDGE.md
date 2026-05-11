@@ -113,11 +113,11 @@ Future scope: same landing structure can serve any of these. Current focus = cer
 See `AUDIT.md` for the full breakdown.
 
 ### What we're rebuilding (post-launch)
-1. Settle invoice + pause old boosts
-2. Install Meta Pixel + Conversions API on saged.club
-3. Build proper Sales-objective campaign with RU + UA separate ad sets
+1. ~~Settle invoice + pause old boosts~~ ✅ done 2026-05-11 — Diana paid invoice (€143.43 cleared), deleted all 9 old campaigns. Account back to status=1 (ACTIVE).
+2. Install Meta Pixel + Conversions API on saged.club — pending Diana to create Pixel (#20)
+3. Build proper Sales-objective campaign with RU + UA separate ad sets — pending Pixel + DNS
 4. Target Valencia + 25km, language-filtered
-5. Reuse "Saged.club is for…" copy structure (had 4% CTR — best performer)
+5. Reuse "Saged.club is for…" copy structure (had 4% CTR — best performer). Now also embedded as a pinned-style block on the landing page.
 
 ## Tech Stack
 

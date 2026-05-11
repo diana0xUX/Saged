@@ -8,28 +8,40 @@ Phase 1 product: a single bilingual (RU/UA) landing page promoting **"Ceramics w
 ## Owner
 **Diana Sage**, UX designer. Plain-language explanations, design-world analogies preferred over engineering jargon.
 
-## Status (as of 2026-05-11)
+## Status (as of 2026-05-11, end of foundations sprint)
 - Audit of past €105 of ads: ✅ complete (see `AUDIT.md`)
-- GitHub repo: ✅ created — https://github.com/diana0xUX/Saged
-- Vanilla JS landing page (RU + UA): ✅ v0 built
-- GitHub Pages: ✅ enabled, custom domain `saged.club` set
-- DNS: ⏳ pending Diana
-- Real images: ⏳ pending Diana
-- Booking integration: ⏳ pending Cal.com setup
-- Meta Pixel: ⏳ pending creation
-- New ad campaign: ⏳ blocked by all of the above
+- GitHub repo: ✅ created — https://github.com/diana0xUX/Saged · xAlisher = admin collab
+- Bilingual landing (RU + UA): ✅ shipped — carousel, real photos, embedded map, embedded IG, 6-channel booking
+- SEO: ✅ full OG/Twitter cards, Schema.org Course, hreflang, sitemap, robots, favicon
+- Mobile: ✅ 3 breakpoints, ≥44px tap targets, no overflow
+- GitHub Pages: ✅ enabled, `CNAME` temporarily disabled (renamed `CNAME.disabled`) so preview works
+- Workshop details: ✅ all confirmed — see `KNOWLEDGE.md`
+- Background API poll: ✅ ran, confirmed invoice paid + campaigns deleted, closed #26 + #27
+- 48 open issues across 8 epics (creative tactics epic + social strategy issues added)
+- DNS: ⏳ assigned to xAlisher (#33)
+- Real testimonials: ⏳ pending Diana (#34)
+- Hero video / higher-res Koritsa photo: ⏳ pending Diana (#5, #6)
+- Cal.com booking: ⏳ pending Diana (#17)
+- Meta Pixel: ⏳ pending Diana (#20)
+- New ad campaign: ⏳ blocked by Pixel + DNS
 
 ## File map
 - `index.html` — Russian landing
 - `uk/index.html` — Ukrainian landing
 - `assets/style.css`, `assets/script.js`, `assets/images/` — front-end assets
 - `privacy.html`, `cookies.html` — legal stubs (need real text before launch)
-- `CNAME` — `saged.club`
+- `CNAME.disabled` — will be `CNAME` once xAlisher does DNS (#33)
+- `sitemap.xml`, `robots.txt` — SEO
 - `AUDIT.md` — findings from the Phase 0 ad-account audit
 - `PLAN.md` — phased roadmap (still relevant; small-business scope)
+- `KNOWLEDGE.md` — canonical project facts (brand, people, audience, channels, workshop)
+- `REPORT.md` — plain-language status report for Diana (refresh this when state changes)
+- `SESSION_LOG.md` — chronological log of major sessions
 - `research.md` — broader reference (Meta API, A/B, audience, tools)
-- `REPORT.md` — plain-language status report for Diana
 - `audit-prompt.md` — browser-Claude prompt to re-run the ad audit later
+- `references/social-strategy.md` — pinned-post copy, IG/FB/TG bio drafts
+- `scripts/audit.py` — weekly Meta performance report (stdlib only)
+- `reports/` — generated weekly reports
 - `data/raw/` — cached Meta API responses (gitignored)
 - `.env` — Meta access token, ad account ID (gitignored)
 
