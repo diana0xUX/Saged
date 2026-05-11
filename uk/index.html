@@ -78,8 +78,17 @@
 <main>
 
 <section class="hero">
-  <div class="hero__media" aria-hidden="true">
-    <img src="../assets/images/hero.jpg" alt="">
+  <div class="hero__media carousel" aria-roledescription="carousel" aria-label="Фотографії зі студії">
+    <div class="carousel__track">
+      <div class="carousel__slide is-active"><img src="../assets/images/hero-1.jpg" alt="Руки працюють з маленькими формами з глини"></div>
+      <div class="carousel__slide"><img src="../assets/images/hero-2.jpg" alt="Кориця показує техніку на майстер-класі"></div>
+      <div class="carousel__slide"><img src="../assets/images/hero-3.jpg" alt="Атмосфера студії — свічки, кераміка, тиша"></div>
+    </div>
+    <div class="carousel__dots" role="tablist" aria-label="Перейти до слайду">
+      <button type="button" data-slide="0" class="is-active" aria-label="Слайд 1: Руки"></button>
+      <button type="button" data-slide="1" aria-label="Слайд 2: Кориця"></button>
+      <button type="button" data-slide="2" aria-label="Слайд 3: Атмосфера"></button>
+    </div>
   </div>
   <div class="hero__copy">
     <p class="eyebrow">Щочетверга · Стара Валенсія</p>
