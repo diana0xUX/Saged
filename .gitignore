@@ -1,0 +1,34 @@
+# Secrets — never commit
+.env
+*.env
+.env.*
+!.env.example
+token.txt
+token.rtf
+*.token
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Data dumps (don't commit raw Meta exports)
+data/raw/
+data/cache/
+*.parquet
+*.duckdb
