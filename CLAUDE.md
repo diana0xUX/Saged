@@ -1,75 +1,62 @@
-# Meta Marketing Automation — Ceramic Studio (Valencia)
+# Saged.club — Project Context
 
-## What this project is
+## What this is
+A real client project: **Saged.club**, a ceramic and cultural workshop space in Valencia old city, marketing to **Russian-speaking and Ukrainian-speaking residents** of Valencia.
 
-A real client project: **a ceramic studio in Valencia old city**, marketing pottery workshops to **Russian-speaking and Ukrainian-speaking residents** of Valencia via Meta (Facebook + Instagram) ads.
+Phase 1 product: a single bilingual (RU/UA) landing page promoting **"Ceramics with Koritsya"** — a two-day pottery workshop.
 
-Goal: turn ad spend into workshop bookings — currently zero conversions on €150 spent.
+## Owner
+**Diana Sage**, UX designer. Plain-language explanations, design-world analogies preferred over engineering jargon.
 
-The owner is **Diana**, a UX designer. Explanations and docs favor plain language + design analogies over engineering jargon. No code is written yet; we're in foundations-first mode.
-
-## Current status
-
-**Audit phase.** Diagnosing why the existing campaign produced no bookings.
-
-## Hard facts about this account
-
-| Thing | Value |
-|---|---|
-| Studio location | Valencia old city, Spain |
-| Customers | Russian-speaking + Ukrainian-speaking, primarily Valencia residents |
-| Conversion goal | Workshop / class booking (with payment) |
-| Spend so far | €65 Meta ads (3 ads) + €60 Telegram sponsored post = €125 total, zero bookings |
-| Remaining this month | €150 |
-| Telegram channel | One-off, not in scope for automation |
-| Website | Outdated; will build a new minimal landing page |
-| Account scale | Small — too small for statistical A/B testing yet |
-
-## The plan in one sentence
-
-**Audit → fix foundations (landing page + tracking + offer) → run one well-structured campaign → review weekly → iterate. Automate later, only when there's volume worth automating.**
-
-## What we are NOT doing (yet)
-
-- Python pipelines, data warehouses, scheduled jobs — premature at this spend level.
-- A/B testing — at <€300/month total spend split across two language segments, statistical significance is unreachable. We'll do *creative iteration* (judgment-based) instead.
-- Conversions API Gateway, MMM, Robyn, Madgicx — far overkill.
-- Combining Russian + Ukrainian audiences into one ad set — separate ad sets with localized creative is mandatory.
-
-## Strategic constraints
-
-- **RU and UA audiences get separate ad sets and creative.** Same offer, same landing page (with language toggle), but each language has its own ad copy, voice, and where appropriate, separate visuals. This is partly statistical (we want to see which segment converts) and partly ethical/respectful given war-displacement context.
-- **Tracking-first.** Without Meta Pixel + Conversions API installed correctly, Meta is optimizing blind and the "no results" outcome is almost guaranteed. Step one of any fix is making sure conversions are being tracked.
-- **One conversion event matters.** "Workshop booking confirmed" (form submit + payment). Everything else is a leading indicator, not the goal.
-- **GDPR + DSA** apply (Spain = EU). The landing page needs a real consent banner before tracking fires.
-
-## Tech stack (final decisions for this scale)
-
-- **Landing page**: Framer or Webflow or Carrd. Single page, two language versions. Free/cheap tier.
-- **Booking**: Calendly, Cal.com, or Tally form → Stripe link. (Skip building auth/CMS.)
-- **Tracking**: Meta Pixel (browser) + Meta Conversions API one-click setup (server-side mirror).
-- **Consent**: Cookiebot free tier or a hand-rolled banner — must block tracking until consent.
-- **Reporting**: Manual review in Meta Ads Manager for the first 4 weeks. Optional weekly summary via a Google Sheet or simple Python script later.
-- **Automation**: Deferred until there's enough data to automate against (60–90 days of clean tracked data, minimum).
-
-## Key external references
-
-- Meta Marketing API docs: https://developers.facebook.com/docs/marketing-apis
-- Meta Pixel + CAPI guide: https://developers.facebook.com/docs/marketing-api/conversions-api/
-- Meta Events Manager (where Pixel lives): https://business.facebook.com/events_manager2
-- Meta Ads Manager (where campaigns live): https://adsmanager.facebook.com/
+## Status (as of 2026-05-11)
+- Audit of past €105 of ads: ✅ complete (see `AUDIT.md`)
+- GitHub repo: ✅ created — https://github.com/diana0xUX/Saged
+- Vanilla JS landing page (RU + UA): ✅ v0 built
+- GitHub Pages: ✅ enabled, custom domain `saged.club` set
+- DNS: ⏳ pending Diana
+- Real images: ⏳ pending Diana
+- Booking integration: ⏳ pending Cal.com setup
+- Meta Pixel: ⏳ pending creation
+- New ad campaign: ⏳ blocked by all of the above
 
 ## File map
+- `index.html` — Russian landing
+- `uk/index.html` — Ukrainian landing
+- `assets/style.css`, `assets/script.js`, `assets/images/` — front-end assets
+- `privacy.html`, `cookies.html` — legal stubs (need real text before launch)
+- `CNAME` — `saged.club`
+- `AUDIT.md` — findings from the Phase 0 ad-account audit
+- `PLAN.md` — phased roadmap (still relevant; small-business scope)
+- `research.md` — broader reference (Meta API, A/B, audience, tools)
+- `REPORT.md` — plain-language status report for Diana
+- `audit-prompt.md` — browser-Claude prompt to re-run the ad audit later
+- `data/raw/` — cached Meta API responses (gitignored)
+- `.env` — Meta access token, ad account ID (gitignored)
 
-- `CLAUDE.md` — this file. Project context.
-- `PLAN.md` — phased small-business roadmap (current scope).
-- `AUDIT.md` — findings from the Phase 0 audit (filled in as we go).
-- `research.md` — broader research reference (May 2026) — kept for later, not directly relevant to Phase 0–2.
+## Stack decisions
+- **Hosting**: GitHub Pages, custom domain `saged.club`
+- **Front-end**: Vanilla HTML/CSS/JS — no framework, no build step. Designed for "edit a file and push."
+- **Typography**: Cormorant Garamond (display) + Inter (text), via Google Fonts.
+- **Palette**: warm clay neutrals + terracotta + sage accent. Tokens in `:root` in `style.css`.
+- **Booking**: Cal.com (planned) — open source, GDPR-friendly, Stripe-integrated.
+- **Tracking**: Meta Pixel + Conversions API, gated by EU-compliant consent banner.
+
+## Hard constraints
+- **EU compliance** (Spain): explicit opt-in before Pixel fires. Consent banner already implemented in `script.js`.
+- **RU + UA audiences separated**: never merge into one ad set. Localized creative per language.
+- **Ad spend reality**: €150/month total. No statistical A/B testing until volume grows. Doing creative iteration instead.
+- **Meta Marketing API v25.0** pinned. v26.0 expected ~Sept 2026.
+
+## What we are NOT doing
+- React/Next.js/any build tool — vanilla, deployable from `main`
+- Programmatic Advantage+ Shopping campaigns (Meta blocks API access after 2026-05-19; not relevant for workshops anyway)
+- MMM / Robyn / data warehouses / Prefect — premature at this scale
+- Merging RU + UA ad sets
 
 ## Working preferences for Claude
-
-- Diana is a UX designer. Use plain language and design analogies; explain technical concepts in terms of patterns she already knows (browser cookies, design tokens, prototype testing).
-- Walk through each step; don't batch big decisions.
-- Don't recommend tooling beyond what's justified by the current spend level.
-- Always reference the relevant Meta deadline if architecture choices touch Advantage+, Audience Insights, or compliance.
-- Russian + Ukrainian audience separation is non-negotiable — never propose merging the ad sets to "increase sample size."
+- Read `REPORT.md` for the plain-English current state before suggesting changes
+- Diana is a UX designer — use plain language, design analogies
+- One step at a time; don't batch big decisions
+- Always reference the relevant GitHub issue when proposing work
+- Russian/Ukrainian audience separation is non-negotiable
+- Don't recommend tooling beyond what's justified at €150/month spend
