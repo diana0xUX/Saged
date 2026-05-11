@@ -156,3 +156,14 @@ See `AUDIT.md` for the full breakdown.
 - Studio IG: https://www.instagram.com/saged.club
 - Studio FB: https://www.facebook.com/share/1BUsmYHLdW/
 - Studio Maps: https://maps.app.goo.gl/RqsReEo929aeUAPN9
+
+
+## CAPI access (resolved 2026-05-11)
+
+Discovery: the **existing System User token** (in `.env` as `META_ACCESS_TOKEN`) works as the Conversions API access token. No separate CAPI token needed.
+
+- Scope `ads_management` covers both Marketing API and Conversions API
+- Verified by sending a test PageView event to `/1533639615120579/events` — Meta returned `events_received: 1`
+- When Cal.com / Stripe webhooks land, server forwarder uses same token to send `Purchase` events
+
+The Events Manager UI flow for dedicated tokens is blocked behind a "business email required" rule that we sidestepped. Optional cleanup: set a business email in Business Settings → Business Info to unblock the UI path too.
