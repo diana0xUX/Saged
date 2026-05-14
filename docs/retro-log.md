@@ -99,3 +99,168 @@ Shipped 8 PRs: #74 (Koritsa's new photos), #75 (4 photos wired + workshop-feel s
   edit. The user-facing self-correction was a Fergie behaviour, not a Diana intervention.
 - No `/log` commands used during the session — Diana doesn't yet know about them. Worth a
   KNOWLEDGE.md note if we want her to start tagging wins/fails inline rather than at retro time.
+
+---
+
+## Sprint — Campaign launch + first revenue + coworking pages (2026-05-12 → 2026-05-14)
+
+Three-day arc: Stripe approval landed silently → end-to-end smoke test caught two infra gaps →
+campaign went live 2026-05-12 at €10/day → first real paid booking came in via Telegram (not the
+ad) → first workshop ran 2026-05-14 → coworking offering shipped as RU/UA/EN landing pages.
+First real revenue through the funnel: €60 from one Telegram-direct booking. Campaign at €15
+spend, 0 ad-attributed conversions yet (normal at 48h).
+
+### Process wins
+
+- **[process] Smoke test caught two blocking infra gaps before €€ moved.**
+  Bug 1: Stripe was connected to the Cal.com account but not enabled on the specific event
+  type — first test booking went through for free. Bug 2: Cal.com's Meta Pixel app only fires
+  `Schedule`, never `Purchase` — campaign was built for Purchase optimization, would have run
+  blind. Both fixed before any real spend. Validates the "smoke-test before launch ads"
+  protocol from #61's pass condition.
+
+- **[process] ScheduleWakeup pattern for async verification.**
+  Meta Pixel stats endpoint has ~30 min aggregation lag. Instead of polling or asking Diana to
+  refresh Events Manager repeatedly, set a 30-min ScheduleWakeup and returned to verify
+  autonomously. Diana could close the tab. When the wakeup fired at 11:29 UTC, Schedule events
+  had landed and verification proceeded. Better than retry-loops; better than user-facing waits.
+
+- **[process] Took maximum autonomous action when explicitly authorized.**
+  Diana said "do what you can" mid-session when overwhelmed by cross-app debugging. While she
+  stepped away: created Custom Conversion via API (mapping Schedule→Purchase €60), discovered
+  Meta locks ad-set optimization after publish, created v2 ad sets, updated `.campaign-ids`,
+  closed issues, updated halt.md. Came back to a single one-command flip-to-active. The trust
+  signal from "do what you can" maps to a real authorization expansion.
+
+- **[process] Detected overwhelm signal mid-session and adjusted.**
+  After ~10 rounds of cross-app navigation, Diana asked "what do I need to do?" — short, low-
+  energy. Recognized as overwhelm. Dropped the AskUserQuestion picker that was queued in my
+  head; gave one plain-language action ("cancel the test booking, I'll handle the rest"). Saved
+  the pattern to cross-session memory (`feedback_diana_overwhelm_signal.md`) so this doesn't
+  have to be re-learned.
+
+- **[process] Local smoke-test of three-language site before deploy.**
+  Spun up python http.server on 127.0.0.1, scripted HTTP checks across all three coworking
+  pages, asset references, cross-link resolution. Caught nothing (everything passed) but the
+  test design caught a false-positive (HTML entities vs literal strings) which surfaced a real
+  bug in the test, not the site. Cheap, fast, repeatable.
+
+- **[process] Cross-session memory captured 5 reusable learnings.**
+  Wrote: `cal-com-meta-pixel-events`, `meta-api-edit-locks`, `pixel-vs-campaign-attribution`,
+  `diana-overwhelm-signal`, `saged-club-campaign-live-2026-05-12`. These are non-obvious facts
+  that would have cost real time to re-discover. Already validated in this session by re-
+  reading the API edit-lock memory while planning the v2 ad-set rebuild.
+
+### Process fails
+
+- **[process] Almost missed the campaign-objective mismatch.**
+  Smoke test confirmed `Schedule` events firing on Meta. I was about to mark task #5 complete
+  and recommend campaign flip — *before* checking that the existing ad sets were configured for
+  `Schedule` as the optimization event. They weren't; they were built for `Purchase`. Caught it
+  while pulling campaign config "just to confirm before flipping" — but should have been
+  Step 1 of smoke-test scoring, not a defensive check.
+  Mitigation: smoke-test checklist should include "does the entity that consumes this event
+  *actually consume this event name*?" — not just "does the event fire?"
+
+- **[process] Sent Diana to Events Manager UI when API was already available.**
+  Spent two rounds asking Diana to navigate business.facebook.com/events_manager → Test Events
+  before realizing `.env` had `META_ACCESS_TOKEN` and I could just query the stats endpoint
+  myself. Should have read `.env` and KNOWLEDGE.md at the start of the smoke-test, not after
+  Diana got confused.
+  Mitigation: when the user has tokens/credentials in the project's `.env`, default to API
+  verification before UI navigation. Save the user's clicks.
+
+- **[process] Language switcher shipped with absolute paths, broke in `file://` preview.**
+  Built cross-links as `/coworking/`, `/uk/coworking/` etc. Worked perfectly under the python
+  http.server tests; broke instantly when Diana opened the page via `file://`. Took two fix
+  rounds (relative paths, then explicit `index.html`) before she could click between languages.
+  Mitigation: hand-edited static sites with no build step almost always get previewed via
+  `file://` at some point. Use relative paths *and* explicit filenames (`index.html`) by
+  default, not just on prompt.
+
+- **[process] Smoke-test false positives wasted a debugging round.**
+  Python test compared expected strings literal-for-literal against HTML body. The HTML had
+  `&nbsp;` non-breaking-space entities where expected strings had ASCII spaces — caused
+  "missing content" alerts that triggered me to re-check page correctness when the issue was
+  the test. Lost 30 seconds of doubt.
+  Mitigation: any HTML content assertion must `html.unescape()` and normalize `\xa0` → ` `
+  before substring match.
+
+### Project lessons
+
+- **[project] Cal.com config is per-event-type, not account-level.**
+  Stripe connection at account level does not enable payment on a specific event type — each
+  event type's "Apps" tab must explicitly turn on Stripe with a price. Same for Meta Pixel app.
+  This bit us once with Stripe, again with the Pixel. Memorize: every Cal.com integration is
+  scoped to the event type, not the account.
+
+- **[project] Meta API rules force "create new entity, leave old paused" pattern.**
+  Campaign objective is locked once any ad set exists (error 1885073). Ad set optimization is
+  locked after publish (error 3260011). When optimization needs to change, the recovery is
+  always: create a new ad set in the same campaign, leave old one paused, repoint scripts.
+  Don't try to delete; pause is safer.
+
+- **[project] Cal.com Meta Pixel app vocabulary: Lead/CompleteRegistration/Schedule/PageView.**
+  No Purchase event option. No value/currency parameter. For Sales-objective campaigns needing
+  Purchase optimization, the workaround is a Meta Custom Conversion mapping
+  `event_name = Schedule` → `category PURCHASE` with `default_conversion_value`. Working
+  Custom Conversion ID for Saged: `980444324695740` (Schedule → Purchase €60).
+
+- **[project] Meta API Custom Conversion endpoint uses `event_source_id`, not `pixel_id`.**
+  Every other Meta API endpoint takes `pixel_id`. This one is different. Error message is
+  helpful (`"The parameter event_source_id is required"`) but costs a round-trip if you
+  assume the common name.
+
+- **[project] Meta Pixel `/stats?aggregation=event` endpoint has ~30 min aggregation lag.**
+  Don't trust real-time absence of events. Test Events UI requires `test_event_code` parameter
+  in the event payload — Cal.com doesn't send it, so production Cal.com Schedule events don't
+  appear in Test Events at all even when firing correctly.
+
+- **[project] Pixel-total events ≠ campaign-attributed conversions.**
+  `/{pixel-id}/stats` shows ALL events fired on the Pixel (ad-driven + organic + direct).
+  `/{campaign-id}/insights` `actions` field shows only events Meta attributes to the campaign.
+  When reporting "is the campaign working?", always pull campaign insights. When reporting "is
+  the Pixel working?", pull stats. Diana's first booking via Telegram showed in Pixel-total
+  but contributed 0 to campaign attribution.
+
+- **[project] Stripe approval is silent now.**
+  No celebratory "you're approved" email. Confirmation = `pk_live_*` keys appearing in the
+  dashboard + bank account confirmation email. Future "did Stripe approve us?" questions are
+  answered by the dashboard, not the inbox.
+
+- **[project] Three-language static-site pattern works without complications.**
+  `/coworking/` (RU) + `/uk/coworking/` (UA) + `/en/coworking/` (EN). hreflang alternates for
+  SEO; language switcher with relative `index.html`-explicit hrefs for file:// + http://
+  parity. Logo on EN page goes to `/` since no `/en/` main exists yet — acceptable orphan.
+
+- **[project] First-revenue channel ≠ predicted-primary channel.**
+  Campaign launched with Telegram as a low-priority channel in the social strategy. First real
+  customer came via Telegram, not Meta. Worth weighting this in the Day 8 review: if Telegram
+  keeps converting and Meta doesn't, that's a meaningful redirect of investment toward
+  building the @sagedclub public channel (#39).
+
+### Feedback for Alisher
+
+- **`ScheduleWakeup` is underused.** This was the right pattern for the Pixel-aggregation-lag
+  case (wait 30 min, come back, verify). Probably belongs in a "patterns for async
+  verification" doc — anywhere we have an external system with eventual consistency, the choice
+  is "poll" vs "schedule a check vs "ask the user to wait." Wakeup wins on every dimension
+  (no polling cost, no user wait).
+
+- **The `feature_diana_overwhelm_signal` memory entry is the kind of context that doesn't
+  belong in code or commits.** Auto-memory is doing real work for cross-session continuity of
+  *how I work with this person*, not just *what's in the repo*. Five memory entries this
+  session and all of them earned their slot.
+
+- **Builder-auditor protocol didn't get invoked.** Most decisions in this session were live-
+  tactical (flip optimization event from Purchase to Schedule? Yes, go). The async Senty cycle
+  fits long-running implementations; it doesn't fit "Diana is here, decision is reversible,
+  campaign is paused, ship it." Maybe a "tactical live mode" protocol would name this
+  explicitly so I'm not pattern-matching against a workflow that doesn't apply.
+
+- **The "do what you can" authorization expansion is powerful.** When Diana said it, I went
+  from advisor to operator and did substantial Meta API config work autonomously. Worth
+  noting as a project-level pattern: certain phrases ("just do it," "handle it," "do what you
+  can") expand the autonomy envelope past the default-conservative position. Recording these
+  in feedback memory so future sessions catch the signal faster.
+
