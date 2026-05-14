@@ -139,6 +139,22 @@ See `AUDIT.md` for the full breakdown.
 | 2026-05-11 | Course frame as "every Thursday" not "May 14 one-off" | Reflects actual recurring schedule + lets page stay relevant past first cohort |
 | 2026-05-11 | Cookie consent banner enforced; no Pixel until accept | GDPR + DMA compliance for EU audience |
 
+## Launch Milestones
+
+| Date | Milestone | Notes |
+|---|---|---|
+| 2026-05-12 | Stripe live mode confirmed | `pk_live_*` keys + EUR bank account added 11 May; no celebratory email — verified via dashboard |
+| 2026-05-12 | First end-to-end smoke test passed | Cal.com → Stripe (€60 charge + auto-refund) → confirmation email → Pixel Schedule event in Meta — full funnel verified |
+| 2026-05-12 | First Meta campaign live | Campaign `120244368076410513`, €10/day (RU+UA), end 2026-05-26. Custom Conversion `980444324695740` maps Schedule→Purchase €60 |
+| 2026-05-13 / -14 | **First real paid booking** | Came via **Telegram DM** (direct booking link Diana shared), NOT from Meta campaign. €60 in. Workshop ran 2026-05-14 |
+| 2026-05-14 | **First workshop run with paying customer** | Diana confirmed booking, class delivered |
+
+## Channel attribution learnings
+
+- **Telegram DM with direct Cal.com link works** as a sales channel — Diana sent a booking link and it converted. The Pixel still fires Schedule on the success page regardless of how the user got there, so Telegram bookings show up in Meta's Pixel stats but NOT in the campaign-attributed conversions.
+- For accurate campaign attribution, separate "Pixel total Schedule events" from "campaign-attributed Schedule events" when reading reports. The audit script + Ads Manager show the campaign-attributed number; the Pixel stats endpoint shows the raw total.
+- Day 8 review (#62): if Telegram keeps converting and Meta hasn't, that's an important signal — Telegram is a better channel for this audience and may deserve its own attention (e.g., building the @sagedclub public channel from #39).
+
 ## Open Questions
 
 - Will the Meta App require App Review for production traffic? (Likely yes if we scale spend; not blocking at current scale.)
