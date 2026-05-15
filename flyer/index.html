@@ -3,20 +3,41 @@
 <head>
 <meta charset="utf-8">
 <title>Кераміка з Корицею · Керамика с Корицей · Flyer A5</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap" rel="stylesheet">
+<!--
+  Typography: Bricolage Grotesque — trending 2024-2026 editorial sans with
+  full Cyrillic, variable axes (weight + width + opsize). Single-family
+  hierarchy via weight contrast (300/400/500/700/800) and optical sizing.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
 <style>
-  /* ===== brand tokens (FF7A23 + variants) ===== */
+  /* ===========================================================
+     UI tokens — designed system, not ad-hoc values
+     =========================================================== */
   :root {
+    /* Color — 60/30/10 rule: cream dominates, ink stabilizes, orange accents */
     --cream:        #faf6f0;
     --cream-deep:   #f1e9dd;
+    --paper:        #fdfbf7;   /* near-white, slightly warm */
     --ink:          #1a1410;
-    --clay:         #2a1810;
+    --ink-soft:     #4a3a30;
+    --muted:        #8a7868;
 
     --orange:       #FF7A23;   /* primary brand */
     --orange-deep:  #d6541a;
     --orange-light: #ffa86b;
     --peach:        #ffd9bd;
-    --peach-soft:   #fff0e2;
+
+    /* Spacing scale — 4mm baseline */
+    --s-1: 2mm;
+    --s-2: 4mm;
+    --s-3: 6mm;
+    --s-4: 8mm;
+    --s-5: 12mm;
+    --s-6: 16mm;
+    --s-7: 24mm;
+
+    /* Type — optical sizing, condensed display width for big title */
+    --font: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
   }
 
   @page {
@@ -24,18 +45,22 @@
     margin: 0;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: "Fredoka", "Inter", system-ui, sans-serif;
-    color: var(--clay);
+    font-family: var(--font);
+    color: var(--ink);
     background: var(--cream);
     line-height: 1.4;
+    font-feature-settings: "kern" on, "liga" on;
+    -webkit-font-smoothing: antialiased;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* ===== one side ===== */
+  /* ===========================================================
+     One side of the flyer
+     =========================================================== */
   .side {
     width: 148mm;
     height: 210mm;
@@ -46,285 +71,313 @@
   }
   .side:last-child { page-break-after: auto; }
 
-  /* organic background blobs in brand orange + tint */
+  /* Single, subtle background blob — anchors the orange palette */
   .blob {
     position: absolute;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .blob--1 {
-    top: -50mm;
-    right: -50mm;
+    top: -55mm;
+    right: -55mm;
     width: 140mm;
     height: 140mm;
     background: var(--orange);
     border-radius: 62% 38% 50% 50% / 50% 60% 40% 50%;
-    opacity: 0.14;
+    opacity: 0.07;
     transform: rotate(-15deg);
-  }
-  .blob--2 {
-    bottom: -55mm;
-    left: -45mm;
-    width: 115mm;
-    height: 115mm;
-    background: var(--peach);
-    border-radius: 50% 50% 45% 55% / 60% 40% 60% 40%;
-    opacity: 0.6;
-    transform: rotate(20deg);
+    z-index: 0;
+    pointer-events: none;
   }
 
-  /* scattered decorative marks */
-  .marks { position: absolute; pointer-events: none; z-index: 1; }
-  .marks svg { display: block; }
+  /* One signature stamp mark — a "pottery seal" in the corner */
+  .stamp {
+    position: absolute;
+    bottom: 6mm;
+    right: 6mm;
+    width: 16mm;
+    height: 16mm;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .stamp svg { width: 100%; height: 100%; display: block; }
 
-  /* content layer */
+  /* ===========================================================
+     Content layout — vertical rhythm on 4mm baseline
+     =========================================================== */
   .content {
     position: relative;
     z-index: 2;
-    padding: 12mm 13mm 10mm;
+    padding: 14mm 13mm 12mm;
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: var(--s-2);
   }
 
-  /* logo at top */
+  /* Header row — logo + tiny edition mark */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--s-4);
+  }
   .logo {
     width: 22mm;
     height: auto;
-    margin-bottom: 6mm;
+  }
+  .edition {
+    font-family: var(--font);
+    font-variation-settings: "wght" 500, "wdth" 75;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.3;
+    padding-top: 2mm;
+  }
+  .edition strong {
+    color: var(--orange-deep);
+    font-variation-settings: "wght" 600, "wdth" 75;
   }
 
-  /* kicker pill */
+  /* TITLE — the hero element */
+  .title-block {
+    margin-bottom: var(--s-3);
+  }
   .kicker {
-    display: inline-block;
-    font-family: "Fredoka", sans-serif;
+    font-family: var(--font);
+    font-variation-settings: "wght" 600, "wdth" 90;
     font-size: 8pt;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--orange-deep);
-    padding: 1.5mm 4mm;
-    border: 1.2pt solid var(--orange);
-    border-radius: 999px;
-    margin-bottom: 5mm;
-    background: var(--peach-soft);
+    margin-bottom: var(--s-2);
+    display: inline-block;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 5mm;
+    height: 1.5pt;
+    background: var(--orange);
+    vertical-align: middle;
+    margin-right: 2mm;
+    margin-bottom: 1pt;
   }
 
-  /* big rounded title — M PLUS Rounded 1c Black, matches the SAGED CLUB logo letterforms */
   .title {
-    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
-    font-weight: 900;
-    font-size: 34pt;
-    line-height: 1;
+    font-family: var(--font);
+    font-variation-settings: "wght" 700, "wdth" 90, "opsz" 96;
+    font-size: 50pt;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
     color: var(--ink);
-    letter-spacing: -0.01em;
-    margin-bottom: 6mm;
   }
-  .title__line-2 {
-    display: block;
-    margin-left: 16mm;
+  .title__accent {
     color: var(--orange);
-    font-weight: 900;
+    font-variation-settings: "wght" 800, "wdth" 90, "opsz" 96;
   }
 
-  /* middle: copy + photo blob */
-  .middle {
-    display: grid;
-    grid-template-columns: 1fr 64mm;
-    gap: 5mm;
-    align-items: center;
-    margin-bottom: 4mm;
-  }
-  .middle__copy p {
-    font-family: "Fredoka", sans-serif;
-    font-weight: 400;
-    font-size: 10.5pt;
-    line-height: 1.5;
-    color: var(--clay);
-    margin-bottom: 3mm;
+  /* Lead paragraph */
+  .lead {
+    font-family: var(--font);
+    font-variation-settings: "wght" 400, "wdth" 100, "opsz" 14;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 88mm;
+    margin-bottom: var(--s-3);
   }
 
-  /* irregular-blob masked photo (no outline) */
-  .photo-blob {
-    width: 64mm;
-    height: 64mm;
-    position: relative;
-    /* asymmetric organic radius — different on each side for movement */
-    border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%;
+  /* HERO PHOTO — full content width, organic mask, no border */
+  .hero-photo {
+    width: 100%;
+    height: 65mm;
+    border-radius: 50% 50% 50% 50% / 14% 14% 14% 14%;
     overflow: hidden;
+    margin-bottom: var(--s-4);
   }
-  .photo-blob img {
+  .hero-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 40%;
     display: block;
   }
 
-  /* price block */
+  /* Price row — restrained, big number */
   .price-row {
-    margin-top: 4mm;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: baseline;
-    gap: 5mm;
-    padding-bottom: 4mm;
-    border-bottom: 1.2pt solid var(--orange);
+    gap: var(--s-3);
+    margin-bottom: var(--s-3);
   }
   .price {
-    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
-    font-weight: 900;
-    font-size: 54pt;
-    color: var(--orange);
+    font-family: var(--font);
+    font-variation-settings: "wght" 800, "wdth" 85, "opsz" 96;
+    font-size: 56pt;
     line-height: 0.85;
-    letter-spacing: -0.02em;
+    color: var(--orange);
+    letter-spacing: -0.03em;
   }
-  .price__meta {
-    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
-    font-weight: 500;
+  .price-meta {
+    font-family: var(--font);
+    font-variation-settings: "wght" 400, "wdth" 95, "opsz" 14;
     font-size: 9.5pt;
-    color: var(--clay);
-    line-height: 1.4;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    padding-left: var(--s-2);
+    border-left: 1.5pt solid var(--orange);
   }
-  .price__meta strong {
+  .price-meta strong {
     display: block;
-    font-weight: 700;
+    font-variation-settings: "wght" 700, "wdth" 95;
     color: var(--ink);
+    margin-bottom: 0.5mm;
   }
 
-  /* footer info + qr */
+  /* Footer — info + QR, perfectly aligned baseline */
   .footer {
-    display: grid;
-    grid-template-columns: 1fr 28mm;
-    gap: 5mm;
-    align-items: end;
     margin-top: auto;
+    display: grid;
+    grid-template-columns: 1fr 30mm;
+    gap: var(--s-3);
+    align-items: end;
   }
-
-  .info { font-family: "Fredoka", sans-serif; font-size: 9pt; line-height: 1.5; }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
   .info__address {
-    font-weight: 600;
-    font-size: 11pt;
-    color: var(--ink);
-    margin-bottom: 2mm;
+    font-family: var(--font);
+    font-variation-settings: "wght" 700, "wdth" 95, "opsz" 14;
+    font-size: 11.5pt;
     line-height: 1.2;
+    color: var(--ink);
   }
-  .info__channels { color: #5a4a3d; }
-  .info__channels span {
-    display: inline-block;
-    margin-right: 3mm;
-    white-space: nowrap;
+  .info__address span {
+    font-variation-settings: "wght" 400, "wdth" 95, "opsz" 14;
+    color: var(--ink-soft);
+    font-size: 9.5pt;
   }
-  .info__channels .accent { color: var(--orange-deep); font-weight: 600; }
+  .info__channels {
+    font-family: var(--font);
+    font-variation-settings: "wght" 500, "wdth" 95, "opsz" 14;
+    font-size: 8.5pt;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .info__channels .accent {
+    color: var(--orange-deep);
+    font-variation-settings: "wght" 600, "wdth" 95;
+  }
+  .info__channels .sep {
+    color: var(--orange);
+    margin: 0 1mm;
+  }
 
-  .qr { text-align: center; }
+  /* QR — clean square, ample padding, brand color frame */
+  .qr {
+    text-align: center;
+  }
   .qr__frame {
-    width: 28mm;
-    height: 28mm;
+    width: 30mm;
+    height: 30mm;
     background: var(--orange);
-    border-radius: 4mm;
-    padding: 2.5mm;
+    border-radius: 3mm;
+    padding: 2mm;
   }
   .qr__frame img {
     width: 100%;
     height: 100%;
     background: var(--cream);
-    border-radius: 2mm;
+    border-radius: 1.5mm;
     padding: 1.5mm;
     display: block;
   }
   .qr__caption {
-    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
-    font-size: 7.5pt;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-family: var(--font);
+    font-variation-settings: "wght" 600, "wdth" 85;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-top: 2mm;
+    margin-top: var(--s-1);
     color: var(--orange-deep);
   }
 
-  /* screen preview */
+  /* ===========================================================
+     Screen preview — flyer cards on neutral background
+     =========================================================== */
   @media screen {
     body {
-      background: #d8d2c8;
-      padding: 12mm 0;
+      background: #c9c2b6;
+      padding: 14mm 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 14mm;
     }
     .side {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.20);
     }
   }
 </style>
 </head>
 <body>
 
-<!-- ===================== SIDE 1 · UKRAINIAN ===================== -->
+<!-- ============================================================
+     SIDE 1 · UKRAINIAN
+     ============================================================ -->
 <section class="side" lang="uk">
-  <div class="blob blob--1"></div>
-  <div class="blob blob--2"></div>
+  <div class="blob"></div>
 
-  <!-- decorative marks -->
-  <div class="marks" style="top: 14mm; right: 12mm;">
-    <svg width="40" height="40" viewBox="0 0 40 40">
-      <circle cx="20" cy="20" r="3" fill="#FF7A23"/>
-      <circle cx="6" cy="32" r="1.8" fill="#d6541a" opacity="0.7"/>
-      <circle cx="33" cy="8" r="2.2" fill="#FF7A23" opacity="0.55"/>
-    </svg>
-  </div>
-  <div class="marks" style="top: 100mm; right: 5mm;">
-    <svg width="32" height="32" viewBox="0 0 32 32">
-      <path d="M4 16 Q 16 4, 28 16 T 4 16" fill="none" stroke="#d6541a" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <div class="marks" style="top: 138mm; left: 4mm;">
-    <svg width="22" height="22" viewBox="0 0 22 22">
-      <path d="M11 2 L13 9 L20 11 L13 13 L11 20 L9 13 L2 11 L9 9 Z" fill="#FF7A23" opacity="0.6"/>
-    </svg>
-  </div>
-  <div class="marks" style="bottom: 32mm; right: 12mm;">
-    <svg width="42" height="42" viewBox="0 0 42 42">
-      <circle cx="21" cy="21" r="18.5" fill="none" stroke="#d6541a" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.6"/>
+  <!-- signature pottery seal in corner -->
+  <div class="stamp" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#FF7A23" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.55"/>
+      <circle cx="50" cy="50" r="14" fill="none" stroke="#d6541a" stroke-width="1.8"/>
+      <circle cx="50" cy="50" r="3" fill="#FF7A23"/>
     </svg>
   </div>
 
   <div class="content">
-    <img class="logo" src="../assets/images/logo-saged-club.png" alt="Saged Club">
+    <div class="header">
+      <img class="logo" src="../assets/images/logo-saged-club.png" alt="Saged Club">
+      <div class="edition">Гончарна студія<br><strong>Stara València</strong></div>
+    </div>
 
-    <span class="kicker">Щочетверга · Стара Валенсія</span>
+    <div class="title-block">
+      <div class="kicker">Щочетверга</div>
+      <h1 class="title">
+        Кераміка<br>
+        <span class="title__accent">з&nbsp;Корицею</span>
+      </h1>
+    </div>
 
-    <h1 class="title">
-      Кераміка<br>
-      <span class="title__line-2">з&nbsp;Корицею</span>
-    </h1>
+    <p class="lead">Двотижневий курс у&nbsp;серці старої Валенсії. Ліпиш руками — забираєш додому свою кераміку.</p>
 
-    <div class="middle">
-      <div class="middle__copy">
-        <p>Двотижневий курс у&nbsp;серці старої Валенсії. Ліпиш руками — забираєш додому свою кераміку.</p>
-        <p>Маленька група. Тиша, глина, чай.</p>
-      </div>
-      <div class="photo-blob">
-        <img src="../assets/images/hero-1.jpg" alt="Кориця веде заняття — свічки, кераміка, мала група">
-      </div>
+    <div class="hero-photo">
+      <img src="../assets/images/hero-1.jpg" alt="Кориця веде заняття у студії — свічки, кераміка, маленька група">
     </div>
 
     <div class="price-row">
       <div class="price">60€</div>
-      <div class="price__meta">
-        <strong>дві зустрічі</strong>
-        по&nbsp;2&nbsp;години<br>
-        група до&nbsp;6&nbsp;осіб
+      <div class="price-meta">
+        <strong>дві зустрічі по&nbsp;2&nbsp;години</strong>
+        група до&nbsp;6&nbsp;осіб · усі&nbsp;матеріали включені
       </div>
     </div>
 
     <div class="footer">
       <div class="info">
-        <div class="info__address">C/ de les Cuines, 8<br>Ciutat Vella, València</div>
+        <div class="info__address">
+          C/&nbsp;de les Cuines,&nbsp;8<br>
+          <span>Ciutat Vella, 46001 València</span>
+        </div>
         <div class="info__channels">
-          <span class="accent">@saged.club</span>
-          <span class="accent">@korytsia_studio</span><br>
-          <span>WhatsApp +34&nbsp;605&nbsp;54&nbsp;33&nbsp;00</span>
-          <span>saged.club</span>
+          <span class="accent">@saged.club</span><span class="sep">·</span><span class="accent">@korytsia_studio</span><br>
+          WhatsApp +34&nbsp;605&nbsp;54&nbsp;33&nbsp;00<br>
+          hello@saged.club&nbsp;&nbsp;·&nbsp;&nbsp;<span class="accent">saged.club</span>
         </div>
       </div>
       <div class="qr">
@@ -335,71 +388,58 @@
   </div>
 </section>
 
-<!-- ===================== SIDE 2 · RUSSIAN ===================== -->
+<!-- ============================================================
+     SIDE 2 · RUSSIAN
+     ============================================================ -->
 <section class="side" lang="ru">
-  <div class="blob blob--1"></div>
-  <div class="blob blob--2"></div>
+  <div class="blob"></div>
 
-  <div class="marks" style="top: 14mm; right: 12mm;">
-    <svg width="40" height="40" viewBox="0 0 40 40">
-      <circle cx="20" cy="20" r="3" fill="#FF7A23"/>
-      <circle cx="6" cy="32" r="1.8" fill="#d6541a" opacity="0.7"/>
-      <circle cx="33" cy="8" r="2.2" fill="#FF7A23" opacity="0.55"/>
-    </svg>
-  </div>
-  <div class="marks" style="top: 100mm; right: 5mm;">
-    <svg width="32" height="32" viewBox="0 0 32 32">
-      <path d="M4 16 Q 16 4, 28 16 T 4 16" fill="none" stroke="#d6541a" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <div class="marks" style="top: 138mm; left: 4mm;">
-    <svg width="22" height="22" viewBox="0 0 22 22">
-      <path d="M11 2 L13 9 L20 11 L13 13 L11 20 L9 13 L2 11 L9 9 Z" fill="#FF7A23" opacity="0.6"/>
-    </svg>
-  </div>
-  <div class="marks" style="bottom: 32mm; right: 12mm;">
-    <svg width="42" height="42" viewBox="0 0 42 42">
-      <circle cx="21" cy="21" r="18.5" fill="none" stroke="#d6541a" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.6"/>
+  <div class="stamp" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#FF7A23" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.55"/>
+      <circle cx="50" cy="50" r="14" fill="none" stroke="#d6541a" stroke-width="1.8"/>
+      <circle cx="50" cy="50" r="3" fill="#FF7A23"/>
     </svg>
   </div>
 
   <div class="content">
-    <img class="logo" src="../assets/images/logo-saged-club.png" alt="Saged Club">
+    <div class="header">
+      <img class="logo" src="../assets/images/logo-saged-club.png" alt="Saged Club">
+      <div class="edition">Гончарная студия<br><strong>Stara València</strong></div>
+    </div>
 
-    <span class="kicker">Каждый четверг · Старая Валенсия</span>
+    <div class="title-block">
+      <div class="kicker">Каждый четверг</div>
+      <h1 class="title">
+        Керамика<br>
+        <span class="title__accent">с&nbsp;Корицей</span>
+      </h1>
+    </div>
 
-    <h1 class="title">
-      Керамика<br>
-      <span class="title__line-2">с&nbsp;Корицей</span>
-    </h1>
+    <p class="lead">Двухнедельный курс в&nbsp;сердце старой Валенсии. Лепишь руками — забираешь домой свою керамику.</p>
 
-    <div class="middle">
-      <div class="middle__copy">
-        <p>Двухнедельный курс в&nbsp;сердце старой Валенсии. Лепишь руками — забираешь домой свою керамику.</p>
-        <p>Маленькая группа. Тишина, глина, чай.</p>
-      </div>
-      <div class="photo-blob">
-        <img src="../assets/images/hero-1.jpg" alt="Кориця ведёт занятие — свечи, керамика, маленькая группа">
-      </div>
+    <div class="hero-photo">
+      <img src="../assets/images/hero-1.jpg" alt="Кориця ведёт занятие в студии — свечи, керамика, маленькая группа">
     </div>
 
     <div class="price-row">
       <div class="price">60€</div>
-      <div class="price__meta">
-        <strong>две встречи</strong>
-        по&nbsp;2&nbsp;часа<br>
-        группа до&nbsp;6&nbsp;человек
+      <div class="price-meta">
+        <strong>две встречи по&nbsp;2&nbsp;часа</strong>
+        группа до&nbsp;6&nbsp;человек · все&nbsp;материалы включены
       </div>
     </div>
 
     <div class="footer">
       <div class="info">
-        <div class="info__address">C/ de les Cuines, 8<br>Ciutat Vella, València</div>
+        <div class="info__address">
+          C/&nbsp;de les Cuines,&nbsp;8<br>
+          <span>Ciutat Vella, 46001 València</span>
+        </div>
         <div class="info__channels">
-          <span class="accent">@saged.club</span>
-          <span class="accent">@korytsia_studio</span><br>
-          <span>WhatsApp +34&nbsp;605&nbsp;54&nbsp;33&nbsp;00</span>
-          <span>saged.club</span>
+          <span class="accent">@saged.club</span><span class="sep">·</span><span class="accent">@korytsia_studio</span><br>
+          WhatsApp +34&nbsp;605&nbsp;54&nbsp;33&nbsp;00<br>
+          hello@saged.club&nbsp;&nbsp;·&nbsp;&nbsp;<span class="accent">saged.club</span>
         </div>
       </div>
       <div class="qr">
