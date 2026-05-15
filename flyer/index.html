@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Кераміка з Корицею · Керамика с Корицей · Flyer A5</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
   /* ===== brand tokens (FF7A23 + variants) ===== */
   :root {
@@ -110,12 +110,12 @@
     background: var(--peach-soft);
   }
 
-  /* big rounded title */
+  /* big rounded title — M PLUS Rounded 1c Black, matches the SAGED CLUB logo letterforms */
   .title {
-    font-family: "Fredoka", sans-serif;
-    font-weight: 600;
-    font-size: 36pt;
-    line-height: 0.95;
+    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
+    font-weight: 900;
+    font-size: 34pt;
+    line-height: 1;
     color: var(--ink);
     letter-spacing: -0.01em;
     margin-bottom: 6mm;
@@ -123,8 +123,8 @@
   .title__line-2 {
     display: block;
     margin-left: 16mm;
-    color: var(--orange-deep);
-    font-weight: 600;
+    color: var(--orange);
+    font-weight: 900;
   }
 
   /* middle: copy + photo blob */
@@ -170,22 +170,23 @@
     border-bottom: 1.2pt solid var(--orange);
   }
   .price {
-    font-family: "Fredoka", sans-serif;
-    font-weight: 700;
+    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
+    font-weight: 900;
     font-size: 54pt;
     color: var(--orange);
     line-height: 0.85;
     letter-spacing: -0.02em;
   }
   .price__meta {
-    font-family: "Fredoka", sans-serif;
+    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
+    font-weight: 500;
     font-size: 9.5pt;
     color: var(--clay);
     line-height: 1.4;
   }
   .price__meta strong {
     display: block;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--ink);
   }
 
@@ -219,20 +220,21 @@
     width: 28mm;
     height: 28mm;
     background: var(--orange);
-    border-radius: 38% 62% 50% 50% / 55% 45% 55% 45%;
+    border-radius: 4mm;
     padding: 2.5mm;
   }
   .qr__frame img {
     width: 100%;
     height: 100%;
     background: var(--cream);
-    border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%;
+    border-radius: 2mm;
     padding: 1.5mm;
+    display: block;
   }
   .qr__caption {
-    font-family: "Fredoka", sans-serif;
+    font-family: "M PLUS Rounded 1c", "Fredoka", sans-serif;
     font-size: 7.5pt;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-top: 2mm;
@@ -287,7 +289,7 @@
   </div>
 
   <div class="content">
-    <img class="logo" src="../assets/images/logo-saged-orange.png" alt="Saged Club">
+    <img class="logo" src="../assets/images/logo-saged-club.png" alt="Saged Club">
 
     <span class="kicker">Щочетверга · Стара Валенсія</span>
 
@@ -326,7 +328,7 @@
         </div>
       </div>
       <div class="qr">
-        <div class="qr__frame"><img src="qr-booking.svg" alt="QR — записатися"></div>
+        <div class="qr__frame"><img src="qr-booking.png" alt="QR — записатися"></div>
         <div class="qr__caption">Записатися</div>
       </div>
     </div>
@@ -362,7 +364,7 @@
   </div>
 
   <div class="content">
-    <img class="logo" src="../assets/images/logo-saged-orange.png" alt="Saged Club">
+    <img class="logo" src="../assets/images/logo-saged-club.png" alt="Saged Club">
 
     <span class="kicker">Каждый четверг · Старая Валенсия</span>
 
@@ -401,7 +403,7 @@
         </div>
       </div>
       <div class="qr">
-        <div class="qr__frame"><img src="qr-booking.svg" alt="QR — записаться"></div>
+        <div class="qr__frame"><img src="qr-booking.png" alt="QR — записаться"></div>
         <div class="qr__caption">Записаться</div>
       </div>
     </div>
