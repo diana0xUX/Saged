@@ -209,10 +209,48 @@ a:hover { color: var(--ink); }
   padding: 0.9rem 1.8rem;
   border-radius: 999px;
   font-weight: 500;
-  border: none;
-  transition: background 0.15s ease;
+  border: 2px solid var(--terracotta);
+  transition: background 0.15s ease, color 0.15s ease;
 }
-.cta:hover { background: var(--ink); color: var(--bg); }
+.cta:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* Outlined variant — "talk first" path gets equal weight to "pay now" */
+.cta--secondary {
+  background: transparent;
+  color: var(--terracotta);
+  border: 2px solid var(--terracotta);
+}
+.cta--secondary:hover {
+  background: var(--terracotta);
+  color: var(--bg);
+  border-color: var(--terracotta);
+}
+
+/* Two-path booking layout — DM and direct-pay side-by-side, equal weight */
+.book__paths {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 0.5rem;
+}
+.book__path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1 1 220px;
+  max-width: 280px;
+}
+.book__path .cta,
+.book__path .cta--secondary {
+  min-width: 220px;
+  text-align: center;
+}
+.book__path .muted {
+  text-align: center;
+  font-size: 0.85rem;
+}
 
 /* ---------- bands & layouts ---------- */
 .band {
