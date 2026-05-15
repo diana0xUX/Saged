@@ -264,3 +264,90 @@ spend, 0 ad-attributed conversions yet (normal at 48h).
   can") expand the autonomy envelope past the default-conservative position. Recording these
   in feedback memory so future sessions catch the signal faster.
 
+---
+
+## Sprint — Post-launch polish (2026-05-14 evening → 2026-05-15)
+
+Three small content commits after the main coworking-page retro:
+- "Два занятия по 2 часа" added to €60 inclusions (RU + UA mirror)
+- "Забронировать слот" → "Забронировать место" wording change (RU + UA)
+- Footer cross-promo line linking main pages to /coworking/ + /coworking/#intro
+
+Not a sprint in the protocol sense — closer to "afternoon polish."
+Worth a short retro anyway to keep the discipline and capture two real tactical lessons.
+
+### Process wins
+
+- **[process] Bilingual mirror discipline held across three content changes.**
+  Each content edit was mirrored in RU + UA in the same commit (matching CLAUDE.md's
+  non-negotiable rule). Section-count parity grep ran clean (11 = 11) without intervention.
+  The rule continues to pay rent without requiring extra ceremony.
+
+- **[process] AskUserQuestion was the right tool for the "cross-promo placement" choice.**
+  Three real placement options (footer line / dedicated section / topbar nav) with genuine
+  tradeoffs. Diana picked footer, ship. Compare to overwhelm-signal cases where pickers
+  hurt — here, picker helped because the question had real forks, not unclear scope.
+
+- **[process] One-commit-per-content-change kept history clean.**
+  Three small commits with focused messages rather than one "misc edits" mega-commit. Each
+  shows up in git log as a discoverable change.
+
+### Process fails
+
+- **[process] Language switcher shipped twice-broken before reaching working state.**
+  Round 1: absolute paths (`/coworking/`) — broke when Diana previewed via file://.
+  Round 2: relative paths (`../coworking/`) — still broke because Chrome shows directory
+  listings for `file://.../coworking/` URLs in dark mode (the "black screen with white text"
+  screenshot).
+  Round 3: explicit `index.html` in the hrefs — finally worked in both http:// and file://.
+  Wrong action: shipped Round 1 without considering Diana would preview locally.
+  Root cause: defaulted to "production-style" absolute paths because the test server made
+  them work in my smoke-test, even though I knew Diana was editing locally.
+  Mitigation: hand-edited static sites with no build step → relative paths + explicit
+  `index.html` in every cross-page link. Saved as project lesson below.
+
+- **[process] Left the python http.server running.**
+  Started it for the smoke test; offered to stop it; never actually killed it. Still running
+  on port 8765 at the time of this retro. Not destructive, but stale background processes
+  accumulate.
+  Mitigation: when offering a cleanup ("say 'stop server' to kill"), set a follow-up to
+  kill it after some idle window, or just kill it when the next unrelated commit happens.
+
+### Project lessons
+
+- **[project] Static-site `file://` preview is a first-class deployment context, not an
+  afterthought.** Diana works in a vanilla HTML/CSS/JS repo with no build step. The natural
+  preview workflow is `open file://...` from Finder. This means:
+  - All cross-page links must be **relative** (absolute paths starting with `/` resolve to
+    the filesystem root in file:// mode → 404)
+  - Directory URLs (ending in `/`) get the browser's directory-listing page in file:// mode
+    → use explicit `index.html` in every link
+  - These are not "nice to have" — they are required for the local preview flow to work
+  Both rules combined: language switchers and any cross-page link should look like
+  `href="../uk/coworking/index.html"`, never `href="/uk/coworking/"` and never
+  `href="../uk/coworking/"` (without `index.html`).
+
+- **[project] Cross-promo via footer is the right surface for "by the way" offerings.**
+  Adding coworking + intro-course links to the main page's footer (vs new section / new nav
+  link) preserves the Thursday-workshop landing flow while still making the orphan
+  /coworking/ page discoverable. Pattern: when a secondary offering shouldn't compete with
+  the primary CTA on a landing page, footer cross-promo is unobtrusive.
+
+### Feedback for Alisher
+
+- **Retro cadence is uneven.** The protocol seems tuned for sprint-length work (the previous
+  retro covered 3 days of major launches). Today's polish work was 30 min of edits. A
+  one-page "daily summary" or "shift retro" could fit between full sprint retros — captures
+  small tactical lessons without inflating into a full retro template. Worth thinking about.
+
+- **The "let me re-test it locally" → diana's screenshot → "ah, file://" loop today was a
+  useful reminder that my mental model of the deployment context can drift from the user's
+  actual workflow.** I assumed http-served preview because that's what my smoke test used;
+  Diana was on file://. Worth adding a habit: when first showing the user a result, ask
+  "are you opening this via the local server or via Finder?" before assuming.
+
+- **`docs/retro-log.md` is now 3 retro entries deep.** Worth a meta-pass at some point to
+  extract recurring patterns across retros (e.g., bilingual-mirror parity check appears in
+  every entry). That'd compress 3 entries' worth of lessons into a smaller standing-rules
+  doc, leaving retros for new lessons rather than re-asserting old ones.
+
