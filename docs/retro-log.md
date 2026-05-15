@@ -351,3 +351,134 @@ Worth a short retro anyway to keep the discipline and capture two real tactical 
   every entry). That'd compress 3 entries' worth of lessons into a smaller standing-rules
   doc, leaving retros for new lessons rather than re-asserting old ones.
 
+---
+
+## Sprint — Reporting automation (2026-05-15)
+
+Built end-to-end daily + weekly Meta Ads reporting on GitHub Actions, generated first reports
+live, set up secrets, verified workflows ran successfully and committed back to main. Closes
+issue #84.
+
+Stack: 2 Python scripts (`audit-daily.py`, `audit-weekly.py`) sharing helpers in `_meta.py`,
+two Markdown templates with placeholder substitution, two GH Actions workflows that auto-commit
+generated reports, one setup doc for Diana.
+
+### Process wins
+
+- **[process] Showed report output before locking in automation.**
+  Diana asked: "show recent report here first with insights and recommendations." I built
+  the data-fetching + rendering, ran it, showed her insights from the actual report
+  (UA outperforming RU 3×, zero attributed conversions, Day-8 decision points), then wrapped
+  the GH Actions automation around it. Validated the report was useful BEFORE committing it
+  to run 365 times/year. Pattern worth naming: human-in-the-loop validation of automation
+  output, ideally before the schedule starts firing.
+
+- **[process] `gh secret set --env-file .env` was the right tool.**
+  Diana could have copy-pasted 5 values into the GH UI. Instead one CLI command read .env,
+  encrypted each value client-side, uploaded all 5 in seconds. No secret ever in shell
+  history (gh handles the encryption before any value hits a process arglist) and no value
+  in any log. Vastly better than the "open 4 tabs and paste" alternative.
+
+- **[process] Templates + placeholder substitution kept reports clean without jinja2.**
+  Pure Markdown files with `{placeholder}` markers, Python scripts pre-render dynamic
+  content (tables, watchlists) as strings, simple `.replace()` substitution to fill the
+  template. Stdlib-only stays true. Reports have consistent shape across daily/weekly.
+
+- **[process] Validated end-to-end with actual workflow runs, not just local "looks good".**
+  Triggered both workflows manually after secrets were set. Both ran, both produced real
+  reports, both committed back to main. The race-condition failure (next section) only
+  surfaced because of this real-environment test; would have shown up on the first
+  scheduled run otherwise — at 07:00 UTC, with no one watching.
+
+### Process fails
+
+- **[process] Push rejected due to missing `workflow` scope on gh auth.**
+  Built and committed the workflow files locally, ran `git push`, got a security rejection
+  because adding files under `.github/workflows/` requires the `workflow` scope, which isn't
+  in the default `repo` scope from `gh auth login`. Diana fixed with `gh auth refresh -s
+  workflow`. Should have anticipated.
+  Mitigation: when about to push workflow files for the first time in a repo, check
+  `gh auth status` for the `workflow` scope first; if absent, surface the fix command
+  upfront so the user isn't surprised by a rejection.
+
+- **[process] Race condition on first parallel workflow runs.**
+  Triggered daily + weekly back-to-back. Both ran in parallel. Both committed reports to
+  `reports/daily/` and `reports/weekly/`. Both tried to `git push`. Daily won; weekly's
+  push was rejected because main had moved. Added `git pull --rebase + retry` to both
+  workflows. Now they survive concurrent execution.
+  Root cause: auto-commit workflows that target the same branch will race when their
+  cron schedules overlap (Monday 07:00 UTC fires both daily AND weekly). Either serialize
+  via a shared `concurrency` group, or handle race with rebase-retry. Chose rebase-retry
+  because it's local to each workflow (simpler reasoning).
+  Mitigation: any GH Actions workflow that auto-commits to main needs rebase-retry by
+  default. Standing rule for future workflows.
+
+- **[process] Useless `audit-legacy.py.bak` rename thrash.**
+  Initially `git mv`'d the old `audit.py` to `audit-legacy.py.bak` thinking "preserve as
+  backup." Realized within a minute that `.bak` files in a versioned repo are pure clutter
+  (git history is the backup). Reverted and deleted clean. ~30 seconds lost.
+  Mitigation: when superseding a file, default to `git rm`; the history preserves it.
+
+- **[process] Three untracked PNGs (`assets/images/{1,2,3}.png`) still uncommitted.**
+  Flagged them when I committed the coworking work, never followed up. They're still
+  sitting untracked. Either they're noise from a temporary upload or they're meant to
+  be assets — don't know.
+  Mitigation: on next session, ask Diana once and either commit or delete. Don't leave
+  this state across multiple sessions.
+
+### Project lessons
+
+- **[project] Cal.com Custom Conversion actions are reported under
+  `offsite_conversion.custom.{cc_id}`.**
+  When pulling campaign insights, the `actions` array contains entries with
+  `action_type = offsite_conversion.custom.980444324695740` (the Custom Conversion ID).
+  Don't look for `purchase` or `schedule` — those would be standard events only.
+  `_meta.py`'s `conversions_from()` helper handles this pattern.
+
+- **[project] Auto-commit workflows on the same branch need rebase-retry.**
+  Standing rule. Pattern:
+  ```bash
+  for i in 1 2 3; do
+    git pull --rebase origin main && git push && break
+    echo "retry $i"; sleep 3
+  done
+  ```
+  Three attempts is enough for any plausible race in this scale of repo.
+
+- **[project] `gh secret set --env-file <file>` bulk-uploads encrypted secrets.**
+  Cleanest way to onboard secrets from local `.env` to GitHub. Reads line-by-line,
+  encrypts client-side using the repo's public key, uploads. Names match `.env`'s names.
+  No secret ever in process arglist or shell history.
+
+- **[project] Report file naming uses ISO week for weekly, ISO date for daily.**
+  `reports/daily/YYYY-MM-DD.md` and `reports/weekly/YYYY-Www.md` (e.g. `2026-W20.md`).
+  ISO week numbers are sortable and stable across years. `date.isocalendar()` in Python
+  returns the right `(year, week, weekday)` tuple.
+
+- **[project] GitHub Actions auto-redacts secret values from logs.**
+  Even if my Python script prints `os.environ["META_ACCESS_TOKEN"]` directly, GH replaces
+  it with `***` in the run log. Confirmed by reading actual run logs. So the safety story
+  for "public repo + secrets in workflows" is rock-solid: leaks would have to happen via
+  the script *sending* the secret to an external service, not via logs.
+
+### Feedback for Alisher
+
+- **The "show output before automating" pattern should be a named protocol.**
+  Today's session validated it explicitly (Diana asked for it). Whenever building automation
+  whose output a human will consume (reports, dashboards, scheduled emails), generate one
+  output sample with real data and have the human approve it before locking in the schedule.
+  Cheap to do, expensive to skip — automation produces output X times/period; if X is wrong,
+  every run is wrong.
+
+- **Auto-memory had no new entries today.** Most learnings (workflow race, gh auth scopes,
+  env-file secrets) are tactical patterns that belong in a "GitHub Actions playbook" or
+  similar standing-rules doc, not in memory. Memory is best for user-specific or
+  project-specific facts that can't be derived from code. These are domain knowledge that
+  could live anywhere.
+
+- **`retro-log.md` is now 4 entries deep.** Common patterns across retros: bilingual-mirror
+  discipline (mentioned every entry), file:// vs http:// preview context (twice now),
+  smoke-test before automation (twice). At ~6 entries, worth extracting these into a
+  `docs/standing-rules.md` doc so they don't get re-asserted in every retro. Retros should
+  surface *new* lessons, not re-prove old ones.
+
