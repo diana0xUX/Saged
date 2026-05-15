@@ -49,4 +49,7 @@ jobs:
             exit 0
           fi
           git commit -m "report(weekly): $(date -u +%Y-W%V)"
-          git push
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $i failed; retrying..."; sleep 3
+          done
