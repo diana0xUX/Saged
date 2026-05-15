@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Кераміка з Корицею · Керамика с Корицей · Flyer A5</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== A5 print setup ===== */
+  @page {
+    size: A5 portrait;
+    margin: 0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 148mm; height: auto; }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: #2a1b10;
+    background: #faf6f0;
+    line-height: 1.4;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* one side of the flyer */
+  .side {
+    width: 148mm;
+    height: 210mm;
+    padding: 14mm 12mm;
+    background: #faf6f0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    page-break-after: always;
+  }
+  .side:last-child { page-break-after: auto; }
+
+  /* eyebrow / kicker */
+  .kicker {
+    font-size: 9pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b85c38;
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+
+  /* big title */
+  h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
+    font-size: 28pt;
+    line-height: 1.05;
+    color: #2a1b10;
+    margin-bottom: 1mm;
+  }
+
+  .subtitle {
+    font-size: 10pt;
+    color: #5a4a3d;
+    margin-bottom: 6mm;
+  }
+
+  /* photo */
+  .photo {
+    width: 100%;
+    height: 72mm;
+    object-fit: cover;
+    border-radius: 2mm;
+    margin-bottom: 6mm;
+  }
+
+  /* price block */
+  .deal {
+    background: #f1e9dd;
+    border-left: 3mm solid #b85c38;
+    padding: 4mm 5mm;
+    margin-bottom: 6mm;
+    border-radius: 0 2mm 2mm 0;
+  }
+  .deal__price {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #2a1b10;
+    line-height: 1;
+  }
+  .deal__details {
+    font-size: 9.5pt;
+    color: #5a4a3d;
+    margin-top: 1mm;
+  }
+
+  /* bottom row: address+socials | qr */
+  .bottom {
+    display: flex;
+    gap: 6mm;
+    align-items: flex-end;
+    margin-top: auto;
+  }
+  .bottom__info {
+    flex: 1;
+    font-size: 8.5pt;
+    line-height: 1.6;
+  }
+  .bottom__info strong {
+    color: #2a1b10;
+    font-weight: 600;
+  }
+  .bottom__info .muted {
+    color: #7a6a5d;
+  }
+  .bottom__qr {
+    width: 30mm;
+    height: 30mm;
+    flex: 0 0 30mm;
+  }
+  .bottom__qr img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .bottom__qr-caption {
+    font-size: 7pt;
+    text-align: center;
+    color: #7a6a5d;
+    margin-top: 1mm;
+    letter-spacing: 0.05em;
+  }
+
+  /* small footer with site */
+  .site {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: #b85c38;
+    margin-top: 4mm;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* screen-only: stack pages vertically with shadow so it looks like a real flyer preview */
+  @media screen {
+    body {
+      background: #ddd;
+      padding: 8mm 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8mm;
+      width: auto;
+    }
+    .side {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SIDE 1: UKRAINIAN ===== -->
+<section class="side" lang="uk">
+  <p class="kicker">Щочетверга · Стара Валенсія</p>
+  <h1>Кераміка з&nbsp;Корицею</h1>
+  <p class="subtitle">Двотижневий курс у&nbsp;старій Валенсії. Ліпиш руками — забираєш додому свою кераміку.</p>
+
+  <img class="photo" src="../assets/images/hero-1.jpg" alt="Кориця веде заняття — свічки, кераміка, мала група">
+
+  <div class="deal">
+    <div class="deal__price">60 €</div>
+    <div class="deal__details">Дві зустрічі по&nbsp;2&nbsp;години · група до&nbsp;6&nbsp;осіб · усі матеріали включені</div>
+  </div>
+
+  <div class="bottom">
+    <div class="bottom__info">
+      <p><strong>C/ de les Cuines, 8</strong><br>Ciutat Vella, 46001 Valencia</p>
+      <p style="margin-top:2mm" class="muted">
+        WhatsApp +34&nbsp;605&nbsp;54&nbsp;33&nbsp;00<br>
+        hello@saged.club<br>
+        @saged.club · @korytsia_studio
+      </p>
+    </div>
+    <div class="bottom__qr">
+      <img src="qr-booking.svg" alt="Скануй для бронювання">
+      <div class="bottom__qr-caption">Записатися</div>
+    </div>
+  </div>
+
+  <p class="site">saged.club</p>
+</section>
+
+<!-- ===== SIDE 2: RUSSIAN ===== -->
+<section class="side" lang="ru">
+  <p class="kicker">Каждый четверг · Старая Валенсия</p>
+  <h1>Керамика с&nbsp;Корицей</h1>
+  <p class="subtitle">Двухнедельный курс в&nbsp;старой Валенсии. Лепишь руками — забираешь домой свою керамику.</p>
+
+  <img class="photo" src="../assets/images/hero-1.jpg" alt="Кориця ведёт занятие — свечи, керамика, маленькая группа">
+
+  <div class="deal">
+    <div class="deal__price">60 €</div>
+    <div class="deal__details">Две встречи по&nbsp;2&nbsp;часа · группа до&nbsp;6&nbsp;человек · все материалы включены</div>
+  </div>
+
+  <div class="bottom">
+    <div class="bottom__info">
+      <p><strong>C/ de les Cuines, 8</strong><br>Ciutat Vella, 46001 Valencia</p>
+      <p style="margin-top:2mm" class="muted">
+        WhatsApp +34&nbsp;605&nbsp;54&nbsp;33&nbsp;00<br>
+        hello@saged.club<br>
+        @saged.club · @korytsia_studio
+      </p>
+    </div>
+    <div class="bottom__qr">
+      <img src="qr-booking.svg" alt="Сканируй для записи">
+      <div class="bottom__qr-caption">Записаться</div>
+    </div>
+  </div>
+
+  <p class="site">saged.club</p>
+</section>
+
+</body>
+</html>
