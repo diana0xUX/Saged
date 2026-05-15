@@ -2,6 +2,10 @@
 
 Two-sided A5 flyer for the **Керамика с Корицей** / **Кераміка з Корицею** Thursday workshop.
 
+## Versions
+- **`index.html`** (active) — bold/playful design, asymmetric layout, organic shapes, sage + terracotta palette. Inspired by LUPALU ceramic studio branding.
+- **`v1.html`** (alternate) — earlier warmer/simpler version. Keep as reference; preview by opening directly.
+
 - **Side 1**: Ukrainian (front)
 - **Side 2**: Russian (back)
 - Identical layout, mirrored content
