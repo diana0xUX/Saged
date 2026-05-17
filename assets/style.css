@@ -226,6 +226,26 @@ a:hover { color: var(--ink); }
   border-color: var(--terracotta);
 }
 
+/* Inline social-proof testimonial above the booking CTAs */
+.book__proof {
+  margin: 1.5rem auto 0;
+  max-width: 32rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.book__proof blockquote {
+  font-style: italic;
+  margin: 0 0 0.4rem;
+  line-height: 1.5;
+  color: var(--ink);
+  opacity: 0.85;
+}
+.book__proof figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 /* Two-path booking layout — DM and direct-pay side-by-side, equal weight */
 .book__paths {
   display: flex;
