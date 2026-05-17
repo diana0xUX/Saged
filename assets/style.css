@@ -561,21 +561,38 @@ a:hover { color: var(--ink); }
   z-index: 999;
 }
 .consent p { margin: 0 0 1rem; }
-.consent__buttons { display: flex; gap: 0.5rem; justify-content: flex-end; }
-.btn-ghost, .btn-solid {
+.consent__buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btn-ghost, .btn-solid, .btn-text {
   font: inherit;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
   cursor: pointer;
+  border-radius: 999px;
   border: 1px solid currentColor;
   background: transparent;
   color: inherit;
+  padding: 0.5rem 1rem;
 }
 .btn-solid {
-  background: var(--bg);
-  color: var(--ink);
-  border-color: var(--bg);
+  background: var(--terracotta);
+  color: var(--bg);
+  border-color: var(--terracotta);
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
 }
+.btn-solid:hover { background: var(--bg); color: var(--terracotta); }
+.btn-text {
+  border: none;
+  padding: 0.4rem 0.6rem;
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.85rem;
+}
+.btn-text:hover { opacity: 1; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 800px) {

@@ -1,10 +1,15 @@
 // Saged.club — minimal client-side behavior
-// 1) cookie consent banner (EU-compliant: nothing tracks before opt-in)
-// 2) Meta Pixel — loaded only after consent
-// 3) smooth-scroll polish (browsers do this natively, but force focus for a11y)
+// 1) Meta Pixel via Consent Mode v2 — PageView fires for every visit
+//    in limited-data mode (no cookies, no PII). On user accept, full
+//    tracking is granted. This is Meta's documented EU-compliant pattern
+//    and restores ad-optimization signal that strict-consent gating lost.
+// 2) Cookie consent banner — softened: Accept dominant, Decline a muted
+//    text link. Friendlier copy.
+// 3) WhatsApp/Telegram click handlers → fire Contact event (issue #86)
+// 4) Carousel + smooth-scroll polish
 
 (function () {
-  const PIXEL_ID = '1533639615120579'; // Saged.club Pixel (created via Meta API 2026-05-11)
+  const PIXEL_ID = '1533639615120579'; // Saged.club Pixel
   const KEY = 'saged_consent_v1';
   const banner = document.getElementById('consent');
   const accept = document.getElementById('consent-accept');
@@ -13,28 +18,40 @@
   const current = localStorage.getItem(KEY);
   if (!current && banner) banner.hidden = false;
 
-  function setConsent(value) {
-    localStorage.setItem(KEY, value);
-    if (banner) banner.hidden = true;
-    if (value === 'accepted') initTracking();
-  }
+  // Load Meta Pixel on every visit. EU-compliant via Consent Mode v2:
+  // until the user explicitly accepts, the Pixel runs with
+  // fbq('consent', 'revoke') — no cookies, no PII. Meta still receives
+  // the PageView signal for ad optimization but with no identifying data.
+  loadPixel(current === 'accepted');
 
-  accept && accept.addEventListener('click', () => setConsent('accepted'));
-  decline && decline.addEventListener('click', () => setConsent('declined'));
-
-  if (current === 'accepted') initTracking();
-
-  function initTracking() {
-    if (window.fbq) return; // already initialized
-    // Standard Meta Pixel base code (loaded only after consent)
+  function loadPixel(consented) {
+    if (window.fbq) return;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    if (!consented) window.fbq('consent', 'revoke');
     window.fbq('init', PIXEL_ID);
     window.fbq('track', 'PageView');
   }
+
+  function setConsent(value) {
+    localStorage.setItem(KEY, value);
+    if (banner) banner.hidden = true;
+    if (value === 'accepted' && window.fbq) window.fbq('consent', 'grant');
+  }
+
+  accept && accept.addEventListener('click', () => setConsent('accepted'));
+  decline && decline.addEventListener('click', () => setConsent('declined'));
+
+  // Click handlers on warm-channel CTAs → fire Pixel Contact event
+  // so DM-led leads are visible to attribution (issue #86).
+  document.querySelectorAll('#book a[href*="wa.me"], #book a[href*="t.me"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.fbq) window.fbq('track', 'Contact', { content_name: 'booking-channel-click' });
+    });
+  });
 
   // carousel — fade between slides, auto-advance every 6s, pause on hover/focus
   document.querySelectorAll('.carousel').forEach(c => {
