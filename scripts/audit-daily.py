@@ -16,7 +16,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _meta import (
     REPORTS, load_env, insights, pixel_events, fmt_eur, fmt_int, fmt_pct,
-    delta, conversions_from, load_template, safe_format,
+    delta, conversions_from, schedule_from, contacts_from,
+    load_template, safe_format,
 )
 
 
@@ -29,16 +30,18 @@ def render_adset_table(env: dict, *, since: date, until: date) -> str:
     if not rows:
         return "_No ad-set spend yesterday._"
 
-    out = ["| Ad set | Spend | Impressions | CTR | CPC | Conversions |", "|---|---:|---:|---:|---:|---:|"]
+    out = ["| Ad set | Spend | Impressions | CTR | CPC | Bookings | DM clicks |",
+           "|---|---:|---:|---:|---:|---:|---:|"]
     for r in rows:
         name = (r.get("adset_name", "?"))[:40]
-        conv = conversions_from(r)
+        sched = schedule_from(r)
+        contact = contacts_from(r)
         out.append(
             f"| {name} | {fmt_eur(r.get('spend', 0))} | "
             f"{fmt_int(r.get('impressions', 0))} | "
             f"{fmt_pct(r.get('ctr', 0))}% | "
             f"{fmt_eur(r.get('cpc', 0))} | "
-            f"{conv} |"
+            f"{sched} | {contact} |"
         )
     return "\n".join(out)
 
@@ -113,9 +116,14 @@ def main() -> int:
     pixel = pixel_events(env, hours_back=24)
     pixel_table = render_pixel_table(env)
 
-    # Render values
-    conv_today = conversions_from(today_data)
-    conv_prev = conversions_from(prev_data)
+    # Render values — split bookings (Schedule) from DM-clicks (Contact)
+    sched_today = schedule_from(today_data)
+    sched_prev = schedule_from(prev_data)
+    contact_today = contacts_from(today_data)
+    contact_prev = contacts_from(prev_data)
+    # back-compat for existing template var
+    conv_today = sched_today
+    conv_prev = sched_prev
     link_clicks_today = 0
     for a in (today_data.get("actions") or []):
         if a.get("action_type") == "link_click":
@@ -150,9 +158,12 @@ def main() -> int:
         "cpc": fmt_eur(today_data.get("cpc", 0)),
         "prev_cpc": fmt_eur(prev_data.get("cpc", 0)),
         "cpc_delta": delta(today_data.get("cpc", 0), prev_data.get("cpc", 0)),
-        "conversions": conv_today,
-        "prev_conversions": conv_prev,
-        "conversions_delta": delta(conv_today, conv_prev),
+        "conversions": sched_today,
+        "prev_conversions": sched_prev,
+        "conversions_delta": delta(sched_today, sched_prev),
+        "contacts": contact_today,
+        "prev_contacts": contact_prev,
+        "contacts_delta": delta(contact_today, contact_prev),
         "adset_table": adset_table,
         "pixel_events_table": pixel_table,
         "watchlist": build_watchlist(today_data, prev_data),

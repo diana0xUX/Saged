@@ -166,6 +166,49 @@ def conversions_from(insight: dict, custom_conversion_ids: list[str] | None = No
     return total
 
 
+# Custom Conversion IDs for Saged.club
+CC_SCHEDULE = "980444324695740"   # Schedule → Purchase €60 (paid booking)
+CC_CONTACT  = "1016380434145553"  # Contact → Lead €30 (DM-click intent)
+
+
+def contacts_from(insight: dict) -> int:
+    """Sum Contact-typed conversions (DM-click intent) from ad insights."""
+    actions = insight.get("actions") or []
+    total = 0
+    for a in actions:
+        atype = a.get("action_type", "")
+        if atype in ("contact", "offsite_conversion.fb_pixel_contact"):
+            try:
+                total += int(float(a.get("value", 0)))
+            except (ValueError, TypeError):
+                pass
+        elif atype == f"offsite_conversion.custom.{CC_CONTACT}":
+            try:
+                total += int(float(a.get("value", 0)))
+            except (ValueError, TypeError):
+                pass
+    return total
+
+
+def schedule_from(insight: dict) -> int:
+    """Sum Schedule-typed conversions (paid bookings) from ad insights."""
+    actions = insight.get("actions") or []
+    total = 0
+    for a in actions:
+        atype = a.get("action_type", "")
+        if atype in ("purchase", "schedule", "offsite_conversion.fb_pixel_purchase", "offsite_conversion.fb_pixel_schedule"):
+            try:
+                total += int(float(a.get("value", 0)))
+            except (ValueError, TypeError):
+                pass
+        elif atype == f"offsite_conversion.custom.{CC_SCHEDULE}":
+            try:
+                total += int(float(a.get("value", 0)))
+            except (ValueError, TypeError):
+                pass
+    return total
+
+
 # ---------- template render ----------
 
 def load_template(name: str) -> str:

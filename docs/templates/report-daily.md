@@ -16,7 +16,8 @@ _Yesterday: {since} · Generated {generated_at}_
 | Link clicks | {link_clicks} | {prev_link_clicks} | {link_clicks_delta} |
 | CTR | {ctr}% | {prev_ctr}% | {ctr_delta} |
 | CPC | {cpc} | {prev_cpc} | {cpc_delta} |
-| **Conversions** | **{conversions}** | **{prev_conversions}** | **{conversions_delta}** |
+| **Bookings** (Schedule) | **{conversions}** | **{prev_conversions}** | **{conversions_delta}** |
+| **DM clicks** (Contact) | **{contacts}** | **{prev_contacts}** | **{contacts_delta}** |
 
 ## Per ad set
 
