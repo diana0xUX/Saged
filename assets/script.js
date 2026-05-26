@@ -92,6 +92,46 @@
     io.observe(c);
   });
 
+  // UTM attribution: capture campaign params on landing, persist for the
+  // session, append to outbound WhatsApp messages so Diana can match a WA
+  // lead back to the ad that produced it.
+  function getUtm() {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get('utm_source');
+    if (fromUrl) {
+      const utm = {
+        source: params.get('utm_source') || '',
+        medium: params.get('utm_medium') || '',
+        campaign: params.get('utm_campaign') || '',
+        content: params.get('utm_content') || ''
+      };
+      try { sessionStorage.setItem('saged_utm', JSON.stringify(utm)); } catch (_) {}
+      return utm;
+    }
+    try { return JSON.parse(sessionStorage.getItem('saged_utm') || 'null'); } catch (_) { return null; }
+  }
+  function utmSourceLine(lang) {
+    const utm = getUtm();
+    if (!utm || !utm.source) return '';
+    const parts = [utm.source, utm.campaign, utm.content].filter(Boolean).join(' / ');
+    const labels = { ru: 'Источник', uk: 'Джерело', en: 'Source' };
+    return `\n\n— ${labels[lang] || labels.ru}: ${parts}`;
+  }
+  // Rewrite static wa.me links to also carry the UTM tail
+  (function annotateWaLinks() {
+    const lang = (document.documentElement.lang || 'ru').slice(0, 2);
+    const tail = utmSourceLine(lang);
+    if (!tail) return;
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+      try {
+        const url = new URL(link.href);
+        const text = url.searchParams.get('text') || '';
+        url.searchParams.set('text', text + tail);
+        link.href = url.toString();
+      } catch (_) { /* malformed href — skip */ }
+    });
+  })();
+
   // Request forms → open WhatsApp with form data prefilled
   const templates = {
     'parent-kid': {
@@ -118,7 +158,7 @@
       const p = String(data.get('parent') || '').trim();
       const c = String(data.get('child') || '').trim();
       const w = String(data.get('when') || '').trim();
-      const msg = encodeURIComponent(builder(p, c, w));
+      const msg = encodeURIComponent(builder(p, c, w) + utmSourceLine(lang));
       const url = `https://wa.me/34605543300?text=${msg}`;
       // Temp <a>.click() preserves the text= param through the wa.me redirect
       // and triggers iOS/Android universal-link to the WhatsApp app properly.
