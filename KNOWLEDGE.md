@@ -99,6 +99,18 @@ Beyond ceramics, the studio has hosted:
 
 Future scope: same landing structure can serve any of these. Current focus = ceramics only.
 
+## Product Lines (active as of 2026-05-26)
+
+| Product | Price | Format | Page | Booking | Notes |
+|---|---:|---|---|---|---|
+| **Ceramics with Korytsia (adult)** | €60 | 2 sessions × 2h, every Thursday | `/` + `/uk/` | Cal.com + DM | Original product. 6 customers acquired in first 14 days. |
+| **Coworking** | €200/mo | Monthly studio access, daily 10:00-22:00 | `/coworking/`, `/uk/coworking/`, `/en/coworking/` | DM only | 5 spots. Master rules in `docs/coworking-rules.md`. Launched 2026-05-14. |
+| **Intro course** | €120 | 4 classes for studio-newcomers, prep for coworking | Section on `/coworking/#intro` | DM only | Pathway product into coworking. |
+| **Kids' ceramic class** | €25 | Single 1.5h class, ages 6-10, group 4-6 | `/kids/`, `/uk/kids/`, `/en/kids/` | DM only · interest list · Stripe link sent in chat | **Launched 2026-05-26 as trial.** No fixed dates — schedule once 4-6 parents express interest. Validates demand before scaling. Pivoted away from full summer camp after honest critique (school-conflict timing, 2h too short for "camp", launching 3rd product line while first still proving out). |
+| **Parent + kid class** (planned) | €50 pair | 2h weekend, parent + child work together | Phase 2 of kids product | DM only | Launch only after kid-only class validates. Same warm audience. |
+
+**Operational principle for all DM-led products**: parents/customers DM via WhatsApp with structured pre-fill → Saged/Koritsa qualify → Stripe payment link sent in chat → confirmed. No Cal.com for kids/coworking/intro. Cal.com used only for the recurring adult Thursday workshop where the calendar widget makes sense.
+
 ## Meta Ads Context
 
 ### What we found (audit 2026-05-11)
