@@ -1,5 +1,75 @@
 # Session log
 
+## 2026-05-26 → 2026-05-27 — Polish, repositioning, kids campaign prep
+
+**Duration**: ~one long session split across two days, ~30 commits
+**Outcome**: site visually polished, Koritsa repositioned as Saged.club resident, kids Meta campaign fully prepped (creative + brief + UTM attribution), Google Search Console verified, SEO foundation upgraded (LocalBusiness schema + complete sitemap).
+
+### Major themes
+
+1. **Brand consolidation** — Koritsa's bio rewritten site-wide as "ceramic resident of Saged.club" (was "her own studio @korytsia_studio"). Schema.org `instructor.sameAs` updated to @saged.club. Contact channels stripped to WhatsApp + Instagram studio only (removed @ko_hasi, @dvoroneca, @korytsia_studio, Facebook). Deliberate choice to accumulate brand authority on Saged.club instead of Koritsa's personal accounts. Diana to brief Koritsa on this change before someone shares the link.
+
+2. **Parent+kid request form** — inline HTML form on all 3 kids pages opens WhatsApp with structured prefilled message (parent name, child name+age, preferred time). Fires Pixel Contact event. Inline confirmation. The form gives parents a real UI without requiring a backend — the conversion path stays DM-first per the project's community-offers playbook.
+
+3. **UTM attribution end-to-end** — new `getUtm()` + `utmSourceLine(lang)` in script.js. UTM params from landing URL persist via sessionStorage and append to every outbound WA message (form + static CTAs). Lets Diana attribute incoming WA leads to specific campaigns/ad sets without backend or CRM.
+
+4. **SEO foundation upgrade**:
+   - `sitemap.xml`: 4 → 10 URLs (now lists kids + coworking in all 3 languages)
+   - `LocalBusiness` JSON-LD added to RU homepage with stable `@id` so Google can merge into one Knowledge Graph entity
+   - RU/UA price format standardized to `NN €` (EU convention), EN kept as `€NN` (English convention)
+   - Kids meta descriptions trimmed under 160 chars
+   - Google Search Console verified via HTML file method
+
+5. **Kids Meta campaign prep** — full brief at `references/meta-ad-copy-kids.md`: Traffic objective, €5/day (€2 RU + €3 UA biased to UA per adult learnings), 14d duration, Valencia 17km residents, age 28-45, parents 6-12. 6 ad creatives Diana designed in Figma (3 ratios × 2 languages) saved to `assets/images/ad-kids-*`. Day-7 evaluation rubric included. Launching manually via Ads Manager UI while Business Verification re-clears (~2026-05-29).
+
+6. **Typography iterations** (lots of Diana iterating live):
+   - Summer Font Light applied to h1-h3 + top nav + language switcher
+   - FAQ + schedule sections **locked to Inter** (Summer Font Light too thin for body info)
+   - `<strong>` reverted from Summer Font (broke price-line flow)
+   - Channels grid centers when only one item via `:has()` selector
+   - Kids h1 typo fix: Керамики → Керамика (singular)
+
+### Key decisions made
+
+| Decision | Why |
+|---|---|
+| Koritsa as "resident of Saged.club" not "@korytsia_studio" | Consolidate brand authority on studio rather than personal IG; reduce funnel leakage |
+| Single WhatsApp + IG channels (no Telegram, no Facebook) | Fewer options = fewer abandoned leads; matches DM-first playbook |
+| Traffic objective (not Messages) for kids campaign | No WhatsApp Business API — Messages would require that. Landing page does the conversion job. |
+| €2 RU / €3 UA budget split | Adult campaign showed UA outperforms (8% CTR post-geo-tighten); apply same bias to kids |
+| Form submits to WA (no backend) | Matches DM-first conversion pattern; no backend or CRM cost; lead still arrives in real inbox |
+| RU/UA "NN €", EN "€NN" | Respect each language's convention; rejected forcing one global format |
+
+### Bugs found + fixed
+
+- **wa.me deep link broken** when using `window.open(url, '_blank', 'noopener')` — the popup-feature variant opens a stripped browser that drops the `text=` param mid-redirect on some browsers, or fails the universal-link handoff to the WhatsApp app on iOS. Fix: temporary `<a target="_blank">.click()` — preserves params, bypasses popup blockers.
+- **`form.parent?.value` unreliable** for reading form inputs due to property naming collision. Fix: `new FormData(form).get('parent')` — unambiguous.
+- **Inline emphasis in Summer Font breaks meta lines** like "25 € за класс · 1,5 часа..." — price jumped to different font/size. Lesson: keep display font for h1-h3 only.
+
+### Files touched
+
+```
+new:      assets/images/ad-kids-{ru,ua}-{1x1,4x5,9x16}.png  (6 creatives)
+new:      references/meta-ad-copy-kids.md
+new:      googlec4676a6ccd34c593.html  (GSC verification)
+modified: sitemap.xml (4 → 10 URLs)
+modified: index.html, uk/index.html (LocalBusiness schema, bio, contacts, prices, sameAs)
+modified: kids/index.html, uk/kids/index.html, en/kids/index.html (form, bio, copy, contacts)
+modified: coworking/index.html, uk/coworking/index.html, en/coworking/index.html (contacts)
+modified: assets/script.js (UTM tracking, form handler, wa.me link rewriter)
+modified: assets/style.css (typography, FAQ Inter, schedule Inter, channels centering)
+```
+
+### What's open at the end of session
+
+- Kids campaign mid-launch via Ads Manager UI (handed off to another Claude session with browser control)
+- Business Verification in review (~2 business days to clear)
+- GSC needs sitemap.xml manually submitted in Sitemaps tab
+- EN adult workshop page doesn't exist (kids/coworking have EN, adult only RU/UA) — decision deferred
+- Koritsa report drafted in chat, not yet sent
+
+---
+
 ## 2026-05-11 — Foundations day
 
 **Duration**: ~3 hours, single session with Diana

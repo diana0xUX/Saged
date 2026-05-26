@@ -1,95 +1,105 @@
-# Halt — 2026-05-20 (Day 8 review)
+# Halt — 2026-05-27 (Kids campaign launch in progress)
 
 ## Where we stopped
 
-Day 8 of the Meta campaign. Made the budget rebalance decision after seeing UA ad set explode to 8% CTR / €0.03 CPC following the May 18 geo tighten. Budget shifted from €5/€5 to €3 RU / €7 UA (same €10/day total). Campaign ends 2026-05-26 — six days left. Real diagnostic of the tracking gap shipped over May 17-18: Consent Mode v2 in the Pixel script + WhatsApp/Telegram Contact event handlers + Custom Conversion for Contact + UTM url_tags on ads. PageView fire rate jumped from ~2/day to 32 on May 18 (proof the Pixel fix worked). Logo migrated from PNG to SVG on every page (main, coworking RU/UA/EN, flyer). Flyer is at v6 (most basic editorial design). Lead-handling playbook + coworking pages all live.
+End of a long session (2026-05-26 → 2026-05-27, ~30+ commits). Two big tracks completed in parallel: (a) a deep site polish + brand repositioning of Koritsa from "her own studio @korytsia_studio" → "ceramic resident of @saged.club", and (b) full prep of the **kids trial class Meta campaign** — copy, creatives, audience spec, UTM attribution, launch checklist. Diana is mid-launch through Ads Manager UI (manual path, because Business Verification is in review again — submitted additional docs 2026-05-26, ~2 business days to clear). Campaign is at the campaign-setup screen of the Ads Manager wizard — name `Saged - Kids Trial Class - 2026-05`, Traffic objective, Ad set budget mode. Diana asked another Claude (Sonnet 4.6 with browser control) to finish the click-through from `references/meta-ad-copy-kids.md`.
 
-## Current state (2026-05-20)
+## Current state (2026-05-27)
 
-- **Branch**: `main`, last commit `d90f4db` (logo migration)
-- **Meta campaign**: 🟢 ACTIVE, Day 8. €70 spent of expected €80. Ends 2026-05-26.
-- **Daily budget**: **€3 RU / €7 UA** (rebalanced today after Day 8 review)
-- **UA ad set**: dramatically outperforming — 8.33% CTR today (partial), €0.03 CPC. Post-geo-tighten resonance is real.
-- **RU ad set**: wobbled May 18-19 (re-learning), recovering today (3.28% CTR / €0.17 CPC).
-- **Pixel tracking**: 32 PageView events fired May 18 (vs ~2/day previously) — Consent Mode v2 working. 1 Contact event May 19 (first DM-click tracked).
-- **Conversions**: 0 ad-attributed via Schedule. The DM-led conversions (real bookings) remain invisible to Meta attribution.
-- **Account balance**: €7.62. Lifetime spend: €220.05.
-- **First real booking**: 1 (via Telegram, pre-campaign tracking), workshop ran 2026-05-14.
+- **Branch**: `main`, last commit `8380f91` (UTM attribution on WhatsApp messages)
+- **Adult campaign**: 🟢 still active (€147.58 spent, 51,556 impressions, 13,373 reach in last 30d per Ads Manager view)
+- **Kids campaign**: 🟡 mid-launch via Ads Manager UI, Diana clicking through
+- **Business Verification**: 🟡 in review — additional docs submitted 2026-05-26, ~2 business days (~2026-05-29)
+- **Google Search Console**: ✅ verified (HTML file method, `googlec4676a6ccd34c593.html` at root)
+- **Site state**: significantly polished — see Chronicle for detailed change log
 
-## Tracking architecture (current, fully wired)
+## What shipped this session
 
-```
-Visitor → saged.club
-  ↓
-Pixel loads in revoked mode (Consent Mode v2)
-  ├─ fbq('init', PIXEL_ID)
-  └─ fbq('track', 'PageView')        ← Meta sees the visit either way
-  ↓
-Banner: Accept dominant (terracotta pill) / Decline muted text
-  ↓
-Accept → fbq('consent', 'grant')     ← full tracking unlocked
-  ↓
-WhatsApp/Telegram click in #book → fbq('track', 'Contact')
-  → Custom Conversion 1016380434145553 (Lead, €30)
-  ↓
-Cal.com checkout → Schedule event
-  → Custom Conversion 980444324695740 (Purchase, €60)
-```
+### Brand repositioning
+- Koritsa now described site-wide as **"keramic resident of Saged.club"** (not "her own studio @korytsia_studio")
+- Contact channels simplified to **WhatsApp + Instagram @saged.club only** — removed @ko_hasi, @dvoroneca, @korytsia_studio, Facebook
+- Schema.org `instructor.sameAs` updated to `@saged.club` (was @korytsia_studio) — fixes branding leak in Google Knowledge Graph
 
-## Issues closed/shipped since last halt (2026-05-17 → 2026-05-20)
+### Parent+kid request form
+- Inline HTML form on all 3 kids pages (RU/UA/EN) → opens WhatsApp with structured prefilled message
+- 3 fields: parent name, child name+age, preferred time
+- Fires `Contact` Pixel event on submit
+- Inline confirmation message (works even if popup blocker fires)
+- Bug fix: changed `window.open(url, '_blank', 'noopener')` → temp `<a>.click()` (the noopener-feature variant was dropping the `text=` param mid-redirect on some browsers)
 
-- **#87** Vera testimonial moved near booking CTAs (closed 2026-05-17)
-- **#90** Instagram + Messenger auto-replies — filed for Diana to set up in Business Suite UI
-- Flyer iteration cycle: v4 → v5 (Bricolage Grotesque editorial) → v6 (most basic). All preserved as fallbacks.
-- Logo migration: 6 PNG references → single SVG (`logo-saged-club.svg`) across main pages + coworking (3 languages) + flyer
-- Tracking fixes shipped:
-  - Meta Consent Mode v2 (Pixel always fires; revoke→grant flow on accept)
-  - Banner UX softened (Accept dominant, Decline as muted text link)
-  - WhatsApp/Telegram click → Pixel Contact event handler (#86 mostly done)
-  - Custom Conversion 1016380434145553 created (Contact → Lead €30)
-  - UTM tags via ad-level url_tags (`utm_source=meta&utm_medium=cpc&utm_campaign=ceramics-thursday&utm_content=hero-{ru,ua}-v2`)
-- Targeting tightened (2026-05-18):
-  - Geo radius 25km → 17km (Meta's minimum for city target)
-  - Location types: `["home", "recent"]` → `["home"]` (residents only, no tourists)
-  - Ad sets renamed `… v3` with "17km residents" tag
-- Budget rebalanced (2026-05-20): €5/€5 → €3 RU / €7 UA
+### UTM attribution on all outbound WhatsApp
+- New `getUtm()` + `utmSourceLine(lang)` in `assets/script.js`
+- Captures `utm_source/medium/campaign/content` on landing, stores in sessionStorage
+- Appends localized source line ("— Источник: meta / kids-trial / ru") to BOTH the form submission AND every static wa.me link on the page
+- Organic visits (no UTM) get no source line — clean
+
+### SEO + schema
+- `sitemap.xml` rebuilt: 4 URLs → 10 URLs (adds /kids/, /uk/kids/, /en/kids/, /coworking/, /uk/coworking/, /en/coworking/); each page-group declares full hreflang inline
+- `LocalBusiness` JSON-LD added to RU homepage with `@id "https://saged.club/#localbusiness"` (stable Knowledge Graph anchor)
+- Includes: full PostalAddress, telephone +34605543300, email, sameAs IG, priceRange €€, knowsLanguage ru/uk/en/es
+- Price format standardized across RU/UA pages: `NN €` (EU convention) — fixed where meta had `€NN` while body had `60 €`
+- Kids meta descriptions trimmed under 160 chars (was 162-164)
+
+### Typography iterations (lots — Diana iterated live)
+- Summer Font Light applied to h1/h2/h3 globally
+- Top nav at 1.6rem Summer Font Light
+- Language switcher restyled to match nav (terracotta underline for current, dropped button-block bg)
+- Schedule + FAQ sections **locked to Inter** for legibility (Summer Font Light too thin for body-style info)
+- `.three h3` (subhead labels) → Summer Font (was Inter bold caps)
+- `<strong>/<b>` reverted to body Inter (Summer Font on inline emphasis broke "25 € за класс" line flow)
+- Channels grid centers when only one item left (`.channels:has(.channel:only-child)`)
+- Kids h1 typo fix: Керамики → Керамика (singular, mirrors adult page)
+
+### Kids Meta campaign — fully prepped
+- Brief at `references/meta-ad-copy-kids.md` — campaign settings, audience spec, copy, UTM scheme, Day-7 evaluation rubric, launch checklist
+- 6 ad creatives saved: `assets/images/ad-kids-{ru,ua}-{1x1,4x5,9x16}.png` (Diana designed all in Figma)
+- Configuration: Traffic objective, €5/day (€2 RU + €3 UA — biased to UA per adult campaign learning), 14d duration, Valencia 17km residents, age 28-45, parents 6-12
+
+### Google Search Console
+- Verified via HTML file method (`googlec4676a6ccd34c593.html`)
+- Diana to submit `sitemap.xml` next time she opens GSC
 
 ## Next steps (in order)
 
-1. **Tomorrow morning (2026-05-21)**: read the auto-generated daily report — first day with new budget split. Verify UA can absorb €7 without efficiency degrading.
-2. **Day 14 (2026-05-26)**: campaign auto-ends. **Decision point**. Three paths:
-   a. Extend at current setup (UA just hitting stride)
-   b. Launch Message-CTA experiment (#85) instead
-   c. Both — keep current + add a Message-CTA variant ad set
-3. **#86 finish**: extend `scripts/audit-daily.py` to surface Contact event count alongside Schedule (~20 min). Useful for Day 14 read.
-4. **#88 Koritsa video** — schedule the retro-camera shoot with Alisher. Best on a Thursday (workshop day). Would unlock creative refresh + warmer ad-content rotation.
-5. **#89 lead playbook adoption** — Diana confirms accuracy of `docs/lead-handling.md`, starts using templates in DMs.
-6. **#90 IG/Messenger auto-replies** — Diana sets up Instant Reply + FAQs + Away Message via Meta Business Suite app (~10 min, no code).
+1. **Diana finishes the kids campaign launch** in Ads Manager UI (in progress — handed off to another Claude session). Stuck at campaign-setup screen; remaining work documented in `references/meta-ad-copy-kids.md`.
+2. **Submit `sitemap.xml`** in GSC → Sitemaps tab (one-line input, hit Submit)
+3. **Day 7 of kids campaign** — read the data, decide if budget split is right or rebalance
+4. **Business Verification clearance** (~2026-05-29) — unlocks API write ops again. Plan A: nothing changes, the manual UI campaign continues running. Plan B: re-prep WhatsApp Business API workflow once available.
+5. **Koritsa report** — drafted in chat, not yet sent. Diana can copy from session transcript or ask me to save to `reports/koritsa-2026-05-27.md`
+6. **Open SEO finding still open**: no EN adult workshop page. EN traffic landing on `/en/` (kids/coworking only) has no main product. Decision when ready.
 
 ## Blockers
 
-- None on the dev side.
-- Real-life: scheduling the Koritsa video shoot (#88), and Diana finding time to do the auto-reply setup in Meta Business Suite (#90).
+- **Business Verification in review** — blocks API-driven campaign creation. Workaround: manual UI launch (in progress).
+- **WhatsApp Business API not set up** — chose Traffic objective for kids campaign instead of Messages (Messages requires WA Business API). Acceptable trade-off; landing page does the conversion job.
 
-## Context that's hard to re-derive
+## Context hard to re-derive
 
-- **Geo tightening on small local campaigns produces dramatic effects within ~48h.** UA CTR went from 4.20% → 8.33% in 2 days after dropping 25km → 17km + removing "recent" location type. Worth remembering for any future hyperlocal campaign — Meta's algorithm finds its quality audience faster when given a tighter pool.
-- **The Consent Mode v2 fix is harder to verify than to ship**: even after the script is deployed, Pixel stats endpoint has hours-to-days of lag, and many visits still don't fire (Safari ITP, ad-blockers). The proof point on May 18 (32 PageViews vs typical 2) only became visible 24-48h later. Patience required.
-- **RU ad set re-learning takes 24-48h** after targeting changes. CTR drops to ~half before recovering. Don't panic-pause during this window.
-- **Budget rebalances should be incremental** (max 20-30% shift per change) to avoid resetting Meta's learning. €5→€7 on UA is a 40% increase — borderline. Watch tomorrow's data for any wobble.
-- **First Contact event fired 2026-05-19** — someone clicked WhatsApp on the booking section, the new handler captured it. That's the first signal we've ever gotten that the DM-led funnel exists at scale.
-- **Logo SVG asset**: `assets/images/logo-saged-club.svg` — 12.7KB, color #FF7A23 baked in, viewBox 712×322. Use this everywhere. Old PNGs (`logo-saged-orange.png`, `logo-saged-club.png`) still in repo but unreferenced — safe to delete.
-- **Flyer is at v6** (most basic editorial). v1-v5 preserved as fallback iterations. Bricolage Grotesque single font, #FF7A23 single accent, clean rounded photo rectangle, bare QR.
+- **The wa.me deep link bug**: `window.open(url, '_blank', 'noopener')` works on desktop but on mobile (iOS especially) opens a stripped popup that drops the `text=` param during the wa.me → web.whatsapp.com redirect, OR fails to trigger the universal-link handoff to the WhatsApp app. The fix: temporary `<a target="_blank">.click()` — preserves params, triggers universal-link, bypasses popup blockers. Document this pattern for any future wa.me work.
+- **`form.parent?.value` is unreliable for reading form inputs**. `parent` collides with browser-context properties in some envs. Use `new FormData(form).get('parent')` instead — unambiguous, FormData is the canonical pattern.
+- **Summer Font Light glyph gaps**: missing uppercase Ukrainian `І` (U+0406), `Ґ`/`ґ`. Diana avoided this by sentence-casing UA headers instead of uppercase. The Cormorant Garamond fallback chain handles missing glyphs gracefully.
+- **`<strong>` in Summer Font breaks meta lines**: Diana noticed "25 € за класс · 1,5 часа..." had the price jumping into a different font/size. Lesson: keep display font for h1-h3 only, not inline emphasis. Body emphasis stays in Inter.
+- **GSC verification file is dead simple to create**: filename is `google<HASH>.html`, content is one line `google-site-verification: google<HASH>.html`. No need to download from GSC — create directly with Write tool.
+- **`:has()` CSS selector**: used for FAQ-h2 → Inter (`section:has(.faq) h2`) and 1-item channels centering. Supported in all modern browsers (Safari 15.4+, Chrome 105+).
+- **UTM attribution architecture**: every wa.me link on the page gets dynamically rewritten with the source line at JS load — no per-link href changes needed in HTML. Means future wa.me links work automatically.
 
-## Skills + memory persisted
+## Open issues snapshot
 
-- New cross-session memory: `feedback_a5_print_overflow.md` — A5 HTML flyers silently clip past 210mm
-- Updated: `project_saged_club_campaign_live.md` previously with mid-campaign state; could update again with Day 8 numbers but the trend is captured here in halt.md
+- 🟢 **Live**: adult campaign (4th week)
+- 🟡 **Mid-launch**: kids campaign — Diana clicking through Ads Manager
+- 🟡 **Awaiting**: Business Verification, then GSC sitemap submit
+- 🔴 **Decision queue**: EN adult page (yes/no), Koritsa report (send/save), Day-7 kids campaign decision
 
-## Open issues snapshot (most relevant)
+## Files added/touched this session
 
-- 🟢 **Live**: campaign — auto-monitored daily reports
-- 🔴 **Next decision point**: Day 14 (2026-05-26) — campaign auto-ends
-- 🟡 **DM strategy follow-ups**: [#85](https://github.com/diana0xUX/Saged/issues/85), [#86](https://github.com/diana0xUX/Saged/issues/86), [#88](https://github.com/diana0xUX/Saged/issues/88), [#89](https://github.com/diana0xUX/Saged/issues/89), [#90](https://github.com/diana0xUX/Saged/issues/90)
-- 🟡 **Diana quick wins still open**: [#36](https://github.com/diana0xUX/Saged/issues/36), [#38](https://github.com/diana0xUX/Saged/issues/38), [#41](https://github.com/diana0xUX/Saged/issues/41), [#47](https://github.com/diana0xUX/Saged/issues/47)
-- 🟡 **Content for ad rotation**: [#54](https://github.com/diana0xUX/Saged/issues/54), [#53](https://github.com/diana0xUX/Saged/issues/53), [#55](https://github.com/diana0xUX/Saged/issues/55), [#58](https://github.com/diana0xUX/Saged/issues/58), [#64](https://github.com/diana0xUX/Saged/issues/64)
+```
+new:    assets/images/ad-kids-{ru,ua}-{1x1,4x5,9x16}.png  (6 creatives)
+new:    references/meta-ad-copy-kids.md
+new:    googlec4676a6ccd34c593.html  (GSC verification)
+modified: sitemap.xml (4 → 10 URLs)
+modified: index.html, uk/index.html (LocalBusiness schema, bio, contacts, prices, sameAs)
+modified: kids/index.html, uk/kids/index.html, en/kids/index.html (form, bio, copy, contacts)
+modified: coworking/index.html, uk/coworking/index.html, en/coworking/index.html (contacts)
+modified: assets/script.js (UTM tracking, form handler, wa.me link rewriter)
+modified: assets/style.css (typography, FAQ Inter, schedule Inter, channels centering)
+```
