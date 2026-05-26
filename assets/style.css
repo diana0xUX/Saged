@@ -544,7 +544,12 @@ a:hover { color: var(--ink); }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem auto 0;
+  max-width: 32rem;
+}
+.channels:has(.channel:only-child) {
+  grid-template-columns: minmax(0, 18rem);
+  justify-content: center;
 }
 .channel {
   display: flex;
@@ -585,6 +590,18 @@ a:hover { color: var(--ink); }
 .faq details {
   border-bottom: 1px solid var(--line);
   padding: 1.2rem 0;
+}
+section:has(> .faq) h2,
+section:has(.faq) h2,
+section.schedule h2,
+section:has(> .schedule__grid) h2 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.faq summary, .faq p,
+.schedule .label, .schedule p {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .faq summary {
   cursor: pointer;
