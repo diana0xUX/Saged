@@ -112,12 +112,26 @@
       const topic = form.dataset.topic;
       const builder = templates[topic]?.[lang];
       if (!builder) return;
-      const p = (form.parent?.value || '').trim();
-      const c = (form.child?.value || '').trim();
-      const w = (form.when?.value || '').trim();
+      // FormData is the unambiguous way to read inputs — avoids quirks with
+      // form.NAME shorthand (which can collide with reserved props in some envs)
+      const data = new FormData(form);
+      const p = String(data.get('parent') || '').trim();
+      const c = String(data.get('child') || '').trim();
+      const w = String(data.get('when') || '').trim();
       const msg = encodeURIComponent(builder(p, c, w));
-      window.open(`https://wa.me/34605543300?text=${msg}`, '_blank', 'noopener');
-      // inline confirmation so the user sees feedback even if WA tab is blocked
+      const url = `https://wa.me/34605543300?text=${msg}`;
+      // Temp <a>.click() preserves the text= param through the wa.me redirect
+      // and triggers iOS/Android universal-link to the WhatsApp app properly.
+      // window.open(url, '_blank', 'noopener') was opening a stripped popup
+      // that dropped the query string on some browsers.
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      // inline confirmation
       let sent = form.parentElement.querySelector('.request-form__sent');
       if (!sent) {
         sent = document.createElement('p');
