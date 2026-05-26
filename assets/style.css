@@ -102,8 +102,8 @@ a:hover { color: var(--ink); }
   justify-content: center;
   font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
-  font-size: 1.25rem;
-  letter-spacing: 0.01em;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
 }
 .topnav a, .topnav span {
   color: var(--muted);
