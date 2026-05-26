@@ -92,6 +92,44 @@
     io.observe(c);
   });
 
+  // Request forms → open WhatsApp with form data prefilled
+  const templates = {
+    'parent-kid': {
+      ru: (p, c, w) => `Доброго дня! 🪷\n\nИнтересен формат «родитель + ребёнок» по керамике.\n\nИмя родителя: ${p}\nИмя и возраст ребёнка: ${c}\nКогда удобнее: ${w || '—'}\n\nДобавьте нас в список — напишите, когда соберётся группа :)`,
+      uk: (p, c, w) => `Доброго дня! 🪷\n\nЦікавить формат «батьки + дитина» з кераміки.\n\nІм'я батьків: ${p}\nІм'я та вік дитини: ${c}\nКоли зручніше: ${w || '—'}\n\nДодайте нас у список — напишіть, коли збереться група :)`,
+      en: (p, c, w) => `Hi! 🪷\n\nI'm interested in the parent + kid ceramics format.\n\nParent's name: ${p}\nChild's name and age: ${c}\nPreferred time: ${w || '—'}\n\nAdd us to the list — let me know when a group forms :)`
+    }
+  };
+  const sentLabels = {
+    ru: 'Открываем WhatsApp — отправьте сообщение, и мы свяжемся 🙌',
+    uk: 'Відкриваємо WhatsApp — надішліть повідомлення, і ми зв\'яжемося 🙌',
+    en: 'Opening WhatsApp — send the message and we\'ll get back to you 🙌'
+  };
+  document.querySelectorAll('form.request-form').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const lang = form.dataset.lang || 'ru';
+      const topic = form.dataset.topic;
+      const builder = templates[topic]?.[lang];
+      if (!builder) return;
+      const p = (form.parent?.value || '').trim();
+      const c = (form.child?.value || '').trim();
+      const w = (form.when?.value || '').trim();
+      const msg = encodeURIComponent(builder(p, c, w));
+      window.open(`https://wa.me/34605543300?text=${msg}`, '_blank', 'noopener');
+      // inline confirmation so the user sees feedback even if WA tab is blocked
+      let sent = form.parentElement.querySelector('.request-form__sent');
+      if (!sent) {
+        sent = document.createElement('p');
+        sent.className = 'request-form__sent';
+        form.parentElement.insertBefore(sent, form.nextSibling);
+      }
+      sent.textContent = sentLabels[lang] || sentLabels.ru;
+      // fire Contact event if Pixel is loaded
+      if (window.fbq) fbq('track', 'Contact', { content_name: 'parent-kid-form' });
+    });
+  });
+
   // a11y: when a hash link is clicked, move focus to the target after scroll
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
