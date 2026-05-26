@@ -594,10 +594,18 @@ strong, b {
 }
 .faq summary {
   cursor: pointer;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
+  font-size: 1rem;
   list-style: none;
   position: relative;
   padding-right: 2rem;
+}
+.faq summary strong, .faq summary b,
+.faq p strong, .faq p b {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 1em;
 }
 .faq summary::after {
   content: "+";
