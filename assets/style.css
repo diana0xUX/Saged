@@ -344,7 +344,18 @@ a:hover { color: var(--ink); }
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
 }
-.three h3 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.three h3 { font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 300; text-transform: none; letter-spacing: 0.01em; }
+
+/* Inline emphasis (price, key terms) also uses Summer Font for brand consistency */
+strong, b {
+  font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 1.15em; /* slight bump since Summer Font reads thinner than Inter */
+}
+.faq summary {
+  font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+}
 
 /* ---------- about ---------- */
 .about {
