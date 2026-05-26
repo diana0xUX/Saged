@@ -352,11 +352,6 @@ strong, b {
   font-weight: 300;
   font-size: 1.15em; /* slight bump since Summer Font reads thinner than Inter */
 }
-.faq summary {
-  font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
-  font-weight: 300;
-}
-
 /* ---------- about ---------- */
 .about {
   display: grid;
