@@ -43,23 +43,17 @@ img { max-width: 100%; height: auto; }
 iframe { max-width: 100%; }
 
 h1, h2, h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 500;
-  line-height: 1.15;
-  margin: 0 0 0.5em;
-  letter-spacing: -0.01em;
-}
-
-h1 {
-  /* Hero-signature display font; Cormorant fallback for missing UA glyphs (І, Ґ) */
+  /* Summer Font Light is the brand display; Cormorant fallback for missing UA glyphs (І, Ґ) */
   font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
-  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
-  line-height: 1.05;
+  line-height: 1.1;
+  margin: 0 0 0.5em;
   letter-spacing: 0;
 }
-h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
-h3 { font-size: 1.3rem; }
+
+h1 { font-size: clamp(2.8rem, 6.5vw, 4.8rem); line-height: 1.05; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: 1.6rem; }
 
 p { margin: 0 0 1rem; }
 a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid currentColor; }
@@ -79,21 +73,54 @@ a:hover { color: var(--ink); }
 /* ---------- top bar ---------- */
 .topbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   padding: 1.25rem var(--gutter);
   max-width: var(--max);
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 .brand {
   display: inline-flex;
   align-items: center;
   border: none;
+  flex-shrink: 0;
 }
 .brand img {
   height: 40px;
   width: auto;
   display: block;
+}
+
+/* Top product navigation */
+.topnav {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+.topnav a, .topnav span {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: none;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+.topnav a:hover { color: var(--terracotta); }
+.topnav__current {
+  color: var(--ink);
+  font-weight: 500;
+  position: relative;
+}
+.topnav__current::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--terracotta);
+  margin-top: 2px;
+  border-radius: 1px;
 }
 .lang {
   display: flex;
