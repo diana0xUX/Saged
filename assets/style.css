@@ -95,9 +95,10 @@ a:hover { color: var(--ink); }
 /* Top product navigation */
 .topnav {
   display: flex;
-  gap: 1.5rem;
+  gap: 3rem;
   flex: 1;
   flex-wrap: wrap;
+  justify-content: center;
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
 }
