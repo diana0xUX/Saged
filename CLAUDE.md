@@ -104,3 +104,61 @@ for N testimonials, write exactly N — pattern-completion bias has produced pha
 - One step at a time; don't batch big decisions
 - Always reference the relevant GitHub issue when proposing work
 - Don't recommend tooling beyond what's justified at €150/month spend
+
+**PERSISTENCE RULE**: do NOT save project knowledge to Claude's auto-memory folder. Save facts to `KNOWLEDGE.md`, behavior rules to this file, cross-project user prefs to `~/.claude/CLAUDE.md`. See `~/.claude/CLAUDE.md` for the full rule. Diana wants visibility and version control over what's known about her work.
+
+**NO REVIEWER on this project**: there is no Senty / Codex reviewer wired up for saged.club. Skip the builder-auditor review step from `~/fieldcraft/protocols/builder-auditor.md` — do NOT offer to run `/codex:review`, `/codex:rescue`, or any external review command. Diana reviews changes directly via the GitHub PR diff or by running the result. When the protocol says "trigger Senty review", substitute: post a handoff comment and ask Diana to review the PR.
+
+---
+
+## Behavioral patterns learned on this project
+
+### High-touch DM-first booking (for ≤€100 offers)
+
+For small-ticket community-flavored purchases (workshops ≤€100) to RU/UA/ES messaging-dominant audiences, "message first → pay later" converts higher than "click → checkout instantly."
+
+**Why:** Evidence from Saged.club 2026-05-12 → 2026-05-17 — 247 ad-driven visits produced 0 attributed Stripe checkouts; first €60 booking came via Telegram DM with a Cal.com link sent 1:1. Audience treats €60 as "worth a 30-min DM" and wants to feel they know the host.
+
+**How to apply:**
+- Booking sections: equal-weight DM and direct-pay CTAs side-by-side. Don't make DM look like a fallback.
+- Permission framing: "Не уверены? Напишите — расскажем больше, забронируем вручную. Уверены — бронируйте сразу."
+- WhatsApp pre-fills: structured (Имя, Дата, Слот) + "Если есть вопросы — спрошу здесь :)" — lowers activation energy.
+- Ad CTA: prefer `MESSAGE_PAGE` / WhatsApp deep link over website link for these offers.
+- Keep `docs/lead-handling.md` up to date — it's the human side of this conversion path.
+
+**When this doesn't apply:** self-serve / SaaS / commodity bookings, US/UK markets, €200+ ticket size.
+
+### wa.me deep-link from JavaScript
+
+When triggering a `wa.me/<phone>?text=<encoded>` link from JS (form submit, button handler), use a temporary `<a target="_blank">.click()` pattern, NOT `window.open(url, '_blank', 'noopener')`.
+
+```js
+// WRONG — drops text= param on mobile Safari, breaks iOS universal-link
+window.open(`https://wa.me/${phone}?text=${msg}`, '_blank', 'noopener');
+
+// RIGHT — preserves params, triggers iOS/Android universal link
+const a = document.createElement('a');
+a.href = `https://wa.me/${phone}?text=${msg}`;
+a.target = '_blank';
+a.rel = 'noopener';
+document.body.appendChild(a);
+a.click();
+a.remove();
+```
+
+**Why:** The feature-string variant opens a stripped popup; somewhere in wa.me's redirect the `text=` param gets dropped, and WhatsApp opens with an empty message. Diana caught this 2026-05-26 on the kids form — looked like the form was broken.
+
+**How to apply:** any dynamic wa.me / tel: / mailto: deep link triggered from JS — use the anchor-click pattern.
+
+### A5 print HTML — overflow clips silently
+
+When designing a printable HTML flyer at A5 (148×210mm) with `overflow: hidden` on the page container, content past 210mm gets clipped with **no visible warning**. Browser, CSS, and print preview all stay silent. The QR or footer just disappears.
+
+Bitten twice on the Thursday-class flyer (v5 and v6). Felt fine eyeballed; user noticed the QR was missing.
+
+**How to apply after ANY structural change to a print flyer:**
+1. Sum expected heights of every direct child of the page container in mm. Treat as a back-of-envelope budget. 1pt ≈ 0.35mm.
+2. CSS guards: `.footer { flex-shrink: 0 }` (footer never squeezes), photo `flex-shrink: 1` (it compresses first), avoid `overflow: hidden` during dev.
+3. Verify: `python3 -m http.server`, open the file, check footer is fully visible. If unsure, set `body { background: red }` so clipping is obvious.
+
+Active flyer at `flyer/index.html`, iterations v1–v6 alongside. v6 is the "most basic" reference.
