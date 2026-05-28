@@ -732,7 +732,9 @@ section:has(> .schedule__grid) h2 {
 /* ---------- responsive ---------- */
 @media (max-width: 800px) {
   .hero { grid-template-columns: 1fr; padding-top: 1rem; padding-bottom: 2rem; text-align: center; }
-  .hero__media { order: -1; max-width: 26rem; margin: 0 auto; }
+  .hero__media { order: -1; width: 100%; max-width: 26rem; margin: 0 auto; }
+  /* Belt-and-braces: ensure carousel track has explicit min-height so video shows */
+  .hero__media .carousel__track { width: 100%; min-height: 24rem; }
   .hero__copy h1 { margin-top: 0.5em; }
   .hero .lead { margin-left: auto; margin-right: auto; }
   .hero__meta { text-align: center; }
