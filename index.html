@@ -35,6 +35,7 @@
 <meta property="og:locale:alternate" content="uk_UA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/images/hero-1.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 
@@ -115,7 +116,7 @@
 
 <header class="topbar">
   <a class="brand" href="./" aria-label="Saged.club home">
-    <img src="assets/images/logo-saged-club.svg" alt="Saged.club" height="40">
+    <img src="assets/images/logo-saged-club.svg" alt="Saged.club" width="88" height="40">
   </a>
   <nav class="topnav" aria-label="Sections">
     <span class="topnav__current">Взрослым</span>
@@ -139,10 +140,10 @@
       <div class="carousel__slide"><img src="assets/images/hero-3.jpg" alt="Атмосфера студии — свечи, керамика, тишина"></div>
     </div>
     <div class="carousel__dots" role="tablist" aria-label="Перейти к слайду">
-      <button type="button" data-slide="0" class="is-active" aria-label="Видео"></button>
-      <button type="button" data-slide="1" aria-label="Слайд 1: Руки"></button>
-      <button type="button" data-slide="2" aria-label="Слайд 2: Кориця"></button>
-      <button type="button" data-slide="3" aria-label="Слайд 3: Атмосфера"></button>
+      <button type="button" role="tab" data-slide="0" class="is-active" aria-selected="true" aria-label="Видео"></button>
+      <button type="button" role="tab" data-slide="1" aria-selected="false" aria-label="Слайд 1: Руки"></button>
+      <button type="button" role="tab" data-slide="2" aria-selected="false" aria-label="Слайд 2: Кориця"></button>
+      <button type="button" role="tab" data-slide="3" aria-selected="false" aria-label="Слайд 3: Атмосфера"></button>
     </div>
   </div>
   <div class="hero__copy">
@@ -157,15 +158,15 @@
 <section class="band band--sand">
   <div class="three">
     <div>
-      <h3>Встреча 1 — лепка</h3>
+      <h2>Встреча 1 — лепка</h2>
       <p>Два&nbsp;часа за&nbsp;столом с&nbsp;глиной. Сформируете руками своё керамическое изделие — что захотите: чашу, вазочку, подсвечник, фигурку, бусины. Корица помогает на&nbsp;каждом шаге.</p>
     </div>
     <div>
-      <h3>Встреча 2 — глазурь</h3>
+      <h2>Встреча 2 — глазурь</h2>
       <p>Через неделю возвращаетесь к&nbsp;своей работе после первого обжига: выбираете цвет, глазурь, декорируете. Студия делает второй обжиг.</p>
     </div>
     <div>
-      <h3>Что заберёте</h3>
+      <h2>Что заберёте</h2>
       <p>Своё керамическое изделие — обожжённое, покрытое глазурью, готовое жить с&nbsp;вами. Через две&nbsp;недели после&nbsp;второй встречи.</p>
     </div>
   </div>
@@ -173,7 +174,7 @@
 
 <section class="about">
   <div class="about__photo">
-    <img src="assets/images/koritsya.jpg" alt="Кориця — керамистка из Saged.club">
+    <img src="assets/images/koritsya.jpg" alt="Кориця — керамистка из Saged.club" loading="lazy">
   </div>
   <div class="about__copy">
     <p class="eyebrow">Ведущая</p>
@@ -189,8 +190,8 @@
   <h2 class="center">Как проходит занятие</h2>
   <p class="center muted">Маленькая группа, тёплый свет, ваши руки в&nbsp;глине. Никакой спешки.</p>
   <div class="workshop-feel__grid">
-    <div class="workshop-feel__item"><img src="assets/images/workshop-1.jpg" alt="Кориця показывает технику работы с глиной"></div>
-    <div class="workshop-feel__item"><img src="assets/images/workshop-2.jpg" alt="Кориця с группой на мастер-классе"></div>
+    <div class="workshop-feel__item"><img src="assets/images/workshop-1.jpg" alt="Кориця показывает технику работы с глиной" loading="lazy"></div>
+    <div class="workshop-feel__item"><img src="assets/images/workshop-2.jpg" alt="Кориця с группой на мастер-классе" loading="lazy"></div>
   </div>
 </section>
 
@@ -248,10 +249,10 @@
 <section class="gallery" aria-label="Прошлые работы">
   <h2 class="center">Прошлые встречи</h2>
   <div class="gallery__grid">
-    <div class="gallery__item"><img src="assets/images/gallery-1.jpg" alt="Свечи и лён на столе перед началом встречи"></div>
-    <div class="gallery__item"><img src="assets/images/gallery-5.jpg" alt="Бусины из глины — процесс работы"></div>
-    <div class="gallery__item"><img src="assets/images/gallery-9.jpg" alt="Руки гостьи работают с глиной"></div>
-    <div class="gallery__item"><img src="assets/images/gallery-beads.jpg" alt="Руки нанизывают глиняные бусины на шнур"></div>
+    <div class="gallery__item"><img src="assets/images/gallery-1.jpg" alt="Свечи и лён на столе перед началом встречи" loading="lazy"></div>
+    <div class="gallery__item"><img src="assets/images/gallery-5.jpg" alt="Бусины из глины — процесс работы" loading="lazy"></div>
+    <div class="gallery__item"><img src="assets/images/gallery-9.jpg" alt="Руки гостьи работают с глиной" loading="lazy"></div>
+    <div class="gallery__item"><img src="assets/images/gallery-beads.jpg" alt="Руки нанизывают глиняные бусины на шнур" loading="lazy"></div>
   </div>
 </section>
 

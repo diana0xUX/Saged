@@ -41,4 +41,9 @@ inbox/
 scripts/local/
 .campaign-ids
 .kids-monitor-state
+
+# Runtime monitor + audit outputs (regenerated on demand)
+reports/kids-monitor*.log
+reports/lighthouse/
+
 # /tmp output files (creative/upload/adset jsons)

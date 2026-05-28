@@ -64,10 +64,10 @@
 
     function show(n) {
       slides[idx].classList.remove('is-active');
-      dots[idx] && dots[idx].classList.remove('is-active');
+      if (dots[idx]) { dots[idx].classList.remove('is-active'); dots[idx].setAttribute('aria-selected', 'false'); }
       idx = (n + slides.length) % slides.length;
       slides[idx].classList.add('is-active');
-      dots[idx] && dots[idx].classList.add('is-active');
+      if (dots[idx]) { dots[idx].classList.add('is-active'); dots[idx].setAttribute('aria-selected', 'true'); }
     }
     function start() { if (!reduced) timer = setInterval(() => show(idx + 1), 6000); }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
@@ -91,6 +91,16 @@
     });
     io.observe(c);
   });
+
+  // Instagram embed.js injects <iframe> without a title attribute, which
+  // fails Lighthouse a11y `frame-title`. Patch any iframe it adds.
+  function titleIgFrames() {
+    document.querySelectorAll('iframe.instagram-media:not([title])').forEach(f => {
+      f.setAttribute('title', 'Instagram post — @saged.club');
+    });
+  }
+  new MutationObserver(titleIgFrames).observe(document.body, { childList: true, subtree: true });
+  titleIgFrames();
 
   // UTM attribution: capture campaign params on landing, persist for the
   // session, append to outbound WhatsApp messages so Diana can match a WA
