@@ -46,4 +46,7 @@ scripts/local/
 reports/kids-monitor*.log
 reports/lighthouse/
 
+# Private finances — invoices, ledger, receipts. Repo is PUBLIC.
+finances/
+
 # /tmp output files (creative/upload/adset jsons)
