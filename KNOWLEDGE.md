@@ -199,6 +199,70 @@ To clear the **1.5× channel-fit floor** at €25 kids ticket:
 
 Below that = pause. Above = next iteration / budget bump.
 
+## Unit economics
+
+### Monthly fixed costs (as of 2026-05-28)
+
+| Line item | Monthly | Notes |
+|---|---:|---|
+| Rent | €1,175 | Studio space C/ de les Cuines, 8 |
+| Materials | €100 | Clay, glaze, fuel — bulk supply, not per-class |
+| Electricity | €100 | Kiln + lighting + heating |
+| Internet | €50 | Studio wifi |
+| Social tax (autónomo) | €47 | Spanish self-employed monthly minimum |
+| Accountant | €70 | Monthly retainer |
+| Marketing (May 2026 actual) | €143 | Meta ads only; will vary |
+| **Total fixed** | **~€1,685** | Excludes per-workshop teacher payments |
+
+### Profit split
+
+Net profit is split **50/50 with Koritsa** (ceramic teacher). If net profit is negative, the split is theoretically zero — Diana absorbs the loss.
+
+For Diana to take home €1,000/month herself, revenue needs to clear roughly **€3,685/month** (covers fixed + €2,000 net to split with Koritsa).
+
+### Break-even thresholds (revenue to cover monthly fixed)
+
+| Pricing scenario | Customers/month needed |
+|---|---:|
+| All adults at €60 | ~28 |
+| All kids at €25 | ~67 |
+| Blend at €50 avg (May's actual mix) | **~34** |
+
+### May 2026 P&L snapshot
+
+| | |
+|---|---:|
+| Revenue (9 customers + 1 birthday party) | €750 |
+| Total monthly costs | −€1,685 |
+| **Net (pre-split)** | **−€935** |
+
+May ran at a **~€935 loss**. Studio is in opening-period burn. **Marketing ROAS at 5.24× says demand is there at the right price; break-even gap says capacity / product mix is the constraint, not marketing efficiency.**
+
+### Sunk costs (excluded from monthly decision-making)
+
+| | |
+|---|---:|
+| Studio initial setup | ~€7,000 |
+| Move to public space + opening | ~€16,000 |
+| **Total sunk** | **~€23,000** |
+
+These are committed. Payback timing depends on how fast monthly profit ramps. At an eventual €1,500/month net (e.g., €5,000 rev × 30% margin), recovery is ~15 months. Do not let sunk cost drive forward decisions.
+
+### Strategic levers, ranked by leverage (2026-05-28)
+
+1. **Coworking subscription fill** — €200/month × 5 spots = €1,000/month recurring. Nearly covers fixed costs by itself. Highest single move on the chart.
+2. **More sessions per week** — Thursday-only adult workshop caps revenue. Adding a Saturday/Tuesday ~doubles adult capacity.
+3. **Kids class velocity** — kids classes can run multiple times/week. Currently 1 class per assembled group of 4-6. Demand validation via the live #91 ad campaign.
+4. **Group size 6 → 8** — +33% revenue per session at near-zero extra cost. Limited by physical space + Koritsa's attention bandwidth.
+5. **Price increase €60 → €70** — only after waitlist exists. Do not lead with this.
+
+### How to read these numbers in future months
+
+- **ROAS up + break-even gap closing** → ads are working AND capacity is filling. Scale ad budget cautiously, hold prices.
+- **ROAS up + break-even gap not closing** → marketing efficiency without volume. Focus on calendar density (more sessions) and product mix, not on ad creative.
+- **ROAS down + break-even gap not closing** → marketing is degrading. Refresh creative or revisit audience before adding spend.
+- **ROAS down + revenue up** → demand growing organically (Telegram, IG, word of mouth). Ad-attribution may be undercounting; check WhatsApp inbox for organic mentions.
+
 ## Channel attribution learnings
 
 - **Telegram DM with direct Cal.com link works** as a sales channel — Diana sent a booking link and it converted. The Pixel still fires Schedule on the success page regardless of how the user got there, so Telegram bookings show up in Meta's Pixel stats but NOT in the campaign-attributed conversions.
