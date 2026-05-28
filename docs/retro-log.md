@@ -482,3 +482,192 @@ generated reports, one setup doc for Diana.
   `docs/standing-rules.md` doc so they don't get re-asserted in every retro. Retros should
   surface *new* lessons, not re-prove old ones.
 
+---
+
+## Sprint — Kids campaign launch + repo audit + memory migration (2026-05-28)
+
+Single-day arc resumed from yesterday's halt.md. Shipped: memory migration (auto-memory OFF, project files own the knowledge), kids campaign Phase 1+2+3 via API (paused 3 stale campaigns, built `Saged · Kids Trial · 2026-05` with RU+UA ad sets in PAUSED, then flipped to ACTIVE on Diana's go), repo visibility audit (clean — no secrets exposed; documented path to private repo via GitHub Pro), new "no reviewer on this project" CLAUDE.md rule. Closes epic #91 phases 1–3 + sub-issues #92, #93, #94, #95, #100. PR #101 merged. Total: 4/9 epic sub-issues done; Day 3/7/14 checks now scheduled.
+
+### Process wins
+
+- **[process] API-first reconnaissance before designing the rebuild.**
+  Before writing a single line of plan, pulled the current campaigns list via Marketing API.
+  Surfaced three things immediately: the kids campaign Diana started today via IG's "Suggested
+  Ads" was malformed (Spain-wide, no language, 0 ads), and TWO stale campaigns were still
+  ACTIVE past their stop_time. Without this API read, I'd have proposed building a new campaign
+  while three broken ones drained the account. Cost: 30 seconds of curl. Saved: a lot.
+
+- **[process] Discovery → Plan doc → Epic → Sub-issues → Execute, in order.**
+  Followed session-start.md exactly: investigate state, surface findings to Diana, decide the
+  fork (rebuild vs edit) via AskUserQuestion, write `docs/plans/kids-campaign.md`, create epic
+  #91 + 9 sub-issues, only THEN start the work. The plan doc became the anchor for everything
+  that came after, including the post-launch handoff. No "let me just start coding" temptation.
+
+- **[process] AskUserQuestion at the genuine fork only.**
+  One question pair: "rebuild via API vs edit existing vs hybrid" + "create issues now vs show
+  drafts first." Both are real technical/process forks with reversible consequences. Did NOT
+  use a picker for "what should I do next" — those got tight one-sentence proposals instead.
+
+- **[process] Persisting findings as they were discovered, not at session end.**
+  Each new fact (locale ID verification, token scope, advantage_audience trade-off) got written
+  to KNOWLEDGE.md or the plan doc in the same turn it surfaced. No "I'll save this later"
+  promise. Survived two failed launch attempts without losing context.
+
+- **[process] Idempotent + dry-run script before first real run.**
+  `launch-kids-campaign.py` checks for `KIDS_CAMPAIGN_ID` in `.campaign-ids` before doing any
+  POSTs — refuses to rebuild. Dry-run flag printed all payloads before any real call. The
+  dry-run immediately surfaced a bug: `act_act_484884320671439` (double-prefixed URL because
+  the env var already includes `act_`). Caught and fixed before a single live POST. Twelve
+  seconds of dry-running saved a real campaign-creation roundtrip.
+
+- **[process] "Do what you can" → maximum autonomous action.**
+  Diana's tight 3-word instructions today — "run phase 1", "run phase 2", "merge the PR",
+  "flip both ad sets active" — each unlocked a full multi-step execution: pause 3 campaigns
+  + verify + close issue; write script + dry-run + iterate through 3 errors + verify + commit
+  + push + PR; merge + close 2 issues + delete branch; POST status=ACTIVE × 5 + verify + close
+  issue + unblock next. The "tight authorization → bounded autonomy" pattern validated again.
+  The 2026-05-12 retro called this out; today confirmed it's a stable mode of working with
+  Diana.
+
+- **[process] Branch hygiene check caught scope creep before commit.**
+  Before committing Phase 2, ran `git status` — saw CLAUDE.md, halt.md, and
+  `docs/instagram-faq.md` modified from earlier work. Recognized they're a separate concern
+  ("one branch, one concern" from builder-auditor.md). Staged only `scripts/launch-kids-campaign.py`,
+  `docs/plans/kids-campaign.md`, and `KNOWLEDGE.md`. The unrelated work landed as a separate
+  `docs:` commit on main after the kids PR merged. Clean history both sides.
+
+### Process fails
+
+- **[process] Three API errors in one launch, each surfacing a new lock.**
+  Real run failed 3 times in a row: (1) `is_adset_budget_sharing_enabled` missing — new Meta
+  requirement; (2) `advantage_audience: 1` conflicts with `age_min: 28` (must be ≤25) —
+  documented in KNOWLEDGE.md from a prior session but I missed the constraint in plan; (3)
+  `degrees_of_freedom_spec.standard_enhancements` deprecated, replaced with per-feature
+  toggles. Each failure created an orphan empty campaign that needed pause + delete cleanup.
+  Wrong action: didn't pull a fresh reference object before writing payloads, didn't re-check
+  KNOWLEDGE.md's existing edit-lock entries before designing the plan.
+  Root cause: trusted my mental model of Meta's API ("it's stable, I've done this before")
+  over actual current state. Meta's API moves; pinned v25.0 still ships breaking changes for
+  newly required fields.
+  Mitigation: before writing a new resource type via Meta API, **GET an existing instance of
+  the same type** as a reference object. Saved as project lesson below.
+
+- **[process] Wrong locale IDs in plan doc (5 / 120 instead of 17 / 52).**
+  Plan doc said "Russian locale 5, Ukrainian locale 120" — I sourced these from memory of an
+  earlier conversation, not from a fresh API verification. Caught only when I queried
+  `/search?type=adlocale&q=russian` (and got 17, not 5). Plan was wrong on paper; thankfully
+  the script verified live before launch. Updated KNOWLEDGE.md with verified IDs and an
+  explicit "do NOT trust 5/120 from older docs" note.
+  Mitigation: any Meta enum ID (locale, interest, family status) goes through
+  `/search?type=<adobject>` for verification at plan-writing time, not at run time.
+
+- **[process] Conflated "Advantage+ Audience" with "Advantage+ Placements" in the plan.**
+  Plan doc had "Placements: Advantage+" then targeting included `advantage_audience: 1` from
+  the older adult campaign's config. These are TWO different toggles: Advantage+ Placements
+  (auto feed/stories/reels distribution) is independent of Advantage+ Audience (algorithm
+  expands targeting). I left both on in the script, hit the age conflict, and had to disable
+  Audience. Plan was internally inconsistent because I didn't separate the two when reading
+  the adult ad set's targeting object.
+  Mitigation: when copying targeting from a reference object, treat each `targeting_*` and
+  Advantage+ toggle as an independent decision. Don't bulk-clone the targeting block.
+
+- **[process] Initial CLAUDE.md edit landed on wrong branch.**
+  Added the no-reviewer rule + audit doc to `kids-campaign-launch` branch by reflex (because
+  I was sitting on it from the previous PR work). Caught at `git status` time, before the
+  commit. Switched to main, committed separately. Caught only because of the pre-commit
+  status check (see corresponding win above) — without that habit, I'd have polluted the
+  Phase 2 PR with three unrelated concerns.
+
+### Project lessons
+
+- **[project] IG "Suggested Ads" quick-create produces malformed campaigns.**
+  Diana's morning attempt to set up the kids campaign via Instagram's "Suggested Ads" tool
+  produced: campaign with auto-name `Traffic campaign for Instagram advertisers 5/28/2026`,
+  ad set with Spain-wide geo, no language filter, age 35-50, IG-DM destination, and **zero
+  ads**. The UI says "your campaign is live"; the API says nothing will deliver. If a
+  campaign was started this way, **audit it via API before treating it as launched**. The
+  visible UI state hides the missing-creative gap.
+
+- **[project] GET a reference object before POST-ing a new resource type.**
+  Meta Marketing API moves: new required fields, deprecated payloads, locked transitions
+  after first publish. Before writing a new campaign / ad set / creative payload, pull one
+  existing instance of the same kind with the full field set: `GET /{id}?fields=...`. Diff
+  the existing payload against your intended new one. Surfaced fields like
+  `is_adset_budget_sharing_enabled` would have been visible in the reference object. Save
+  three round-trips per launch.
+
+- **[project] Account-clean-state-before-launch check.**
+  Before any new campaign, run `GET /act_*/campaigns?fields=name,effective_status,stop_time
+  &limit=50` and pause anything ACTIVE past `stop_time` or anything broken (0 ads, malformed
+  targeting). Today three campaigns needed pausing — all in 5 seconds. Without this check,
+  budget bleeds from forgotten ACTIVE campaigns while new ones launch.
+
+- **[project] Meta locale IDs are 17 (Russian) and 52 (Ukrainian).**
+  Verified via `/search?type=adlocale&q=russian` and `q=ukrainian`. Older internal docs said
+  5 and 120 — those were wrong. KNOWLEDGE.md now flags this explicitly. For Spanish, Italian,
+  Greek, etc., re-verify per language; don't reuse the numeric IDs across projects.
+
+- **[project] Advantage+ Audience requires age_min ≤ 25.**
+  Error 1870188: `Minimum age is too high for Advantage+ Audience`. For ad sets that need
+  age_min ≥ 26 (kids campaign uses 28-45 for parents), set
+  `targeting_automation.advantage_audience: 0`. Advantage+ Placements is independent and can
+  still be on. Logged in KNOWLEDGE.md decision log with the trade-off (no algorithm-driven
+  expansion → revisit at Day 7 if reach is starved).
+
+- **[project] Campaign-level `is_adset_budget_sharing_enabled` is now required.**
+  As of API v25.0 (post-2026-05), campaign POST without this field returns error 4834011.
+  Pass `false` for per-ad-set budgets (what we want), `true` to share 20% across ad sets.
+
+- **[project] `degrees_of_freedom_spec.standard_enhancements` is deprecated.**
+  Removed entirely from creative payloads — Meta replaced with per-feature toggles. Leaving
+  it produces error 3858504. Default (no DOF spec) is fine: standard enhancements stay ON,
+  which is what most campaigns want anyway.
+
+- **[project] Orphan campaign cleanup pattern.**
+  A failed multi-step API build (campaign → ad sets → ads) can leave orphan empty campaigns.
+  Recovery: `POST /{cid} status=PAUSED` then `DELETE /{cid}?access_token=...`. Both return
+  `{"success":true}`. Delete is safe on empty campaigns (no ad sets); use pause-only for any
+  campaign that had ad sets even briefly, per the "pause is safer than delete" rule.
+
+- **[project] No reviewer on saged.club → builder-auditor protocol substitution.**
+  This project has no Senty/Codex reviewer. The protocol's "trigger Senty review" step
+  becomes "post handoff comment, ask Diana to review the PR." CLAUDE.md captures this
+  explicitly. Don't offer `/codex:review` here; do offer the PR diff for Diana's review.
+
+- **[project] Pages from private repo requires GitHub Pro ($4/mo).**
+  GitHub Free won't serve Pages from a private repo. Repo currently public — no secrets
+  exposed (full audit in `docs/repo-visibility-audit.md`), but business strategy is visible.
+  Decision pending in #102.
+
+### Feedback for Alisher
+
+- **The 3-word authorization pattern is now load-bearing.** "Run phase 1", "run phase 2",
+  "merge the PR", "flip both ad sets active" — Diana's tight commands today drove three
+  multi-step executions plus a merge plus a state flip. The pattern works because the plan
+  doc + epic + sub-issues + handoff comments captured all the context upstream; her command
+  only had to resolve the choice, not the details. Compare to sessions where I asked her
+  6-option pickers — that's a sign I haven't done the upstream homework yet. Worth naming
+  in a protocol: "if the next step needs more than 3 words from the user, the plan isn't
+  ready yet."
+
+- **No-reviewer rule should propagate to other personal projects.** Saged.club is one of
+  several "Diana works with Claude, no second agent" setups. The builder-auditor protocol's
+  Senty step assumes a reviewer that exists for `~/basecamp/` but not for
+  `~/Documents/saged.club/`. Worth a default in `~/fieldcraft/protocols/` or in
+  `~/.claude/CLAUDE.md` that says: "absent a configured reviewer agent on this project,
+  substitute self-review via PR diff + handoff comment." Today's CLAUDE.md edit is the
+  project-local version; making it a global default removes the friction for any future
+  Diana project.
+
+- **Retro-log.md is now 5 entries deep.** The 2026-05-15 retro proposed extracting standing
+  rules to `docs/standing-rules.md` at ~6 entries; we're one entry away. Patterns appearing
+  in every retro: bilingual-mirror parity, file:// vs http:// preview context, smoke-test
+  before automation, "show output before automating," API-first verification vs UI
+  navigation, branch-status-before-commit, "do what you can" → autonomous-mode. Worth the
+  extraction pass next session — retros should surface *new* lessons, not re-affirm old ones.
+
+- **GitHub Issue hygiene gap.** Repo has 100+ issues now. Today added 9 epic sub-issues +
+  1 decision issue. Some older issues are stale (e.g., #56-60 are blocked on a customer
+  list that predates the kids campaign and may not apply to the current product line).
+  Worth a quick "archive what no longer applies" pass — keeps the active backlog readable.
+
