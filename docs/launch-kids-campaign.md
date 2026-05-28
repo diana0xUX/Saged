@@ -1,5 +1,7 @@
 # Launch the Kids Trial Class Meta campaign — step by step
 
+> **⚠️ Superseded 2026-05-28.** The campaign was launched via API instead of clicking through Ads Manager (`scripts/launch-kids-campaign.py`). The current plan + spec is in [`docs/plans/kids-campaign.md`](plans/kids-campaign.md). This doc is preserved as a reference for the manual click path in case API access is ever lost or a fresh BM needs a quick start. Budgets here are launch-day numbers; current budgets are in the plan doc.
+
 **Time needed**: ~15 minutes of clicking.
 **Pre-loaded brief**: `references/meta-ad-copy-kids.md` — keep this open in another tab; you'll copy from it.
 

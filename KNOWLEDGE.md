@@ -153,6 +153,7 @@ See `AUDIT.md` for the full breakdown.
 | 2026-05-11 | Cookie consent banner enforced; no Pixel until accept | GDPR + DMA compliance for EU audience |
 | 2026-05-28 | Rebuilt kids campaign via API after IG "Suggested Ads" quick-create produced malformed structure | Spain-wide geo, no language filter, 0 ads — wouldn't deliver. Replaced with proper Valencia 17km × RU/UA split via `scripts/launch-kids-campaign.py`. |
 | 2026-05-28 | Kids ad sets ship with `advantage_audience: 0` (Advantage+ off) | Strict 28-45 age range conflicted with Advantage+ requirement (age_min ≤ 25, error 1870188). Honors the plan's age band; trade-off is no algorithm-driven audience expansion. Reconsider at Day 7 if reach is starved. |
+| 2026-05-28 | Doubled kids ad-set budgets pre-delivery: RU €2→€4, UA €3→€6 (total €5→€10/day, 14-day cap €70→€140) | Both ads ACTIVE but zero delivery yet — no "learning phase" to reset. Doubling gives Meta more room to find the tight Valencia-17km × RU/UA parents audience. 1.5× UA-over-RU ratio preserved. |
 
 ## Launch Milestones
 

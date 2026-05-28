@@ -54,7 +54,7 @@ Pattern (per `CLAUDE.md`):
 | Name | `Kids · RU · Valencia 17km` |
 | Optimization goal | `LANDING_PAGE_VIEWS` |
 | Destination | Website (`saged.club/kids/`) |
-| Daily budget | €2.00 (200 cents) |
+| Daily budget | €4.00 (400 cents) — doubled from launch-day €2 on 2026-05-28 before any delivery |
 | Schedule | Start tomorrow, run 14 days |
 | Geo | Valencia city, +17km, **residents only** (`location_types: ["home"]`) |
 | Age | 28–45 |
@@ -67,7 +67,7 @@ Pattern (per `CLAUDE.md`):
 
 Identical to RU except:
 - Name: `Kids · UA · Valencia 17km`
-- Daily budget: **€3.00** (UA audience smaller, needs more delivery headroom — same as previous campaign split)
+- Daily budget: **€6.00** — doubled from launch-day €3 on 2026-05-28. UA audience is smaller but converted better on the adult campaign; biased budget reflects that. Maintains 1.5× ratio vs RU.
 - Languages: Ukrainian (locale `52`)
 
 ### Ads

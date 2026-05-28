@@ -1,6 +1,8 @@
 # Meta ad copy — Kids Trial Class (RU + UA)
 
-Campaign for the €25 single-class kids' product. DM-first conversion (WhatsApp interest list — no Cal.com booking for kids). Launching manually via Ads Manager UI while Business Verification is in review (submitted 2026-05-26, ~2 business days).
+> **Update 2026-05-28**: campaign was launched via API (`scripts/launch-kids-campaign.py`), not Ads Manager UI. Same copy + targeting. Budgets in this brief are launch-day numbers (€2 RU / €3 UA); current budgets are €4 RU / €6 UA (doubled before any delivery). See `docs/plans/kids-campaign.md` for live spec.
+
+Campaign for the €25 single-class kids' product. DM-first conversion (WhatsApp interest list — no Cal.com booking for kids).
 
 Character limits Meta enforces:
 - **Primary text**: 125 chars before "see more" truncation (max 2,200)
