@@ -12,19 +12,23 @@ Tone matches `docs/lead-handling.md`: warm, plain, ends with a specific next-ste
 
 ---
 
-## The 4 FAQs (in this order)
+## The 4 FAQs (in display order)
 
-### 1. Question chip: `Сколько стоит?`
+Live on `@saged.club` as of 2026-05-28.
+
+### 1. Question chip: `Сколько стоит? Что входит в цену?`
+
+Combines the price + value question into one chip — both came in DMs frequently enough that one chip serves both.
 
 Answer (RU):
 ```
-🪻 Взрослый курс — 60 € · 2 встречи по 2 часа, каждый четверг
-🌻 Детский класс (6–10 лет) — 25 € · 1,5 часа
-🌾 Коворкинг для гончаров — 200 € в месяц
+🪻 Взрослый курс — 60 € за 2 встречи по 2 часа
+🌻 Детский класс (6–10 лет) — 25 € за 1,5 часа
+🌾 Коворкинг — 200 €/мес
 
-Всё включено: глина, инструменты, обжиг, глазурь, чай.
+В цену входит всё: глина, инструменты, оба обжига, глазурь, чай. Группа до 6 человек.
 
-Что из этого вас интересует?
+Что вас интересует?
 ```
 
 ### 2. Question chip: `Где студия?`
@@ -33,23 +37,12 @@ Answer (RU):
 ```
 C/ de les Cuines, 8 — старый город Валенсии, в двух шагах от Mercat Central.
 
-Метро Xàtiva — 5 минут пешком, Àngel Guimerà — 7 минут. Парковка в центре сложная, лучше метро или велосипед.
+Метро Xàtiva — 5 минут пешком, Àngel Guimerà — 7 минут. Парковка в центре сложная — лучше метро или велосипед.
 
 Какой формат интересует — взрослый курс, детский класс или коворкинг?
 ```
 
-### 3. Question chip: `Нужен ли опыт?`
-
-Answer (RU):
-```
-Совсем нет 🪷
-
-Большинство впервые трогают глину — и на взрослом курсе, и на детском классе. Кориця ведёт каждого с нуля, в вашем темпе.
-
-Какой формат интересует?
-```
-
-### 4. Question chip: `Как записаться?`
+### 3. Question chip: `Как записаться?`
 
 Answer (RU):
 ```
@@ -62,19 +55,32 @@ Answer (RU):
 Что выбираете?
 ```
 
+### 4. Question chip: `На каком языке?`
+
+Answer (RU):
+```
+Кориця говорит на украинском и русском — выбираете комфортный.
+
+Английский — базовые инструкции переводим легко, и для детей, и для взрослых.
+
+Si hablas español — escríbenos, разберёмся вместе.
+
+Какой формат вам интересен?
+```
+
 ---
 
 ## UA versions (for manual reply if someone writes in Ukrainian)
 
-### 1. Скільки коштує?
+### 1. Скільки коштує? Що входить у ціну?
 ```
-🪻 Курс для дорослих — 60 € · 2 зустрічі по 2 години, щочетверга
-🌻 Дитячий клас (6–10 років) — 25 € · 1,5 години
-🌾 Коворкінг для гончарів — 200 € на місяць
+🪻 Курс для дорослих — 60 € за 2 зустрічі по 2 години
+🌻 Дитячий клас (6–10 років) — 25 € за 1,5 години
+🌾 Коворкінг — 200 €/міс
 
-Усе включено: глина, інструменти, випал, глазур, чай.
+У ціну входить усе: глина, інструменти, обидва випали, глазур, чай. Група до 6 осіб.
 
-Що з цього вас цікавить?
+Що вас цікавить?
 ```
 
 ### 2. Де студія?
@@ -86,16 +92,7 @@ C/ de les Cuines, 8 — старе місто Валенсії, поруч із 
 Який формат вас цікавить — дорослий курс, дитячий клас чи коворкінг?
 ```
 
-### 3. Чи потрібен досвід?
-```
-Зовсім ні 🪷
-
-Більшість уперше торкаються глини — і на дорослому курсі, і на дитячому класі. Кориця веде кожного з нуля, у вашому темпі.
-
-Який формат цікавить?
-```
-
-### 4. Як записатися?
+### 3. Як записатися?
 ```
 Залежить від формату:
 
@@ -106,25 +103,33 @@ C/ de les Cuines, 8 — старе місто Валенсії, поруч із 
 Що обираєте?
 ```
 
+### 4. Якою мовою?
+```
+Кориця розмовляє українською та російською — оберіть зручнішу.
+
+Англійською — базові інструкції перекладаємо легко, і для дітей, і для дорослих.
+
+Si hablas español — escríbenos, розберемося разом.
+
+Який формат вас цікавить?
+```
+
 ---
 
 ## Where to set it up
 
-Meta Business Suite (web — easiest):
+**Instagram mobile app (Creator account required).** The feature was removed from Meta Business Suite Automations sometime before 2026-05-28 — Diana confirmed Business Suite no longer shows an FAQ template; the IG mobile app is the only surface.
 
-1. Open `business.facebook.com` → log in with the @saged.club connected account
-2. Left sidebar → **Inbox**
-3. Top-right of inbox → gear icon ⚙️ → **Automated responses**
-4. Scroll to **Frequently Asked Questions** (часто задаваемые вопросы) → toggle **On**
-5. Channel: select **Instagram** (Facebook can be added later if needed)
-6. Add the 4 question/answer pairs above, in order
-7. Save
+Steps in the IG app:
+1. Profile → ☰ menu (top-right) → look for "Frequently asked questions" (or scroll the long list)
+2. Tap to open the FAQ settings — shows up to 4 question slots
+3. Add each question + answer pair from above
+4. Toggle **Show Questions** ON at the top
+5. Test: DM @saged.club from a personal IG account — the 4 chips should appear at the top of the new thread
 
-Mobile alt (IG app):
-- Profile → ☰ menu → **Business tools** → **Saved replies / FAQs**
-- Same 4 pairs
+**Account type prerequisite:** the IG account must be set to **Creator** (not Personal). Business accounts may or may not see this feature depending on app version — Creator is the reliable path. Switching account type doesn't affect the connected FB Page or ad account.
 
-**Test it once:** message @saged.club from a personal IG account. The 4 chips should appear at the top of the new thread.
+**API automation (future):** see #103. Blocked on `pages_messaging` + `instagram_manage_messages` scopes + Meta App Review.
 
 ---
 
@@ -137,11 +142,14 @@ Add new questions to this doc (not to IG directly) whenever:
 
 Bump the IG menu only when one of the current 4 stops earning taps. Don't expand past 4 — the chip stack gets ignored.
 
+After any chip edit in this doc, mirror the change in the IG mobile app (no API path yet — see #103).
+
 ---
 
 ## What's NOT here (and why)
 
-- "Подарочный сертификат / пропущу вторую встречу" — niche follow-ups, low DM volume. Answered live or via `docs/lead-handling.md`.
-- Coworking-specific deep questions (схема студии, hours, intro course details) — chip 4 routes them to write back ("напишите сюда, расскажем"). Coworking is the slowest seller; high-touch DM works fine without auto-chips.
-- Bot escalation rules — high-touch audience, conversion lives in human reply. The auto-reply is the opener, not the closer.
-- Adult-course-specific timing nuance (Thursday slots 12/15/19) — fits chip 4 inline; full slot list goes into the live chat once the parent has picked "adult".
+- **"Нужен ли опыт?"** — strong question but lower priority than price / location / booking / language. Covered by the greeting auto-reply and `docs/lead-handling.md`. If a chip's tap volume drops to near zero, swap it back in.
+- **"Когда ближайшее занятие?"** — would be a strong 5th chip (schedule is the most actionable question), but Meta caps the menu at 4. The booking chip routes this for adult Thursdays; kids waitlist is handled in live reply.
+- **"Подарочный сертификат / пропущу вторую встречу"** — niche follow-ups, low DM volume. Answered live or via `docs/lead-handling.md`.
+- **Coworking-specific deep questions** (схема студии, hours, intro course details) — chip 3 routes them to write back. Coworking is the slowest seller; high-touch DM works fine without auto-chips.
+- **Bot escalation rules** — high-touch audience, conversion lives in human reply. The auto-reply is the opener, not the closer.
