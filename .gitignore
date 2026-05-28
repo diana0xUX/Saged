@@ -40,4 +40,5 @@ inbox/
 *.MOV
 scripts/local/
 .campaign-ids
+.kids-monitor-state
 # /tmp output files (creative/upload/adset jsons)
