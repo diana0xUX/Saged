@@ -6,6 +6,8 @@ Auto-reply chips that appear in the IG DM thread before the person types anythin
 
 **Strategy:** primary language is Russian (main audience). UA fallback is handled manually via the lead-handling playbook — don't try to dual-language inside the auto-reply, it gets noisy.
 
+Each chip covers all three products briefly with emoji prefixes — 🪻 adult course / 🌻 kids class / 🌾 coworking — so a parent or potential coworker recognises their option without tapping the wrong chip first. Every answer ends with a routing question that asks them to pick a format.
+
 Tone matches `docs/lead-handling.md`: warm, plain, ends with a specific next-step question.
 
 ---
@@ -16,13 +18,13 @@ Tone matches `docs/lead-handling.md`: warm, plain, ends with a specific next-ste
 
 Answer (RU):
 ```
-Курс — 60 €. Это две встречи по 2 часа:
-🪷 первая — лепим руками
-🪷 вторая, через неделю — глазурь и обжиг
+🪻 Взрослый курс — 60 € · 2 встречи по 2 часа, каждый четверг
+🌻 Детский класс (6–10 лет) — 25 € · 1,5 часа
+🌾 Коворкинг для гончаров — 200 € в месяц
 
-В цену входит вся глина, инструменты, все обжиги, чай. Группа до 6 человек.
+Всё включено: глина, инструменты, обжиг, глазурь, чай.
 
-Ближайший четверг — какое время удобнее: 12:00, 15:00 или 19:00?
+Что из этого вас интересует?
 ```
 
 ### 2. Question chip: `Где студия?`
@@ -33,29 +35,31 @@ C/ de les Cuines, 8 — старый город Валенсии, в двух ш
 
 Метро Xàtiva — 5 минут пешком, Àngel Guimerà — 7 минут. Парковка в центре сложная, лучше метро или велосипед.
 
-Подсказать ближайший четверг?
+Какой формат интересует — взрослый курс, детский класс или коворкинг?
 ```
 
 ### 3. Question chip: `Нужен ли опыт?`
 
 Answer (RU):
 ```
-Совсем нет. Большинство впервые трогают глину 🪷
+Совсем нет 🪷
 
-Корица ведёт каждого с нуля, в вашем темпе. Не нужно "получаться" — нужно прийти и провести 2 часа руками в глине.
+Большинство впервые трогают глину — и на взрослом курсе, и на детском классе. Кориця ведёт каждого с нуля, в вашем темпе.
 
-Хотите забронировать четверг?
+Какой формат интересует?
 ```
 
 ### 4. Question chip: `Как записаться?`
 
 Answer (RU):
 ```
-Просто выберите четверг и время: 12:00, 15:00 или 19:00 — напишите сюда или в WhatsApp +34 605 54 33 00.
+Зависит от формата:
 
-Мы подтвердим место и пришлём ссылку на оплату. Бронь — минимум за день до встречи.
+🪻 Взрослый курс (60 €): выберите четверг и время на saged.club → "Записаться"
+🌻 Детский класс (25 €): добавим в список ожидания → позовём, когда соберётся 4–6 детей
+🌾 Коворкинг (200 €/мес): напишите сюда, расскажем условия
 
-Какой четверг подходит?
+Что выбираете?
 ```
 
 ---
@@ -64,13 +68,13 @@ Answer (RU):
 
 ### 1. Скільки коштує?
 ```
-Курс — 60 €. Це дві зустрічі по 2 години:
-🪷 перша — ліпите руками
-🪷 друга, за тиждень — глазур і випал
+🪻 Курс для дорослих — 60 € · 2 зустрічі по 2 години, щочетверга
+🌻 Дитячий клас (6–10 років) — 25 € · 1,5 години
+🌾 Коворкінг для гончарів — 200 € на місяць
 
-У ціну входить уся глина, інструменти, усі випали, чай. Група до 6 осіб.
+Усе включено: глина, інструменти, випал, глазур, чай.
 
-Найближчий четвер — який час зручніше: 12:00, 15:00 чи 19:00?
+Що з цього вас цікавить?
 ```
 
 ### 2. Де студія?
@@ -79,25 +83,27 @@ C/ de les Cuines, 8 — старе місто Валенсії, поруч із 
 
 Метро Xàtiva — 5 хвилин пішки, Àngel Guimerà — 7 хвилин. У центрі паркуватися складно, краще метро чи велосипед.
 
-Підказати найближчий четвер?
+Який формат вас цікавить — дорослий курс, дитячий клас чи коворкінг?
 ```
 
 ### 3. Чи потрібен досвід?
 ```
-Зовсім ні. Більшість уперше торкаються глини 🪷
+Зовсім ні 🪷
 
-Кориця веде кожного з нуля, у вашому темпі. Не треба, щоб "вийшло" — треба прийти і провести 2 години руками в глині.
+Більшість уперше торкаються глини — і на дорослому курсі, і на дитячому класі. Кориця веде кожного з нуля, у вашому темпі.
 
-Хочете забронювати четвер?
+Який формат цікавить?
 ```
 
 ### 4. Як записатися?
 ```
-Просто оберіть четвер і час: 12:00, 15:00 чи 19:00 — напишіть сюди або у WhatsApp +34 605 54 33 00.
+Залежить від формату:
 
-Ми підтвердимо місце і надішлемо посилання на оплату. Бронь — мінімум за день до зустрічі.
+🪻 Дорослий курс (60 €): оберіть четвер і час на saged.club → "Записатися"
+🌻 Дитячий клас (25 €): додамо у список очікування → покличемо, коли збереться 4–6 дітей
+🌾 Коворкінг (200 €/міс): напишіть сюди, розкажемо умови
 
-Який четвер підходить?
+Що обираєте?
 ```
 
 ---
@@ -135,6 +141,7 @@ Bump the IG menu only when one of the current 4 stops earning taps. Don't expand
 
 ## What's NOT here (and why)
 
-- "Можно ли с детьми / подарочный сертификат / пропущу вторую" — already answered on the site FAQ, lower DM volume. Keep them on the page, not in the IG menu.
-- A "цены и пакеты" carousel — premature. One offer, one price right now.
-- Bot escalation rules — high-touch audience, conversion lives in human reply. Auto-reply is the opener, not the closer.
+- "Подарочный сертификат / пропущу вторую встречу" — niche follow-ups, low DM volume. Answered live or via `docs/lead-handling.md`.
+- Coworking-specific deep questions (схема студии, hours, intro course details) — chip 4 routes them to write back ("напишите сюда, расскажем"). Coworking is the slowest seller; high-touch DM works fine without auto-chips.
+- Bot escalation rules — high-touch audience, conversion lives in human reply. The auto-reply is the opener, not the closer.
+- Adult-course-specific timing nuance (Thursday slots 12/15/19) — fits chip 4 inline; full slot list goes into the live chat once the parent has picked "adult".
