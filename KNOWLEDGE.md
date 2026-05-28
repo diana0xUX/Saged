@@ -166,6 +166,39 @@ See `AUDIT.md` for the full breakdown.
 | 2026-05-14 | **First workshop run with paying customer** | Diana confirmed booking, class delivered |
 | 2026-05-28 | **Kids Trial Class campaign built via API** | Campaign `Saged · Kids Trial · 2026-05` (`120245456772570513`), 2 ad sets RU€2/UA€3, all PAUSED. Diana flips ACTIVE after review. |
 
+## Marketing economics
+
+### Snapshot · May 2026 (cumulative 1-28 May)
+
+| | |
+|---|---:|
+| Ad spend (Meta, full account) | **€143.27** |
+| Customers acquired | 9 individuals + 1 private birthday party (6 kids) |
+| Revenue: 9 × €50 avg | €450 |
+| Revenue: 1 birthday party | ~€300 |
+| **Total revenue** | **€750** |
+| **Net profit after ads** | **+€606.73** |
+| **ROAS** | **5.24×** |
+| Cost per conversion (10 bookings) | €14.33 |
+| Cost per attendee body (15 people) | €9.55 |
+
+**Read:** every €1 spent on Meta ads returned €5.24 in revenue. Above the 3× rule-of-thumb that ad professionals call "scale this." Diana confirmed all 9 + the birthday party were attributable to this month's marketing activity (not lifetime spend).
+
+### Benchmarks to evaluate future spend
+
+- **5×+ ROAS** = scale this channel, increase budget
+- **3×+ ROAS** = healthy, hold or modest increase
+- **1.5–3× ROAS** = channel-fit confirmed but margin thin, hold and iterate creative
+- **<1.5× ROAS** = pause / rebuild — either audience, offer, or creative is wrong
+
+### Kids campaign threshold (launched 2026-05-28, €140 budget over 14 days)
+
+To clear the **1.5× channel-fit floor** at €25 kids ticket:
+- Need ≥ ~8.4 kids bookings (€210 revenue) over 14 days
+- That's about 1 booking every 1.7 days
+
+Below that = pause. Above = next iteration / budget bump.
+
 ## Channel attribution learnings
 
 - **Telegram DM with direct Cal.com link works** as a sales channel — Diana sent a booking link and it converted. The Pixel still fires Schedule on the success page regardless of how the user got there, so Telegram bookings show up in Meta's Pixel stats but NOT in the campaign-attributed conversions.
