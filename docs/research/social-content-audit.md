@@ -693,15 +693,19 @@ The bridge to Phase 2 (best-practices report) and Phase 4 (3-person playbooks). 
 
 ---
 
+## Decisions log
+
+Decisions made during Phase 1 review. Each updates the corresponding open question below.
+
+| Date | Decision | Why |
+|---|---|---|
+| 2026-05-29 | **Voice anchor: lane (b)** — "slow + meditative" master voice + **family/heritage + daily founder hands** as the engagement lever via Korytsia. | Data-grounded: pure "slow + meditative" alone caps at ~2-4% engagement (Manos de Tierra, Pause). Family/heritage + daily founder hands runs 3-5% (Yar Workshop, Lumbre y Barro) and is uncontested in Valencia. "Social + experience" wins on engagement (4-6%, Solta Arte / Fango) but breaks Saged's brand promise. Lane (b) keeps brand integrity AND adds the engagement multiplier. |
+
 ## Open questions for Diana
 
 These surfaced during research and need a founder call before Phase 4 (playbooks) can be written:
 
-1. **Voice anchor — which lane?**
-   - (a) Pure "slow + meditative" (Pause Moscow vibe)
-   - (b) "Slow" + Ukrainian heritage side-rail (Yar Workshop influence via Korytsia)
-   - (c) "Slow" + Diana's outsider-host story (Pottery Shed pattern)
-   - Recommend: (b) as primary, (c) as monthly. (a) alone risks looking like Pause Moscow's clone.
+1. ~~**Voice anchor — which lane?**~~ ✅ **Resolved 2026-05-29** — lane (b), "slow + meditative" + family/heritage + daily founder hands via Korytsia. See Decisions log above.
 
 2. **Daily Reels — who shoots, who cuts?**
    - Korytsia making 3-second wheel clips daily is the highest-leverage move but only works if there's a frictionless capture flow. Phone on a tripod by the wheel? Cross-post-to-TikTok plan? Approval before posting?
