@@ -702,6 +702,9 @@ Decisions made during Phase 1 review. Each updates the corresponding open questi
 | 2026-05-29 | **Voice anchor: lane (b)** — "slow + meditative" master voice + **family/heritage + daily founder hands** as the engagement lever via Korytsia. | Data-grounded: pure "slow + meditative" alone caps at ~2-4% engagement (Manos de Tierra, Pause). Family/heritage + daily founder hands runs 3-5% (Yar Workshop, Lumbre y Barro) and is uncontested in Valencia. "Social + experience" wins on engagement (4-6%, Solta Arte / Fango) but breaks Saged's brand promise. Lane (b) keeps brand integrity AND adds the engagement multiplier. |
 | 2026-05-29 | **Workflow agreed** — Korytsia keeps her Tue/Wed pre-class Reels + Thursday Stories rhythm. Diana shoots her own Diana-on-camera Reel + a Korytsia-hands Reel on her 2-3 studio days. K2 (kids teacher, Korytsia's friend & studio neighbor) owns kids-class content. Lena (pro photographer, current barter partner — made the kids ad with 6%+ CTR) owns hero Reels + paid ad creative. | Builds on what already works rather than disrupting it. Korytsia's Tue/Wed rhythm converts via familiarity, not polish. Diana's good camera + studio days solve Korytsia's bad-phone/bad-light bottleneck. Lena's polish carries quality where amateur content can't. K2 owns the kids lane separately so kids content doesn't dilute the adult feed. |
 | 2026-05-29 | **Lena monthly trial — €300 for 1 shoot day producing 4 polished Reels (studio/in-studio/founder topics).** Run 4-week pilot per the measurement framework. Pay Lena monthly retainer if ≥1.5× bookings per post vs amateur baseline. | Lena is the highest-leverage person — only one producing both ad creative AND polished organic. Trial decouples whether-to-pay from how-much by running one shoot day and measuring it cleanly. €300 capex is small vs potential lift on €60/€25 tickets. Threshold matches the kids-campaign 1.5× channel-fit floor (KNOWLEDGE.md). |
+| 2026-05-29 | **TikTok deferred.** Not investing in TikTok-native content production OR active UGC prompts at this stage. Revisit when one of the existing channels (@saged.club IG, Diana's personal IG) is saturated. | Three-platform plan (IG + TG + FB) is already the team's capacity ceiling. Adding TikTok now would dilute focus before any channel is proven. Audit Tier B confirms TikTok works as passive UGC discovery (Solta Arte) but Saged isn't at the visitor volume that produces UGC yet. |
+| 2026-05-29 | **Two-handle split deferred (option B).** Keep everything on @saged.club until we cross 5-10K followers OR De Limón merch hits €1k/month revenue, whichever first. | One account compounds faster than two thin ones at our scale. Revisit when the De Limón line has real revenue or the audience is mature enough to warrant brand clarity. |
+| 2026-05-29 | **Kundoglini → dedicated Reel format on @saged.club + cross-published to Diana's personal IG. Add Kundoglini concept to Lena's first shoot brief.** Future: paid boost campaign to grow masterclass audience (separate issue, deferred until organic baseline established). | Kundoglini is unique to Saged (no Valencia or international peer) and deserves its own visual identity within the feed. Lena's shoot is the cheapest way to produce hero content. Paid amplification waits for organic baseline so the campaign creative can be informed by what actually engages. |
 
 ## Open questions for Diana
 
@@ -711,19 +714,15 @@ These surfaced during research and need a founder call before Phase 4 (playbooks
 
 2. ~~**Daily Reels — who shoots, who cuts?**~~ ✅ **Resolved 2026-05-29** — workflow agreed across 4 people (Korytsia / Diana / K2 / Lena). Lena monthly trial approved. See Decisions log above.
 
-   Sub-question follow-up: **Reel concept research + shoot brief for Lena's first paid day** — what 4 specific concepts will land hardest with Saged's RU/UA-speaking Valencia + diaspora audience, given the voice lane and the audit findings. Tracked as separate issue.
+   Sub-question follow-up: **Reel concept research + shoot brief for Lena's first paid day** — what 4 specific concepts will land hardest with Saged's RU/UA-speaking Valencia + diaspora audience, given the voice lane and the audit findings. Tracked as separate issue #113.
 
-3. **2nd resident's name + handle.**
-   - Phase 4 playbooks need this. Also: content rights when they leave (do their reels stay on @saged.club or move with them?)
+3. **K2's name + handle** — Diana to come back to this. Phase 4 playbook for her needs it; for now we call her "K2."
 
-4. **TikTok strategy.**
-   - Cross-post Reels and let UGC compound (Solta Arte path), OR actively prompt visitors to tag with a card/sign in the studio?
+4. ~~**TikTok strategy.**~~ ✅ **Resolved 2026-05-29** — deferred. See Decisions log.
 
-5. **Two-handle split timing.**
-   - At what follower threshold or revenue trigger does Saged spin out a @saged.shop / @saged.studio? Tied to De Limón merch launch?
+5. ~~**Two-handle split timing.**~~ ✅ **Resolved 2026-05-29** — option B, defer until 5-10K followers OR merch hits €1k/month. See Decisions log.
 
-6. **Kundoglini masterclass content lane.**
-   - Diana's monthly Kundoglini masterclass (yoga + clay) is a unique format with no Valencia competitor and no clear Tier B peer. Worth its own content stream OR fold into Saged's main feed? Probably its own — but verify before Phase 4.
+6. ~~**Kundoglini masterclass content lane.**~~ ✅ **Resolved 2026-05-29** — dedicated Reel format on @saged.club + cross-published to Diana's personal IG. Concept added to Lena's first shoot brief. Future paid boost campaign tracked separately. See Decisions log.
 
 ---
 
