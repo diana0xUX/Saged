@@ -173,6 +173,6 @@ Total setup time: ~2 hours. Most of it is the sheet structure + writing the What
 
 ## Open questions
 
-- **Existing Diana booking log** — does anything exist in a spreadsheet today, or is it all in WhatsApp threads + memory? If a sheet exists already, we extend it. If not, we create from scratch.
-- **WhatsApp first-reply template ownership** — who writes the canonical RU/UA/EN versions of the intake line? Diana drafts, I review for voice fit?
-- **Cal.com permissions** — can I add the custom question via API access we have, or does Diana need to do it in the UI?
+- ~~**Existing Diana booking log**~~ ✅ **Resolved 2026-05-29** — Diana keeps it in WhatsApp threads. Booking sheet starts fresh as part of this scaffold.
+- ~~**WhatsApp first-reply template ownership**~~ ✅ **Resolved 2026-05-29** — drafted by Fergie, see [`intake-templates.md`](intake-templates.md). Diana to review for voice fit and paste into her saved replies.
+- ~~**Cal.com permissions**~~ ✅ **Resolved 2026-05-29** — no API key in `.env` yet; UI path (~2 min in Cal.com dashboard) is the recommendation. API path optional with key added to `.env`. See [`intake-templates.md`](intake-templates.md) for both paths.
