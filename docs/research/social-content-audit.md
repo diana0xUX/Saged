@@ -700,6 +700,8 @@ Decisions made during Phase 1 review. Each updates the corresponding open questi
 | Date | Decision | Why |
 |---|---|---|
 | 2026-05-29 | **Voice anchor: lane (b)** — "slow + meditative" master voice + **family/heritage + daily founder hands** as the engagement lever via Korytsia. | Data-grounded: pure "slow + meditative" alone caps at ~2-4% engagement (Manos de Tierra, Pause). Family/heritage + daily founder hands runs 3-5% (Yar Workshop, Lumbre y Barro) and is uncontested in Valencia. "Social + experience" wins on engagement (4-6%, Solta Arte / Fango) but breaks Saged's brand promise. Lane (b) keeps brand integrity AND adds the engagement multiplier. |
+| 2026-05-29 | **Workflow agreed** — Korytsia keeps her Tue/Wed pre-class Reels + Thursday Stories rhythm. Diana shoots her own Diana-on-camera Reel + a Korytsia-hands Reel on her 2-3 studio days. K2 (kids teacher, Korytsia's friend & studio neighbor) owns kids-class content. Lena (pro photographer, current barter partner — made the kids ad with 6%+ CTR) owns hero Reels + paid ad creative. | Builds on what already works rather than disrupting it. Korytsia's Tue/Wed rhythm converts via familiarity, not polish. Diana's good camera + studio days solve Korytsia's bad-phone/bad-light bottleneck. Lena's polish carries quality where amateur content can't. K2 owns the kids lane separately so kids content doesn't dilute the adult feed. |
+| 2026-05-29 | **Lena monthly trial — €300 for 1 shoot day producing 4 polished Reels (studio/in-studio/founder topics).** Run 4-week pilot per the measurement framework. Pay Lena monthly retainer if ≥1.5× bookings per post vs amateur baseline. | Lena is the highest-leverage person — only one producing both ad creative AND polished organic. Trial decouples whether-to-pay from how-much by running one shoot day and measuring it cleanly. €300 capex is small vs potential lift on €60/€25 tickets. Threshold matches the kids-campaign 1.5× channel-fit floor (KNOWLEDGE.md). |
 
 ## Open questions for Diana
 
@@ -707,8 +709,9 @@ These surfaced during research and need a founder call before Phase 4 (playbooks
 
 1. ~~**Voice anchor — which lane?**~~ ✅ **Resolved 2026-05-29** — lane (b), "slow + meditative" + family/heritage + daily founder hands via Korytsia. See Decisions log above.
 
-2. **Daily Reels — who shoots, who cuts?**
-   - Korytsia making 3-second wheel clips daily is the highest-leverage move but only works if there's a frictionless capture flow. Phone on a tripod by the wheel? Cross-post-to-TikTok plan? Approval before posting?
+2. ~~**Daily Reels — who shoots, who cuts?**~~ ✅ **Resolved 2026-05-29** — workflow agreed across 4 people (Korytsia / Diana / K2 / Lena). Lena monthly trial approved. See Decisions log above.
+
+   Sub-question follow-up: **Reel concept research + shoot brief for Lena's first paid day** — what 4 specific concepts will land hardest with Saged's RU/UA-speaking Valencia + diaspora audience, given the voice lane and the audit findings. Tracked as separate issue.
 
 3. **2nd resident's name + handle.**
    - Phase 4 playbooks need this. Also: content rights when they leave (do their reels stay on @saged.club or move with them?)
