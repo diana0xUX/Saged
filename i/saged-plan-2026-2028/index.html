@@ -292,19 +292,20 @@
 <!-- ==================== ПЕРЕРАСЧЁТ ==================== -->
 <section class="deep">
   <div class="container">
-    <h3>Перерасчёт чисел · 2 июня 2026</h3>
-    <h2>При €30 за класс единая ценовая точка не оставляет Диане маржи.</h2>
-    <p>Новые входные данные от Дианы для пересчёта плана при актуальной структуре команды:</p>
+    <h3>Перерасчёт чисел · 2 июня 2026 (v2 — скорректировано)</h3>
+    <h2>На break-even, без запаса. Малое движение любого рычага — и Диана в плюсе.</h2>
+    <p>Скорректированные входные данные от Дианы:</p>
 
     <ul>
       <li><strong>Корица:</strong> 3 взрослых + 2 детских класса в неделю</li>
-      <li><strong>Вита:</strong> 1 детский класс + хостинг взрослых для EN/ES аудитории (внутри классов Корицы, без отдельной выручки)</li>
-      <li><strong>Цена:</strong> €30 за человека за класс — и взрослые, и дети</li>
-      <li><strong>CAC:</strong> €15 за привлечённого участника</li>
+      <li><strong>Вита:</strong> 1 детский класс + хостинг взрослых для EN/ES (в рамках классов Корицы)</li>
+      <li><strong>Взрослые:</strong> комбо €60 за 2 занятия (текущий продукт, не меняется)</li>
+      <li><strong>Дети:</strong> €30 за разовый класс</li>
+      <li><strong>CAC:</strong> €15 за привлечённого клиента (платится один раз на клиента, не на визит)</li>
+      <li><strong>Удержание:</strong> 1 из 5 клиентов возвращается → среднее 1.25 покупок на клиента</li>
       <li><strong>Капасити:</strong> до 6 человек в классе</li>
-      <li><strong>Допущение по удержанию:</strong> 80% новых, 20% повторных в 30 дней (текущая метрика Корицы — 1 из 5 возвращается)</li>
-      <li><strong>Допущение по материалам:</strong> €10/чел детский, €15/чел взрослый</li>
-      <li><strong>Применённая формула:</strong> доход − материалы = чистая, чистая ÷ 2 = доля инструктора и доля Дианы; Диана дополнительно абсорбирует CAC</li>
+      <li><strong>Материалы:</strong> €10/чел детский визит, €15/чел взрослое занятие (€30 на одно комбо)</li>
+      <li><strong>Формула:</strong> доход − материалы = чистая, чистая ÷ 2 = доля инструктора и доля Дианы; Диана дополнительно абсорбирует CAC, аренду, своё время</li>
     </ul>
 
     <h3 style="margin-top: 2.5rem;">Месячные числа при разных наполнениях (6 классов/нед)</h3>
@@ -318,54 +319,60 @@
         </tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Студентов/мес</td><td style="text-align: right; padding: 0.5rem;">77</td><td style="text-align: right; padding: 0.5rem;">124</td><td style="text-align: right; padding: 0.5rem;">155</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Выручка</td><td style="text-align: right; padding: 0.5rem;">€2,322</td><td style="text-align: right; padding: 0.5rem;">€3,715</td><td style="text-align: right; padding: 0.5rem;">€4,644</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Выручка (взрослые €60 + дети €30)</td><td style="text-align: right; padding: 0.5rem;">€2,322</td><td style="text-align: right; padding: 0.5rem;">€3,715</td><td style="text-align: right; padding: 0.5rem;">€4,644</td></tr>
         <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Материалы</td><td style="text-align: right; padding: 0.5rem;">−€968</td><td style="text-align: right; padding: 0.5rem;">−€1,548</td><td style="text-align: right; padding: 0.5rem;">−€1,935</td></tr>
         <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Чистая (до сплита)</strong></td><td style="text-align: right; padding: 0.5rem;"><strong>€1,354</strong></td><td style="text-align: right; padding: 0.5rem;"><strong>€2,167</strong></td><td style="text-align: right; padding: 0.5rem;"><strong>€2,709</strong></td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Корица (5 классов/нед)</td><td style="text-align: right; padding: 0.5rem;">€548</td><td style="text-align: right; padding: 0.5rem;">€877</td><td style="text-align: right; padding: 0.5rem;">€1,096</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Корица (5 классов/нед)</td><td style="text-align: right; padding: 0.5rem;">€548</td><td style="text-align: right; padding: 0.5rem;">€877</td><td style="text-align: right; padding: 0.5rem;">€1,097</td></tr>
         <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Вита (1 класс/нед)</td><td style="text-align: right; padding: 0.5rem;">€129</td><td style="text-align: right; padding: 0.5rem;">€206</td><td style="text-align: right; padding: 0.5rem;">€258</td></tr>
         <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Диана: доля от классов</td><td style="text-align: right; padding: 0.5rem;">€677</td><td style="text-align: right; padding: 0.5rem;">€1,083</td><td style="text-align: right; padding: 0.5rem;">€1,355</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">CAC (Диана абсорбирует)</td><td style="text-align: right; padding: 0.5rem;">−€929</td><td style="text-align: right; padding: 0.5rem;">−€1,486</td><td style="text-align: right; padding: 0.5rem;">−€1,858</td></tr>
-        <tr><td style="padding: 0.5rem;"><strong>Диана: чистый итог</strong></td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);"><strong>−€252</strong></td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);"><strong>−€403</strong></td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);"><strong>−€504</strong></td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">CAC (Диана абсорбирует)</td><td style="text-align: right; padding: 0.5rem;">−€697</td><td style="text-align: right; padding: 0.5rem;">−€1,115</td><td style="text-align: right; padding: 0.5rem;">−€1,394</td></tr>
+        <tr><td style="padding: 0.5rem;"><strong>Диана: чистый итог</strong></td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);"><strong>−€20</strong></td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);"><strong>−€32</strong></td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);"><strong>−€39</strong></td></tr>
       </tbody>
     </table>
 
-    <p style="margin-top: 1.5rem;"><em>Цифры не включают аренду, печь, мою прочую время — только экономику классов и CAC.</em></p>
+    <p style="margin-top: 1.5rem;"><em>Цифры не включают аренду, печь, моё время — только экономику классов и CAC.</em></p>
+
+    <h3 style="margin-top: 2.5rem;">Что изменилось от v1 (и почему важно)</h3>
+    <p>Прошлая версия считала так, как будто <strong>взрослые тоже разовые €30 классы</strong>. На самом деле взрослые покупают <strong>комбо €60 за 2 занятия</strong> — то есть один CAC привлекает клиента на 2 слота, а не на 1. Это пополам уменьшает CAC на слот для взрослой линии. Плюс 1 из 5 возвращается (среднее 1.25 покупки на клиента) — это ещё растягивает CAC во времени.</p>
+    <p>Итог: экономика не «−€400/мес», а <strong>около нуля</strong>. Это не повод расслабляться (всё ещё минус), но и не катастрофа — небольшое движение любого рычага вытаскивает в плюс.</p>
 
     <h3 style="margin-top: 2.5rem;">Что говорят числа</h3>
 
-    <p><strong>Парадокс:</strong> при €30 за класс и €15 CAC с низкой удержанностью — каждый дополнительный класс увеличивает мой минус. Больше объём = больше нового CAC = больше потерь. Это не масштабирование, это растущая дыра.</p>
+    <p><strong>Юнит-экономика на break-even.</strong> При €60 комбо + €30 детский с CAC €15 и удержанием 1 из 5 — каждый клиент окупает себя ровно, но не оставляет запаса на аренду, печь и время. Любое ухудшение (CAC ↑, fill ↓, retention ↓) уводит в значимый минус. Любое улучшение → плюс.</p>
 
-    <p><strong>Корица и Вита зарабатывают мало:</strong> €877 + €206 = €1,083/мес на двоих при 80% наполнения. Для Валенсии «едва покрывает жизнь» Корицы — это конкретное число, не абстракция. Это объясняет, почему до 2 июня я неформально абсорбировала и материалы тоже: иначе её доля становилась бы €600–700/мес, и партнёрство сломалось бы.</p>
+    <p><strong>Корица и Вита:</strong> €877 + €206 = €1,083/мес на двоих при 80% наполнения. Для Валенсии «едва покрывает жизнь» Корицы — это конкретное число. Удвоить можно через цену или повторы — объём ограничен капасити.</p>
 
-    <h3 style="margin-top: 2.5rem;">Три рычага, чтобы перевернуть экономику для Дианы</h3>
+    <h3 style="margin-top: 2.5rem;">Рычаги: что выводит Диану в плюс</h3>
 
     <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
       <thead>
         <tr style="border-bottom: 2px solid var(--line);">
           <th style="text-align: left; padding: 0.5rem; font-weight: 600;">Рычаг</th>
           <th style="text-align: left; padding: 0.5rem; font-weight: 600;">Изменение</th>
-          <th style="text-align: right; padding: 0.5rem; font-weight: 600;">Диана: чистый итог при 80% fill</th>
+          <th style="text-align: right; padding: 0.5rem; font-weight: 600;">Диана: чистый при 80% fill</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Базовая линия</td><td style="padding: 0.5rem;">€30 цена, €15 CAC, 80% новых</td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);">−€403</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Удержание</strong> ↑</td><td style="padding: 0.5rem;">с 1/5 повторно до 1/2 (50% новых)</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€154</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Цена</strong> ↑</td><td style="padding: 0.5rem;">с €30 до €40 за класс</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€217</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Цена</strong> ↑↑</td><td style="padding: 0.5rem;">с €30 до €50 за класс</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€836</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Цена взрослых</strong> ↑</td><td style="padding: 0.5rem;">обратно к €60 для взрослых (текущая цена), €30 детский</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€1,055</td></tr>
-        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>CAC</strong> ↓</td><td style="padding: 0.5rem;">с €15 до €10 (через UGC + рекомендации)</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€92</td></tr>
-        <tr><td style="padding: 0.5rem;"><strong>Удержание ↑ + цена ↑</strong></td><td style="padding: 0.5rem;">50% новых + €40 за класс</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);"><strong>+€774</strong></td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;">Базовая линия</td><td style="padding: 0.5rem;">€60 комбо + €30 дети, €15 CAC, 1 из 5 возвращается</td><td style="text-align: right; padding: 0.5rem; color: var(--terracotta);">−€32</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Удержание</strong> ↑</td><td style="padding: 0.5rem;">с 1/5 до 1/3 возвращается</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€127</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Удержание</strong> ↑↑</td><td style="padding: 0.5rem;">с 1/5 до 1/2 возвращается</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€386</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Цена взрослых</strong> ↑</td><td style="padding: 0.5rem;">комбо €60 → €70</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€122</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Цена детей</strong> ↑</td><td style="padding: 0.5rem;">€30 → €40</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€278</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>Обе цены</strong> ↑</td><td style="padding: 0.5rem;">€60→€70 и €30→€40</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€432</td></tr>
+        <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 0.5rem;"><strong>CAC</strong> ↓</td><td style="padding: 0.5rem;">€15 → €10 (через UGC + рекомендации)</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);">+€340</td></tr>
+        <tr><td style="padding: 0.5rem;"><strong>Удержание + CAC</strong></td><td style="padding: 0.5rem;">1/3 возвр. + CAC €10</td><td style="text-align: right; padding: 0.5rem; color: var(--sage);"><strong>+€533</strong></td></tr>
       </tbody>
     </table>
 
     <h3 style="margin-top: 2.5rem;">Главный вывод</h3>
 
-    <p>Удержание — самый чувствительный рычаг, потому что бьёт по знаменателю (меньше нового CAC на единицу выручки). Цена — второй по силе, но требует валидации рынком. CAC снижается медленнее всего — это рычаг полгода, не месяца.</p>
+    <p>Удержание и CAC — самые сильные рычаги, потому что бьют по знаменателю (меньше нового CAC на ту же выручку). Цена детей — третий рычаг, тоже значимый. Цена взрослых — самый слабый: €60 уже близко к рыночному потолку для разового опыта.</p>
 
-    <p>Эти числа — не критика плана. Это калибровка: с озвученными входами €30/класс не оставляет Диане операционной маржи. Перед окончательным фиксом ценника €30 для взрослых стоит проверить, действительно ли клиенты Корицы согласятся платить €30 вместо €60 за то же занятие — или это инстинктивное «упростить», которое стоит €1,000+ в месяц.</p>
+    <p>«1 из 5 возвращается» — текущая метрика. Если она вырастет до 1 из 3 (через программу повторов: «следующий класс −€10», «День +14 follow-up», UGC возвраты) — Диана уверенно в плюсе без других изменений. Это самая дешёвая инвестиция: не требует поднимать цену, не требует риска оттока.</p>
 
-    <p><strong>Что я НЕ пересчитываю сегодня:</strong> Plan A/Plan B числа ниже остаются с прежними допущениями (29 мая). Если решим переломить рычаги (цена / удержание / CAC), перебью полный сценарий A/B заново.</p>
+    <p><strong>«День рождения» как новая линия:</strong> €150–300 за событие × ~2 в месяц = +€300–600/мес чистого, мало материалов, ноль CAC (организуются через рекомендации). Это легко добавляет €150–300 в долю Дианы и быстро превращает план из break-even в +€200/мес.</p>
+
+    <p><strong>Что НЕ пересчитано сегодня:</strong> числа Plan A/Plan B ниже всё ещё с допущениями 29 мая. Если зафиксируем приоритетный рычаг (удержание / цена / CAC) — перебью полный сценарий A/B заново.</p>
   </div>
 </section>
 
