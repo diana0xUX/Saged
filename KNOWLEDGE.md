@@ -34,6 +34,7 @@ Last updated: **2026-05-11**
 - Speaks: Ukrainian, Russian. **Does NOT speak English or Spanish** — load-bearing for team structure (EN/ES audience must be served by another person)
 - Aesthetic: minimalist ceramic art, slow tactile process
 - Deal: 50/50 profit-share contractor on RU/UA teaching line (not employee)
+- **Split formula (rule reset 2026-06-02):** 50/50 after materials. Materials = clay, paints, glazes, firings. Diana absorbs marketing and founder time. Pre-2026-06-02 materials Diana already absorbed informally are not recovered — the reset starts forward from next class. Communicate to Korytsia in plain language: "Going forward we go back to the original deal — materials come off the top before we split."
 
 ### Vita (added 2026-06-01) — Studio host (EN/ES line, in ramp)
 - Background: former IT developer + artist + photographer
@@ -42,7 +43,17 @@ Last updated: **2026-05-11**
 - Deal: 50/50 profit-share when both parties (studio + Vita) contribute labor — same model as Korytsia, not employment, no fixed salary, no Spain-hiring risk
 - First gig agreed: kids birthday party (7yo guest of honor), co-hosted with Diana — Vita's first paid event at Saged
 - Ramp plan: birthday parties → co-hosted kids classes → solo kids classes → co-hosted adult classes → solo adult classes. Don't skip steps; brand quality depends on the instructor being credible to the room.
-- **Open: define whether 50/50 split is on gross revenue or net (after clay + facility cost). Korytsia's terms are implicit; Vita's need to be explicit before resentment compounds.**
+- **Split formula (effective from first paid event):** 50/50 after materials. Same rule as Korytsia. Start clean — no informal absorption precedent; enforce from class one. Write into Vita's contract (legal issue #124) before her first paid event.
+
+## Compensation formula — both contractors
+
+**Formula:** `revenue − materials (clay + paints + glazes + firings) = net. Net ÷ 2 = each party's share.`
+
+**Diana additionally absorbs (not deducted from net):** marketing (Meta ads, organic IG/Telegram time, lead-handling time), Stripe fees, facility (rent, utilities), kiln depreciation, founder time. These are studio/founder costs, not class-delivery costs. The 50/50 only applies to class-delivery economics.
+
+**Materials accounting:** bulk purchases (e.g. a €100 clay restock that covers ~5 classes) get amortized — count ~€20 per class consumed, not the full lump on the next class. Keep simple notes in `finances/` (gitignored) of stock-in + classes-it-covered for clean math at month-end.
+
+**Why this matters:** without the materials deduction, contractors earn proportional to revenue but feel zero cost pressure. With it, both have skin in keeping materials lean (use what's there, don't over-restock, charge appropriate prices). The deduction protects partnership longevity by aligning incentives.
 
 ## Contact Channels (all working as of 2026-05-11)
 
