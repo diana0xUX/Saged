@@ -27,12 +27,22 @@ Last updated: **2026-05-11**
 - Telegram: @dvoroneca
 - GitHub: diana0xUX
 
-### Korincia Gasikóvska ("Кориця" RU / "Кориця" UA / "Korytsia" EN) — Ceramic instructor
+### Korincia Gasikóvska ("Кориця" RU / "Кориця" UA / "Korytsia" EN) — Ceramic instructor (RU/UA line)
 - Ukrainian ceramic artist based in Valencia
 - Runs her own studio: @korytsia_studio (Instagram)
 - Telegram: @ko_hasi
-- Speaks: Ukrainian, Russian
+- Speaks: Ukrainian, Russian. **Does NOT speak English or Spanish** — load-bearing for team structure (EN/ES audience must be served by another person)
 - Aesthetic: minimalist ceramic art, slow tactile process
+- Deal: 50/50 profit-share contractor on RU/UA teaching line (not employee)
+
+### Vita (added 2026-06-01) — Studio host (EN/ES line, in ramp)
+- Background: former IT developer + artist + photographer
+- Speaks: English, Spanish — fills the EN/ES audience gap that Korytsia can't serve
+- Ceramic skills: minimal at start — currently in apprenticeship ramp with Diana
+- Deal: 50/50 profit-share when both parties (studio + Vita) contribute labor — same model as Korytsia, not employment, no fixed salary, no Spain-hiring risk
+- First gig agreed: kids birthday party (7yo guest of honor), co-hosted with Diana — Vita's first paid event at Saged
+- Ramp plan: birthday parties → co-hosted kids classes → solo kids classes → co-hosted adult classes → solo adult classes. Don't skip steps; brand quality depends on the instructor being credible to the room.
+- **Open: define whether 50/50 split is on gross revenue or net (after clay + facility cost). Korytsia's terms are implicit; Vita's need to be explicit before resentment compounds.**
 
 ## Contact Channels (all working as of 2026-05-11)
 
