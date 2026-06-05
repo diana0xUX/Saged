@@ -109,17 +109,15 @@ Covered in section 3 (stools + tabletops). Nothing additional bought.
 
 | Item | Spec | Status | Purchase price | Est. current value |
 |---|---|---|---:|---:|
-| Camera | (body + lens, total spend) | ❓ **Classification pending** — bought for studio use but held personally | €1,500 | €900-1,200 |
+| Camera | (body + lens, total spend) | ✅ **Studio asset** (used by husband for his own work as a partner perk) | €1,500 | €900-1,200 |
 | Speakers, lights beyond what came with space, phone, card reader | various | ❌ Personal items | — | — |
 
-**Important classification question for the partnership conversation**: the €1,500 camera was bought *for* the studio (product photos, IG content, ad creatives) but currently sits as Diana's personal property. Options:
-1. **Transfer to the business** as an in-kind capital contribution. Diana gets credit in the equity split (≈€1,000 added to her contribution side). Camera becomes a business asset, lives at/with the studio.
-2. **Keep personal, license to the business** — Diana retains ownership; the studio uses it under an informal agreement. If Diana leaves, camera leaves.
-3. **Studio buys it from Diana** at current market value (~€1,000) — converts to business asset, Diana cashes out her original spend.
+**Notes on the camera**:
+- Camera is a studio-owned asset. Counts in the tangible total.
+- Husband uses it for his personal/professional work — frame this in the partnership memo as a **partner-use perk** (similar to how partners often use company cars). Costs nothing today since husband is a co-owner, but document it so there's no ambiguity later about ownership.
+- Spanish tax angle: business assets used personally by partners can technically create imputed personal income. At €1,500 asset value this is negligible — flag to gestor but don't over-engineer.
 
-This kind of clarification is exactly what a gestor will ask during SL formation — answering it now saves you a meeting later.
-
-**Implication regardless**: if Diana's personal laptop/phone is also load-bearing for ad ops + bookings, consider buying one shared "studio tablet" or laptop (€300-500) before partnership formalization, so the business owns its own ops device.
+**Implication for ops**: if Diana's personal laptop/phone is still load-bearing for ad ops + bookings, consider buying one shared "studio tablet" or laptop (€300-500) before partnership formalization, so the business owns its own ops device.
 
 ---
 
@@ -163,9 +161,8 @@ Same as section 9 — Diana's personal laptop, phone, camera. **Business owns no
 | Raw materials (glazes, clay, tiles) | ~€300-400 | €230-350 |
 | Coffee machine | €200 | €100-150 |
 | Door film + signage | €200 | €150-200 |
-| Camera (if counted as business asset) | €1,500 | €900-1,200 |
-| **TANGIBLE ASSETS TOTAL (with camera)** | **~€6,160-6,260** | **~€4,240-5,675** |
-| **TANGIBLE ASSETS TOTAL (camera as personal)** | **~€4,660-4,760** | **~€3,340-4,475** |
+| Camera (studio asset, partner-use perk) | €1,500 | €900-1,200 |
+| **TANGIBLE ASSETS TOTAL** | **~€6,160-6,260** | **~€4,240-5,675** |
 
 ---
 
@@ -190,25 +187,25 @@ These came up during the audit. They're not asset value — they're **hidden cos
 ## Implications for the partnership valuation
 
 ### Tangible asset value (what the studio physically owns)
-**~€3,300-4,400 current value** (€4,560 paid).
+**~€4,240-5,675 current value** (€6,160 paid, including the €1,500 camera as a studio asset).
 
 This is **lower than the typical small studio's tangible base** — most ceramic studios carry €15-30K in equipment. Saged is operating lean, which is good for capital efficiency but means:
 
 - Almost all of Saged's value is **intangible** (brand, website, customer pipeline, Korytsia relationship).
 - The studio is undercapitalized on infrastructure (no kiln vent, no clay trap, no safety gear). These are not "nice to have" — they're required for formal licensing.
-- Husband injecting €5-10K capital just to close compliance gaps + buy proper trestle legs + ops device is a defensible first use of partner capital.
+- Husband injecting €5-10K capital just to close compliance gaps + buy a shared ops device is a defensible first use of partner capital.
 
 ### Updated valuation working number
 
 Going back to the business case doc (`docs/plans/partner-onboarding-business-case-2026-06-05.md`):
 
-- **Old tangible estimate**: blanks, no number
-- **Real tangible**: ~€3,300-4,400
+- **Real tangible**: ~€4,200-5,700
 - **Intangible (brand, website, customer list, Korytsia relationship)**: ~€20,000-45,000 (unchanged)
-- **Total business value**: ~€23,000-50,000 today
-- **Working number for partnership conversation**: **€30,000-45,000**
+- **Less: compliance + ops gap**: −€1,170-2,670
+- **Total business value**: **~€23,000-48,000 today**
+- **Working number for partnership conversation**: **€30,000-40,000**
 
-If husband puts in **€15,000** (split: €3K compliance gap close + €10K runway + €2K legal/notary), implied post-money valuation is ~€45,000, fair given pre-profit reality.
+If husband puts in **€15,000** (split: €2.5K compliance gap close + €1K ops device + €1K legal/notary + €10.5K runway), implied post-money valuation is ~€45,000, fair given pre-profit reality.
 
 ### What this audit tells us strategically
 
