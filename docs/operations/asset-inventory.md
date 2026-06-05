@@ -43,16 +43,15 @@ Current value is a rough estimate based on used-market depreciation (typical: 50
 
 | Item | Spec | Condition | Purchase price | Est. current value |
 |---|---|---|---:|---:|
-| MITTBACK easel × 6 | Birch, 58×70/93 cm, IKEA children's easel | New | €240 (€40 × 6) | €120-180 |
+| MITTBACK easel × 6 | Birch, 58×70/93 cm, IKEA — **used as trestle legs** (2 per table × 3 tables) | New | €240 (€40 × 6) | €120-180 |
+| SKÅLSTA tabletop × 3 | 140×80 cm, grayish beige, IKEA — sits on the MITTBACK easels | New | €165 (€55 × 3) | €80-110 |
 | FRANKLIN folding stool × 10 | Counter-height (63cm), black, IKEA | New | €290 (€29 × 10) | €150-200 |
-| SKÅLSTA tabletop × 3 | 140×80 cm, grayish beige, IKEA | New | €165 (€55 × 3) | €80-110 |
 | Shelving / drying racks | (collected free) | Free | €0 | €50-150 (replacement value if needed) |
 
 **Notes**:
-- MITTBACK = kids' classes
-- FRANKLIN stools at 63cm counter-height = adults work standing/perched at the SKÅLSTA tabletops on legs
-- Shelving was donated/scavenged — €0 cost, but has real use-value (free is a win, but partnership valuation usually doesn't credit donated items at full replacement)
-- ❓ Table legs that hold up the SKÅLSTA tabletops — not yet captured. If you bought trestle legs (IKEA OLOV/ODDVALD ~€20-30/pair × 6 pairs needed for 3 tabletops), add €120-180.
+- MITTBACK + SKÅLSTA combo = **3 adult work tables** (140×80cm each). 2 easels at each end, tabletop across. Creative repurpose — saves cost vs proper trestle legs.
+- 3 tables × 3-4 students each = 9-12 student capacity, matching the 10 FRANKLIN stools.
+- Shelving was donated/scavenged — €0 cost, but real use-value.
 
 ---
 
@@ -184,8 +183,7 @@ These came up during the audit. They're not asset value — they're **hidden cos
 | Emergency exit signage | Spanish fire code | €20-50 |
 | Heat-resistant gloves (kiln) | Workplace safety | €15-30 |
 | Studio-owned ops device (laptop or tablet) | So Diana's personal device isn't load-bearing | €300-500 |
-| Trestle legs (if not already counted) | To complete the work surface setup | €120-180 |
-| **TOTAL COMPLIANCE + OPS BUFFER** | | **~€1,290-2,850** |
+| **TOTAL COMPLIANCE + OPS BUFFER** | | **~€1,170-2,670** |
 
 ---
 
