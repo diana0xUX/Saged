@@ -31,6 +31,7 @@ Current value is a rough estimate based on used-market depreciation (typical: 50
 | Vevor pottery wheel | (model unknown) | New | €150 | €80-120 |
 | Slab roller TSR/16 | 16" benchtop slab roller | New | €364 | €250-320 |
 | Studio heat gun (drying) | hobby-tier | New | €25 | €15-20 |
+| Dremel rotary tool | (model unknown, likely 3000/4000 starter kit) | New | €75 | €40-55 |
 
 **Notes**:
 - Vevor is a budget entry-level Chinese brand. €150 new is at the low end. Holds resale value poorly. Sturdy enough for student use. Worth checking Korytsia's own wheel(s) at @korytsia_studio that get rotated into Saged sessions — if they're hers personally they're not Saged assets.
@@ -107,11 +108,19 @@ Covered in section 3 (stools + tabletops). Nothing additional bought.
 
 ## 9. Tech + AV (sound, lighting, devices)
 
-| Item | Status |
-|---|---|
-| Speakers, lights beyond what came with space, camera, phone, card reader | ❌ **Personal items** — not studio assets |
+| Item | Spec | Status | Purchase price | Est. current value |
+|---|---|---|---:|---:|
+| Camera | (body + lens, total spend) | ❓ **Classification pending** — bought for studio use but held personally | €1,500 | €900-1,200 |
+| Speakers, lights beyond what came with space, phone, card reader | various | ❌ Personal items | — | — |
 
-**Implication for partnership**: if Diana later leaves and takes her phone/laptop/camera, the studio loses ad ops + booking management capability. Consider buying one shared "studio tablet" or laptop (€300-500) before partnership formalization, so the business owns its own ops device.
+**Important classification question for the partnership conversation**: the €1,500 camera was bought *for* the studio (product photos, IG content, ad creatives) but currently sits as Diana's personal property. Options:
+1. **Transfer to the business** as an in-kind capital contribution. Diana gets credit in the equity split (≈€1,000 added to her contribution side). Camera becomes a business asset, lives at/with the studio.
+2. **Keep personal, license to the business** — Diana retains ownership; the studio uses it under an informal agreement. If Diana leaves, camera leaves.
+3. **Studio buys it from Diana** at current market value (~€1,000) — converts to business asset, Diana cashes out her original spend.
+
+This kind of clarification is exactly what a gestor will ask during SL formation — answering it now saves you a meeting later.
+
+**Implication regardless**: if Diana's personal laptop/phone is also load-bearing for ad ops + bookings, consider buying one shared "studio tablet" or laptop (€300-500) before partnership formalization, so the business owns its own ops device.
 
 ---
 
@@ -149,13 +158,15 @@ Same as section 9 — Diana's personal laptop, phone, camera. **Business owns no
 | Category | Purchase price | Est. current value |
 |---|---:|---:|
 | Kilns | €2,500 | €2,000-2,500 |
-| Wheels + clay-prep equipment | €539 | €345-460 |
+| Wheels + clay-prep equipment | €614 | €385-515 |
 | Work tables + seating + shelving | €695 | €400-640 |
 | Hand tools + textile | ~€150 | €75-120 |
 | Raw materials (glazes, clay, tiles) | ~€300-400 | €230-350 |
 | Coffee machine | €200 | €100-150 |
 | Door film + signage | €200 | €150-200 |
-| **TANGIBLE ASSETS TOTAL** | **~€4,585-4,685** | **~€3,300-4,420** |
+| Camera (if counted as business asset) | €1,500 | €900-1,200 |
+| **TANGIBLE ASSETS TOTAL (with camera)** | **~€6,160-6,260** | **~€4,240-5,675** |
+| **TANGIBLE ASSETS TOTAL (camera as personal)** | **~€4,660-4,760** | **~€3,340-4,475** |
 
 ---
 
