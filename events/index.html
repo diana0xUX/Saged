@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>События июля · Saged.club · Валенсия</title>
+<meta name="description" content="Цигун, Slow Friending, Kundoglini Clay, Cacao & Sound, керамика с Корицей — июль в Saged.club, Валенсия.">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-sand: #F1E9DA;
+    --ink: #2A2520;
+    --muted: #6B5F54;
+    --terracotta: #9F4D2D;
+    --sage: #6E7F5A;
+    --line: #E1D6C5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1.25rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav a.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  nav a.book {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  header p.label {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  header p.sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* EVENTS GRID */
+  .events {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+    padding: 2px;
+  }
+
+  /* EVENT CARD */
+  .event-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-sand);
+    cursor: pointer;
+  }
+
+  .event-card:hover .card-img {
+    transform: scale(1.03);
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .card-body {
+    padding: 1.5rem 1.5rem 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .card-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .card-meta span {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .price-tag {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .price-tag.donation {
+    background: var(--sage);
+  }
+
+  .card-cta {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    background: var(--ink);
+    color: #FAF7F2;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .card-cta:hover {
+    background: var(--terracotta);
+  }
+
+  /* THURSDAY CARD — spans full width */
+  .event-card.thursday {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .event-card.thursday .card-img {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 360px;
+  }
+
+  .event-card.thursday .card-body {
+    border-top: none;
+    border-left: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 3rem;
+  }
+
+  .slots {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .slot {
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .slot::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--line);
+    display: block;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  footer .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  footer p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  footer a {
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 320px;
+  }
+
+  @media (max-width: 680px) {
+    .event-card.thursday {
+      grid-column: auto;
+      display: block;
+    }
+    .event-card.thursday .card-img {
+      height: auto;
+      min-height: unset;
+      aspect-ratio: 4/5;
+    }
+    .event-card.thursday .card-body {
+      border-left: none;
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 1.5rem 2rem;
+    }
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="../">Saged.club</a>
+  <a class="book" href="https://wa.me/34605543300">Записаться →</a>
+</nav>
+
+<header>
+  <p class="label">Saged.club · Валенсия · Июль 2026</p>
+  <h1>Это <em>июль</em><br>в Saged.club</h1>
+  <p class="sub">Замедлиться, создавать, соединяться.<br>C/ de les Cuines, 8 · Сиутат Велла</p>
+</header>
+
+<main class="events">
+
+  <!-- CACAO & SOUND -->
+  <article class="event-card">
+    <img class="card-img" src="../assets/images/events/cacao-sound.png" alt="Cacao & Sound — Saged.club" loading="eager">
+    <div class="card-body">
+      <p class="card-date">3 июля · 18:00 – 20:00</p>
+      <h2 class="card-title">Cacao & Sound</h2>
+      <p class="card-desc">Звук, какао, тишина. Вечер для тех, кто хочет замедлиться вместе.</p>
+      <div class="card-meta">
+        <span>📍 Saged.club</span>
+      </div>
+      <a class="card-cta" href="https://wa.me/34605543300?text=Хочу+записаться+на+Cacao+%26+Sound+3+июля">Записаться</a>
+    </div>
+  </article>
+
+  <!-- CIGUN -->
+  <article class="event-card">
+    <img class="card-img" src="../assets/images/events/cigun.png" alt="Cigun — Ilona Aleksejeva · Saged.club" loading="lazy">
+    <div class="card-body">
+      <p class="card-date">11 июля · 09:30 – 13:30</p>
+      <h2 class="card-title">Cigun</h2>
+      <p class="card-desc">Четыре часа медленных движений и дыхания с мастером из Риги — Илоной Алексеевой.</p>
+      <div class="card-meta">
+        <span>📍 Saged.club</span>
+      </div>
+      <a class="card-cta" href="https://wa.me/34605543300?text=Хочу+записаться+на+Cigun+11+июля">Записаться</a>
+    </div>
+  </article>
+
+  <!-- SLOW FRIENDING -->
+  <article class="event-card">
+    <img class="card-img" src="../assets/images/events/slow-friending.png" alt="Slow Friending · Saged.club" loading="lazy">
+    <div class="card-body">
+      <p class="card-date">17 июля · 17:00 – 18:30 · <span class="price-tag">€15</span></p>
+      <h2 class="card-title">Slow Friending</h2>
+      <p class="card-desc">Вечер чая без программы. Для тех, кто хочет познакомиться по-настоящему. Никакого нетворкинга.</p>
+      <div class="card-meta">
+        <span>📍 Saged.club</span>
+      </div>
+      <a class="card-cta" href="https://wa.me/34605543300?text=Хочу+на+Slow+Friending+17+июля">Записаться</a>
+    </div>
+  </article>
+
+  <!-- KUNDOGLINI -->
+  <article class="event-card">
+    <img class="card-img" src="../assets/images/events/kundoglini.png" alt="Kundoglini Clay · Diana Sage · Saged.club" loading="lazy">
+    <div class="card-body">
+      <p class="card-date">24 июля · 14:00 – конца · <span class="price-tag donation">Donation</span></p>
+      <h2 class="card-title">Kundoglini</h2>
+      <p class="card-desc">Первое занятие. Руки в глине как способ побыть с собой. Ведёт Diana Sage. Опыт не нужен.</p>
+      <div class="card-meta">
+        <span>📍 Saged.club</span>
+      </div>
+      <a class="card-cta" href="https://wa.me/34605543300?text=Хочу+на+Kundoglini+24+июля">Записаться</a>
+    </div>
+  </article>
+
+  <!-- CLAY & COFFEE — FULL WIDTH -->
+  <article class="event-card thursday">
+    <img class="card-img" src="../assets/images/events/koritsa.png" alt="Clay & Coffee with Koritsa · Saged.club" loading="lazy">
+    <div class="card-body">
+      <p class="card-date">Каждый четверг</p>
+      <h2 class="card-title">Clay & Coffee<br>with Koritsa</h2>
+      <p class="card-desc">Курс из двух встреч — лепим, обжигаем, глазуруем. Кофе в начале, своя керамика домой через две недели. Группа до 6 человек, все материалы включены.</p>
+      <div class="slots">
+        <span class="slot">12:00 – 14:00</span>
+        <span class="slot">15:00 – 17:00</span>
+        <span class="slot">19:00 – 21:00</span>
+      </div>
+      <div class="card-meta">
+        <span><span class="price-tag">€60</span> &nbsp;за оба занятия</span>
+        <span><span class="price-tag" style="background:var(--muted)">€30</span> &nbsp;разовое посещение</span>
+      </div>
+      <a class="card-cta" href="https://wa.me/34605543300?text=Хочу+записаться+на+керамику+с+Корицей">Записаться</a>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div>
+    <p class="brand">Saged.club</p>
+    <p>C/ de les Cuines, 8 · Сиутат Велла<br>Valencia, 46001 · España</p>
+    <p style="margin-top:0.5rem">
+      <a href="https://wa.me/34605543300">WhatsApp</a> &nbsp;·&nbsp;
+      <a href="https://instagram.com/saged.club">@saged.club</a> &nbsp;·&nbsp;
+      <a href="mailto:hello@saged.club">hello@saged.club</a>
+    </p>
+  </div>
+  <p class="footer-tagline">Приходите как есть. 🪷</p>
+</footer>
+
+</body>
+</html>
