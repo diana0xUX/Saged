@@ -46,78 +46,54 @@
     line-height: 1.65;
   }
 
-  .home-paths {
-    max-width: var(--max);
+  .offering {
+    border-bottom: 1px solid var(--line);
+    padding: 4rem var(--gutter);
+  }
+  .offering--alt {
+    background: var(--bg-sand);
+  }
+  .offering__inner {
+    max-width: 720px;
     margin: 0 auto;
-    padding: 4rem var(--gutter) 5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
   }
-
-  .path-card {
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    text-decoration: none;
+  .offering h2 {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    margin: 0.5rem 0 1.25rem;
+    line-height: 1.1;
   }
-  .path-card:hover {
-    border-color: var(--terracotta);
-    box-shadow: 0 6px 32px rgba(159, 77, 45, 0.1);
-  }
-  .path-card__img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-  }
-  .path-card__body {
-    padding: 2rem 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .path-card__label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--terracotta);
-    margin-bottom: 0.6rem;
-  }
-  .path-card__title {
-    font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
-    font-weight: 300;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    line-height: 1.05;
-    margin: 0 0 0.9rem;
-    color: var(--ink);
-  }
-  .path-card__desc {
-    font-size: 0.92rem;
+  .offering p {
+    font-size: 1rem;
     color: var(--muted);
-    line-height: 1.6;
-    margin: 0 0 1.75rem;
-    flex: 1;
+    line-height: 1.75;
+    margin: 0 0 1rem;
+    max-width: 560px;
   }
-  .path-card__cta {
+  .offering__list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem;
+    max-width: 560px;
+  }
+  .offering__list li {
+    font-size: 0.92rem;
+    color: var(--ink);
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .offering__cta {
     display: inline-block;
-    align-self: flex-start;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    padding: 0.65rem 1.4rem;
-    background: #FF7A23;
-    color: #fff;
-    border-radius: 999px;
+    color: var(--terracotta);
     text-decoration: none;
-    transition: background 0.2s;
+    border-bottom: 1.5px solid var(--terracotta);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .path-card__cta:hover { background: var(--ink); }
-
-  @media (max-width: 640px) {
-    .home-paths { grid-template-columns: 1fr; }
+  .offering__cta:hover {
+    color: var(--ink);
+    border-color: var(--ink);
   }
 
   .about-space {
@@ -186,28 +162,35 @@
     </div>
   </section>
 
-  <section class="home-paths">
+  <section class="offering">
+    <div class="offering__inner">
+      <p class="eyebrow">Saged.club · Події</p>
+      <h2>Збираємо хороших людей</h2>
+      <p>Багато хто з&nbsp;нас опинився у&nbsp;Валенсії між переїздами. Захотілося місця, де можна просто бути поруч з&nbsp;людьми — без нетворкінгу, без сцени, без програми успіху.</p>
+      <p>Щомісяця — живі події у&nbsp;маленьких групах: звукові церемонії, рух, вечори знайомств, глина.</p>
+      <ul class="offering__list">
+        <li>Cacao &amp; Sound — звукова церемонія з&nbsp;какао</li>
+        <li>Цигун з&nbsp;Іллоною Алексєєвою — рух і&nbsp;дихання</li>
+        <li>Slow Friending — вечір повільних знайомств за&nbsp;чаєм</li>
+        <li>Kundoglini Clay — глина як&nbsp;спосіб бути з&nbsp;собою</li>
+      </ul>
+      <a href="events/" class="offering__cta">Дивитися події →</a>
+    </div>
+  </section>
 
-    <a class="path-card" href="studio/">
-      <img class="path-card__img" src="../assets/images/workshop-1.jpg" alt="Керамічна студія Saged.club" loading="eager">
-      <div class="path-card__body">
-        <p class="path-card__label">Керамічна студія</p>
-        <h2 class="path-card__title">Творити руками</h2>
-        <p class="path-card__desc">Курси ліпки з&nbsp;Корицею, дитячі заняття та&nbsp;коворкінг для досвідчених гончарів — у&nbsp;маленьких групах, без поспіху. Своя кераміка через два тижні.</p>
-        <span class="path-card__cta">Дізнатися про студію →</span>
-      </div>
-    </a>
-
-    <a class="path-card" href="events/">
-      <img class="path-card__img" src="../assets/images/events/cacao-sound.png" alt="Події у Saged.club" loading="eager">
-      <div class="path-card__body">
-        <p class="path-card__label">Простір для подій</p>
-        <h2 class="path-card__title">Зустрічатися і&nbsp;відкриватися</h2>
-        <p class="path-card__desc">Cacao &amp; Sound, цигун, Slow Friending, Kundoglini Clay — події кожного місяця для тих, хто шукає живої присутності і&nbsp;глибини.</p>
-        <span class="path-card__cta">Дивитися події →</span>
-      </div>
-    </a>
-
+  <section class="offering offering--alt">
+    <div class="offering__inner">
+      <p class="eyebrow">Керамічна студія</p>
+      <h2>Щочетверга — за&nbsp;столом з&nbsp;глиною</h2>
+      <p>Невеликий курс із&nbsp;двох зустрічей з&nbsp;Корицею — українською керамісткою, яка веде заняття з&nbsp;групою до&nbsp;6&nbsp;осіб у&nbsp;студії у&nbsp;старій Валенсії.</p>
+      <p>Перша зустріч — ліпимо руками. Через тиждень — глазуруємо. Ще через два тижні — своя кераміка вдома.</p>
+      <ul class="offering__list">
+        <li>Курс з&nbsp;Корицею · €60 · щочетверга · три слоти</li>
+        <li>Дитячий клас · €25 · 1,5&nbsp;години · 6–10&nbsp;років</li>
+        <li>Коворкінг для&nbsp;гончарів · €200&nbsp;/&nbsp;міс · 5&nbsp;місць</li>
+      </ul>
+      <a href="studio/" class="offering__cta">Дізнатися про студію →</a>
+    </div>
   </section>
 
 </main>
