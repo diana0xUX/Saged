@@ -99,6 +99,19 @@ Placeholder slots must clearly self-label (e.g., `[Тестимониал — ж
 for N testimonials, write exactly N — pattern-completion bias has produced phantom slots before
 (see retro 2026-05-11).
 
+**META LOCALE VERIFICATION (non-negotiable)**: NEVER create or modify a Meta ad set's `locales`
+targeting using hardcoded IDs from memory, comments, or older docs. Always query Meta's
+`/search?type=adlocale` endpoint at runtime and verify each ID against the canonical name before
+sending the targeting payload. Any script that hardcodes locale IDs must include a runtime
+`verify_locale` guard that exits non-zero on mismatch.
+
+**Past incident (2026-05-11)**: the adult campaign launched with `locale 10` labeled as Russian
+(actually Italian) and `locale 37` labeled as Ukrainian (actually Bulgarian). 30 days of misfire,
+€141.89 spent, 0 bookings — the Russian/Ukrainian ad creative was shown to Italians and Bulgarians
+in Valencia. Reference implementation: the `verify_locale()` function in
+`scripts/local/build-meta-campaign.sh`. Canonical IDs as of 2026-06-09: Russian=17, Ukrainian=52,
+English (UK)=24, English (US)=6, Spanish=23. Verify every time — don't trust this list either.
+
 - Read `REPORT.md` for the plain-English current state before suggesting changes
 - Diana is a UX designer — use plain language, design analogies
 - One step at a time; don't batch big decisions

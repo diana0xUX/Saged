@@ -2,7 +2,7 @@
 
 The canonical source of truth for everything about the studio. Update this file as facts change; future Claude sessions read it for context.
 
-Last updated: **2026-05-11**
+Last updated: **2026-06-09** (post team meeting debrief)
 
 ---
 
@@ -29,10 +29,30 @@ Last updated: **2026-05-11**
 
 ### Korincia Gasikóvska ("Кориця" RU / "Кориця" UA / "Korytsia" EN) — Ceramic instructor
 - Ukrainian ceramic artist based in Valencia
-- Runs her own studio: @korytsia_studio (Instagram)
+- Runs her own studio: @korytsia_studio (Instagram brand, not a physical studio)
 - Telegram: @ko_hasi
 - Speaks: Ukrainian, Russian
 - Aesthetic: minimalist ceramic art, slow tactile process
+- **Studio shifts**: Thursdays + weekends (Korytsia leads the adult Thursday cohort + weekend events)
+- Also responsible for kiln shelf repair (in progress as of 2026-06-08)
+
+### Vita — Ceramic instructor (joining)
+- Onboarding as second instructor alongside Korytsia
+- **IG handle**: @vivivivivivivivi
+- **Studio shifts**: Wednesday + Friday PM classes
+- **Soft launch**: Wednesday 2026-06-10, 17:00 — invite-only session for her friends who want to support her in clay work. First time leading at Saged.
+- **First public promotion (organic, unpaid)**: 2026-06-10 IG story from her own handle, tagged @saged.club. EN copy, "Ceramic Co-Working Session," Friday 17:00–19:00, €40, DM-only booking. Friends-circle shoutout. Useful free signal for EN audience demand — ask her 2026-06-11 how many DMs and in what language.
+- **Format she's testing**: "co-working session" — open studio, work on own project, beginner support included. Differentiated from Korytsia's structured 2-day cohort.
+- Engagement: independent autónoma + service contract (no SS burden on the studio — see partnership structure)
+
+## Team schedule (confirmed at 2026-06-08 meeting)
+
+| Day | Lead | Format |
+|---|---|---|
+| Wednesday PM | Vita | Class |
+| Thursday | Korytsia | Adult cohort (3 slots) |
+| Friday PM | Vita | Class |
+| Weekends | Korytsia | Events / birthdays / weekend bookings |
 
 ## Contact Channels (all working as of 2026-05-11)
 
@@ -66,7 +86,7 @@ Last updated: **2026-05-11**
   - 19:00–21:00
 - **Booking rule**: Book 2 consecutive Thursdays in the same slot
 - **First cohort**: 14 + 21 May 2026
-- **Price**: €60 for both sessions (everything included)
+- **Price**: €60 for the full 2-session cohort (everything included). **€30 single-class drop-in** also available — same Thursday slot, no commitment to come back. Drop-in is the lower-friction entry point; first observed sale 2026-06-11 (3 drop-ins, €90 gross).
 - **Group size**: up to 6 people per slot
 - **What's included**: clay (~1kg), tools, two firings (bisque + glaze), tea/water, finished piece delivered ~2 weeks after session 2
 
@@ -104,9 +124,9 @@ Future scope: same landing structure can serve any of these. Current focus = cer
 | Product | Price | Format | Page | Booking | Notes |
 |---|---:|---|---|---|---|
 | **Ceramics with Korytsia (adult)** | €60 | 2 sessions × 2h, every Thursday | `/` + `/uk/` | Cal.com + DM | Original product. 6 customers acquired in first 14 days. |
-| **Coworking** | _on request_ | Monthly studio access, daily 10:00-22:00 | `/coworking/`, `/uk/coworking/`, `/en/coworking/` | DM only | 5 spots. Pricing intentionally not advertised — matches local-market norm where all competitors gate behind "contact us". Master rules in `docs/coworking-rules.md`. Launched 2026-05-14. |
+| **Coworking** | €200/month | Monthly studio access, daily 10:00-22:00 | `/coworking/`, `/uk/coworking/`, `/en/coworking/` | DM only | 5 spots. Pricing not advertised publicly. 1 active resident: Ekaterina Sharova (pays €200/month via Bizum). Master rules in `docs/coworking-rules.md`. Launched 2026-05-14. |
 | **Intro course** | €120 | 4 classes for studio-newcomers, prep for coworking | Section on `/coworking/#intro` | DM only | Pathway product into coworking. |
-| **Kids' ceramic class** | €25 | Single 1.5h class, ages 6-10, group 4-6 | `/kids/`, `/uk/kids/`, `/en/kids/` | DM only · interest list · Stripe link sent in chat | **Launched 2026-05-26 as trial.** No fixed dates — schedule once 4-6 parents express interest. Validates demand before scaling. Pivoted away from full summer camp after honest critique (school-conflict timing, 2h too short for "camp", launching 3rd product line while first still proving out). |
+| **Kids' ceramic class** | €25 | Single 1.5h class, ages 6-10, group 4-6 | `/kids/`, `/uk/kids/`, `/en/kids/` | DM only · interest list · Stripe link sent in chat | **Launched 2026-05-26 as trial.** No fixed dates — schedule once 4-6 parents express interest. Validates demand before scaling. Pivoted away from full summer camp after honest critique (school-conflict timing, 2h too short for "camp", launching 3rd product line while first still proving out). **Per-class format (confirmed 2026-06-08):** each session has a single subject ("today everyone makes a mug" / "today everyone makes an animal"). Kids get a stencil + descriptive process so they have creative freedom within boundaries. Subject rotates each class. |
 | **Parent + kid class** (planned) | €50 pair | 2h weekend, parent + child work together | Phase 2 of kids product | DM only | Launch only after kid-only class validates. Same warm audience. |
 
 **Operational principle for all DM-led products**: parents/customers DM via WhatsApp with structured pre-fill → Saged/Koritsa qualify → Stripe payment link sent in chat → confirmed. No Cal.com for kids/coworking/intro. Cal.com used only for the recurring adult Thursday workshop where the calendar widget makes sense.
@@ -154,6 +174,9 @@ See `AUDIT.md` for the full breakdown.
 | 2026-05-28 | Rebuilt kids campaign via API after IG "Suggested Ads" quick-create produced malformed structure | Spain-wide geo, no language filter, 0 ads — wouldn't deliver. Replaced with proper Valencia 17km × RU/UA split via `scripts/launch-kids-campaign.py`. |
 | 2026-05-28 | Kids ad sets ship with `advantage_audience: 0` (Advantage+ off) | Strict 28-45 age range conflicted with Advantage+ requirement (age_min ≤ 25, error 1870188). Honors the plan's age band; trade-off is no algorithm-driven audience expansion. Reconsider at Day 7 if reach is starved. |
 | 2026-05-28 | Doubled kids ad-set budgets pre-delivery: RU €2→€4, UA €3→€6 (total €5→€10/day, 14-day cap €70→€140) | Both ads ACTIVE but zero delivery yet — no "learning phase" to reset. Doubling gives Meta more room to find the tight Valencia-17km × RU/UA parents audience. 1.5× UA-over-RU ratio preserved. |
+| 2026-06-09 | Paused adult Thursday campaign (Sales v1, `120244368076410513`). Kids Trial stays ACTIVE at €10/day combined. | 6 days of delivery (€97 spent) produced 0 campaign-attributed bookings; the two weekend bookings came through DM, not ads. Decision: stop paying for adult-campaign exposure that isn't converting, keep kids campaign live through its launch weekend. Saves ~€20/day = ~€600/month. Re-evaluate after kids weekend (Sat 13 + Sun 14 June). |
+| 2026-06-09 | Adult campaign cool-down 14 days, relaunch 2026-06-23 with new creative + EN ad set added (Valencia 17km × English). Full plan: `docs/plans/adult-campaign-relaunch-2026-06-23.md`. | Lifetime data showed frequency 5.0 / CTR halved week-over-week / CPM rising — classic audience saturation + creative fatigue. Cool-down lets audience "forget" before fresh creative. EN ad set expands beyond RU/UA diaspora to English-speaking expats and digital nomads, who are a documented secondary audience in Valencia. Diana to decide before relaunch: keep Sales objective or pivot to Messages objective (project pattern says DM-first converts better for €60 community offers). |
+| 2026-06-09 | **Locale-targeting bug found + fixed.** Adult RU ad set (`120244412141780513`) was `locale: [10]` (Italian, not Russian). Adult UA ad set (`120244412143130513`) was `locale: [37]` (Bulgarian, not Ukrainian). Both corrected to RU=17, UA=52 today. Root cause: `scripts/local/build-meta-campaign.sh` shipped with wrong hardcoded IDs + wrong comment on 2026-05-11. Script now has runtime `verify_locale` guard that refuses to run if API disagrees with hardcoded values. New project rule added to `CLAUDE.md`. | 30 days of misfire — adult campaign showed Russian/Ukrainian creative to Italians and Bulgarians in Valencia. €141.89 spent, 891 clicks (warm visuals), 0 bookings (couldn't read copy). Kids campaign was correctly configured (May 28 setup verified locale IDs). Fix is no-op while campaign is paused; takes effect at relaunch 2026-06-23 when ad sets reactivate. |
 
 ## Launch Milestones
 
@@ -171,6 +194,27 @@ See `AUDIT.md` for the full breakdown.
 - **Telegram DM with direct Cal.com link works** as a sales channel — Diana sent a booking link and it converted. The Pixel still fires Schedule on the success page regardless of how the user got there, so Telegram bookings show up in Meta's Pixel stats but NOT in the campaign-attributed conversions.
 - For accurate campaign attribution, separate "Pixel total Schedule events" from "campaign-attributed Schedule events" when reading reports. The audit script + Ads Manager show the campaign-attributed number; the Pixel stats endpoint shows the raw total.
 - Day 8 review (#62): if Telegram keeps converting and Meta hasn't, that's an important signal — Telegram is a better channel for this audience and may deserve its own attention (e.g., building the @sagedclub public channel from #39).
+
+## Studio operations — open work (from 2026-06-08 meeting)
+
+- **Kiln shelves**: need repair. Korytsia is on it.
+- **Storage room under stairs**: cleaned out 2026-06-08. Plan: move existing shelves into this storage room; buy nicer shelves for the main studio space.
+- **Kids class supplies**: need to buy more materials + create reusable stencils for the rotating subject-of-the-day format.
+
+## Meta weekly content plan (active as of 2026-06-09)
+
+Meta's Business Suite "Weekly plan" target — complete 4 of 6 tasks per week to satisfy the algorithm. 5 days left as of 2026-06-09.
+
+| Task | Status (06-09) |
+|---|---|
+| Publish one ad | 0/1 |
+| Publish 10 stories on Instagram | 8/10 |
+| Publish one post on Facebook | 0/1 |
+| Publish 4 posts on Instagram | 0/4 |
+| Publish one story on Facebook | 0/1 |
+| Always share posts to stories on Facebook | 0/1 (one-time toggle) |
+
+Cheapest path to 4/6 this week: finish 2 more IG stories → toggle FB cross-share → publish 1 FB story → publish 1 FB post. Skips the heavier "4 IG posts" and "1 ad" lifts. The active Thursday adult campaign already counts as an ad in spirit, but Meta's task counts paid campaigns separately from organic posts — confirm in-app before assuming it ticks the "ad" box.
 
 ## Open Questions
 
@@ -384,7 +428,7 @@ Account state: lifetime spend €143.43, status UNSETTLED (cleared 2026-05-11). 
 - Pixel ID + active campaign IDs: in `.campaign-ids` (gitignored)
 - Lead-handling playbook: `docs/lead-handling.md`
 - IG FAQ menu copy: `docs/instagram-faq.md`
-- Locale IDs (verified via `/search?type=adlocale`): Russian = `17`, Ukrainian = `52`. (Do NOT trust `5`/`120` from older docs — those were wrong.)
+- Locale IDs (verified via `/search?type=adlocale` on 2026-06-09): Russian = `17`, Ukrainian = `52`, English (UK) = `24`, English (US) = `6`, Spanish = `23`. **DO NOT trust hardcoded locale IDs** — past incidents shipped `5`/`120` (wrong) and later `10`/`37` (Italian/Bulgarian, also wrong). Project rule in CLAUDE.md mandates runtime verification via `verify_locale()` (reference: `scripts/local/build-meta-campaign.sh`).
 - Instagram business account ID linked to FB page: `17841428554040839` (needed in `object_story_spec.instagram_user_id`)
 - Kids campaign launch script: `scripts/launch-kids-campaign.py` — idempotent (refuses if `KIDS_CAMPAIGN_ID` already set), supports `--dry-run`
 

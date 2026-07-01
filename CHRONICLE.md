@@ -1,5 +1,61 @@
 # Session log
 
+## 2026-06-22 → 2026-06-29 — Finance, tax research, three new campaigns
+
+**Duration**: multiple sessions across one week
+**Outcome**: June books closed, accountant report ready, three campaigns live across 6 ad sets, all WITH_ISSUES ads unblocked.
+
+### Major milestones
+
+1. **Bank reconciliation + June ledger** — Full Santander *0997 reconciliation May 23–Jun 22. Confirmed income €633.31 (Stripe ×3 + Bizum ×5 + Ekaterina coworking). All deductible costs logged with invoice refs: rent €1,173, electricity €74.57, Movistar 1/3 share €29.37, water €44.78, Prodesco clay €248.70, Meta Ads €274.36. IKEA + Leroy Merlin excluded (home purchases). June net: −€1,211 confirmed, −€856 with Korytsia pending. ⚠️ Santander balance was €27 on Jun 22; July rent ~€1,173 due ~Jul 5.
+
+2. **Accountant report created** — `finances/reports/june-2026-accountant.md` — ready to send to gestor. Covers all income, deductible costs with invoice refs, 8 questions for gestor (TGSS discrepancy, IVA on workshops, Meta reverse charge, ROI registration, Bizum receipts, Stripe gross/net, Prodesco invoice, landlord invoice).
+
+3. **Spanish tax research** — Key findings: workshops IVA almost certainly 21% (teaching exemption requires official curriculum); Meta Ads = inversión del sujeto pasivo (reverse charge, declare on Model 303, neutral); ROI registration needed (Model 036, checkbox 582); Model 349 for intra-EU purchases; Model 130 IRPF 20% net profit quarterly (currently net loss → file but pay zero).
+
+4. **Cacao & Sound campaign** — Built and launched Jun 22 (Campaign ID: 120247269492570513, €10/day, Russian, CTA → Luma link). Paused Jun 29: 6 days of spend, €53.41, 7,623 reach, 78 clicks, CTR 0.19%, frequency 5.4× — creative exhausted. Event July 3 still happening (just not advertising it). July 2 pause reminder set then disabled.
+
+5. **Kids Clay Camp campaign** (Jun 29–Jul 1) — Full 4-language campaign (UA/EN/RU/ES). Target: age 30–50, Valencia 5km, parents of children 6–8 and 9–12. CTA: Instagram DM (`ig.me/m/saged.club`). Budget: €5/day × 4 ad sets = ~€10/day total. Flyer time corrected 10:00 → 11:00 mid-build; all creatives updated. Kids Camp UA + EN went ACTIVE; RU + ES were WITH_ISSUES then expired (ad set end date was Jun 28). Fixed by extending end dates to Jul 1 and force-activating.
+
+6. **Thursday Adults campaign** (ongoing) — Korytsia ceramics, women 30–45, art/craft/wealth interests, Valencia + Puçol, €5/day × 2 ad sets = €10/day total. CTA: Instagram DM. Image creative: `assets/images/korytsia.jpg` (uploaded to Meta, hash a7bb73a3996451dc72a685764c9f5a4b). Both RU + UA ads were WITH_ISSUES since Jun 24. Unblocked Jun 29 by force-activating via API.
+
+### Key decisions made
+
+| Decision | Why |
+|---|---|
+| Cacao & Sound paused (not swapped to video) | CTR 0.19%, freq 5.4× — audience saturated. Event close; not worth more spend |
+| Kids Camp: ig.me DM CTA not website | WhatsApp CTA failed Meta review; IG DM link (`ig.me/m/saged.club`) approved and works |
+| Thursday Adults: Valencia + Puçol only | Tighten geo to avoid wasting budget on distant suburbs |
+| Meta ad locale IDs verified at runtime | Past incident: wrong locales (Italian/Bulgarian instead of RU/UA) cost €141.89 |
+
+### WITH_ISSUES pattern — documented
+
+Meta's error code 2446984 ("trusted user approval needed") can be resolved by calling `POST /{ad_id}` with `status=ACTIVE` via API — this counts as the Business Admin re-confirming the ad. Ads Manager UI approval is not required. Exception: if the parent ad set has an expired `end_time`, extend it first or the API call errors with "end date reached."
+
+### Locale IDs confirmed (as of Jun 2026)
+
+Russian=17, Ukrainian=52, Spanish(Spain)=7, English(UK)=24. Verified via `/search?type=adlocale` — hardcoded here for reference only, always re-verify at runtime per CLAUDE.md rule.
+
+### Files created/modified
+
+```
+new:      finances/reports/june-2026-accountant.md
+new:      finances/invoices/iberdrola-2026-06-studio.pdf
+modified: LEDGER.md  (June actuals, projection to Jul 5)
+modified: halt.md    (session state)
+```
+
+### What's open at end of sessions
+
+- Send accountant report to gestor (not done)
+- ROI registration — gestor to confirm
+- Korytsia €355 outstanding (not received)
+- Sanitas −€88.47: personal or business? (unclassified)
+- July rent ~€1,173 due ~Jul 5 (critical cash)
+- Check Kids Camp performance before camp ends Jul 1
+
+---
+
 ## 2026-05-26 → 2026-05-27 — Polish, repositioning, kids campaign prep
 
 **Duration**: ~one long session split across two days, ~30 commits

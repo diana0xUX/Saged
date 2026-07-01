@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saged.club · Керамічна студія та місце для подій · Валенсія</title>
+<meta name="description" content="Saged.club — простір у серці старої Валенсії. Керамічні курси, дитячі заняття, звуковий хілінг, цигун та вечори повільних знайомств.">
+<link rel="canonical" href="https://saged.club/ua/">
+<link rel="alternate" hreflang="uk" href="https://saged.club/ua/">
+<link rel="alternate" hreflang="ru" href="https://saged.club/">
+<link rel="alternate" hreflang="x-default" href="https://saged.club/">
+<meta property="og:title" content="Saged.club · Валенсія">
+<meta property="og:description" content="Місце, де навчаються, зустрічаються і живуть — через кераміку, звук і роботу руками. У серці старої Валенсії.">
+<meta property="og:image" content="https://saged.club/assets/images/og-cover.jpg">
+<meta property="og:url" content="https://saged.club/ua/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:site_name" content="Saged.club">
+<meta name="theme-color" content="#9F4D2D">
+<meta name="facebook-domain-verification" content="aq8rn5gerav36scmysqp5wfo8iqigk">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+
+<style>
+  .home-hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4rem var(--gutter) 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .home-hero__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .home-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    margin: 0.75rem 0 1.25rem;
+  }
+  .home-hero .lead {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+  }
+  .home-hero__cta {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.8rem 1.75rem;
+    background: #FF7A23;
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .home-hero__cta:hover { background: var(--ink); }
+  .home-hero__img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .home-hero { grid-template-columns: 1fr; padding: 2.5rem var(--gutter) 2rem; }
+    .home-hero__img { aspect-ratio: 4/3; }
+  }
+
+  .trust-strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-sand);
+  }
+  .trust-strip__inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.75rem var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .trust-strip__item {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .trust-strip__item strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  @media (max-width: 600px) {
+    .trust-strip__inner { grid-template-columns: 1fr; gap: 0.75rem; text-align: left; }
+  }
+
+  .offering {
+    border-bottom: 1px solid var(--line);
+    padding: 4rem var(--gutter);
+  }
+  .offering--alt {
+    background: var(--bg-sand);
+  }
+  .offering__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .offering h2 {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    margin: 0.5rem 0 1.25rem;
+    line-height: 1.1;
+  }
+  .offering p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin: 0 0 1rem;
+    max-width: 560px;
+  }
+  .offering__list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem;
+    max-width: 560px;
+  }
+  .offering__list li {
+    font-size: 0.92rem;
+    color: var(--ink);
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .offering__cta {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    background: #FF7A23;
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .offering__cta:hover { background: var(--ink); }
+
+  .about-space {
+    background: var(--bg-sand);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .about-space__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4rem var(--gutter);
+    text-align: center;
+  }
+  .about-space__inner h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin: 0.5rem 0 1.5rem;
+  }
+  .about-space__inner p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin: 0 0 1rem;
+  }
+  .about-space__sign {
+    font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.4rem !important;
+    color: var(--ink) !important;
+    margin-top: 1.5rem !important;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Saged.club home">
+    <img src="../assets/images/logo-saged-club.svg" alt="Saged.club" width="88" height="40">
+  </a>
+  <nav class="topnav" aria-label="Sections">
+    <a href="studio/">Дорослим</a>
+    <a href="kids/">Дітям</a>
+    <a href="coworking/">Коворкінг</a>
+    <a href="events/">Events</a>
+  </nav>
+  <nav class="lang" aria-label="Language">
+    <span class="lang__current">UA</span>
+    <a href="../" class="lang__alt">RU</a>
+    
+  </nav>
+</header>
+
+<main>
+
+  <section class="home-hero">
+    <div class="home-hero__copy">
+      <p class="eyebrow">Saged.club · Валенсія</p>
+      <h1>Місце, де навчаються,<br>зустрічаються і&nbsp;живуть</h1>
+      <p class="lead">Простір для тих, хто хоче сповільнитися, творити руками і&nbsp;бути поруч з&nbsp;людьми. У серці старої Валенсії.</p>
+      <a href="events/" class="home-hero__cta">Найближчі події →</a>
+    </div>
+    <img class="home-hero__img" src="../assets/images/workshop-1.jpg" alt="Кориця веде заняття — глина і маленька група у Saged.club" loading="eager">
+  </section>
+
+  <section class="trust-strip">
+    <div class="trust-strip__inner">
+      <div class="trust-strip__item">
+        <strong>50+ учасників</strong>з травня 2026
+      </div>
+      <div class="trust-strip__item">
+        <strong>Маленькі групи</strong>до 6 осіб · без поспіху
+      </div>
+      <div class="trust-strip__item">
+        <strong>Стара Валенсія</strong>C/ de les Cuines, 8
+      </div>
+    </div>
+  </section>
+
+  <section class="offering">
+    <div class="offering__inner">
+      <p class="eyebrow">Керамічна студія</p>
+      <h2>Щочетверга — за&nbsp;столом з&nbsp;глиною</h2>
+      <p>Невеликий курс із&nbsp;двох зустрічей з&nbsp;Корицею — українською керамісткою, яка веде заняття з&nbsp;групою до&nbsp;6&nbsp;осіб у&nbsp;студії у&nbsp;старій Валенсії.</p>
+      <p>Перша зустріч — ліпимо руками. Через тиждень — глазуруємо. Ще через два тижні — своя кераміка вдома.</p>
+      <ul class="offering__list">
+        <li>Курс з&nbsp;Корицею · €60 · щочетверга · три слоти</li>
+        <li>Дитячий клас · €25 · 1,5&nbsp;години · 6–10&nbsp;років</li>
+        <li>Коворкінг для&nbsp;гончарів · 5&nbsp;місць · пишіть за&nbsp;умовами</li>
+      </ul>
+      <a href="studio/" class="offering__cta">Дізнатися про студію →</a>
+    </div>
+  </section>
+
+  <section class="offering offering--alt">
+    <div class="offering__inner">
+      <p class="eyebrow">Saged.club · Події</p>
+      <h2>Збираємо хороших людей</h2>
+      <p>Щомісяця — живі події у&nbsp;маленьких групах: звукові церемонії, рух, вечори знайомств, глина.</p>
+      <ul class="offering__list">
+        <li>Cacao &amp; Sound — звукова церемонія з&nbsp;какао</li>
+        <li>Цигун з&nbsp;Іллоною Алексєєвою — рух і&nbsp;дихання</li>
+        <li>Slow Friending — вечір повільних знайомств за&nbsp;чаєм</li>
+        <li>Kundoglini Clay — глина як&nbsp;спосіб бути з&nbsp;собою</li>
+      </ul>
+      <a href="events/" class="offering__cta">Дивитися події →</a>
+    </div>
+  </section>
+
+  <section class="about-space">
+    <div class="about-space__inner">
+      <p class="eyebrow">Про простір</p>
+      <h2>Звідки ми</h2>
+      <p>Багато з нас опинилися у Валенсії — між переїздами, у паузі, в пошуку. Ми відкрили Saged.club, бо самим потрібно було місце, куди можна прийти і залишитися собою.</p>
+      <p>Тут немає програми успіху. Є глина, звук, чай і люди — у маленьких групах, без поспіху.</p>
+      <p class="about-space__sign">Приходьте як є.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p><strong>Saged.club</strong></p>
+  <p class="muted">Місце, де можна сповільнитися, творити і&nbsp;з'єднуватися — через мистецтво, музику і&nbsp;роботу руками.</p>
+  <p class="muted">C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia</p>
+  <p class="muted">WhatsApp <a href="https://wa.me/34605543300">+34 605 54 33 00</a> · <a href="mailto:hello@saged.club">hello@saged.club</a> · <a href="https://instagram.com/saged.club">@saged.club</a></p>
+  <p class="muted small">© 2026 Saged.club · <a href="../privacy.html">Privacy</a> · <a href="../cookies.html">Cookies</a></p>
+</footer>
+
+<div id="consent" class="consent" hidden>
+  <p>Допоможіть нам зрозуміти, що працює — дозволите аналітику? Лише статистика відвідувань, без рекламного стеження.</p>
+  <div class="consent__buttons">
+    <button id="consent-accept" class="btn-solid">Дозволити</button>
+    <button id="consent-decline" class="btn-text">Не зараз</button>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
