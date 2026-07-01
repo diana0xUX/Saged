@@ -56,20 +56,79 @@
   .home-hero {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 5rem var(--gutter) 4rem;
-    text-align: center;
+    padding: 4rem var(--gutter) 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .home-hero__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .home-hero h1 {
-    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
     line-height: 1.05;
     margin: 0.75rem 0 1.25rem;
   }
   .home-hero .lead {
-    max-width: 560px;
-    margin: 0 auto;
     font-size: 1.05rem;
     color: var(--muted);
     line-height: 1.65;
+    margin: 0 0 2rem;
+  }
+  .home-hero__cta {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.8rem 1.75rem;
+    background: #FF7A23;
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .home-hero__cta:hover { background: var(--ink); }
+  .home-hero__img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .home-hero { grid-template-columns: 1fr; padding: 2.5rem var(--gutter) 2rem; }
+    .home-hero__img { aspect-ratio: 4/3; }
+  }
+
+  .trust-strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-sand);
+  }
+  .trust-strip__inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.75rem var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .trust-strip__item {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .trust-strip__item strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  @media (max-width: 600px) {
+    .trust-strip__inner { grid-template-columns: 1fr; gap: 0.75rem; text-align: left; }
   }
 
   .offering {
@@ -111,16 +170,14 @@
     display: inline-block;
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--terracotta);
+    padding: 0.7rem 1.5rem;
+    background: #FF7A23;
+    color: #fff;
+    border-radius: 999px;
     text-decoration: none;
-    border-bottom: 1.5px solid var(--terracotta);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    transition: background 0.2s;
   }
-  .offering__cta:hover {
-    color: var(--ink);
-    border-color: var(--ink);
-  }
+  .offering__cta:hover { background: var(--ink); }
 
   .about-space {
     background: var(--bg-sand);
@@ -173,22 +230,45 @@
 <main>
 
   <section class="home-hero">
-    <p class="eyebrow">Saged.club · Валенсия</p>
-    <h1>Место, где учатся,<br>встречаются и&nbsp;живут</h1>
-    <p class="lead">Пространство для тех, кто хочет замедлиться, создавать руками и&nbsp;быть рядом с&nbsp;людьми. В сердце старой Валенсии.</p>
+    <div class="home-hero__copy">
+      <p class="eyebrow">Saged.club · Валенсия</p>
+      <h1>Место, где учатся,<br>встречаются и&nbsp;живут</h1>
+      <p class="lead">Пространство для тех, кто хочет замедлиться, создавать руками и&nbsp;быть рядом с&nbsp;людьми. В сердце старой Валенсии.</p>
+      <a href="events/" class="home-hero__cta">Ближайшие события →</a>
+    </div>
+    <img class="home-hero__img" src="assets/images/workshop-1.jpg" alt="Кориця ведёт занятие — глина и маленькая группа в Saged.club" loading="eager">
   </section>
 
-  <section class="about-space">
-    <div class="about-space__inner">
-      <p class="eyebrow">О пространстве</p>
-      <h2>Откуда мы</h2>
-      <p>Многие из нас оказались в Валенсии — между переездами, в паузе, в поиске. Мы открыли Saged.club, потому что нам самим нужно было место, куда можно прийти и остаться собой.</p>
-      <p>Здесь нет программы успеха. Есть глина, звук, чай и люди — в маленьких группах, без спешки.</p>
-      <p class="about-space__sign">Приходите как есть.</p>
+  <section class="trust-strip">
+    <div class="trust-strip__inner">
+      <div class="trust-strip__item">
+        <strong>50+ участников</strong>с мая 2026
+      </div>
+      <div class="trust-strip__item">
+        <strong>Маленькие группы</strong>до 6 человек · без спешки
+      </div>
+      <div class="trust-strip__item">
+        <strong>Старая Валенсия</strong>C/ de les Cuines, 8
+      </div>
     </div>
   </section>
 
   <section class="offering">
+    <div class="offering__inner">
+      <p class="eyebrow">Керамическая студия</p>
+      <h2>Каждый четверг — за&nbsp;столом с&nbsp;глиной</h2>
+      <p>Небольшой курс из&nbsp;двух встреч с&nbsp;Корицей — украинской керамисткой, которая ведёт занятия с&nbsp;группой до&nbsp;6&nbsp;человек в&nbsp;студии в&nbsp;старой Валенсии.</p>
+      <p>Первая встреча — лепим руками. Через неделю — глазуруем. Ещё через две — своя керамика дома.</p>
+      <ul class="offering__list">
+        <li>Курс с&nbsp;Корицей · €60 · каждый четверг · три слота</li>
+        <li>Детский класс · €25 · 1,5&nbsp;часа · 6–10&nbsp;лет</li>
+        <li>Коворкинг для&nbsp;гончаров · 5&nbsp;мест · пишите за&nbsp;условиями</li>
+      </ul>
+      <a href="studio/" class="offering__cta">Узнать о студии →</a>
+    </div>
+  </section>
+
+  <section class="offering offering--alt">
     <div class="offering__inner">
       <p class="eyebrow">Saged.club · События</p>
       <h2>Собираем хороших людей</h2>
@@ -203,18 +283,13 @@
     </div>
   </section>
 
-  <section class="offering offering--alt">
-    <div class="offering__inner">
-      <p class="eyebrow">Керамическая студия</p>
-      <h2>Каждый четверг — за&nbsp;столом с&nbsp;глиной</h2>
-      <p>Небольшой курс из&nbsp;двух встреч с&nbsp;Корицей — украинской керамисткой, которая ведёт занятия с&nbsp;группой до&nbsp;6&nbsp;человек в&nbsp;студии в&nbsp;старой Валенсии.</p>
-      <p>Первая встреча — лепим руками. Через неделю — глазуруем. Ещё через две — своя керамика дома.</p>
-      <ul class="offering__list">
-        <li>Курс с&nbsp;Корицей · €60 · каждый четверг · три слота</li>
-        <li>Детский класс · €25 · 1,5&nbsp;часа · 6–10&nbsp;лет</li>
-        <li>Коворкинг для&nbsp;гончаров · 5&nbsp;мест · пишите за&nbsp;условиями</li>
-      </ul>
-      <a href="studio/" class="offering__cta">Узнать о&nbsp;студии →</a>
+  <section class="about-space">
+    <div class="about-space__inner">
+      <p class="eyebrow">О пространстве</p>
+      <h2>Откуда мы</h2>
+      <p>Многие из нас оказались в Валенсии — между переездами, в паузе, в поиске. Мы открыли Saged.club, потому что нам самим нужно было место, куда можно прийти и остаться собой.</p>
+      <p>Здесь нет программы успеха. Есть глина, звук, чай и люди — в маленьких группах, без спешки.</p>
+      <p class="about-space__sign">Приходите как есть.</p>
     </div>
   </section>
 
