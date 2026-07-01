@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-  /* Events page — extends style.css */
   .events-header {
     max-width: var(--max);
     margin: 0 auto;
@@ -27,32 +26,30 @@
     font-style: italic;
     color: var(--terracotta);
   }
-  .events-header p {
-    color: var(--muted);
-    margin: 0;
-  }
+  .events-header p { color: var(--muted); margin: 0; }
 
-  /* Grid */
   .events-grid {
     max-width: var(--max);
     margin: 0 auto;
     padding: 2.5rem var(--gutter) 4rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
-  /* Card */
   .ev-card {
     background: var(--bg);
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .ev-card:hover { border-color: var(--terracotta); }
+  .ev-card:hover {
+    border-color: var(--terracotta);
+    box-shadow: 0 4px 20px rgba(159, 77, 45, 0.1);
+  }
 
   .ev-card__img {
     width: 100%;
@@ -62,40 +59,40 @@
   }
 
   .ev-card__body {
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 1.25rem 1.25rem 1.5rem;
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
   .ev-card__date {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--terracotta);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .ev-card__title {
     font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
     font-weight: 300;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
     line-height: 1.1;
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.6rem;
     color: var(--ink);
   }
 
   .ev-card__desc {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--muted);
-    line-height: 1.55;
-    margin: 0 0 1.5rem;
+    line-height: 1.5;
+    margin: 0 0 1.25rem;
     flex: 1;
   }
 
   .ev-card__price {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -103,22 +100,41 @@
     color: var(--muted);
     border: 1px solid var(--line);
     padding: 0.2rem 0.7rem;
-    border-radius: 2px;
-    margin-bottom: 1.25rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    align-self: flex-start;
   }
   .ev-card__price.paid { background: var(--terracotta); color: #fff; border-color: var(--terracotta); }
   .ev-card__price.donation { background: var(--sage); color: #fff; border-color: var(--sage); }
 
+  /* Clay&Coffee — spans 2 cols */
+  .ev-card--wide {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+  .ev-card--wide .ev-card__img {
+    width: 300px;
+    flex-shrink: 0;
+    aspect-ratio: auto;
+    height: auto;
+  }
+  .ev-card--wide .ev-card__body {
+    padding: 2rem 2.5rem;
+  }
+  .ev-card--wide .ev-card__title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+  }
+
   .ev-slots {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.25rem;
   }
   .ev-slots li {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--muted);
     padding-left: 1rem;
     position: relative;
@@ -132,29 +148,32 @@
     line-height: 1.1;
   }
 
-  /* Thursday card spans full width */
-  .ev-card--wide {
-    grid-column: 1 / -1;
-    flex-direction: row;
+  /* Override CTA to match brand orange pill */
+  .ev-card .cta {
+    align-self: flex-start;
+    font-size: 0.82rem;
+    padding: 0.65rem 1.4rem;
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: #fff;
+    border-radius: 999px;
+    border-bottom: none;
   }
-  .ev-card--wide .ev-card__img {
-    width: 340px;
-    flex-shrink: 0;
-    aspect-ratio: auto;
-    height: auto;
-  }
-  .ev-card--wide .ev-card__body {
-    padding: 2.5rem 3rem;
-  }
-  .ev-card--wide .ev-card__title {
-    font-size: clamp(2rem, 3.5vw, 3rem);
+  .ev-card .cta:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
   }
 
-  @media (max-width: 800px) {
-    .events-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .ev-card--wide { flex-direction: column; grid-column: auto; }
+  @media (max-width: 900px) {
+    .events-grid { grid-template-columns: repeat(2, 1fr); }
+    .ev-card--wide { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .events-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .ev-card--wide { flex-direction: column; }
     .ev-card--wide .ev-card__img { width: 100%; aspect-ratio: 4/5; }
-    .ev-card--wide .ev-card__body { padding: 1.5rem 1.5rem 2rem; }
+    .ev-card--wide .ev-card__body { padding: 1.25rem 1.25rem 1.5rem; }
   }
 </style>
 </head>
@@ -179,7 +198,7 @@
 <div class="events-header">
   <p class="eyebrow">Saged.club · Валенсия · Июль 2026</p>
   <h1>Это <em>июль</em></h1>
-  <p>Замедлиться, создавать, соединяться · C/ de les Cuines, 8 · Сиутат Велла</p>
+  <p>Замедлиться, создавать, соединяться</p>
 </div>
 
 <main class="events-grid">
@@ -192,7 +211,7 @@
       <h2 class="ev-card__title">Cacao & Sound</h2>
       <p class="ev-card__desc">Звук, какао, тишина. Вечер для тех, кто хочет замедлиться вместе.</p>
       <span class="ev-card__price paid">€40</span>
-      <a class="cta" href="https://wa.me/34605543300?text=Хочу+на+Cacao+%26+Sound+3+июля">Записаться</a>
+      <a class="cta" href="https://luma.com/8jshtyyq" target="_blank" rel="noopener">Записаться →</a>
     </div>
   </article>
 
@@ -202,8 +221,8 @@
     <div class="ev-card__body">
       <p class="ev-card__date">11 июля · 09:30 – 13:30</p>
       <h2 class="ev-card__title">Cigun</h2>
-      <p class="ev-card__desc">Четыре часа медленных движений и дыхания с мастером из Риги — Илоной Алексеевой. Опыт не нужен.</p>
-      <a class="cta" href="https://wa.me/34605543300?text=Хочу+на+Cigun+11+июля">Записаться</a>
+      <p class="ev-card__desc">Четыре часа медленных движений и дыхания с мастером из Риги — Илоной Алексеевой.</p>
+      <a class="cta" href="https://luma.com/3e7p5jw2" target="_blank" rel="noopener">Записаться →</a>
     </div>
   </article>
 
@@ -213,9 +232,9 @@
     <div class="ev-card__body">
       <p class="ev-card__date">17 июля · 17:00 – 18:30</p>
       <h2 class="ev-card__title">Slow Friending</h2>
-      <p class="ev-card__desc">Вечер чая без программы. Для тех, кто хочет познакомиться по-настоящему. Никакого нетворкинга.</p>
+      <p class="ev-card__desc">Вечер чая без программы. Для тех, кто хочет познакомиться по-настоящему.</p>
       <span class="ev-card__price paid">€15</span>
-      <a class="cta" href="https://wa.me/34605543300?text=Хочу+на+Slow+Friending+17+июля">Записаться</a>
+      <a class="cta" href="https://luma.com/8ukx269y" target="_blank" rel="noopener">Записаться →</a>
     </div>
   </article>
 
@@ -225,13 +244,13 @@
     <div class="ev-card__body">
       <p class="ev-card__date">24 июля · 14:00</p>
       <h2 class="ev-card__title">Kundoglini</h2>
-      <p class="ev-card__desc">Первое занятие. Руки в глине как способ побыть с собой. Ведёт Diana Sage. Опыт не нужен.</p>
+      <p class="ev-card__desc">Первое занятие. Руки в глине как способ побыть с собой. Ведёт Diana Sage.</p>
       <span class="ev-card__price donation">Donation based</span>
-      <a class="cta" href="https://wa.me/34605543300?text=Хочу+на+Kundoglini+24+июля">Записаться</a>
+      <a class="cta" href="https://luma.com/bxl57ger" target="_blank" rel="noopener">Записаться →</a>
     </div>
   </article>
 
-  <!-- CLAY & COFFEE — WIDE -->
+  <!-- CLAY & COFFEE — spans 2 cols -->
   <article class="ev-card ev-card--wide">
     <img class="ev-card__img" src="../assets/images/events/koritsa.png" alt="Clay & Coffee with Koritsa · Saged.club" loading="lazy">
     <div class="ev-card__body">
@@ -243,8 +262,8 @@
         <li>15:00 – 17:00</li>
         <li>19:00 – 21:00</li>
       </ul>
-      <p class="ev-card__date" style="margin-bottom:1.5rem">€60 за оба занятия · €30 разовое</p>
-      <a class="cta" href="https://wa.me/34605543300?text=Хочу+записаться+на+керамику+с+Корицей">Записаться</a>
+      <p class="ev-card__date" style="margin-bottom:1.25rem">€60 за оба занятия · €30 разовое</p>
+      <a class="cta" href="https://luma.com/ym1edy80" target="_blank" rel="noopener">Записаться →</a>
     </div>
   </article>
 
