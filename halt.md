@@ -1,54 +1,50 @@
-# Halt — 2026-07-01
+# Halt — 2026-07-02
 
 ## Where we stopped
 
-Ukrainian URL rename shipped (`/uk/` → `/ua/`), RU/UA home pages synced. Site is live.
+Reviewed live site (both RU and UA confirmed healthy). Pulled Meta ads stats for June 5–July 2.
 
 ---
 
 ## What was done this session
 
-1. **`/uk/` → `/ua/` URL rename — fully shipped:**
-   - `git mv uk ua` — directory renamed, all content preserved
-   - Batch `sed` replaced all URL references across every HTML file
-   - Backward-compat redirect stubs created at all old `/uk/` paths (meta refresh → `/ua/`)
-   - `hreflang="uk"` language attribute left unchanged (ISO 639-1 correct, only URL path changed)
-   - Committed and pushed as `f53b163`
+1. **Live site check** — fetched saged.club and saged.club/ua/ and saged.club/uk/ (redirect stub). All healthy. Nav, hero, trust strip, offerings, about all present and correct on both language versions. /uk/ redirects to /ua/ as expected.
 
-2. **UA home page inconsistency fixed:**
-   - Added missing `LocalBusiness` JSON-LD schema block (was in RU, missing from UA)
-   - Removed stray blank line in UA lang nav (leftover from EN link removal)
-   - Committed and pushed as `afb7eb6`
+2. **Meta ads stats — June 5 to June 29:**
+   - Total spend: **€372**
+   - Total clicks: **1,653**
+   - Impressions: ~223,000
+   - Campaign-attributed conversions: **0** (every week, all month)
+   - Best creative: Instagram post "Дитячі майстер-класи..." — 4.8–5.4% CTR at €0.08/click
+   - Worst: Cacao & Sound RU campaign — 0.19% CTR, frequency 6.16, €62 spent with 0 result
+   - Weekly reports flag "Verify Custom Conversion is still active in Events Manager" — never confirmed fixed
 
-3. **Sensitive files kept out of git:**
-   - `leeds/` WhatsApp chat exports — NOT committed, still local only
-   - `data/customers.csv` — NOT committed, still local only
-   - `hand building templates/`, `kids summer *.png` — NOT committed
+---
 
 ## Current state
 
 - Branch: main
-- Last commit: `afb7eb6` — ua/index.html: add missing JSON-LD schema, fix nav whitespace
-- Build status: pushed, GitHub Pages deploying
+- Last commit: `636a6e1` — halt notes
+- Build status: live and healthy
 - Open review: none
-- Live URLs: saged.club (RU) and saged.club/ua/ (UA)
 
 ---
 
 ## Next steps (in order)
 
-1. **Review the live site** — check saged.club and saged.club/ua/ on both desktop and mobile.
-2. **Add real testimonials** — trust strip uses stats. One real student quote near the CTA is the highest-leverage conversion improvement still not done.
-3. **Google Business Profile** — Diana to do at business.google.com. #1 SEO priority still pending.
-4. **Cigun price** — never confirmed, not shown on events card.
-5. **Spanish page** (`/es/`) — to catch "taller cerámica Valencia" searches.
+1. **Check Custom Conversion in Meta Events Manager** — weekly reports have flagged this every week. If it's broken, Meta has no signal and is spending blind. Go to Events Manager → Custom Conversions and confirm it's active.
+2. **Add real testimonials** — trust strip uses stats. One real student quote near the CTA is the highest-leverage conversion improvement still pending.
+3. **Google Business Profile** — Diana to do at business.google.com. #1 SEO priority, still pending.
+4. **Cacao & Sound campaign** — 0.19% CTR, freq 6.16. Either kill it or refresh creative before spending more.
+5. **Cigun price** — never confirmed, not shown on events card.
+6. **Spanish page** (`/es/`) — to catch "taller cerámica Valencia" searches.
 
 ## Context hard to re-derive
 
 - Coworking price (€200/month) is intentionally hidden from all public pages — Diana's decision.
-- `workshop-1.jpg` chosen for hero because KNOWLEDGE.md flags it as strongest social card source.
-- `hreflang="uk"` stays as-is — that's the ISO language code for Ukrainian and is correct for SEO. Only the URL path was changed from `/uk/` to `/ua/`.
+- `hreflang="uk"` stays as-is — ISO language code for Ukrainian is correct. Only the URL path was changed to `/ua/`.
 - Sensitive local files (leeds/ WhatsApp exports, data/customers.csv) should NEVER be committed to GitHub.
+- The 0 conversion problem persists all month. Clicks are happening (1,653 total) but Pixel PageViews in daily reports are nearly zero (2–25/day). Likely cause: people decline consent so Pixel can't fire, or they bounce before page loads. Custom Conversion check is the first diagnostic step.
 
 ---
 
