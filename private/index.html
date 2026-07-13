@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Частное мероприятие · Керамика для группы · Saged.club Валенсия</title>
+<meta name="description" content="Частный мастер-класс по керамике в Saged.club для вашей группы. День рождения, девичник, корпоратив — студия только для вас. Валенсия, до 12 человек.">
+<meta property="og:title" content="Частное мероприятие · Saged.club">
+<meta property="og:description" content="Студия только для вашей группы — день рождения, девичник, корпоратив. Керамика, вино, Валенсия.">
+<meta property="og:image" content="https://saged.club/assets/images/og-cover.jpg">
+<meta property="og:url" content="https://saged.club/private/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#9F4D2D">
+<link rel="canonical" href="https://saged.club/private/">
+<link rel="alternate" hreflang="ru" href="https://saged.club/private/">
+<link rel="alternate" hreflang="uk" href="https://saged.club/ua/private/">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* ── Hero ── */
+  .priv-hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4rem var(--gutter) 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .priv-hero__copy { display: flex; flex-direction: column; align-items: flex-start; }
+  .priv-hero__copy h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 1.25rem; }
+  .priv-hero__copy .lead { font-size: 1.05rem; color: var(--muted); line-height: 1.65; margin: 0 0 2rem; }
+  .priv-hero__img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; }
+
+  /* ── Sections ── */
+  .priv-section { max-width: var(--max); margin: 0 auto; padding: 3.5rem var(--gutter); }
+  .priv-section + .priv-section { border-top: 1px solid var(--line); }
+
+  /* ── Format cards ── */
+  .format-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .format-card {
+    background: var(--bg-sand);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+  }
+  .format-card.featured {
+    background: var(--terracotta);
+    color: var(--bg);
+    border-color: var(--terracotta);
+  }
+  .format-card.featured .eyebrow,
+  .format-card.featured .muted { color: rgba(255,255,255,0.72); }
+  .format-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .format-card h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+  .format-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin: 0; }
+  .format-card.featured p { color: rgba(255,255,255,0.82); }
+
+  /* ── What's included ── */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .include-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: var(--bg-sand);
+    border-radius: 4px;
+  }
+  .include-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; }
+  .include-text { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+  .include-text strong { display: block; margin-bottom: 2px; }
+
+  /* ── Gallery strip ── */
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    margin-top: 2rem;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .gallery-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+
+  /* ── Steps ── */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .step__num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.5rem; color: var(--terracotta); line-height: 1; margin-bottom: 0.75rem; }
+  .step__title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .step__body { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── Price block ── */
+  .price-block {
+    background: var(--bg-sand);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .price-number {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .price-note { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .price-ctas { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 1.5rem; }
+  .faq-item { border-top: 1px solid var(--line); padding: 1.25rem 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
+  .faq-a { font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+  /* ── CTA secondary ── */
+  .cta-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--terracotta);
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    border: 2px solid var(--terracotta);
+    transition: background 0.15s ease, color 0.15s ease;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .cta-outline:hover { background: var(--terracotta); color: var(--bg); }
+
+  @media (max-width: 760px) {
+    .priv-hero { grid-template-columns: 1fr; }
+    .priv-hero__img { aspect-ratio: 16/9; order: -1; }
+    .format-grid { grid-template-columns: 1fr; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .price-block { grid-template-columns: 1fr; }
+    .gallery-strip { grid-template-columns: 1fr 1fr; }
+    .gallery-strip img:last-child { display: none; }
+  }
+  @media (max-width: 480px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../" aria-label="Saged.club home">
+    <img src="../assets/images/logo-saged-club.svg" alt="Saged.club" width="88" height="40">
+  </a>
+  <nav class="topnav" aria-label="Sections">
+    <a href="../studio/">Взрослым</a>
+    <a href="../kids/">Детям</a>
+    <a href="../coworking/">Коворкинг</a>
+    <span class="topnav__current">Приватно</span>
+  </nav>
+  <nav class="lang" aria-label="Language">
+    <span class="lang__current">RU</span>
+    <a href="../ua/private/" class="lang__alt">UA</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="priv-hero">
+    <div class="priv-hero__copy">
+      <p class="eyebrow">Saged.club · Частное мероприятие</p>
+      <h1>Студия —<br>только для вас</h1>
+      <p class="lead">День рождения, девичник, корпоратив — или просто вечер с близкими. Глина, маленькая группа, Кориця или Вита рядом. Никого лишнего.</p>
+      <a href="https://wa.me/34605543300?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%BF%D1%80%D0%B8%D0%B9%D1%82%D0%B8+%D0%BD%D0%B0+%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%BE%D0%B5+%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5+%D0%B2+Saged.club" class="cta" target="_blank" rel="noopener">Написать — обсудить дату</a>
+    </div>
+    <img class="priv-hero__img" src="../assets/images/workshop-1.jpg" alt="Частный мастер-класс по керамике в Saged.club Валенсия" loading="eager">
+  </section>
+
+  <!-- FORMATS -->
+  <section class="priv-section">
+    <p class="eyebrow">Форматы</p>
+    <h2>Для какого повода</h2>
+    <div class="format-grid">
+
+      <div class="format-card featured">
+        <div class="format-icon">🎂</div>
+        <h3>День рождения</h3>
+        <p>Собирайте до 12 друзей — лепите вместе, смеётесь, уходите с готовым изделием. Лучше, чем ресторан, и запоминается навсегда.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-icon">🥂</div>
+        <h3>Девичник</h3>
+        <p>Глина вместо бокалов — хотя бокалы можно принести. Теплый вечер, работа руками, смех и что-то настоящее на память.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-icon">🏢</div>
+        <h3>Корпоратив</h3>
+        <p>Командный вечер, который не похож ни на один другой. Все делают руками — никто не сидит в телефоне. Работает лучше тимбилдинга.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="priv-section" style="padding-top: 0;">
+    <div class="gallery-strip">
+      <img src="../assets/images/workshop-2.jpg" alt="Группа лепит керамику в Saged.club" loading="lazy">
+      <img src="../assets/images/gallery-1.jpg" alt="Детали занятия керамикой" loading="lazy">
+      <img src="../assets/images/koritsa.jpg" alt="Кориця ведёт занятие" loading="lazy">
+    </div>
+  </section>
+
+  <!-- INCLUDES -->
+  <section class="priv-section">
+    <p class="eyebrow">Что входит</p>
+    <h2>Всё готово — просто приходите</h2>
+    <div class="includes-grid">
+      <div class="include-item">
+        <div class="include-icon">🏺</div>
+        <div class="include-text"><strong>Глина и инструменты</strong>По 1 кг глины на человека, всё необходимое для лепки и глазурования.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">🔥</div>
+        <div class="include-text"><strong>Два обжига</strong>Бисквитный и глазурный — каждый уносит домой готовое изделие через ~2 недели.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">👩‍🏫</div>
+        <div class="include-text"><strong>Инструктор</strong>Кориця или Вита ведут всё мероприятие — объясняют, помогают, задают темп.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">🫖</div>
+        <div class="include-text"><strong>Чай и тёплая атмосфера</strong>Чай включён. Вино и закуски можно принести с собой — студия без претензий.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">🏠</div>
+        <div class="include-text"><strong>Студия только для вас</strong>Никаких чужих людей. Всё пространство — ваше на весь вечер.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon">📦</div>
+        <div class="include-text"><strong>Доставка изделий</strong>Готовые работы можно забрать из студии или договориться о доставке по Валенсии.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="priv-section">
+    <p class="eyebrow">Как это устроено</p>
+    <h2>Четыре шага</h2>
+    <div class="steps">
+      <div>
+        <div class="step__num">01</div>
+        <div class="step__title">Пишете нам</div>
+        <p class="step__body">В WhatsApp или Instagram — скажите дату, количество человек, повод. Мы ответим в течение дня.</p>
+      </div>
+      <div>
+        <div class="step__num">02</div>
+        <div class="step__title">Обсуждаем детали</div>
+        <p class="step__body">Подбираем время, формат, обсуждаем пожелания. Гибко — под вас.</p>
+      </div>
+      <div>
+        <div class="step__num">03</div>
+        <div class="step__title">Бронируете</div>
+        <p class="step__body">Оплата предоплаты — студия забронирована. Stripe или Bizum.</p>
+      </div>
+      <div>
+        <div class="step__num">04</div>
+        <div class="step__title">Приходите</div>
+        <p class="step__body">Всё готово к вашему приходу. Через ~2 недели — забираете изделия.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="priv-section">
+    <p class="eyebrow">Стоимость</p>
+    <h2>Цена</h2>
+    <div class="price-block">
+      <div>
+        <div class="price-number">от €350</div>
+        <p class="price-note">
+          Цена зависит от количества человек и длительности.<br>
+          <strong>До 6 человек</strong> — от €350<br>
+          <strong>7–12 человек</strong> — от €500<br><br>
+          Всё включено: глина, обжиги, инструктор, чай.<br>
+          Вино и еду можно принести с собой.
+        </p>
+      </div>
+      <div class="price-ctas">
+        <a href="https://wa.me/34605543300?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C+%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%BE%D0%B5+%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5" class="cta" target="_blank" rel="noopener">Написать в WhatsApp →</a>
+        <a href="https://instagram.com/saged.club" class="cta-outline" target="_blank" rel="noopener">Написать в Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="priv-section">
+    <p class="eyebrow">Вопросы</p>
+    <h2>Часто спрашивают</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">Сколько человек можно позвать?</p>
+        <p class="faq-a">До 12 человек. Оптимально — 6–8: так у каждого достаточно внимания инструктора и места за столом.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Нужен ли опыт работы с глиной?</p>
+        <p class="faq-a">Нет. Мы работаем с людьми любого уровня — от тех, кто ни разу не держал глину, до тех, кто лепил раньше. Инструктор настраивает формат под группу.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Можно принести еду и вино?</p>
+        <p class="faq-a">Да. Студия не продаёт еду и напитки — приносите что хотите. Есть холодильник и место для угощений.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Когда получим готовые изделия?</p>
+        <p class="faq-a">Через ~2 недели после мероприятия. Глина должна высохнуть и пройти два обжига — это часть процесса, не задержка. Можно забрать из студии или договориться о доставке.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">В какое время можно провести мероприятие?</p>
+        <p class="faq-a">Будни и выходные, с 10:00 до 22:00. Вечерние слоты (18:00–21:00) разбирают быстрее всего — бронируйте заранее.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Нужна ли предоплата?</p>
+        <p class="faq-a">Да, 50% при бронировании — это фиксирует дату. Остаток — в день мероприятия или накануне.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="priv-section" style="text-align: center; padding-bottom: 5rem;">
+    <h2>Давайте придумаем<br>ваш вечер</h2>
+    <p class="lead" style="max-width: 34rem; margin: 0 auto 2rem;">Напишите — дату, количество людей, повод. Остальное обсудим.</p>
+    <a href="https://wa.me/34605543300?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%BF%D1%80%D0%B8%D0%B9%D1%82%D0%B8+%D0%BD%D0%B0+%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%BE%D0%B5+%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5" class="cta" target="_blank" rel="noopener">Написать в WhatsApp →</a>
+    <p class="small muted" style="margin-top:1rem;">или <a href="https://instagram.com/saged.club" target="_blank" rel="noopener">@saged.club</a> · <a href="mailto:hello@saged.club">hello@saged.club</a></p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p><strong>Saged.club</strong></p>
+  <p class="muted">Место, где можно замедлиться, создавать и&nbsp;соединяться — через искусство, музыку и&nbsp;работу руками.</p>
+  <p class="muted">C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia</p>
+  <p class="muted">WhatsApp <a href="https://wa.me/34605543300">+34 605 54 33 00</a> · <a href="mailto:hello@saged.club">hello@saged.club</a> · <a href="https://instagram.com/saged.club">@saged.club</a></p>
+  <p class="muted small">© 2026 Saged.club · <a href="../privacy.html">Privacy</a> · <a href="../cookies.html">Cookies</a></p>
+</footer>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
