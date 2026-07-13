@@ -155,6 +155,58 @@
       font-size: 12px; color: #8C7B6B;
       display: flex; justify-content: space-between;
     }
+
+    /* ── Tabs ── */
+    #tab-nav {
+      max-width: 920px; margin: 0 auto 40px;
+      display: flex; gap: 2px;
+    }
+    .tab-btn {
+      padding: 12px 28px;
+      background: #E0D8CF; border: none;
+      font-family: 'Georgia', serif; font-size: 13px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #8C7B6B; cursor: pointer;
+    }
+    .tab-btn.active {
+      background: #C4622D; color: #fff;
+    }
+    .tab-btn:hover:not(.active) { background: #D4CCC3; }
+
+    /* ── July-specific styles ── */
+    .mid-month-badge {
+      display: inline-block; margin-top: 12px;
+      padding: 4px 12px; background: #EDE5DB;
+      font-size: 12px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #C4622D;
+    }
+    tr.muted td { color: #8C7B6B; font-size: 13px; }
+    tr.subtotal td { font-weight: bold; padding-top: 14px; border-bottom: none; }
+    tr.estimated td { color: #8C7B6B; font-style: italic; font-size: 13px; }
+    tr.highlight-row td { background: #EDE5DB; padding-left: 12px; padding-right: 12px; }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-top: 4px; }
+    .result-box { background: #EDE5DB; padding: 24px 20px; }
+    .result-box.negative { background: #F2E0D8; }
+    .result-box.neutral { background: #E8DDD0; }
+    .result-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #8C7B6B; margin-bottom: 10px; }
+    .result-value { font-size: 28px; font-weight: normal; }
+    .result-note { font-size: 12px; color: #8C7B6B; margin-top: 6px; }
+    .fill-table td.bar-cell { padding: 14px 0; }
+    .bar-label { font-size: 13px; color: #8C7B6B; white-space: nowrap; min-width: 90px; text-align: right; }
+    .bar-label.positive { color: #3A7A4A; }
+    .bar-label.negative { color: #B83A1A; }
+    .month-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 24px; }
+    .compare-box { background: #EDE5DB; padding: 24px 22px; }
+    .compare-box.current { background: #E2D8CC; }
+    .compare-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #8C7B6B; margin-bottom: 8px; }
+    .compare-value { font-size: 32px; font-weight: normal; margin-bottom: 6px; }
+    .compare-meta { font-size: 13px; color: #8C7B6B; line-height: 1.6; }
+    .growth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .growth-item { background: #EDE5DB; padding: 24px 22px; }
+    .growth-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C4622D; margin-bottom: 10px; }
+    .growth-item h3 { font-size: 16px; font-weight: normal; margin-bottom: 10px; }
+    .growth-item p { font-size: 14px; line-height: 1.7; color: #5C4F42; }
+    .growth-item .impact { margin-top: 14px; font-size: 13px; color: #3A7A4A; font-style: italic; }
   </style>
 </head>
 <body>
@@ -196,7 +248,12 @@
   });
 </script>
 
-<div class="page">
+<div id="tab-nav">
+  <button class="tab-btn active" onclick="showTab('overview',this)">Overview</button>
+  <button class="tab-btn" onclick="showTab('july',this)">July 2026</button>
+</div>
+
+<div id="tab-overview" class="page">
 
   <header>
     <div class="studio-name">Saged.club</div>
@@ -411,7 +468,173 @@
     <span>Updated July 13, 2026</span>
   </footer>
 
-</div>
+</div><!-- /tab-overview -->
+
+<!-- ══ JULY TAB ══ -->
+<div id="tab-july" class="page" style="display:none">
+
+  <header>
+    <div class="studio-name">Saged.club</div>
+    <h1>Studio Report</h1>
+    <div class="subtitle">July 2026</div>
+    <div class="mid-month-badge">Mid-month · Jul 13 of 31</div>
+  </header>
+
+  <section>
+    <h2>Revenue — Jul 1–13</h2>
+    <table>
+      <tr><td>Workshops &amp; classes</td><td>€602</td></tr>
+      <tr><td>Studio sharing (Katya)</td><td>€200</td></tr>
+      <tr class="total"><td>Income confirmed</td><td>€802</td></tr>
+      <tr class="muted"><td>Estimated remaining (Jul 14–31)</td><td>~€900</td></tr>
+      <tr class="subtotal"><td>Estimated full-month income</td><td>~€1,700</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Expenses</h2>
+    <table>
+      <tr><td>Rent</td><td>€1,173</td></tr>
+      <tr><td>Social tax (autónomo)</td><td>€300</td></tr>
+      <tr><td>Accountant</td><td>€70</td></tr>
+      <tr><td>Meta ads (Jul 1–13)</td><td>€35.39</td></tr>
+      <tr class="estimated"><td>Electricity (est.)</td><td>~€75</td></tr>
+      <tr class="estimated"><td>Movistar studio share (est.)</td><td>~€29</td></tr>
+      <tr class="estimated"><td>Water (est.)</td><td>~€45</td></tr>
+      <tr class="estimated"><td>Meta ads remaining Jul 14–31 (est.)</td><td>~€49</td></tr>
+      <tr class="total"><td>Estimated total</td><td>~€1,776</td></tr>
+    </table>
+    <p style="font-size:12px;color:#8C7B6B;margin-top:12px;font-style:italic;">Italic rows = not yet confirmed.</p>
+  </section>
+
+  <section>
+    <h2>Result</h2>
+    <div class="result-grid">
+      <div class="result-box neutral">
+        <div class="result-label">Income (confirmed)</div>
+        <div class="result-value">€802</div>
+        <div class="result-note">Jul 1–13</div>
+      </div>
+      <div class="result-box negative">
+        <div class="result-label">Net now</div>
+        <div class="result-value red">−€776</div>
+        <div class="result-note">Confirmed costs only</div>
+      </div>
+      <div class="result-box negative">
+        <div class="result-label">Net (est. month-end)</div>
+        <div class="result-value red">−€76</div>
+        <div class="result-note">If Jul pace holds</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>July vs June</h2>
+    <div class="month-compare">
+      <div class="compare-box">
+        <div class="compare-label">June 2026</div>
+        <div class="compare-value red">−€920</div>
+        <div class="compare-meta">Income €1,123 · Costs €2,043</div>
+      </div>
+      <div class="compare-box current">
+        <div class="compare-label">July 2026 (est.)</div>
+        <div class="compare-value red">−€76</div>
+        <div class="compare-meta">Income ~€1,700 · Costs ~€1,776<br>Ads only €84/mo projected</div>
+      </div>
+    </div>
+    <div style="background:#DFF0E3;padding:16px 20px;font-size:14px;color:#2C2416;line-height:1.7;">
+      <strong>+€844 better than June.</strong> Meta ads dropped from €399 → ~€84. Revenue pace is higher. July is tracking close to break-even.
+    </div>
+  </section>
+
+  <section>
+    <h2>Meta Ads — Jul 1–13 (API)</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px;margin-bottom:24px;">
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Spent</div>
+        <div style="font-size:22px;">€35.39</div>
+      </div>
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Reach</div>
+        <div style="font-size:22px;">19,437</div>
+      </div>
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Clicks</div>
+        <div style="font-size:22px;">987</div>
+      </div>
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Cost per click</div>
+        <div style="font-size:22px;">€0.036</div>
+      </div>
+    </div>
+
+    <div style="background:#EDE5DB;padding:20px 24px;margin-bottom:2px;">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:#8C7B6B;white-space:nowrap;">Ad spend / month</span>
+        <input type="range" id="julSpendSlider" min="0" max="1000" value="84" step="10"
+          style="flex:1;min-width:200px;accent-color:#C4622D;cursor:pointer;">
+        <span id="julSpendDisplay" style="font-size:20px;font-weight:bold;min-width:70px;text-align:right;">€84</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px;">
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Ad cost</div>
+        <div id="julSpend" style="font-size:22px;">€84</div>
+      </div>
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Est. income</div>
+        <div id="julIncome" style="font-size:22px;">€1,700</div>
+      </div>
+      <div style="background:#EDE5DB;padding:18px 16px;">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Total costs</div>
+        <div id="julCosts" style="font-size:22px;">€1,776</div>
+      </div>
+      <div style="background:#F2E0D8;padding:18px 16px;" id="julProfitBox">
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:6px;">Profit / Loss</div>
+        <div id="julProfit" style="font-size:22px;color:#B83A1A;">−€76</div>
+      </div>
+    </div>
+    <div class="insight" style="margin-top:2px;">
+      <strong>Key insight:</strong> €35.39 spent → 987 clicks → €0.036 per click. At this rate July costs ~€84 in ads total. June was €399 for less revenue. The studio converts organically or via DM.
+    </div>
+  </section>
+
+  <section>
+    <h2>What to Focus on Now</h2>
+    <div class="growth-grid">
+      <div class="growth-item">
+        <div class="growth-tag">This week</div>
+        <h3>Close the €76 gap</h3>
+        <p>Two more workshop bookings closes it completely. Message anyone who's visited before and ask if they want to come back in July.</p>
+        <div class="impact">2 bookings at €50 = break-even</div>
+      </div>
+      <div class="growth-item">
+        <div class="growth-tag">This week</div>
+        <h3>Keep ads low</h3>
+        <p>July is generating revenue at €84/month in ads vs €399 in June — same outcome, €315 cheaper. Don't scale up until you know what's driving bookings.</p>
+        <div class="impact">Saves €315/month vs June</div>
+      </div>
+      <div class="growth-item">
+        <div class="growth-tag">Short term</div>
+        <h3>Track booking source</h3>
+        <p>Ask each July booking how they found you — Instagram, DM, word of mouth, Google. The answer tells you where to put energy.</p>
+        <div class="impact">Zero cost, high signal</div>
+      </div>
+      <div class="growth-item">
+        <div class="growth-tag">Short term</div>
+        <h3>Confirm Korytsia for July</h3>
+        <p>June Korytsia revenue (€355) is still outstanding. Confirm the split and collection date before month-end.</p>
+        <div class="impact">€355+ if June still unpaid</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Saged.club · Studio Report · July 2026</span>
+    <span>Updated July 13, 2026</span>
+  </footer>
+
+</div><!-- /tab-july -->
 
 <script>
   const MONTHS  = ['Mar', 'Apr', 'May', 'Jun', 'Jul*', 'Aug†'];
@@ -557,6 +780,38 @@
     // break-even label
     ctx.fillStyle=SAGE; ctx.font='11px Georgia'; ctx.textAlign='left';
     ctx.fillText('break-even', PAD.left+4, y0-6);
+  })();
+</script>
+
+<script>
+  /* ── Tab switching ── */
+  function showTab(name, btn) {
+    document.getElementById('tab-overview').style.display = name==='overview' ? '' : 'none';
+    document.getElementById('tab-july').style.display    = name==='july'     ? '' : 'none';
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  /* ── July slider ── */
+  (function(){
+    const BASE_INCOME = 1700, FIXED_COSTS = 1692;
+    function fmt(n){ const a=Math.abs(Math.round(n)); return n<0?'−€'+a.toLocaleString():'€'+a.toLocaleString(); }
+    const slider = document.getElementById('julSpendSlider');
+    function update(){
+      const spend = parseInt(slider.value);
+      const costs = FIXED_COSTS + spend;
+      const profit = BASE_INCOME - costs;
+      document.getElementById('julSpendDisplay').textContent = '€'+spend;
+      document.getElementById('julSpend').textContent = '€'+spend;
+      document.getElementById('julIncome').textContent = fmt(BASE_INCOME);
+      document.getElementById('julCosts').textContent = fmt(costs);
+      const pEl = document.getElementById('julProfit');
+      pEl.textContent = fmt(profit);
+      pEl.style.color = profit>=0?'#3A7A4A':'#B83A1A';
+      document.getElementById('julProfitBox').style.background = profit>=0?'#DFF0E3':'#F2E0D8';
+    }
+    slider.addEventListener('input', update);
+    update();
   })();
 </script>
 
