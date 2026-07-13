@@ -24,6 +24,18 @@
   // the PageView signal for ad optimization but with no identifying data.
   loadPixel(current === 'accepted');
 
+  // ViewContent on Meta campaign landing pages — lets Meta build retargeting
+  // audiences from visitors who browsed but didn't contact yet.
+  (function () {
+    const path = window.location.pathname.replace(/\/$/, '');
+    const vc = {
+      '/studio': 'studio-adult', '/ua/studio': 'studio-adult',
+      '/kids': 'studio-kids',   '/ua/kids': 'studio-kids',
+      '/coworking': 'coworking', '/ua/coworking': 'coworking'
+    }[path];
+    if (vc && window.fbq) fbq('track', 'ViewContent', { content_name: vc });
+  })();
+
   function loadPixel(consented) {
     if (window.fbq) return;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -50,6 +62,18 @@
   document.querySelectorAll('#book a[href*="wa.me"], #book a[href*="t.me"]').forEach(link => {
     link.addEventListener('click', () => {
       if (window.fbq) window.fbq('track', 'Contact', { content_name: 'booking-channel-click' });
+    });
+  });
+
+  document.querySelectorAll('a[href*="cal.com/"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.fbq) window.fbq('track', 'InitiateCheckout', { content_name: 'cal-booking', value: 60, currency: 'EUR' });
+    });
+  });
+
+  document.querySelectorAll('a[href*="lu.ma/"], a[href*="luma.com/"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.fbq) window.fbq('track', 'Contact', { content_name: 'luma-event-click' });
     });
   });
 
@@ -128,6 +152,21 @@
     return `\n\n— ${labels[lang] || labels.ru}: ${parts}`;
   }
   // Rewrite static wa.me links to also carry the UTM tail
+  (function annotateCalLinks() {
+    const utm = getUtm();
+    if (!utm || !utm.source) return;
+    document.querySelectorAll('a[href*="cal.com/"]').forEach(link => {
+      try {
+        const url = new URL(link.href);
+        if (utm.source) url.searchParams.set('utm_source', utm.source);
+        if (utm.medium) url.searchParams.set('utm_medium', utm.medium);
+        if (utm.campaign) url.searchParams.set('utm_campaign', utm.campaign);
+        if (utm.content) url.searchParams.set('utm_content', utm.content);
+        link.href = url.toString();
+      } catch (_) {}
+    });
+  })();
+
   (function annotateWaLinks() {
     const lang = (document.documentElement.lang || 'ru').slice(0, 2);
     const tail = utmSourceLine(lang);
@@ -145,9 +184,9 @@
   // Request forms → open WhatsApp with form data prefilled
   const templates = {
     'parent-kid': {
-      ru: (p, c, w) => `Доброго дня! 🪷\n\nИнтересен формат «родитель + ребёнок» по керамике.\n\nИмя родителя: ${p}\nИмя и возраст ребёнка: ${c}\nКогда удобнее: ${w || '—'}\n\nДобавьте нас в список — напишите, когда соберётся группа :)`,
-      uk: (p, c, w) => `Доброго дня! 🪷\n\nЦікавить формат «батьки + дитина» з кераміки.\n\nІм'я батьків: ${p}\nІм'я та вік дитини: ${c}\nКоли зручніше: ${w || '—'}\n\nДодайте нас у список — напишіть, коли збереться група :)`,
-      en: (p, c, w) => `Hi! 🪷\n\nI'm interested in the parent + kid ceramics format.\n\nParent's name: ${p}\nChild's name and age: ${c}\nPreferred time: ${w || '—'}\n\nAdd us to the list — let me know when a group forms :)`
+      ru: (p, c, w) => `Доброго дня! 🪷\n\nИнтересен формат «родитель + ребёнок» по керамике (€50 за пару).\n\nИмя родителя: ${p}\nИмя и возраст ребёнка: ${c}\nКогда удобнее: ${w || '—'}\n\nДобавьте нас в список — напишите, когда соберётся группа :)`,
+      uk: (p, c, w) => `Доброго дня! 🪷\n\nЦікавить формат «батьки + дитина» з кераміки (€50 за пару).\n\nІм'я батьків: ${p}\nІм'я та вік дитини: ${c}\nКоли зручніше: ${w || '—'}\n\nДодайте нас у список — напишіть, коли збереться група :)`,
+      en: (p, c, w) => `Hi! 🪷\n\nI'm interested in the parent + kid ceramics format (€50 per pair).\n\nParent's name: ${p}\nChild's name and age: ${c}\nPreferred time: ${w || '—'}\n\nAdd us to the list — let me know when a group forms :)`
     }
   };
   const sentLabels = {
