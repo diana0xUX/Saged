@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saged.club — Business Plan H2 2026</title>
+  <style>
+    #gate {
+      position: fixed; inset: 0; background: #F5F0EB;
+      display: flex; align-items: center; justify-content: center; z-index: 9999;
+    }
+    #gate-box { text-align: center; max-width: 320px; width: 100%; padding: 0 24px; }
+    #gate-logo { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #C4622D; margin-bottom: 32px; }
+    #gate-title { font-size: 22px; font-weight: normal; color: #2C2416; margin-bottom: 8px; }
+    #gate-sub { font-size: 14px; color: #8C7B6B; margin-bottom: 32px; }
+    #gate-input {
+      width: 100%; padding: 14px 16px; border: 1px solid #C4622D; background: #fff;
+      font-family: 'Georgia', serif; font-size: 18px; letter-spacing: 0.3em;
+      text-align: center; color: #2C2416; outline: none; margin-bottom: 12px;
+    }
+    #gate-btn {
+      width: 100%; padding: 14px; background: #C4622D; color: #fff; border: none;
+      font-family: 'Georgia', serif; font-size: 14px; letter-spacing: 0.15em;
+      text-transform: uppercase; cursor: pointer;
+    }
+    #gate-btn:hover { background: #A8521F; }
+    #gate-error { font-size: 13px; color: #B83A1A; margin-top: 10px; min-height: 18px; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', serif; background: #F5F0EB; color: #2C2416; padding: 60px 24px; }
+    .page { max-width: 920px; margin: 0 auto; }
+
+    header { border-bottom: 2px solid #C4622D; padding-bottom: 32px; margin-bottom: 48px; }
+    .studio-name { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #C4622D; margin-bottom: 12px; }
+    h1 { font-size: 36px; font-weight: normal; margin-bottom: 8px; }
+    .subtitle { font-size: 15px; color: #8C7B6B; }
+
+    section { margin-bottom: 56px; }
+    h2 { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C4622D; margin-bottom: 20px; }
+    h3 { font-size: 16px; font-weight: normal; margin-bottom: 10px; }
+
+    .red { color: #B83A1A; }
+    .green { color: #3A7A4A; }
+    .amber { color: #B87A1A; }
+
+    /* Stat grid */
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 2px; }
+    .stat-box { background: #EDE5DB; padding: 22px 18px; }
+    .stat-box.red-bg { background: #F2E0D8; }
+    .stat-box.green-bg { background: #DFF0E3; }
+    .stat-box.highlight { background: #E2D8CC; }
+    .stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #8C7B6B; margin-bottom: 8px; }
+    .stat-val { font-size: 26px; }
+    .stat-note { font-size: 11px; color: #8C7B6B; margin-top: 4px; }
+
+    /* Chart */
+    .chart-wrap { background: #EDE5DB; padding: 28px 24px; }
+    canvas { display: block; width: 100%; height: auto; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; }
+    td, th { padding: 11px 0; border-bottom: 1px solid #E0D8CF; font-size: 14px; }
+    th { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8C7B6B; font-weight: normal; padding-bottom: 10px; }
+    th:not(:first-child), td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+    tr.total td { border-top: 2px solid #2C2416; border-bottom: none; font-weight: bold; padding-top: 14px; }
+    tr.highlight-row td { background: #EDE5DB; padding-left: 10px; padding-right: 10px; }
+
+    /* Month cards */
+    .month-row-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
+    .month-card { background: #EDE5DB; padding: 22px 20px; }
+    .month-card.active { background: #E2D8CC; border-top: 3px solid #C4622D; }
+    .month-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C4622D; margin-bottom: 10px; }
+    .month-goal { font-size: 13px; font-weight: bold; color: #2C2416; margin-bottom: 12px; }
+    .month-item { font-size: 13px; color: #5C4F42; padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .month-item:last-of-type { border-bottom: none; }
+    .month-net { margin-top: 12px; font-size: 18px; }
+
+    /* Revenue stream cards */
+    .stream-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stream-card { background: #EDE5DB; padding: 24px 22px; }
+    .stream-card.growth { background: #DFF0E3; }
+    .stream-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C4622D; margin-bottom: 10px; }
+    .stream-card p { font-size: 14px; color: #5C4F42; line-height: 1.7; }
+    .stream-now { margin-top: 12px; font-size: 13px; color: #8C7B6B; }
+    .stream-target { margin-top: 6px; font-size: 13px; color: #3A7A4A; font-style: italic; }
+
+    /* Insight */
+    .insight { background: #EDE5DB; padding: 18px 22px; font-size: 14px; color: #5C4F42; line-height: 1.7; margin-top: 2px; }
+    .insight strong { color: #2C2416; }
+
+    /* Bar */
+    .bar-wrap { display: flex; align-items: center; gap: 8px; }
+    .bar-bg { flex: 1; height: 5px; background: #E0D8CF; border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; }
+
+    /* Divider */
+    .divider { border: none; border-top: 1px solid #E0D8CF; margin: 0 0 40px; }
+
+    footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #E0D8CF; font-size: 12px; color: #8C7B6B; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+
+<div id="gate">
+  <div id="gate-box">
+    <div id="gate-logo">Saged.club</div>
+    <div id="gate-title">Business Plan</div>
+    <div id="gate-sub">Enter password to view</div>
+    <input id="gate-input" type="password" placeholder="····" maxlength="10" autofocus>
+    <button id="gate-btn" onclick="checkPassword()">Enter</button>
+    <div id="gate-error"></div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    if(sessionStorage.getItem('saged-auth')==='ok'){
+      document.addEventListener('DOMContentLoaded',function(){
+        document.getElementById('gate').style.display='none';
+      });
+    }
+  })();
+  function checkPassword(){
+    const val=document.getElementById('gate-input').value;
+    if(val==='0312'){
+      sessionStorage.setItem('saged-auth','ok');
+      document.getElementById('gate').style.display='none';
+    } else {
+      document.getElementById('gate-error').textContent='Incorrect password.';
+      document.getElementById('gate-input').value='';
+      document.getElementById('gate-input').focus();
+    }
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('gate-input').addEventListener('keydown',function(e){
+      if(e.key==='Enter') checkPassword();
+    });
+  });
+</script>
+
+<div class="page">
+
+  <header>
+    <div class="studio-name">Saged.club</div>
+    <h1>Business Plan</h1>
+    <div class="subtitle">August 2026 – January 2027 · Prepared July 13, 2026</div>
+  </header>
+
+  <!-- WHERE WE ARE -->
+  <section>
+    <h2>Where We Are Now</h2>
+    <div class="stat-grid">
+      <div class="stat-box red-bg">
+        <div class="stat-label">Total loss Mar–Jun</div>
+        <div class="stat-val red">−€3,955</div>
+        <div class="stat-note">6 months of building</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">July (est. month-end)</div>
+        <div class="stat-val amber">−€76</div>
+        <div class="stat-note">Near break-even</div>
+      </div>
+      <div class="stat-box highlight">
+        <div class="stat-label">Monthly fixed costs</div>
+        <div class="stat-val">€1,692</div>
+        <div class="stat-note">Rent, tax, utilities</div>
+      </div>
+      <div class="stat-box green-bg">
+        <div class="stat-label">Break-even income</div>
+        <div class="stat-val green">~€1,800</div>
+        <div class="stat-note">With ~€100 ads</div>
+      </div>
+    </div>
+    <div class="insight">
+      <strong>The turning point is now.</strong> From March to June the studio lost €660/month on average. July is on track to nearly break even — not by finding magic new customers, but by spending €315 less on ads while income held. The next 6 months are about converting that trajectory into consistent profit and recovering the invested capital.
+    </div>
+  </section>
+
+  <!-- 6-MONTH PROJECTION CHART -->
+  <section>
+    <h2>6-Month Financial Projection</h2>
+    <div class="chart-wrap">
+      <canvas id="projChart" width="872" height="340"></canvas>
+    </div>
+  </section>
+
+  <!-- PROJECTION TABLE -->
+  <section>
+    <h2>Projection by Month</h2>
+    <table>
+      <tr>
+        <th>Month</th>
+        <th>Income target</th>
+        <th>Est. costs</th>
+        <th>Net</th>
+        <th>Cumulative</th>
+      </tr>
+      <tr>
+        <td>August 2026</td>
+        <td>€1,850</td>
+        <td>€1,750</td>
+        <td class="green">+€100</td>
+        <td class="green">+€100</td>
+      </tr>
+      <tr>
+        <td>September 2026</td>
+        <td>€2,200</td>
+        <td>€1,780</td>
+        <td class="green">+€420</td>
+        <td class="green">+€520</td>
+      </tr>
+      <tr>
+        <td>October 2026</td>
+        <td>€2,600</td>
+        <td>€1,810</td>
+        <td class="green">+€790</td>
+        <td class="green">+€1,310</td>
+      </tr>
+      <tr>
+        <td>November 2026</td>
+        <td>€3,000</td>
+        <td>€1,850</td>
+        <td class="green">+€1,150</td>
+        <td class="green">+€2,460</td>
+      </tr>
+      <tr>
+        <td>December 2026</td>
+        <td>€3,500</td>
+        <td>€2,000</td>
+        <td class="green">+€1,500</td>
+        <td class="green">+€3,960</td>
+      </tr>
+      <tr>
+        <td>January 2027</td>
+        <td>€2,200</td>
+        <td>€1,750</td>
+        <td class="green">+€450</td>
+        <td class="green">+€4,410</td>
+      </tr>
+      <tr class="total">
+        <td>Total Aug–Jan</td>
+        <td>€15,350</td>
+        <td>€10,940</td>
+        <td class="green">+€4,410</td>
+        <td></td>
+      </tr>
+    </table>
+    <div class="insight" style="margin-top:2px;">
+      <strong>Recovery path:</strong> Total losses Mar–Jun were ~€3,955. By end of January, the plan generates +€4,410 — bringing the studio to overall operational break-even from launch. December alone covers the full July loss + two prior months.
+    </div>
+  </section>
+
+  <!-- REVENUE STREAMS -->
+  <section>
+    <h2>Revenue Streams — Targets</h2>
+    <div class="stream-grid">
+
+      <div class="stream-card">
+        <div class="stream-tag">Core · Classes</div>
+        <h3>Adult ceramics (Korytsia + Vita)</h3>
+        <p>Korytsia runs 3 Thu slots × 6 people × €60. Vita runs Wed + Fri sessions at ~€40 per person. Studio keeps 50% of each instructor's revenue.</p>
+        <div class="stream-now">Now: ~€600–800/month studio share</div>
+        <div class="stream-target">Target by Nov: €1,500/month (fuller slots, Vita established)</div>
+      </div>
+
+      <div class="stream-card growth">
+        <div class="stream-tag">Growth · Coworking</div>
+        <h3>Studio residents</h3>
+        <p>5 spots available at €200/month each. Currently 1 resident (Katya). Each additional resident is pure margin — zero extra cost once signed.</p>
+        <div class="stream-now">Now: €200/month (1 resident)</div>
+        <div class="stream-target">Target by Oct: €600/month (3 residents)</div>
+      </div>
+
+      <div class="stream-card growth">
+        <div class="stream-tag">Growth · Events</div>
+        <h3>Private events</h3>
+        <p>Birthday parties, hen nights, corporate team events. One private booking fills a slot that might otherwise have 2–3 people in it, at 3–5× the revenue per hour. No ads needed — referral and Instagram are enough.</p>
+        <div class="stream-now">Now: occasional, unpriced</div>
+        <div class="stream-target">Target by Sep: 1–2 events/month at €350 avg = €700</div>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-tag">Core · Kids</div>
+        <h3>Kids classes</h3>
+        <p>€25/child, groups of 4–6. Already validated — trial ran in June. Low ad cost because the audience finds via word of mouth among parents. Weekends with Korytsia.</p>
+        <div class="stream-now">Now: trial mode, no fixed schedule</div>
+        <div class="stream-target">Target by Sep: weekly slot, 5 kids = €500/month gross</div>
+      </div>
+
+      <div class="stream-card">
+        <div class="stream-tag">Medium term · Online</div>
+        <h3>Digital masterclasses</h3>
+        <p>Recorded ceramic technique classes sold via Stripe. No studio space required. 5 sales already in June. A structured course at €50 sold to 30 students = €1,500 one-time, zero marginal cost after production.</p>
+        <div class="stream-now">Now: informal, 5 Stripe sales Jun</div>
+        <div class="stream-target">Target by Nov: one packaged course live, €500+/month</div>
+      </div>
+
+      <div class="stream-card growth">
+        <div class="stream-tag">Holiday · Dec</div>
+        <h3>Gift vouchers + seasonal workshops</h3>
+        <p>December is the highest-leverage month. Ceramic class gift vouchers, "make your own Christmas gifts" workshops, corporate gifting. Booked via Instagram story + DM — no landing page needed.</p>
+        <div class="stream-now">Now: not yet launched</div>
+        <div class="stream-target">Target Dec: €1,000+ from events + vouchers alone</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MONTHLY FOCUS -->
+  <section>
+    <h2>Monthly Focus — What to Do When</h2>
+
+    <div class="month-row-grid">
+      <div class="month-card active">
+        <div class="month-label">August · Consolidate</div>
+        <div class="month-goal">First profitable month</div>
+        <div class="month-item">Ask every July booking: "how did you find us?"</div>
+        <div class="month-item">Find what's working — double it, cut what isn't</div>
+        <div class="month-item">Keep Meta ads under €100/month</div>
+        <div class="month-item">Post 3 Instagram stories/week showing real studio life</div>
+        <div class="month-item">Formally price + promote private events</div>
+        <div class="month-net green">Target: +€100</div>
+      </div>
+
+      <div class="month-card">
+        <div class="month-label">September · Add Revenue</div>
+        <div class="month-goal">Second coworking resident</div>
+        <div class="month-item">Sign 1 more studio resident (ask Katya for referral)</div>
+        <div class="month-item">Book first private event (birthday / hen)</div>
+        <div class="month-item">Launch fixed weekly kids slot with Korytsia</div>
+        <div class="month-item">Referral ask: message all summer visitors</div>
+        <div class="month-item">Vita: first full month of public sessions</div>
+        <div class="month-net green">Target: +€420</div>
+      </div>
+
+      <div class="month-card">
+        <div class="month-label">October · Grow</div>
+        <div class="month-goal">3× revenue streams active</div>
+        <div class="month-item">3rd coworking resident signed</div>
+        <div class="month-item">2–3 private events per month, now repeating</div>
+        <div class="month-item">Kids classes generating €400+/month gross</div>
+        <div class="month-item">Instagram content: "meet the artists" posts, reels</div>
+        <div class="month-item">Start recording first online masterclass</div>
+        <div class="month-net green">Target: +€790</div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="month-row-grid">
+      <div class="month-card">
+        <div class="month-label">November · Scale</div>
+        <div class="month-goal">Classes near half capacity</div>
+        <div class="month-item">All 3 Korytsia Thu slots consistently full (18 people/week)</div>
+        <div class="month-item">Online masterclass live, first sales</div>
+        <div class="month-item">Gift voucher campaign starts (Black Friday)</div>
+        <div class="month-item">WhatsApp group for regulars — community loop</div>
+        <div class="month-item">Prep December event calendar (confirm Korytsia + Vita)</div>
+        <div class="month-net green">Target: +€1,150</div>
+      </div>
+
+      <div class="month-card">
+        <div class="month-label">December · Holiday Peak</div>
+        <div class="month-goal">Highest revenue month</div>
+        <div class="month-item">"Make your own Christmas gifts" workshops × 4</div>
+        <div class="month-item">Corporate bookings: team ceramic events</div>
+        <div class="month-item">Gift vouchers: sold Dec, redeemed Jan–Feb</div>
+        <div class="month-item">New Year's Eve event (cultural + ceramic)</div>
+        <div class="month-item">Instagram: festive content, studio behind-the-scenes</div>
+        <div class="month-net green">Target: +€1,500</div>
+      </div>
+
+      <div class="month-card">
+        <div class="month-label">January · Sustain</div>
+        <div class="month-goal">Stable profitable base</div>
+        <div class="month-item">Vouchers from December start being redeemed</div>
+        <div class="month-item">Jan is quiet — lean on regulars and coworking</div>
+        <div class="month-item">Review H2 — what worked, what didn't</div>
+        <div class="month-item">Set spring targets (Feb–Jul 2027)</div>
+        <div class="month-item">Renew any coworking contracts</div>
+        <div class="month-net green">Target: +€450</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NET RECOVERY CHART -->
+  <section>
+    <h2>Recovery from Launch Losses</h2>
+    <div class="chart-wrap">
+      <canvas id="recoveryChart" width="872" height="280"></canvas>
+    </div>
+    <div class="insight">
+      <strong>Overall break-even by January 2027.</strong> The studio invested ~€4,000 in losses building the audience (Mar–Jun). The H2 plan generates +€4,410 — recovering all of it within 6 months. By February 2027 the studio is operating in the black from a standing start.
+    </div>
+  </section>
+
+  <!-- KEY METRICS -->
+  <section>
+    <h2>Key Numbers to Track Monthly</h2>
+    <table>
+      <tr>
+        <th>Metric</th>
+        <th>Now (Jul)</th>
+        <th>Sep target</th>
+        <th>Dec target</th>
+      </tr>
+      <tr>
+        <td>Monthly income</td>
+        <td>~€1,700</td>
+        <td>€2,200</td>
+        <td>€3,500</td>
+      </tr>
+      <tr>
+        <td>Studio coworking residents</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Private events per month</td>
+        <td>0</td>
+        <td>1–2</td>
+        <td>3–4</td>
+      </tr>
+      <tr>
+        <td>Meta ad spend</td>
+        <td>~€84</td>
+        <td>&lt;€100</td>
+        <td>&lt;€150</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Net profit</strong></td>
+        <td class="amber"><strong>−€76 est.</strong></td>
+        <td class="green"><strong>+€420</strong></td>
+        <td class="green"><strong>+€1,500</strong></td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- WHAT NOT TO DO -->
+  <section>
+    <h2>What Not to Do</h2>
+    <table>
+      <tr>
+        <td style="width:38%;">Scale Meta ads before knowing source</td>
+        <td style="text-align:left; padding-left:16px;">June proved more spend ≠ more bookings. Understand what drove July first.</td>
+      </tr>
+      <tr>
+        <td>Add a 3rd instructor or major product line</td>
+        <td style="text-align:left; padding-left:16px;">Two instructors + coworking + events is enough to hit targets. Adding more complexity before the model is stable creates risk, not growth.</td>
+      </tr>
+      <tr>
+        <td>Merge RU + UA ads or audiences</td>
+        <td style="text-align:left; padding-left:16px;">Non-negotiable. Two communities, two campaigns always.</td>
+      </tr>
+      <tr>
+        <td>Run paid ads for cultural events</td>
+        <td style="text-align:left; padding-left:16px;">Events convert organically. Paid ads for events wasted money in H1.</td>
+      </tr>
+      <tr>
+        <td>Wait for "perfect" before launching private events</td>
+        <td style="text-align:left; padding-left:16px;">One Instagram story with a date + price is enough. Start August.</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    <span>Saged.club · Business Plan · August 2026 – January 2027</span>
+    <span>Prepared July 13, 2026</span>
+  </footer>
+
+</div>
+
+<script>
+  const CLAY='#C4622D', SAGE='#3A7A4A', DARK='#2C2416', MID='#8C7B6B', LINE='#E0D8CF', AMBER='#B87A1A';
+
+  /* ── 6-MONTH PROJECTION: stacked area / bar ── */
+  (function(){
+    const c = document.getElementById('projChart');
+    const ctx = c.getContext('2d');
+    const W=c.width, H=c.height;
+    const PAD={top:44,right:30,bottom:54,left:80};
+
+    const LABELS = ['Aug','Sep','Oct','Nov','Dec','Jan'];
+    const INCOME = [1850,2200,2600,3000,3500,2200];
+    const COSTS  = [1750,1780,1810,1850,2000,1750];
+    const NET    = [100, 420, 790, 1150,1500,450];
+
+    const maxV=3700;
+    const n=LABELS.length;
+    const slotW=(W-PAD.left-PAD.right)/n;
+    const bW=slotW*0.22;
+
+    function yP(v){ return PAD.top+(1-v/maxV)*(H-PAD.top-PAD.bottom); }
+    function cx(i){ return PAD.left+(i+0.5)*slotW; }
+
+    // grid
+    ctx.font='11px Georgia'; ctx.fillStyle=MID; ctx.textAlign='right';
+    [0,1000,2000,3000].forEach(v=>{
+      const y=yP(v);
+      ctx.strokeStyle=LINE; ctx.lineWidth=0.5; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(W-PAD.right,y); ctx.stroke();
+      ctx.fillText('€'+v.toLocaleString(),PAD.left-8,y+4);
+    });
+
+    LABELS.forEach((m,i)=>{
+      const x=cx(i);
+
+      // costs bar (behind)
+      const ch=(COSTS[i]/maxV)*(H-PAD.top-PAD.bottom);
+      ctx.fillStyle=CLAY+'99';
+      ctx.fillRect(x-bW*1.15-bW/2,yP(COSTS[i]),bW,ch);
+
+      // income bar
+      const ih=(INCOME[i]/maxV)*(H-PAD.top-PAD.bottom);
+      ctx.fillStyle=SAGE;
+      ctx.fillRect(x+bW*0.15,yP(INCOME[i]),bW,ih);
+
+      // month label
+      ctx.fillStyle=DARK; ctx.font='12px Georgia'; ctx.textAlign='center';
+      ctx.fillText(m,x,H-PAD.bottom+18);
+
+      // net label above income bar
+      ctx.fillStyle=SAGE; ctx.font='bold 11px Georgia';
+      ctx.fillText('+€'+NET[i],x+bW*0.15+bW/2,yP(INCOME[i])-7);
+    });
+
+    // legend
+    ctx.setLineDash([]);
+    ctx.fillStyle=SAGE; ctx.fillRect(PAD.left,14,12,10);
+    ctx.fillStyle=DARK; ctx.font='11px Georgia'; ctx.textAlign='left';
+    ctx.fillText('Income',PAD.left+16,23);
+    ctx.fillStyle=CLAY+'99'; ctx.fillRect(PAD.left+72,14,12,10);
+    ctx.fillText('Costs',PAD.left+88,23);
+    ctx.fillStyle=MID; ctx.font='10px Georgia';
+    ctx.fillText('Numbers above income bars = monthly net profit',PAD.left+150,23);
+  })();
+
+  /* ── RECOVERY CHART: cumulative net vs historical losses ── */
+  (function(){
+    const c=document.getElementById('recoveryChart');
+    const ctx=c.getContext('2d');
+    const W=c.width, H=c.height;
+    const PAD={top:44,right:40,bottom:54,left:90};
+
+    // Historical losses (Mar–Jun) + July (est) then projections Aug–Jan
+    const ALL_LABELS=['Mar','Apr','May','Jun','Jul*','Aug','Sep','Oct','Nov','Dec','Jan'];
+    const MONTHLY_NET=[-744,-959,-1332,-920,-76,100,420,790,1150,1500,450];
+
+    // Cumulative
+    const CUMUL=[];
+    let running=0;
+    MONTHLY_NET.forEach(v=>{ running+=v; CUMUL.push(running); });
+    // CUMUL = [-744,-1703,-3035,-3955,-4031,-3931,-3511,-2721,-1571,-71,379]
+
+    const minY=-4500, maxY=700;
+    const n=ALL_LABELS.length;
+    const HIST_END=4; // index of Jul (last historical)
+
+    function xP(i){ return PAD.left+(i/(n-1))*(W-PAD.left-PAD.right); }
+    function yP(v){ return PAD.top+((maxY-v)/(maxY-minY))*(H-PAD.top-PAD.bottom); }
+    const y0=yP(0);
+
+    // zones
+    ctx.fillStyle='rgba(58,122,74,0.07)';
+    ctx.fillRect(PAD.left,PAD.top,W-PAD.left-PAD.right,y0-PAD.top);
+    ctx.fillStyle='rgba(184,58,26,0.06)';
+    ctx.fillRect(PAD.left,y0,W-PAD.left-PAD.right,H-PAD.bottom-y0);
+
+    // grid
+    ctx.font='11px Georgia'; ctx.fillStyle=MID; ctx.textAlign='right';
+    [-4000,-3000,-2000,-1000,0].forEach(v=>{
+      const y=yP(v);
+      ctx.strokeStyle=LINE; ctx.lineWidth=0.5; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(W-PAD.right,y); ctx.stroke();
+      ctx.fillText((v>=0?'+€':'−€')+Math.abs(v).toLocaleString(),PAD.left-8,y+4);
+    });
+
+    // zero line
+    ctx.strokeStyle=DARK; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(PAD.left,y0); ctx.lineTo(W-PAD.right,y0); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // historical line (Mar–Jul, indices 0–4)
+    ctx.strokeStyle=CLAY; ctx.lineWidth=2.5;
+    ctx.beginPath();
+    for(let i=0;i<=HIST_END;i++){
+      const x=xP(i),y=yP(CUMUL[i]);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    // projection line (Jul–Jan, indices 4–10) dashed
+    ctx.strokeStyle=SAGE; ctx.lineWidth=2; ctx.setLineDash([6,4]);
+    ctx.beginPath(); ctx.moveTo(xP(HIST_END),yP(CUMUL[HIST_END]));
+    for(let i=HIST_END+1;i<n;i++) ctx.lineTo(xP(i),yP(CUMUL[i]));
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // dots + labels
+    CUMUL.forEach((v,i)=>{
+      const x=xP(i),y=yP(v);
+      const proj=i>HIST_END;
+      ctx.fillStyle=proj?SAGE:CLAY;
+      ctx.beginPath(); ctx.arc(x,y,5,0,Math.PI*2); ctx.fill();
+
+      if(i===0||i===HIST_END||i===n-1||v>-200){
+        ctx.font='bold 10px Georgia'; ctx.textAlign='center';
+        ctx.fillStyle=proj?SAGE:DARK;
+        const lbl=(v>=0?'+€':'−€')+Math.abs(Math.round(v)).toLocaleString();
+        const yOff=v<-3500?18:v<-1500?-14:v<0?-14:18;
+        ctx.fillText(lbl,x,y+yOff);
+      }
+
+      ctx.fillStyle=i>HIST_END?MID:DARK;
+      ctx.font=i>HIST_END?'italic 10px Georgia':'10px Georgia';
+      ctx.textAlign='center';
+      ctx.fillText(ALL_LABELS[i],x,H-PAD.bottom+18);
+    });
+
+    // labels
+    ctx.fillStyle=CLAY; ctx.font='11px Georgia'; ctx.textAlign='left';
+    ctx.fillText('actual',PAD.left+4,yP(-744)-8);
+    ctx.fillStyle=SAGE;
+    ctx.fillText('projected',xP(HIST_END+1)+4,yP(CUMUL[HIST_END+1])-8);
+    ctx.fillStyle=SAGE;
+    ctx.fillText('break-even',PAD.left+4,y0-6);
+  })();
+</script>
+
+</body>
+</html>
