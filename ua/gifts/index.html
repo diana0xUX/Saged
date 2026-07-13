@@ -74,21 +74,43 @@
   .step__title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
   .step__body { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
-  .cert-preview {
-    background: var(--bg-sand); border: 1px solid var(--line);
-    border-radius: 4px; padding: 2.5rem 3rem; margin-top: 2rem;
-    text-align: center; position: relative; overflow: hidden;
+  .cert-wrap {
+    margin-top: 2rem; background: #F2A882; border-radius: 8px; padding: 1.5rem;
   }
-  .cert-preview::before {
-    content: ''; position: absolute; inset: 8px;
-    border: 1px solid var(--line); border-radius: 2px; pointer-events: none;
+  .cert-ticket {
+    display: grid; grid-template-columns: 72px 1fr 140px;
+    background: #F0EBE3; border-radius: 4px; min-height: 190px;
+    overflow: hidden; position: relative;
   }
-  .cert-preview__logo { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.5rem; }
-  .cert-preview__title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; margin-bottom: 0.5rem; color: var(--ink); }
-  .cert-preview__sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; }
-  .cert-preview__divider { width: 60px; height: 1px; background: var(--terracotta); margin: 0 auto 2rem; }
-  .cert-preview__detail { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
-  .cert-preview__addr { margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+  .cert-ticket::before, .cert-ticket::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 0;
+    border-left: 2px dashed #ccc; z-index: 1;
+  }
+  .cert-ticket::before { left: 72px; }
+  .cert-ticket::after  { right: 140px; }
+  .cert-stub { display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .cert-stub__text {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 700; color: #E8622A;
+    writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+  }
+  .cert-body { padding: 1.5rem 1.5rem 1rem; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+  .cert-body__top { position: relative; }
+  .cert-surprise { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; color: #E8622A; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1; margin-bottom: 0.4rem; font-family: 'Inter', sans-serif; }
+  .cert-palm { position: absolute; top: -4px; left: -4px; font-size: 1rem; }
+  .cert-star { position: absolute; top: 0; right: 2rem; font-size: 1.1rem; }
+  .cert-tagline { font-style: italic; margin-bottom: 0.1rem; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; color: #2A2520; }
+  .cert-class { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #2A2520; font-family: 'Inter', sans-serif; }
+  .cert-hand { font-size: 1rem; margin-top: 0.5rem; }
+  .cert-footer { font-size: 0.62rem; color: #6B5F54; margin-top: 0.75rem; border-top: 1px solid #ddd; padding-top: 0.5rem; }
+  .cert-right { padding: 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.78rem; color: #2A2520; }
+  .cert-icons { font-size: 1.4rem; letter-spacing: 0.1em; }
+  .cert-to { border-bottom: 1px solid #2A2520; padding-bottom: 2px; min-width: 80px; font-size: 0.78rem; }
+  .cert-location { font-size: 0.72rem; color: #6B5F54; line-height: 1.5; }
+  @media (max-width: 580px) {
+    .cert-ticket { grid-template-columns: 50px 1fr 110px; }
+    .cert-stub__text { font-size: 0.6rem; }
+  }
 
   .faq-list { margin-top: 1.5rem; }
   .faq-item { border-top: 1px solid var(--line); padding: 1.25rem 0; }
@@ -209,17 +231,36 @@
     <p class="eyebrow">Як виглядає</p>
     <h2>Сертифікат</h2>
 
-    <div class="cert-preview">
-      <div class="cert-preview__logo">Saged.club · Валенсія</div>
-      <div class="cert-preview__title">Подарунковий сертифікат</div>
-      <p class="cert-preview__sub">Кераміка з Корицею — дворазовий курс</p>
-      <div class="cert-preview__divider"></div>
-      <div class="cert-preview__detail">
-        Два заняття по 2 години · Ліплення, глазур, два випали<br>
-        Глина, інструменти і чай включені<br>
-        Готовий виріб — додому
+    <div class="cert-wrap">
+      <div class="cert-ticket">
+        <div class="cert-stub">
+          <span class="cert-stub__text">Saged Club</span>
+        </div>
+        <div class="cert-body">
+          <div class="cert-body__top">
+            <span class="cert-palm">🌴</span>
+            <span class="cert-star">✦</span>
+            <div class="cert-surprise">Surprise!</div>
+            <div class="cert-tagline">Get your hands dirty, you are getting a</div>
+            <div class="cert-class">Pottery Class</div>
+            <div class="cert-hand">🖐</div>
+          </div>
+          <div class="cert-footer">
+            WhatsApp +34 605 54 33 00 · hello@saged.club · @saged.club
+          </div>
+        </div>
+        <div class="cert-right">
+          <div class="cert-icons">🏺🫙⚖️</div>
+          <div>
+            <div style="font-size:0.72rem; margin-bottom:4px;">To</div>
+            <div class="cert-to">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+          <div class="cert-location">
+            <strong>Location:</strong><br>
+            C/ de les Cuines, 8,<br>Ciutat Vella,<br>46001 Valencia
+          </div>
+        </div>
       </div>
-      <div class="cert-preview__addr">C/ de les Cuines, 8 · Ciutat Vella · Valencia · saged.club</div>
     </div>
     <p class="small muted" style="margin-top: 1rem; text-align: center;">PDF надішлемо одразу після оплати — можна роздрукувати або надіслати онлайн</p>
   </section>
