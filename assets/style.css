@@ -680,6 +680,46 @@ section:has(> .schedule__grid) h2 {
 .faq summary::-webkit-details-marker { display: none; }
 .faq p { margin: 0.8rem 0 0; color: var(--muted); }
 
+/* ---------- gift promo band ---------- */
+.gift-promo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.gift-promo img {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+@media (max-width: 760px) {
+  .gift-promo { grid-template-columns: 1fr; }
+  .gift-promo img { max-height: 280px; object-fit: cover; }
+}
+
+/* ---------- ev-card private events variant ---------- */
+.ev-card--private {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--bg);
+}
+.ev-card--private .ev-card__date { color: rgba(255,255,255,0.72); }
+.ev-card--private .ev-card__title { color: var(--bg); }
+.ev-card--private .ev-card__desc { color: rgba(255,255,255,0.82); }
+.ev-card--private:hover { border-color: var(--ink); box-shadow: none; }
+.ev-card--private .ev-card__price {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+.ev-card--private .cta {
+  background: #fff;
+  color: var(--terracotta);
+  border-color: #fff;
+  margin-top: 1rem;
+}
+.ev-card--private .cta:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+
 /* ---------- footer ---------- */
 .footer {
   max-width: var(--max);
