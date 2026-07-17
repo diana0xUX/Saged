@@ -212,6 +212,22 @@
     box-shadow: 0 4px 20px rgba(159, 77, 45, 0.1);
   }
 
+  /* Restore private card styles — needs higher specificity than .ev-card above */
+  .ev-card.ev-card--private {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .ev-card.ev-card--private .cta {
+    background: #fff;
+    color: var(--terracotta);
+    border-color: #fff;
+  }
+  .ev-card.ev-card--private .cta:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
   .ev-card__img {
     width: 100%;
     aspect-ratio: 1 / 1;
