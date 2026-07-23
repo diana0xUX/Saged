@@ -2,7 +2,7 @@
 
 The canonical source of truth for everything about the studio. Update this file as facts change; future Claude sessions read it for context.
 
-Last updated: **2026-06-09** (post team meeting debrief)
+Last updated: **2026-07-09**
 
 ---
 
@@ -130,6 +130,71 @@ Future scope: same landing structure can serve any of these. Current focus = cer
 | **Parent + kid class** (planned) | €50 pair | 2h weekend, parent + child work together | Phase 2 of kids product | DM only | Launch only after kid-only class validates. Same warm audience. |
 
 **Operational principle for all DM-led products**: parents/customers DM via WhatsApp with structured pre-fill → Saged/Koritsa qualify → Stripe payment link sent in chat → confirmed. No Cal.com for kids/coworking/intro. Cal.com used only for the recurring adult Thursday workshop where the calendar widget makes sense.
+
+## Finances
+
+All financial files live in `finances/` (gitignored — never commit).
+
+| File | What it is |
+|---|---|
+| `finances/marketing-report.html` | Full Meta ads performance report — open in browser |
+| `finances/financial-model.html` | Studio P&L model: 3 scenarios, break-even analysis |
+| `finances/income/pnl-chart.html` | Visual income vs expenses chart (Feb–Nov 2026) |
+| `finances/income/pnl-by-month.md` | Income + expense table by month |
+| `finances/ad-budget-decisions.md` | Ad budget history and decisions |
+
+**⚠ Remind Diana to check finances on session start.**
+
+### P&L snapshot (as of 2026-07-23)
+
+| Month | Income | Expenses | Net |
+|---|---|---|---|
+| Feb | €80 | €1,614 | −€1,534 |
+| Mar | €982 | €1,727 | −€745 |
+| Apr | €716 | €1,674 | −€959 |
+| May | €494 | €1,826 | −€1,332 |
+| Jun | €1,123 | €2,043 | −€920 |
+| Jul (partial to 23rd) | €913 | ~€1,570 | −€657 |
+| **Total** | **€4,308** | **€10,454** | **−€6,146** |
+
+July income breakdown (after July 9 update: +€553):
+- Coworking: €200
+- Jul 11: €87.50 · Jul 12: €60 · Jul 16: €37.50
+- Jul 18: €50 · Jul 19: €25 · Jul 21: €50
+- Kiln: €43 (€30 + €13)
+
+- Fixed monthly costs (no ads): €1,569
+- Fixed monthly costs (with €366/month ads): €1,935
+- Break-even income needed: €1,935
+- Best month: June €1,123 (first month of correct RU+UA locale targeting)
+
+### Active ad spend (as of 2026-07-09)
+
+**€11.80/day = ~€366/month**
+
+| Campaign | Budget/day | Audience |
+|---|---|---|
+| Workshops RU | €1.50 | Russian speakers, Valencia 17km |
+| Workshops UA | €2.00 | Ukrainian speakers, Valencia 17km |
+| Workshops EN | €0.90 | English speakers, Valencia 17km |
+| Workshops ES | €0.90 | Spanish speakers, Valencia 17km |
+| Kids · RU | €3.00 | Russian-speaking parents 28–45, Valencia 17km |
+| Kids · UA | €2.00 | Ukrainian-speaking parents 28–45, Valencia 17km |
+| Coworking | €1.50 | All languages, Valencia 17km |
+
+### Campaign IDs (active, also in .campaign-ids)
+
+- **Workshop** campaign: `120248011297180513`
+  - Ad sets: RU=`120248011301760513`, UA=`120248011306620513`, EN=`120248011326580513`, ES=`120248011327440513`
+  - Video IDs: RU=`1731122627885947`, UA=`27948590351415835`, EN=`1730819618045834`, ES=`1574793734274290`
+- **Kids** campaign: `120248011753470513`
+  - Ad sets: RU=`120248011753590513`, UA=`120248011754180513`
+- **Coworking** campaign: `120248011726860513`
+  - Ad set: `120248011728250513`
+
+### Pending actions (Meta)
+- Custom conversion (Schedule → Purchase, ID `980444324695740`) — still unverified, flagged every weekly report
+- Old broken campaigns not yet deleted (Sales v1, Messages v1, WhatsApp v1, Kids Trial 2026-05, old IG posts)
 
 ## Meta Ads Context
 
@@ -429,6 +494,7 @@ Account state: lifetime spend €143.43, status UNSETTLED (cleared 2026-05-11). 
 - Lead-handling playbook: `docs/lead-handling.md`
 - IG FAQ menu copy: `docs/instagram-faq.md`
 - Locale IDs (verified via `/search?type=adlocale` on 2026-06-09): Russian = `17`, Ukrainian = `52`, English (UK) = `24`, English (US) = `6`, Spanish = `23`. **DO NOT trust hardcoded locale IDs** — past incidents shipped `5`/`120` (wrong) and later `10`/`37` (Italian/Bulgarian, also wrong). Project rule in CLAUDE.md mandates runtime verification via `verify_locale()` (reference: `scripts/local/build-meta-campaign.sh`).
+- **Valencia Spain city key = `699854`**. Key `668776` = Shubra Tana, Egypt — do NOT use. Bug found 2026-07-20: all 7 active ad sets (Workshops RU/UA/EN/ES, Kids RU/UA, Coworking) were targeting Egypt. Fixed same day. Always verify via `/search?type=adgeolocation&q=Valencia&location_types=["city"]` — never hardcode from memory.
 - Instagram business account ID linked to FB page: `17841428554040839` (needed in `object_story_spec.instagram_user_id`)
 - Kids campaign launch script: `scripts/launch-kids-campaign.py` — idempotent (refuses if `KIDS_CAMPAIGN_ID` already set), supports `--dry-run`
 
