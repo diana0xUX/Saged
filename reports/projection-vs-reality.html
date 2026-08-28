@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saged — Projection vs Reality</title>
+  <style>
+    #gate {
+      position:fixed; inset:0; background:#F5F0EB;
+      display:flex; align-items:center; justify-content:center; z-index:9999;
+    }
+    #gate-box { text-align:center; max-width:320px; width:100%; padding:0 24px; }
+    #gate-logo { font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#C4622D; margin-bottom:32px; }
+    #gate-title { font-size:22px; font-weight:normal; color:#2C2416; margin-bottom:8px; }
+    #gate-sub { font-size:14px; color:#8C7B6B; margin-bottom:32px; }
+    #gate-input {
+      width:100%; padding:14px 16px; border:1px solid #C4622D; background:#fff;
+      font-family:'Georgia',serif; font-size:18px; letter-spacing:.3em;
+      text-align:center; color:#2C2416; outline:none; margin-bottom:12px;
+    }
+    #gate-btn {
+      width:100%; padding:14px; background:#C4622D; color:#fff; border:none;
+      font-family:'Georgia',serif; font-size:14px; letter-spacing:.15em;
+      text-transform:uppercase; cursor:pointer;
+    }
+    #gate-btn:hover { background:#A8521F; }
+    #gate-error { font-size:13px; color:#B83A1A; margin-top:10px; min-height:18px; }
+  </style>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:Georgia,serif; background:#F5F0EB; color:#2C2416; padding:48px 24px; }
+    .page { max-width:940px; margin:0 auto; }
+
+    header { border-bottom:2px solid #C4622D; padding-bottom:24px; margin-bottom:40px; }
+    .studio { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#C4622D; margin-bottom:8px; }
+    h1 { font-size:28px; font-weight:normal; margin-bottom:4px; }
+    .sub { font-size:13px; color:#8C7B6B; }
+
+    section { margin-bottom:48px; }
+    h2 { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#C4622D; margin-bottom:16px; }
+
+    .verdicts { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:2px; }
+    .vcard { padding:22px 20px; }
+    .vcard.right { background:#DFF0E3; }
+    .vcard.wrong { background:#F2E0D8; }
+    .vtag { font-size:9px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+    .vcard.right .vtag { color:#3A7A4A; }
+    .vcard.wrong .vtag { color:#B83A1A; }
+    .vcard h3 { font-size:15px; font-weight:normal; margin-bottom:8px; }
+    .vcard p { font-size:13px; color:#5C4F42; line-height:1.65; }
+    .vcard .delta { font-size:20px; margin-top:10px; }
+    .vcard.right .delta { color:#3A7A4A; }
+    .vcard.wrong .delta { color:#B83A1A; }
+
+    .chart-wrap { background:#EDE5DB; padding:24px 20px; }
+    canvas { display:block; width:100%; height:auto; }
+
+    table { width:100%; border-collapse:collapse; }
+    th, td { padding:10px 0; border-bottom:1px solid #E0D8CF; font-size:14px; }
+    th { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#8C7B6B; font-weight:normal; }
+    th:not(:first-child), td:not(:first-child) { text-align:right; font-variant-numeric:tabular-nums; }
+    tr.total td { border-top:2px solid #2C2416; border-bottom:none; font-weight:bold; padding-top:14px; }
+    .red { color:#B83A1A; }
+    .green { color:#3A7A4A; }
+    .amber { color:#B87A1A; }
+    .muted { color:#8C7B6B; font-size:12px; }
+
+    .pill { display:inline-block; font-size:10px; padding:2px 7px; border-radius:2px; margin-left:6px; vertical-align:middle; }
+    .pill.pos { background:#DFF0E3; color:#3A7A4A; }
+    .pill.neg { background:#F2E0D8; color:#B83A1A; }
+    .pill.neu { background:#EDE5DB; color:#8C7B6B; }
+
+    .insight { background:#EDE5DB; padding:16px 20px; font-size:13px; color:#5C4F42; line-height:1.7; margin-top:2px; }
+    .insight strong { color:#2C2416; }
+
+    .spend-row { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+    .spend-label { width:70px; font-size:12px; color:#8C7B6B; text-align:right; flex-shrink:0; }
+    .spend-track { flex:1; position:relative; height:20px; background:#EDE5DB; }
+    .spend-proj { position:absolute; top:0; left:0; height:100%; background:#C4622D44; }
+    .spend-act  { position:absolute; top:0; left:0; height:100%; background:#C4622D; }
+    .spend-val  { width:90px; font-size:12px; color:#2C2416; text-align:left; flex-shrink:0; }
+
+    td.est { color:#8C7B6B; font-style:italic; }
+
+    footer { margin-top:48px; padding-top:20px; border-top:1px solid #E0D8CF; font-size:12px; color:#8C7B6B; display:flex; justify-content:space-between; }
+  </style>
+</head>
+<body>
+
+<div id="gate">
+  <div id="gate-box">
+    <div id="gate-logo">Saged.club</div>
+    <div id="gate-title">Studio Financials</div>
+    <div id="gate-sub">Enter password to view</div>
+    <input id="gate-input" type="password" placeholder="····" maxlength="10" autofocus>
+    <button id="gate-btn" onclick="checkPassword()">Enter</button>
+    <div id="gate-error"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if(sessionStorage.getItem('saged-auth')==='ok'){
+    document.addEventListener('DOMContentLoaded',function(){
+      document.getElementById('gate').style.display='none';
+    });
+  }
+})();
+function checkPassword(){
+  const val=document.getElementById('gate-input').value;
+  if(val==='0312'){
+    sessionStorage.setItem('saged-auth','ok');
+    document.getElementById('gate').style.display='none';
+  } else {
+    document.getElementById('gate-error').textContent='Incorrect password.';
+    document.getElementById('gate-input').value='';
+    document.getElementById('gate-input').focus();
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('gate-input').addEventListener('keydown',function(e){
+    if(e.key==='Enter') checkPassword();
+  });
+});
+</script>
+
+<div class="page">
+
+  <header>
+    <div class="studio">Saged.club</div>
+    <h1>Projection vs Reality</h1>
+    <div class="sub">June 13 forecast measured against August 27 actuals · March–August 2026</div>
+  </header>
+
+  <section>
+    <h2>What Happened</h2>
+    <div class="verdicts">
+
+      <div class="vcard right">
+        <div class="vtag">✓ Went right</div>
+        <h3>Meta ads collapsed — in a good way</h3>
+        <p>June file recorded €399 in June ad spend (a measurement error — real spend was €160). Actual trend: €160 → €107 → €45. Income went up while spend went down. Organic/DM is the engine.</p>
+        <div class="delta">−€754 saved vs June pace</div>
+      </div>
+
+      <div class="vcard wrong">
+        <div class="vtag">✗ Went wrong</div>
+        <h3>July missed its target by €106</h3>
+        <p>Projected net −€76. Actual −€182. Income came in at €1,618 vs estimated €1,700, and costs landed €24 over forecast. Small misses, compounded.</p>
+        <div class="delta">−€106 worse than forecast</div>
+      </div>
+
+      <div class="vcard right">
+        <div class="vtag">✓ Went right</div>
+        <h3>August turned profitable (barely)</h3>
+        <p>Projected +€50. Actual +€127 if pending €628 confirms. Costs dropped to €1,485 — lowest month of the year — helped by RETA ending. Trend direction was correct.</p>
+        <div class="delta">+€77 better than forecast</div>
+      </div>
+
+      <div class="vcard wrong">
+        <div class="vtag">✗ Went wrong</div>
+        <h3>Cumulative loss deeper than expected</h3>
+        <p>Prodesco €249 ceramic supplies in June were untracked in the forecast. June costs revised from €2,043 → €2,080. Total Mar–Aug hole: −€4,015.</p>
+        <div class="delta">−€4,015 total deficit</div>
+      </div>
+
+      <div class="vcard right">
+        <div class="vtag">✓ Went right</div>
+        <h3>Coworking became a real income line</h3>
+        <p>Not modelled in the June forecast at all. Generated €755 in Jun–Aug — more than Stripe over the same period. Ekaterina paying monthly is the most predictable revenue.</p>
+        <div class="delta">+€755 unforecasted income</div>
+      </div>
+
+      <div class="vcard wrong">
+        <div class="vtag">✗ Went wrong</div>
+        <h3>August income lower than projected</h3>
+        <p>Projected ~€1,800. Actual €1,612 (including €628 still unconfirmed). Stripe dropped sharply in August (€82). Julia's €400 jewellery deal still pending.</p>
+        <div class="delta">−€188 vs projection</div>
+      </div>
+
+      <div class="vcard right">
+        <div class="vtag">✓ Went right</div>
+        <h3>DM / Bizum payment model validated</h3>
+        <p>Bizum became the #1 payment channel in August (€308 vs Stripe €82). The high-touch DM-first booking pattern is real — students pay cash or Bizum directly, not through checkout flows.</p>
+        <div class="delta">Bizum 3.7× bigger than Stripe</div>
+      </div>
+
+      <div class="vcard wrong">
+        <div class="vtag">✗ Went wrong</div>
+        <h3>June costs mis-tracked in real time</h3>
+        <p>June file showed Meta as €399 (conflating May peak spend). Actual June Meta: €160. Costs also revised from €2,043 → €2,080. Numbers needed time to settle.</p>
+        <div class="delta">€239 Meta discrepancy</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Net Result — Projected vs Actual</h2>
+    <div class="chart-wrap">
+      <canvas id="netChart" width="900" height="320"></canvas>
+    </div>
+    <div class="insight">
+      <strong>The trajectory was right, the magnitude was off.</strong> The June forecast correctly called the direction — losses narrowing each month toward break-even. But July undershot (−€182 vs −€76) and August only crossed zero because costs fell more than expected, not because income hit the target. Break-even is real but fragile.
+    </div>
+  </section>
+
+  <section>
+    <h2>P&amp;L — Projection vs Actual</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Income<br><span class="muted">proj → actual</span></th>
+          <th>Costs<br><span class="muted">proj → actual</span></th>
+          <th>Net<br><span class="muted">proj → actual</span></th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>March</td>
+          <td>€983 → €983</td>
+          <td>€1,727 → €1,727</td>
+          <td class="red">−€744 → −€744</td>
+          <td><span class="pill neu">exact</span></td>
+        </tr>
+        <tr>
+          <td>April</td>
+          <td>€716 → €756 <span class="pill pos">+€40</span></td>
+          <td>€1,674 → €1,674</td>
+          <td class="red">−€959 → −€919 <span class="pill pos">+€40</span></td>
+          <td><span class="pill pos">better</span></td>
+        </tr>
+        <tr>
+          <td>May</td>
+          <td>€494 → €494</td>
+          <td>€1,826 → €1,826</td>
+          <td class="red">−€1,332 → −€1,332</td>
+          <td><span class="pill neu">exact</span></td>
+        </tr>
+        <tr>
+          <td>June</td>
+          <td>€1,123 → €1,115 <span class="pill neg">−€8</span></td>
+          <td>€2,043 → €2,080 <span class="pill neg">+€37</span></td>
+          <td class="red">−€920 → −€965 <span class="pill neg">−€45</span></td>
+          <td><span class="pill neg">worse</span></td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td class="est">~€1,700 → €1,618 <span class="pill neg">−€82</span></td>
+          <td class="est">~€1,776 → €1,800 <span class="pill neg">+€24</span></td>
+          <td class="red est">−€76 → −€182 <span class="pill neg">−€106</span></td>
+          <td><span class="pill neg">missed</span></td>
+        </tr>
+        <tr>
+          <td>August</td>
+          <td class="est">~€1,800 → €1,612* <span class="pill neg">−€188</span></td>
+          <td class="est">~€1,750 → €1,485 <span class="pill pos">−€265</span></td>
+          <td class="green est">+€50 → +€127* <span class="pill pos">+€77</span></td>
+          <td><span class="pill pos">beat it*</span></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="total">
+          <td>Total Mar–Aug</td>
+          <td>~€6,816</td>
+          <td>~€10,592</td>
+          <td class="red">projected ~−€3,982 → actual −€4,015</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="insight" style="margin-top:2px;">
+      * August includes €628 pending (Koritsia €228 + Julia jewellery €400). Without those, August net is −€501. The profitable August is not yet confirmed.
+    </div>
+  </section>
+
+  <section>
+    <h2>Meta Ad Spend — Projected vs Actual</h2>
+    <div style="background:#EDE5DB;padding:20px;">
+      <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C7B6B;margin-bottom:16px;">Light bar = projected · Dark bar = actual · Scale: €420 max</div>
+
+      <div class="spend-row">
+        <div class="spend-label">March</div>
+        <div class="spend-track"><div class="spend-proj" style="width:17.4%;"></div><div class="spend-act" style="width:17.4%;"></div></div>
+        <div class="spend-val">€73</div>
+      </div>
+      <div class="spend-row">
+        <div class="spend-label">April</div>
+        <div class="spend-track"><div class="spend-proj" style="width:2.1%;"></div><div class="spend-act" style="width:2.1%;"></div></div>
+        <div class="spend-val">€9</div>
+      </div>
+      <div class="spend-row">
+        <div class="spend-label">May</div>
+        <div class="spend-track"><div class="spend-proj" style="width:40.5%;"></div><div class="spend-act" style="width:40.5%;"></div></div>
+        <div class="spend-val">€170</div>
+      </div>
+      <div class="spend-row">
+        <div class="spend-label">June</div>
+        <div class="spend-track"><div class="spend-proj" style="width:95%;"></div><div class="spend-act" style="width:38.1%;"></div></div>
+        <div class="spend-val"><span class="red">€160</span> <span class="muted">proj €399</span></div>
+      </div>
+      <div class="spend-row">
+        <div class="spend-label">July</div>
+        <div class="spend-track"><div class="spend-proj" style="width:20%;"></div><div class="spend-act" style="width:25.5%;"></div></div>
+        <div class="spend-val">€107 <span class="muted">proj €84</span></div>
+      </div>
+      <div class="spend-row">
+        <div class="spend-label">August</div>
+        <div class="spend-track"><div class="spend-proj" style="width:21.4%;"></div><div class="spend-act" style="width:10.7%;"></div></div>
+        <div class="spend-val"><span class="green">€45</span> <span class="muted">proj €90</span></div>
+      </div>
+    </div>
+    <div class="insight">
+      <strong>The June file massively over-counted June Meta spend</strong> — recording €399 when actual was €160, likely conflating May's peak spend. Real trajectory: €160 → €107 → €45 as paid ads deprioritised. Income went up. This is the clearest evidence that organic and DM channels are driving bookings, not paid ads.
+    </div>
+  </section>
+
+  <section>
+    <h2>Income Sources — What Actually Drove Revenue</h2>
+    <table>
+      <thead>
+        <tr><th>Source</th><th>June</th><th>July</th><th>August</th><th>Pattern</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Koritsia cash (50%)</td>
+          <td>€433</td><td>€773</td><td>€394 + €228 pend.</td>
+          <td><span class="pill pos">core engine</span></td>
+        </tr>
+        <tr>
+          <td>Bizum (direct students)</td>
+          <td>€270</td><td>€103</td><td>€308</td>
+          <td><span class="pill pos">growing</span></td>
+        </tr>
+        <tr>
+          <td>Stripe</td>
+          <td>€212</td><td>€387</td><td>€82</td>
+          <td><span class="pill neg">volatile</span></td>
+        </tr>
+        <tr>
+          <td>Coworking</td>
+          <td>€200</td><td>€355</td><td>€200</td>
+          <td><span class="pill pos">stable recurring</span></td>
+        </tr>
+        <tr>
+          <td>Retail (jewellery)</td>
+          <td>—</td><td>—</td><td>€400 pending</td>
+          <td><span class="pill neu">new / unconfirmed</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="insight">
+      <strong>Stripe is the most volatile line</strong> — €82 to €387 with no clear pattern. Bizum and Koritsia cash are the actual operating rhythm. Coworking at a stable €200–355/month is the most reliable fixed income. The June forecast didn't model coworking at all — that was a blind spot.
+    </div>
+  </section>
+
+  <section>
+    <h2>Cost Floor — What Changed</h2>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>June</th><th>July</th><th>August</th><th>Sep onwards</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Rent</td><td>€1,173</td><td>€1,175</td><td>€1,173</td><td>€1,173 fixed</td></tr>
+        <tr><td>RETA (social tax)</td><td>€300</td><td>€300</td><td class="green">€0</td><td class="green">€0 — closed 31 Aug</td></tr>
+        <tr><td>Electricity</td><td>€75</td><td>€108.59</td><td>€112.29</td><td>~€110</td></tr>
+        <tr><td>Water</td><td>€45</td><td>€37</td><td>€85</td><td>~€45</td></tr>
+        <tr><td>Meta ads</td><td>€160</td><td>€107</td><td>€45</td><td>~€50</td></tr>
+        <tr><td>Prodesco supplies</td><td>€249</td><td>—</td><td>—</td><td>occasional</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="total"><td>Total</td><td>€2,080</td><td>€1,800</td><td>€1,485</td><td class="green">~€1,378</td></tr>
+      </tfoot>
+    </table>
+    <div class="insight">
+      <strong>September break-even drops to ~€1,400.</strong> RETA closure saves €300/month. New fixed floor: rent €1,173 + electricity ~€110 + water ~€45 + tools ~€50 = ~€1,378. That's within reach of a normal trading week.
+    </div>
+  </section>
+
+  <footer>
+    <span>Saged.club · Projection vs Reality · March–August 2026</span>
+    <span>Jun forecast: financials-2026.html (Jul 13) · Actuals: admin-console.html (Aug 27)</span>
+  </footer>
+
+</div>
+
+<script>
+const MONTHS   = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+const PROJ_NET = [-744, -959, -1332, -920, -76,   50];
+const REAL_NET = [-744, -919, -1332, -965, -182, 127];
+
+const CLAY='#C4622D', SAGE='#3A7A4A', DARK='#2C2416', MID='#8C7B6B', LINE='#E0D8CF', AMBER='#B87A1A';
+
+(function(){
+  const c=document.getElementById('netChart');
+  const ctx=c.getContext('2d');
+  const W=c.width, H=c.height;
+  const PAD={top:44,right:50,bottom:50,left:90};
+  const n=MONTHS.length;
+  const minY=-1800, maxY=300;
+
+  function xP(i){ return PAD.left+(i/(n-1))*(W-PAD.left-PAD.right); }
+  function yP(v){ return PAD.top+((maxY-v)/(maxY-minY))*(H-PAD.top-PAD.bottom); }
+  const y0=yP(0);
+
+  ctx.fillStyle='rgba(58,122,74,0.06)';
+  ctx.fillRect(PAD.left,PAD.top,W-PAD.left-PAD.right,y0-PAD.top);
+  ctx.fillStyle='rgba(184,58,26,0.05)';
+  ctx.fillRect(PAD.left,y0,W-PAD.left-PAD.right,H-PAD.bottom-y0);
+
+  ctx.font='11px Georgia'; ctx.fillStyle=MID; ctx.textAlign='right';
+  [-1500,-1000,-500,0].forEach(v=>{
+    const y=yP(v);
+    ctx.strokeStyle=LINE; ctx.lineWidth=0.5; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(W-PAD.right,y); ctx.stroke();
+    ctx.fillText((v<0?'−€':'+€')+Math.abs(v).toLocaleString(), PAD.left-8, y+4);
+  });
+
+  ctx.strokeStyle=DARK; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+  ctx.beginPath(); ctx.moveTo(PAD.left,y0); ctx.lineTo(W-PAD.right,y0); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // projected line (dashed amber)
+  ctx.strokeStyle=AMBER; ctx.lineWidth=2; ctx.setLineDash([6,4]);
+  ctx.beginPath();
+  PROJ_NET.forEach((v,i)=> i===0?ctx.moveTo(xP(i)+8,yP(v)):ctx.lineTo(xP(i)+8,yP(v)));
+  ctx.stroke(); ctx.setLineDash([]);
+
+  // actual line (solid clay)
+  ctx.strokeStyle=CLAY; ctx.lineWidth=2.5;
+  ctx.beginPath();
+  REAL_NET.forEach((v,i)=> i===0?ctx.moveTo(xP(i),yP(v)):ctx.lineTo(xP(i),yP(v)));
+  ctx.stroke();
+
+  // projected dots
+  PROJ_NET.forEach((v,i)=>{
+    ctx.fillStyle=AMBER;
+    ctx.beginPath(); ctx.arc(xP(i)+8,yP(v),5,0,Math.PI*2); ctx.fill();
+  });
+
+  // actual dots + labels
+  REAL_NET.forEach((v,i)=>{
+    const x=xP(i), y=yP(v);
+    ctx.fillStyle=CLAY;
+    ctx.beginPath(); ctx.arc(x,y,6,0,Math.PI*2); ctx.fill();
+
+    ctx.font='bold 11px Georgia'; ctx.textAlign='center'; ctx.fillStyle=DARK;
+    const lbl=(v>=0?'+€':'−€')+Math.abs(v).toLocaleString();
+    ctx.fillText(lbl, x, y+(v<-1200?22:-14));
+
+    ctx.font='11px Georgia'; ctx.fillStyle=DARK;
+    ctx.fillText(MONTHS[i], x, H-PAD.bottom+18);
+  });
+
+  // legend
+  ctx.setLineDash([]);
+  ctx.fillStyle=CLAY; ctx.fillRect(PAD.left,12,22,3);
+  ctx.font='11px Georgia'; ctx.fillStyle=DARK; ctx.textAlign='left';
+  ctx.fillText('Actual', PAD.left+28, 17);
+
+  ctx.strokeStyle=AMBER; ctx.lineWidth=2; ctx.setLineDash([6,4]);
+  ctx.beginPath(); ctx.moveTo(PAD.left+100,14); ctx.lineTo(PAD.left+122,14); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillText('Projected (Jun 13 forecast)', PAD.left+128, 17);
+
+  ctx.fillStyle=SAGE; ctx.font='10px Georgia'; ctx.textAlign='left';
+  ctx.fillText('break-even', PAD.left+4, y0-6);
+})();
+</script>
+</body>
+</html>
