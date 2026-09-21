@@ -505,3 +505,4 @@ Account state: lifetime spend €143.43, status UNSETTLED (cleared 2026-05-11). 
 - Ukrainian, English, and Spanish pages must not be maintained in parallel while the Russian structure is changing.
 - Existing translated URLs should redirect to their matching Russian page to prevent dead ends.
 - The header language dropdown shows Russian as active and UA/EN/ES as coming soon until their translations are rebuilt from the approved Russian site.
+- The shared 2026 navigation uses a warm floating-glass bar, Inter UI labels, a terracotta contextual CTA, a compact mobile menu, and the language dropdown across every Russian page.
