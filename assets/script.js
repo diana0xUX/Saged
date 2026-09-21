@@ -1,8 +1,5 @@
 // Saged.club — minimal client-side behavior
-// 1) Meta Pixel via Consent Mode v2 — PageView fires for every visit
-//    in limited-data mode (no cookies, no PII). On user accept, full
-//    tracking is granted. This is Meta's documented EU-compliant pattern
-//    and restores ad-optimization signal that strict-consent gating lost.
+// 1) Meta Pixel loads only after explicit consent.
 // 2) Cookie consent banner — softened: Accept dominant, Decline a muted
 //    text link. Friendlier copy.
 // 3) WhatsApp/Telegram click handlers → fire Contact event (issue #86)
@@ -18,40 +15,39 @@
   const current = localStorage.getItem(KEY);
   if (!current && banner) banner.hidden = false;
 
-  // Load Meta Pixel on every visit. EU-compliant via Consent Mode v2:
-  // until the user explicitly accepts, the Pixel runs with
-  // fbq('consent', 'revoke') — no cookies, no PII. Meta still receives
-  // the PageView signal for ad optimization but with no identifying data.
-  loadPixel(current === 'accepted');
+  if (current === 'accepted') loadPixel();
 
   // ViewContent on Meta campaign landing pages — lets Meta build retargeting
   // audiences from visitors who browsed but didn't contact yet.
-  (function () {
+  function trackCurrentViewContent() {
     const path = window.location.pathname.replace(/\/$/, '');
     const vc = {
-      '/studio': 'studio-adult', '/ua/studio': 'studio-adult',
-      '/kids': 'studio-kids',   '/ua/kids': 'studio-kids',
-      '/coworking': 'coworking', '/ua/coworking': 'coworking'
+      '/studio': 'studio-adult', '/ua/studio': 'studio-adult', '/en/studio': 'studio-adult',
+      '/kids': 'studio-kids', '/ua/kids': 'studio-kids', '/en/kids': 'studio-kids',
+      '/coworking': 'coworking', '/ua/coworking': 'coworking', '/en/coworking': 'coworking',
+      '/events': 'events', '/ua/events': 'events', '/en/events': 'events',
+      '/en': 'home-en', '/es': 'home-es',
     }[path];
     if (vc && window.fbq) fbq('track', 'ViewContent', { content_name: vc });
-  })();
+  }
+  trackCurrentViewContent();
 
-  function loadPixel(consented) {
+  function loadPixel() {
     if (window.fbq) return;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    if (!consented) window.fbq('consent', 'revoke');
     window.fbq('init', PIXEL_ID);
     window.fbq('track', 'PageView');
+    trackCurrentViewContent();
   }
 
   function setConsent(value) {
     localStorage.setItem(KEY, value);
     if (banner) banner.hidden = true;
-    if (value === 'accepted' && window.fbq) window.fbq('consent', 'grant');
+    if (value === 'accepted') loadPixel();
   }
 
   accept && accept.addEventListener('click', () => setConsent('accepted'));
