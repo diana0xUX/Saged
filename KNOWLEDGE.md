@@ -504,3 +504,4 @@ Account state: lifetime spend €143.43, status UNSETTLED (cleared 2026-05-11). 
 - Finish and approve the complete Russian website before translating it.
 - Ukrainian, English, and Spanish pages must not be maintained in parallel while the Russian structure is changing.
 - Existing translated URLs should redirect to their matching Russian page to prevent dead ends.
+- The header language dropdown shows Russian as active and UA/EN/ES as coming soon until their translations are rebuilt from the approved Russian site.
