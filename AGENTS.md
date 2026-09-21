@@ -2,6 +2,15 @@
 
 Read `CLAUDE.md`, `KNOWLEDGE.md`, and `creative/DESIGNER.md` before project work.
 
+## Russian-first website workflow
+
+Russian is the canonical and only public working language while the website is being designed.
+
+- Finish, test, and receive Diana's approval for the Russian structure and content first.
+- Do not mirror unfinished Russian changes into Ukrainian, English, or Spanish.
+- Translate only after the Russian website is approved and stable.
+- Old translated URLs must redirect to the matching Russian page so visitors never reach a dead end.
+
 ## Mobile optimisation is mandatory
 
 Every website or landing-page change must be designed and verified for mobile in the same turn.

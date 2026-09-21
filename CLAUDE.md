@@ -88,10 +88,10 @@ data/raw/                         # Cached Meta API responses (gitignored)
 
 ## Project-Specific Rules
 
-**BILINGUAL MIRROR (non-negotiable)**: every content edit to `index.html` (RU) MUST be mirrored
-in `uk/index.html` (UA), and vice versa. Same sections, same structure, same images, same number of
-testimonials/IG embeds/FAQ items/etc. A diff in `<section>` count or `<h2>` count between the two
-files is a bug. Always edit both before committing.
+**RUSSIAN-FIRST WEBSITE WORKFLOW (non-negotiable)**: Russian is the canonical working website.
+Finish, test, and receive Diana's approval for the Russian structure and content before translating.
+Do not mirror unfinished edits into Ukrainian, English, or Spanish. Old translated URLs must redirect
+to the matching Russian page so visitors never reach a dead end.
 
 **TESTIMONIAL INTEGRITY (non-negotiable)**: testimonial content must come from a real, user-supplied
 source — Google review, IG comment, DM, email. NEVER fabricate a quote, even as "plausible filler."

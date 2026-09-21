@@ -498,3 +498,9 @@ Account state: lifetime spend €143.43, status UNSETTLED (cleared 2026-05-11). 
 - Instagram business account ID linked to FB page: `17841428554040839` (needed in `object_story_spec.instagram_user_id`)
 - Kids campaign launch script: `scripts/launch-kids-campaign.py` — idempotent (refuses if `KIDS_CAMPAIGN_ID` already set), supports `--dry-run`
 
+## Website language strategy (2026-09-21)
+
+- Russian is now the canonical and only public working language for the redesign.
+- Finish and approve the complete Russian website before translating it.
+- Ukrainian, English, and Spanish pages must not be maintained in parallel while the Russian structure is changing.
+- Existing translated URLs should redirect to their matching Russian page to prevent dead ends.
