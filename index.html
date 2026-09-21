@@ -1,331 +1,89 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Saged.club · Керамическая студия и место для событий · Валенсия</title>
-<meta name="description" content="Saged.club — пространство в сердце старой Валенсии. Керамические курсы, детские занятия, звуковой хилинг, цигун и вечера медленных знакомств.">
-<link rel="canonical" href="https://saged.club/">
-<link rel="alternate" hreflang="ru" href="https://saged.club/">
-<link rel="alternate" hreflang="x-default" href="https://saged.club/">
-<meta property="og:title" content="Saged.club · Валенсия">
-<meta property="og:description" content="Место, где учатся, встречаются и живут — через керамику, звук и работу руками. В самом сердце старой Валенсии.">
-<meta property="og:image" content="https://saged.club/assets/images/og-cover.jpg">
-<meta property="og:url" content="https://saged.club/">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ru_RU">
-<meta property="og:site_name" content="Saged.club">
-<meta name="theme-color" content="#9F4D2D">
-<meta name="facebook-domain-verification" content="aq8rn5gerav36scmysqp5wfo8iqigk">
-<link rel="icon" type="image/png" href="assets/images/favicon.png">
-<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260921">
-<link rel="stylesheet" href="assets/home-v2.css?v=20260921b">
-<link rel="stylesheet" href="assets/language-select.css?v=20260921">
-<link rel="stylesheet" href="assets/navigation-2026.css?v=20260921">
-<script src="assets/navigation-2026.js?v=20260921" defer></script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://saged.club/#localbusiness",
-  "name": "Saged.club",
-  "url": "https://saged.club/",
-  "image": "https://saged.club/assets/images/og-cover.jpg",
-  "logo": "https://saged.club/assets/images/logo-saged-club.svg",
-  "description": "Ceramic studio and cultural event space in old Valencia. Pottery workshops, sound healing, qigong, slow connection evenings.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "C/ de les Cuines, 8",
-    "addressLocality": "Ciutat Vella, València",
-    "postalCode": "46001",
-    "addressRegion": "Comunidad Valenciana",
-    "addressCountry": "ES"
-  },
-  "telephone": "+34605543300",
-  "email": "hello@saged.club",
-  "sameAs": ["https://instagram.com/saged.club"],
-  "priceRange": "€€",
-  "knowsLanguage": ["ru", "uk", "en", "es"]
-}
-</script>
-
-<style>
-  .home-hero {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 4rem var(--gutter) 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  .home-hero__copy {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .home-hero h1 {
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    line-height: 1.05;
-    margin: 0.75rem 0 1.25rem;
-  }
-  .home-hero .lead {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.65;
-    margin: 0 0 2rem;
-  }
-  .home-hero__cta {
-    display: inline-block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.8rem 1.75rem;
-    background: #FF7A23;
-    color: #fff;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .home-hero__cta:hover { background: var(--ink); }
-  .home-hero__img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    border-radius: 20px;
-    display: block;
-  }
-  @media (max-width: 768px) {
-    .home-hero { grid-template-columns: 1fr; padding: 2.5rem var(--gutter) 2rem; }
-    .home-hero__img { aspect-ratio: 4/3; }
-  }
-
-  .trust-strip {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--bg-sand);
-  }
-  .trust-strip__inner {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 1.75rem var(--gutter);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    text-align: center;
-  }
-  .trust-strip__item {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .trust-strip__item strong {
-    display: block;
-    font-size: 0.95rem;
-    color: var(--ink);
-    margin-bottom: 0.25rem;
-  }
-  @media (max-width: 600px) {
-    .trust-strip__inner { grid-template-columns: 1fr; gap: 0.75rem; text-align: left; }
-  }
-
-  .offering {
-    border-bottom: 1px solid var(--line);
-    padding: 4rem var(--gutter);
-  }
-  .offering--alt {
-    background: var(--bg-sand);
-  }
-  .offering__inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .offering h2 {
-    font-size: clamp(1.9rem, 4vw, 2.8rem);
-    margin: 0.5rem 0 1.25rem;
-    line-height: 1.1;
-  }
-  .offering p {
-    font-size: 1rem;
-    color: var(--muted);
-    line-height: 1.75;
-    margin: 0 0 1rem;
-    max-width: 560px;
-  }
-  .offering__list {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0 2rem;
-    max-width: 560px;
-  }
-  .offering__list li {
-    font-size: 0.92rem;
-    color: var(--ink);
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .offering__cta {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 0.7rem 1.5rem;
-    background: #FF7A23;
-    color: #fff;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .offering__cta:hover { background: var(--ink); }
-
-  .about-space {
-    background: var(--bg-sand);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .about-space__inner {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 4rem var(--gutter);
-    text-align: center;
-  }
-  .about-space__inner h2 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    margin: 0.5rem 0 1.5rem;
-  }
-  .about-space__inner p {
-    font-size: 1rem;
-    color: var(--muted);
-    line-height: 1.75;
-    margin: 0 0 1rem;
-  }
-  .about-space__sign {
-    font-family: 'Summer Font', 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.4rem !important;
-    color: var(--ink) !important;
-    margin-top: 1.5rem !important;
-  }
-</style>
-<!-- Meta Pixel: loaded by assets/script.js only after consent -->
-<script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Saged.club — ceramics and community in Valencia</title>
+  <meta name="description" content="Small-group ceramics classes, family workshops and creative events in Valencia's old city.">
+  <link rel="canonical" href="https://saged.club/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Saged.club — ceramics and community in Valencia">
+  <meta property="og:description" content="Small-group ceramics classes, family workshops and creative events in Valencia's old city.">
+  <meta property="og:url" content="https://saged.club/">
+  <meta property="og:image" content="https://saged.club/assets/images/og-cover.jpg">
+  <link rel="icon" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face{font-family:Costa;src:url('assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+    @font-face{font-family:SagedCyr;src:url('assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+    :root{--paper:#f9f4ed;--sand:#efe5d6;--ink:#2a2520;--muted:#6b5f54;--line:#ded1bf;--clay:#9f4d2d;--orange:#ff7a23;--sage:#6e7f5a;--white:#fffdf8;--max:1240px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}img{display:block;width:100%}a{color:inherit}button,a{touch-action:manipulation}.wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .nav{position:fixed;z-index:20;top:14px;left:0;right:0}.nav__inner{height:68px;padding:10px 12px 10px 20px;border:1px solid rgba(42,37,32,.12);border-radius:999px;background:rgba(249,244,237,.88);backdrop-filter:blur(18px);display:flex;align-items:center;gap:22px;box-shadow:0 14px 44px rgba(42,37,32,.09)}.logo{width:92px;flex:none}.logo img{height:40px}.nav__links{margin-left:auto;display:flex;align-items:center;gap:25px;font-size:14px}.nav__links a{text-decoration:none}.nav__links a:hover{color:var(--clay)}.lang-select{height:42px;padding:0 30px 0 13px;border:1px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font:600 12px Inter;cursor:pointer}.pill{min-height:46px;padding:0 22px;border-radius:999px;background:var(--orange);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}.pill--dark{background:var(--ink)}
+    .hero{min-height:100svh;padding:104px 0 24px}.hero__grid{min-height:calc(100svh - 128px);display:grid;grid-template-columns:1.08fr .92fr;border-radius:32px;overflow:hidden;background:var(--ink)}.hero__copy{padding:clamp(42px,6vw,88px);display:flex;flex-direction:column;justify-content:space-between;color:var(--white)}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--orange)}h1,h2,h3{margin:0;font-weight:400}.display{font-family:Costa,Georgia,serif;letter-spacing:-.045em;line-height:.88}.hero h1{font-size:clamp(76px,9vw,150px);max-width:760px}.hero h1 em{font-style:normal;color:var(--orange)}.hero__lead{font-size:clamp(18px,2vw,26px);line-height:1.45;max-width:580px;color:#ded5cc}.hero__actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px}.text-link{color:var(--white);text-decoration:none;border-bottom:1px solid currentColor;padding:12px 2px}.hero__media{position:relative;min-height:620px}.hero__media img{height:100%;object-fit:cover}.hero__stamp{position:absolute;right:24px;bottom:24px;width:154px;height:154px;border-radius:50%;background:var(--orange);display:grid;place-items:center;text-align:center;font-weight:700;line-height:1.2;transform:rotate(7deg)}
+    .ticker{overflow:hidden;border-block:1px solid var(--line);margin-top:28px}.ticker__line{display:flex;width:max-content;gap:36px;padding:18px 0;text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:700;animation:move 28s linear infinite}.ticker__line span:after{content:'✦';margin-left:36px;color:var(--orange)}@keyframes move{to{transform:translateX(-50%)}}
+    section{padding:clamp(76px,10vw,140px) 0}.section-head{display:grid;grid-template-columns:.45fr 1fr;gap:40px;margin-bottom:48px}.kicker{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--clay)}.section-title{font-family:Costa,Georgia,serif;font-size:clamp(54px,7vw,104px);line-height:.92;letter-spacing:-.04em;max-width:900px}
+    .offers{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.offer{position:relative;min-height:420px;padding:28px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;background:var(--sand)}.offer:nth-child(1){grid-column:span 7}.offer:nth-child(2){grid-column:span 5;background:var(--orange)}.offer:nth-child(3),.offer:nth-child(4){grid-column:span 6}.offer__image{position:absolute;inset:0}.offer__image img{height:100%;object-fit:cover}.offer__image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,13,.05),rgba(20,16,13,.74))}.offer__top,.offer__bottom{position:relative;z-index:1}.offer--photo{color:#fff}.offer__number{font-size:12px;letter-spacing:.12em}.offer h3{font-family:Costa,Georgia,serif;font-size:clamp(45px,5vw,72px);line-height:.9;letter-spacing:-.035em}.offer p{max-width:450px;line-height:1.55;margin:14px 0 0}.offer__meta{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-top:26px}.price{font-size:30px;font-weight:700}.arrow{width:48px;height:48px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;text-decoration:none;font-size:22px}
+    .schedule{background:var(--ink);color:var(--white);border-radius:32px;padding:clamp(28px,5vw,64px)}.schedule__top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}.schedule h2{font-family:Costa,Georgia,serif;font-size:clamp(58px,8vw,108px);line-height:.88}.schedule__note{max-width:390px;color:#cfc6bd;line-height:1.5}.schedule__row{display:grid;grid-template-columns:130px 1fr auto;gap:24px;align-items:center;padding:24px 0;border-top:1px solid rgba(255,255,255,.18)}.schedule__day{text-transform:uppercase;letter-spacing:.15em;font-size:12px;color:var(--orange);font-weight:700}.schedule__class{font-size:clamp(20px,2.2vw,30px)}.schedule__time{font-size:15px;color:#cfc6bd;text-align:right}
+    .makers{display:grid;grid-template-columns:1fr 1fr;gap:16px}.maker{border:1px solid var(--line);border-radius:24px;padding:18px;background:var(--white)}.maker img{height:520px;object-fit:cover;border-radius:16px}.maker__text{padding:22px 8px 10px}.maker h3{font-family:Costa,Georgia,serif;font-size:46px}.maker p{color:var(--muted);line-height:1.55}.maker__tag{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--clay);font-weight:700}
+    .made-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:260px 260px;gap:16px}.made-grid img{height:100%;object-fit:cover;border-radius:22px}.made-grid img:first-child{grid-row:span 2}.made-grid img:nth-child(4){grid-column:span 2}
+    .visit{padding-bottom:30px}.visit__card{display:grid;grid-template-columns:1fr 1fr;background:var(--orange);border-radius:32px;overflow:hidden}.visit__copy{padding:clamp(38px,6vw,80px)}.visit h2{font-family:Costa,Georgia,serif;font-size:clamp(62px,8vw,112px);line-height:.85;letter-spacing:-.04em}.visit address{font-style:normal;font-size:20px;line-height:1.5;margin:34px 0}.visit__media img{height:100%;object-fit:cover}.footer{padding:32px 0 100px}.footer__row{display:flex;justify-content:space-between;gap:30px;border-top:1px solid var(--line);padding-top:24px;font-size:13px;color:var(--muted)}
+    .mobile-book{display:none}.menu{display:none}
+    .consent{position:fixed;z-index:60;right:18px;bottom:18px;width:min(430px,calc(100% - 36px));padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--white);box-shadow:0 18px 60px rgba(42,37,32,.2)}.consent[hidden]{display:none}.consent p{margin:0 0 14px;line-height:1.5;color:var(--muted);font-size:14px}.consent__buttons{display:flex;gap:10px}.consent button{min-height:44px;padding:0 18px;border-radius:999px;font:700 13px Inter;cursor:pointer}.consent__accept{border:0;background:var(--orange);color:#fff}.consent__decline{border:1px solid var(--line);background:transparent;color:var(--ink)}
+    @media(max-width:800px){.wrap{width:min(calc(100% - 24px),var(--max))}.nav{top:8px}.nav__inner{height:58px;padding:7px 8px 7px 14px}.logo{width:78px}.nav__links{display:none}.menu{margin-left:auto;display:inline-flex;min-height:44px;padding:0 16px;border:0;border-radius:999px;background:var(--ink);color:#fff;align-items:center;font:600 14px Inter}.hero{padding-top:78px}.hero__grid{grid-template-columns:1fr;min-height:0}.hero__copy{min-height:520px;padding:34px 24px}.hero h1{font-size:clamp(68px,22vw,96px)}.hero__lead{font-size:17px}.hero__media{min-height:480px}.hero__stamp{width:116px;height:116px;font-size:13px}.section-head{grid-template-columns:1fr;gap:18px}.offers{display:block}.offer{min-height:410px;margin-bottom:12px}.offer h3{font-size:58px}.schedule{padding:28px 22px}.schedule__top{display:block}.schedule__note{margin-top:20px}.schedule__row{grid-template-columns:80px 1fr;gap:8px 16px}.schedule__time{grid-column:2;text-align:left}.makers{grid-template-columns:1fr}.maker img{height:420px}.made-grid{grid-template-columns:1fr 1fr;grid-template-rows:320px 210px 210px}.made-grid img:first-child{grid-column:span 2;grid-row:auto}.made-grid img:nth-child(4){grid-column:span 2}.visit__card{grid-template-columns:1fr}.visit__media{height:380px}.footer__row{display:block;line-height:1.8}.mobile-book{position:fixed;z-index:30;display:flex;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));height:56px;background:var(--orange);color:#fff;border-radius:999px;align-items:center;justify-content:center;text-decoration:none;font-weight:700;box-shadow:0 10px 30px rgba(42,37,32,.25)}}
+  </style>
+  <style>
+    html,body{overflow-x:hidden}
+    .hero__copy,.hero__media,.visit__copy,.visit__media{min-width:0}
+    html.lang-cyr .display,html.lang-cyr .section-title,html.lang-cyr .offer h3,html.lang-cyr .schedule h2,html.lang-cyr .maker h3,html.lang-cyr .visit h2{font-family:SagedCyr,Inter,sans-serif;letter-spacing:-.035em}
+    .visit__copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(38px,5vw,68px)}
+    .visit h2{max-width:100%;font-size:clamp(58px,5.3vw,86px);line-height:.9;overflow-wrap:normal}
+    @media(max-width:800px){
+      .hero__grid{grid-template-columns:minmax(0,1fr)}
+      .hero h1{font-size:clamp(60px,18vw,70px)}
+      .nav__links.is-open{position:absolute;display:flex;top:66px;left:12px;right:12px;margin:0;padding:18px;gap:6px;flex-direction:column;align-items:stretch;border:1px solid var(--line);border-radius:22px;background:var(--paper);box-shadow:0 20px 50px rgba(42,37,32,.18)}
+      .nav__links.is-open a{min-height:46px;padding:12px 14px;border-radius:12px}
+      .nav__links.is-open .pill{margin-top:6px}.lang-select{margin-left:auto;height:44px}.menu{margin-left:0}
+    }
+  </style>
 </head>
-<body class="home-v2">
+<body>
+  <header class="nav"><div class="wrap nav__inner"><a class="logo" href="#top" aria-label="Saged.club home"><img src="assets/images/logo-saged-club.svg" alt="Saged Club"></a><nav class="nav__links" aria-label="Main navigation"><a href="#classes">Classes</a><a href="#schedule">Schedule</a><a href="#people">People</a><a href="#visit">Visit</a><a class="pill" href="https://ig.me/m/saged.club" target="_blank" rel="noopener">Book a class ↗</a></nav><select class="lang-select" id="language" aria-label="Language"><option value="en">EN</option><option value="ru">RU</option><option value="uk">UA</option><option value="es">ES</option></select><button class="menu" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button></div></header>
+  <main id="top">
+    <section class="hero"><div class="wrap hero__grid"><div class="hero__copy"><div><div class="eyebrow">Ceramics · culture · community · Valencia</div><h1 class="display">Make things.<br><em>Meet people.</em></h1></div><div><p class="hero__lead">A warm studio in Valencia’s old city for clay, curiosity and time shared around the table.</p><div class="hero__actions"><a class="pill" href="https://ig.me/m/saged.club" target="_blank" rel="noopener">Book in Instagram ↗</a><a class="text-link" href="#classes">See what we do ↓</a></div></div></div><div class="hero__media"><img src="assets/images/hero-1.jpg" alt="A creative workshop around the table at Saged.club"><div class="hero__stamp">Small groups<br>Real people<br>No rush</div></div></div><div class="ticker"><div class="ticker__line"><span>Hands in clay</span><span>Old city Valencia</span><span>Classes in English</span><span>Children welcome</span><span>Hands in clay</span><span>Old city Valencia</span><span>Classes in English</span><span>Children welcome</span></div></div></section>
 
-<header class="topbar">
-  <a class="brand" href="./" aria-label="Saged.club home">
-    <img src="assets/images/logo-saged-club.svg" alt="Saged.club" width="88" height="40">
-  </a>
-  <nav class="topnav" aria-label="Sections">
-    <a href="studio/">Взрослым</a>
-    <a href="kids/">Детям</a>
-    <a href="coworking/">Коворкинг</a>
-    <a href="events/">События</a>
-    <a href="gifts/">Подарки</a>
-    <a href="private/">Приватно</a>
-  </nav>
-  <a class="nav-cta" href="studio/#book">Записаться</a>
-  <details class="mobile-nav">
-    <summary>Меню</summary>
-    <nav class="mobile-nav__panel" aria-label="Мобильная навигация"><a href="/studio/">Взрослым</a><a href="/kids/">Детям</a><a href="/coworking/">Коворкинг</a><a href="/events/">События</a><a href="/gifts/">Подарки</a><a href="/private/">Приватно</a><a class="mobile-nav__cta" href="/studio/#book">Записаться</a></nav>
-  </details>
-  <details class="language-select">
-    <summary aria-label="Выбрать язык">RU</summary>
-    <div class="language-select__menu" role="list">
-      <span class="language-select__option" aria-current="page">Русский</span>
-      <span class="language-select__option" aria-disabled="true">Українська <small>скоро</small></span>
-      <span class="language-select__option" aria-disabled="true">English <small>soon</small></span>
-      <span class="language-select__option" aria-disabled="true">Español <small>pronto</small></span>
-    </div>
-  </details>
-</header>
+    <section id="classes"><div class="wrap"><div class="section-head"><div class="kicker">Choose your way in</div><h2 class="section-title">Come once. Stay curious. Make something yours.</h2></div><div class="offers">
+      <article class="offer offer--photo"><div class="offer__image"><img src="assets/images/workshop-teaching.jpg" alt="Adult ceramics workshop"></div><div class="offer__top"><span class="offer__number">01 · ADULTS</span></div><div class="offer__bottom"><h3>Ceramics<br>classes</h3><p>Hand-build, glaze and fire your own piece. Beginners are welcome and materials are included.</p><div class="offer__meta"><span class="price">from €30</span><a class="arrow" href="https://ig.me/m/saged.club" aria-label="Book adult ceramics">↗</a></div></div></article>
+      <article class="offer"><div class="offer__top"><span class="offer__number">02 · AGES 7–14</span></div><div class="offer__bottom"><h3>Kids make<br>real things</h3><p>Small guided classes where children learn the ceramic process and take their work seriously.</p><div class="offer__meta"><span class="price">€25</span><a class="arrow" href="https://ig.me/m/saged.club" aria-label="Book kids ceramics">↗</a></div></div></article>
+      <article class="offer offer--photo"><div class="offer__image"><img src="assets/images/private-event.jpg" alt="Private creative event at the studio"></div><div class="offer__top"><span class="offer__number">03 · YOUR PEOPLE</span></div><div class="offer__bottom"><h3>Private<br>events</h3><p>Birthdays, friend gatherings and team sessions shaped around your group.</p><div class="offer__meta"><span class="price">Ask us</span><a class="arrow" href="https://ig.me/m/saged.club" aria-label="Ask about private events">↗</a></div></div></article>
+      <article class="offer"><div class="offer__top"><span class="offer__number">04 · FOR MAKERS</span></div><div class="offer__bottom"><h3>Your desk<br>in the studio</h3><p>Ceramic coworking with clay, glazes, kiln access and five quiet places to practise.</p><div class="offer__meta"><span class="price">Ask about a place</span><a class="arrow" href="https://ig.me/m/saged.club" aria-label="Ask about coworking">↗</a></div></div></article>
+    </div></div></section>
 
-<main>
+    <section id="schedule"><div class="wrap schedule"><div class="schedule__top"><h2>Weekly<br>rhythm</h2><p class="schedule__note">Message us before coming. We confirm the language, instructor and available place in the chat.</p></div><div class="schedule__row"><div class="schedule__day">Tuesday</div><div class="schedule__class">Adult ceramics</div><div class="schedule__time">16:00–18:00</div></div><div class="schedule__row"><div class="schedule__day">Wednesday</div><div class="schedule__class">Kids ceramics · Adult ceramics</div><div class="schedule__time">16:30 · 18:00</div></div><div class="schedule__row"><div class="schedule__day">Thursday</div><div class="schedule__class">Kids + parents</div><div class="schedule__time">17:30–19:00</div></div><div class="schedule__row"><div class="schedule__day">Friday</div><div class="schedule__class">Kids ceramics · Adult ceramics</div><div class="schedule__time">16:30 · 18:00</div></div><div class="schedule__row"><div class="schedule__day">Weekend</div><div class="schedule__class">Kids + parents · Special events</div><div class="schedule__time">12:00 · 14:30</div></div></div></section>
 
-  <section class="home-hero">
-    <div class="home-hero__copy">
-      <p class="eyebrow">Saged.club · Валенсия</p>
-      <h1>Место, где учатся,<br>встречаются и&nbsp;живут</h1>
-      <p class="lead">Пространство для тех, кто хочет замедлиться, создавать руками и&nbsp;быть рядом с&nbsp;людьми. В сердце старой Валенсии.</p>
-      <a href="studio/" class="home-hero__cta">Записаться на керамику →</a>
-      <a href="events/" class="home-hero__secondary">Ближайшие события →</a>
-    </div>
-    <img class="home-hero__img" src="assets/images/workshop-1.jpg" alt="Кориця ведёт занятие — глина и маленькая группа в Saged.club" loading="eager">
-  </section>
+    <section id="people"><div class="wrap"><div class="section-head"><div class="kicker">Who you’ll meet</div><h2 class="section-title">Artists who teach by making beside you.</h2></div><div class="makers"><article class="maker"><img src="assets/images/hero-1.jpg" alt="Korytsia teaching in her orange kimono at Saged.club"><div class="maker__text"><span class="maker__tag">Ceramic artist · Ukrainian / Russian</span><h3>Korytsia</h3><p>Slow, tactile hand-building with attention to the material. Korytsia leads children’s classes, family sessions and weekend workshops.</p></div></article><article class="maker"><img src="assets/images/vita-portrait.jpg" alt="Vita holding one of her colourful ceramic pieces"><div class="maker__text"><span class="maker__tag">Ceramic instructor · English / Spanish</span><h3>Vita</h3><p>Friendly guided sessions for adults—clear enough for a first experience, open enough to make the piece your own.</p></div></article></div></div></section>
 
-  <section class="trust-strip">
-    <div class="trust-strip__inner">
-      <div class="trust-strip__item">
-        <strong>50+ участников</strong>с мая 2026
-      </div>
-      <div class="trust-strip__item">
-        <strong>Маленькие группы</strong>до 6 человек · без спешки
-      </div>
-      <div class="trust-strip__item">
-        <strong>Старая Валенсия</strong>C/ de les Cuines, 8
-      </div>
-    </div>
-  </section>
+    <section><div class="wrap"><div class="section-head"><div class="kicker">What you can make</div><h2 class="section-title">Useful, imperfect and completely yours.</h2></div><div class="made-grid"><img src="assets/images/product-1.jpg" alt="Handmade ceramic piece"><img src="assets/images/product-2.jpg" alt="Handmade ceramic cup"><img src="assets/images/product-3.jpg" alt="Handmade ceramic plate"><img src="assets/images/gallery-beads.jpg" alt="Ceramic beads and small objects"></div></div></section>
 
-  <section class="offering">
-    <div class="offering__inner">
-      <p class="eyebrow">Керамическая студия</p>
-      <h2>Каждый четверг — за&nbsp;столом с&nbsp;глиной</h2>
-      <p>Небольшой курс из&nbsp;двух встреч с&nbsp;Корицей — украинской керамисткой, которая ведёт занятия с&nbsp;группой до&nbsp;6&nbsp;человек в&nbsp;студии в&nbsp;старой Валенсии.</p>
-      <p>Первая встреча — лепим руками. Через неделю — глазуруем. Ещё через две — своя керамика дома.</p>
-      <ul class="offering__list">
-        <li>Курс с&nbsp;Корицей · €60 · каждый четверг · три слота</li>
-        <li>Детский класс · €25 · 1,5&nbsp;часа · 7–14&nbsp;лет</li>
-        <li>Коворкинг для&nbsp;гончаров · 5&nbsp;мест · пишите за&nbsp;условиями</li>
-      </ul>
-      <a href="studio/" class="offering__cta">Узнать о студии →</a>
-    </div>
-  </section>
-
-  <section class="offering offering--alt">
-    <div class="offering__inner">
-      <p class="eyebrow">Saged.club · События</p>
-      <h2>Собираем хороших людей</h2>
-      <p>В сентябре — живые события в&nbsp;маленьких группах: чай, практики и встречи без спешки.</p>
-      <ul class="offering__list">
-        <li>27 сентября · Чайный клуб с&nbsp;Хеленой · €15</li>
-        <li>Скоро · новые чайные и керамические встречи</li>
-        <li>Каждую неделю · детская керамика</li>
-      </ul>
-      <a href="events/" class="offering__cta">Смотреть события →</a>
-    </div>
-  </section>
-
-  <section class="about-space">
-    <div class="about-space__inner">
-      <p class="eyebrow">О пространстве</p>
-      <h2>Откуда мы</h2>
-      <p>Многие из нас оказались в Валенсии — между переездами, в паузе, в поиске. Мы открыли Saged.club, потому что нам самим нужно было место, куда можно прийти и остаться собой.</p>
-      <p>Здесь нет программы успеха. Есть глина, звук, чай и люди — в маленьких группах, без спешки.</p>
-      <p class="about-space__sign">Приходите как есть.</p>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <p><strong>Saged.club</strong></p>
-  <p class="muted">Место, где можно замедлиться, создавать и&nbsp;соединяться — через искусство, музыку и&nbsp;работу руками.</p>
-  <p class="muted">C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia</p>
-  <p class="muted">WhatsApp <a href="https://wa.me/34605543300">+34 605 54 33 00</a> · <a href="mailto:hello@saged.club">hello@saged.club</a> · <a href="https://instagram.com/saged.club">@saged.club</a></p>
-  <p class="muted small">© 2026 Saged.club · <a href="privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a></p>
-</footer>
-
-<div id="consent" class="consent" hidden>
-  <p>Помогите нам понять, что работает — разрешите аналитику? Только статистика посещений, без рекламной слежки.</p>
-  <div class="consent__buttons">
-    <button id="consent-accept" class="btn-solid">Разрешить</button>
-    <button id="consent-decline" class="btn-text">Не сейчас</button>
-  </div>
-</div>
-
-<script src="assets/script.js?v=20260921"></script>
+    <section class="visit" id="visit"><div class="wrap visit__card"><div class="visit__copy"><div class="kicker">Come say hello</div><h2>Find us<br>in Valencia.</h2><address>C/ de les Cuines, 8<br>Ciutat Vella · 46001 Valencia</address><div class="hero__actions"><a class="pill pill--dark" href="https://maps.app.goo.gl/RqsReEo929aeUAPN9" target="_blank" rel="noopener">Open in Maps ↗</a><a class="text-link" href="https://www.instagram.com/saged.club/" target="_blank" rel="noopener">@saged.club ↗</a></div></div><div class="visit__media"><img src="assets/images/gallery-1.jpg" alt="Inside Saged.club in Valencia"></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer__row"><span>© 2026 Saged.club</span><span>Ceramics and cultural studio · Valencia</span><span>hello@saged.club · +34 605 54 33 00</span></div></footer>
+  <a class="mobile-book" href="https://ig.me/m/saged.club" target="_blank" rel="noopener">Book in Instagram ↗</a>
+  <div id="consent" class="consent" hidden><p>We use optional analytics to understand which studio pages help people find us. Meta Pixel loads only if you accept.</p><div class="consent__buttons"><button id="consent-accept" class="consent__accept" type="button">Allow analytics</button><button id="consent-decline" class="consent__decline" type="button">Not now</button></div></div>
+  <script>
+    const translations={
+      ru:{title:'Saged.club — керамика и сообщество в Валенсии',nav:['Занятия','Расписание','Мастера','Адрес','Записаться ↗'],heroEyebrow:'Керамика · культура · люди · Валенсия',heroTitle:'Делать руками.<br><em>Быть вместе.</em>',heroLead:'Тёплая мастерская в старом городе Валенсии — для глины, любопытства и времени за общим столом.',book:'Записаться в Instagram ↗',see:'Что у нас есть ↓',stamp:'Маленькие группы<br>Живые люди<br>Без спешки',ticker:['Глина в руках','Старая Валенсия','Занятия на русском','Можно с детьми'],offerKicker:'Выберите свой формат',offerTitle:'Приходите один раз. Оставайтесь из любопытства. Сделайте своё.',offerNumbers:['01 · ВЗРОСЛЫМ','02 · 7–14 ЛЕТ','03 · ДЛЯ ВАШИХ ЛЮДЕЙ','04 · ДЛЯ МАСТЕРОВ'],offerNames:['Керамика<br>для взрослых','Дети делают<br>настоящие вещи','Приватные<br>события','Своё место<br>в мастерской'],offerCopy:['Лепите, глазуруйте и обжигайте свою работу. Можно без опыта, материалы включены.','Небольшие занятия, где дети осваивают керамический процесс и серьёзно относятся к своей работе.','Дни рождения, встречи друзей и командные занятия — под формат вашей компании.','Керамический коворкинг: глина, глазури, печь и пять спокойных рабочих мест.'],offerPrice:['от 30€','25€','Спросить нас','Спросить о месте'],scheduleTitle:'Ритм<br>недели',scheduleNote:'Напишите нам до визита. В чате мы подтвердим язык, мастера и свободное место.',days:['Вторник','Среда','Четверг','Пятница','Выходные'],classes:['Керамика для взрослых','Детская керамика · Взрослые','Дети + родители','Детская керамика · Взрослые','Дети + родители · Особые события'],peopleKicker:'Кого вы встретите',peopleTitle:'Художницы, которые работают рядом с вами.',tags:['Художница-керамистка · украинский / русский','Преподаватель керамики · английский / испанский'],bios:['Медленная, тактильная ручная лепка с вниманием к материалу. Корица ведёт детские, семейные и выходные занятия.','Дружелюбные занятия для взрослых: достаточно понятно для первого раза и достаточно свободно, чтобы сделать вещь своей.'],madeKicker:'Что можно сделать',madeTitle:'Полезное, несовершенное и полностью ваше.',visitKicker:'Заходите познакомиться',visitTitle:'Найдите нас<br>в Валенсии.',map:'Открыть карту ↗',menu:'Меню',footer:'Керамическая и культурная мастерская · Валенсия'},
+      uk:{title:'Saged.club — кераміка та спільнота у Валенсії',nav:['Заняття','Розклад','Майстрині','Адреса','Записатися ↗'],heroEyebrow:'Кераміка · культура · люди · Валенсія',heroTitle:'Творити руками.<br><em>Бути разом.</em>',heroLead:'Тепла майстерня у старому місті Валенсії — для глини, цікавості та часу за спільним столом.',book:'Записатися в Instagram ↗',see:'Що ми робимо ↓',stamp:'Малі групи<br>Живі люди<br>Без поспіху',ticker:['Глина в руках','Стара Валенсія','Заняття українською','Можна з дітьми'],offerKicker:'Оберіть свій формат',offerTitle:'Прийдіть один раз. Залишайтесь із цікавості. Зробіть своє.',offerNumbers:['01 · ДОРОСЛИМ','02 · 7–14 РОКІВ','03 · ДЛЯ ВАШИХ ЛЮДЕЙ','04 · ДЛЯ МАЙСТРІВ'],offerNames:['Кераміка<br>для дорослих','Діти роблять<br>справжні речі','Приватні<br>події','Своє місце<br>в майстерні'],offerCopy:['Ліпіть, глазуруйте та випалюйте власну роботу. Можна без досвіду, матеріали включені.','Малі заняття, де діти опановують керамічний процес і серйозно ставляться до своєї роботи.','Дні народження, зустрічі друзів і командні заняття — під формат вашої компанії.','Керамічний коворкінг: глина, глазурі, піч і п’ять спокійних робочих місць.'],offerPrice:['від 30€','25€','Запитайте нас','Запитати про місце'],scheduleTitle:'Ритм<br>тижня',scheduleNote:'Напишіть нам перед візитом. У чаті ми підтвердимо мову, майстриню та вільне місце.',days:['Вівторок','Середа','Четвер','П’ятниця','Вихідні'],classes:['Кераміка для дорослих','Дитяча кераміка · Дорослі','Діти + батьки','Дитяча кераміка · Дорослі','Діти + батьки · Особливі події'],peopleKicker:'Кого ви зустрінете',peopleTitle:'Художниці, які працюють поруч із вами.',tags:['Художниця-керамістка · українська / російська','Викладачка кераміки · англійська / іспанська'],bios:['Повільна, тактильна ручна ліпка з увагою до матеріалу. Кориця веде дитячі, сімейні та вихідні заняття.','Дружні заняття для дорослих: зрозуміло для першого разу і достатньо вільно, щоб зробити річ своєю.'],madeKicker:'Що можна зробити',madeTitle:'Корисне, недосконале і повністю ваше.',visitKicker:'Заходьте познайомитися',visitTitle:'Знайдіть нас<br>у Валенсії.',map:'Відкрити карту ↗',menu:'Меню',footer:'Керамічна та культурна майстерня · Валенсія'},
+      es:{title:'Saged.club — cerámica y comunidad en Valencia',nav:['Clases','Horario','Personas','Visítanos','Reservar ↗'],heroEyebrow:'Cerámica · cultura · comunidad · Valencia',heroTitle:'Crear con las manos.<br><em>Conectar de verdad.</em>',heroLead:'Un estudio cálido en el casco antiguo de Valencia para trabajar con barro, sentir curiosidad y compartir tiempo alrededor de la mesa.',book:'Reservar por Instagram ↗',see:'Descubre el estudio ↓',stamp:'Grupos pequeños<br>Personas reales<br>Sin prisas',ticker:['Manos en el barro','Valencia antigua','Clases en español','Familias bienvenidas'],offerKicker:'Elige tu manera de entrar',offerTitle:'Ven una vez. Quédate por curiosidad. Crea algo tuyo.',offerNumbers:['01 · ADULTOS','02 · 7–14 AÑOS','03 · TU GENTE','04 · CERAMISTAS'],offerNames:['Clases de<br>cerámica','Niños que hacen<br>cosas de verdad','Eventos<br>privados','Tu mesa<br>en el estudio'],offerCopy:['Modela, esmalta y cuece tu propia pieza. No necesitas experiencia y los materiales están incluidos.','Grupos pequeños donde los niños aprenden el proceso cerámico y se toman en serio su trabajo.','Cumpleaños, encuentros con amigos y sesiones de equipo adaptadas a vuestro grupo.','Coworking cerámico con barro, esmaltes, horno y cinco mesas tranquilas para practicar.'],offerPrice:['desde 30€','25€','Consúltanos','Pregunta por una plaza'],scheduleTitle:'Ritmo<br>semanal',scheduleNote:'Escríbenos antes de venir. Confirmamos por chat el idioma, la profesora y la plaza disponible.',days:['Martes','Miércoles','Jueves','Viernes','Fin de semana'],classes:['Cerámica para adultos','Cerámica infantil · Adultos','Niños + madres/padres','Cerámica infantil · Adultos','Familias · Eventos especiales'],peopleKicker:'A quién conocerás',peopleTitle:'Artistas que enseñan creando a tu lado.',tags:['Artista ceramista · ucraniano / ruso','Profesora de cerámica · inglés / español'],bios:['Modelado manual lento y táctil, atento al material. Korytsia dirige clases infantiles, familiares y talleres de fin de semana.','Sesiones amables para adultos: claras para una primera experiencia y abiertas para crear una pieza propia.'],madeKicker:'Qué puedes crear',madeTitle:'Útil, imperfecto y completamente tuyo.',visitKicker:'Ven a conocernos',visitTitle:'Encuéntranos<br>en Valencia.',map:'Abrir en Maps ↗',menu:'Menú',footer:'Estudio de cerámica y cultura · Valencia'}
+    };
+    const english={title:document.title,nav:['Classes','Schedule','People','Visit','Book a class ↗'],heroEyebrow:'Ceramics · culture · community · Valencia',heroTitle:'Make things.<br><em>Meet people.</em>',heroLead:'A warm studio in Valencia’s old city for clay, curiosity and time shared around the table.',book:'Book in Instagram ↗',see:'See what we do ↓',stamp:'Small groups<br>Real people<br>No rush',ticker:['Hands in clay','Old city Valencia','Classes in English','Children welcome'],offerKicker:'Choose your way in',offerTitle:'Come once. Stay curious. Make something yours.',offerNumbers:['01 · ADULTS','02 · AGES 7–14','03 · YOUR PEOPLE','04 · FOR MAKERS'],offerNames:['Ceramics<br>classes','Kids make<br>real things','Private<br>events','Your desk<br>in the studio'],offerCopy:['Hand-build, glaze and fire your own piece. Beginners are welcome and materials are included.','Small guided classes where children learn the ceramic process and take their work seriously.','Birthdays, friend gatherings and team sessions shaped around your group.','Ceramic coworking with clay, glazes, kiln access and five quiet places to practise.'],offerPrice:['from €30','€25','Ask us','Ask about a place'],scheduleTitle:'Weekly<br>rhythm',scheduleNote:'Message us before coming. We confirm the language, instructor and available place in the chat.',days:['Tuesday','Wednesday','Thursday','Friday','Weekend'],classes:['Adult ceramics','Kids ceramics · Adult ceramics','Kids + parents','Kids ceramics · Adult ceramics','Kids + parents · Special events'],peopleKicker:'Who you’ll meet',peopleTitle:'Artists who teach by making beside you.',tags:['Ceramic artist · Ukrainian / Russian','Ceramic instructor · English / Spanish'],bios:['Slow, tactile hand-building with attention to the material. Korytsia leads children’s classes, family sessions and weekend workshops.','Friendly guided sessions for adults—clear enough for a first experience, open enough to make the piece your own.'],madeKicker:'What you can make',madeTitle:'Useful, imperfect and completely yours.',visitKicker:'Come say hello',visitTitle:'Find us<br>in Valencia.',map:'Open in Maps ↗',menu:'Menu',footer:'Ceramics and cultural studio · Valencia'};
+    function applyLanguage(lang){const t=lang==='en'?english:translations[lang]||english;document.documentElement.lang=lang;document.documentElement.classList.toggle('lang-cyr',lang==='ru'||lang==='uk');document.title=t.title;const nav=[...document.querySelectorAll('.nav__links>a')];t.nav.forEach((v,i)=>nav[i].textContent=v);document.querySelector('.hero .eyebrow').textContent=t.heroEyebrow;document.querySelector('.hero h1').innerHTML=t.heroTitle;document.querySelector('.hero__lead').textContent=t.heroLead;document.querySelector('.hero .pill').textContent=t.book;document.querySelector('.hero .text-link').textContent=t.see;document.querySelector('.hero__stamp').innerHTML=t.stamp;document.querySelectorAll('.ticker__line span').forEach((el,i)=>el.textContent=t.ticker[i%4]);const heads=document.querySelectorAll('.section-head');heads[0].querySelector('.kicker').textContent=t.offerKicker;heads[0].querySelector('h2').textContent=t.offerTitle;document.querySelectorAll('.offer').forEach((el,i)=>{el.querySelector('.offer__number').textContent=t.offerNumbers[i];el.querySelector('h3').innerHTML=t.offerNames[i];el.querySelector('p').textContent=t.offerCopy[i];el.querySelector('.price').textContent=t.offerPrice[i]});document.querySelector('.schedule h2').innerHTML=t.scheduleTitle;document.querySelector('.schedule__note').textContent=t.scheduleNote;document.querySelectorAll('.schedule__row').forEach((el,i)=>{el.querySelector('.schedule__day').textContent=t.days[i];el.querySelector('.schedule__class').textContent=t.classes[i]});heads[1].querySelector('.kicker').textContent=t.peopleKicker;heads[1].querySelector('h2').textContent=t.peopleTitle;document.querySelectorAll('.maker').forEach((el,i)=>{el.querySelector('.maker__tag').textContent=t.tags[i];el.querySelector('p').textContent=t.bios[i]});heads[2].querySelector('.kicker').textContent=t.madeKicker;heads[2].querySelector('h2').textContent=t.madeTitle;document.querySelector('.visit .kicker').textContent=t.visitKicker;document.querySelector('.visit h2').innerHTML=t.visitTitle;document.querySelector('.visit .pill').textContent=t.map;document.querySelector('.menu').textContent=t.menu;document.querySelector('.footer__row span:nth-child(2)').textContent=t.footer;document.querySelector('.mobile-book').textContent=t.book;document.getElementById('language').value=lang;history.replaceState(null,'',lang==='en'?location.pathname:location.pathname+'?lang='+lang)}
+    const initialLang=new URLSearchParams(location.search).get('lang')||'en';applyLanguage(initialLang);document.getElementById('language').addEventListener('change',e=>applyLanguage(e.target.value));
+    const menuButton=document.querySelector('.menu');
+    menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));document.querySelector('.nav__links').classList.toggle('is-open',!open)});
+    document.querySelectorAll('.nav__links a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{menuButton?.setAttribute('aria-expanded','false');document.querySelector('.nav__links').classList.remove('is-open')}));
+  </script>
+  <script src="assets/script.js?v=20260922"></script>
 </body>
 </html>
