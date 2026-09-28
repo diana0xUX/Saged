@@ -12,6 +12,7 @@ When a retro produces a new lesson that you'd reach for again next time, write i
 |---|---|
 | Write a new Meta campaign / ad set / ad via API | [`meta-api-write-preflight.md`](meta-api-write-preflight.md) |
 | Build a multi-step API resource (campaign → ad sets → ads) with safe re-runs | [`idempotent-build-script.md`](idempotent-build-script.md) |
+| Export an HTML carousel to Instagram-ready PNG slides | [`instagram-carousel-export.md`](instagram-carousel-export.md) |
 
 ## Format
 

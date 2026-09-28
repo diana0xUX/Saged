@@ -20,6 +20,7 @@ Follow all protocols in `~/fieldcraft/protocols/`. Key ones for this project:
 4. Read `KNOWLEDGE.md` — canonical project facts
 5. Read `REPORT.md` — plain-English current state for Diana
 6. Check GitHub issues for recent activity
+7. **For design tasks:** read `creative/DESIGNER.md` — brand system, asset paths, layout rules, self-evaluation checklist
 
 ---
 
@@ -32,13 +33,13 @@ Phase 1 product: a single bilingual (RU/UA) landing page promoting **"Ceramics w
 
 ## Owner
 
-**Diana Sage**, UX designer. Plain-language explanations, design-world analogies preferred over engineering jargon.
+**Diana Sage**, product designer and ceramicist. Plain-language explanations, design-world analogies preferred over engineering jargon.
 
 ## Tech Stack
 
 - **Hosting**: GitHub Pages, custom domain `saged.club`
 - **Front-end**: Vanilla HTML/CSS/JS — no framework, no build step. Edit and push.
-- **Typography**: Cormorant Garamond (display) + Inter (text), via Google Fonts.
+- **Typography**: Saged Cyrillic (Cyrillic display) + Costa Light (Latin display) + Inter (body/UI). No Cormorant Garamond, no Summer Font.
 - **Palette**: warm clay neutrals + terracotta + sage accent. Tokens in `:root` in `style.css`.
 - **Booking**: Cal.com (planned) — open source, GDPR-friendly, Stripe-integrated.
 - **Tracking**: Meta Pixel + Conversions API, gated by EU-compliant consent banner.
@@ -72,11 +73,25 @@ data/raw/                         # Cached Meta API responses (gitignored)
 .env                              # Meta credentials (gitignored)
 ```
 
+## Meta Ads — always fix these (non-negotiable)
+
+When setting up or rebuilding ANY Meta campaign:
+- **Objective**: always OUTCOME_TRAFFIC (never OUTCOME_ENGAGEMENT — that pays for likes, not actions)
+- **Geo**: always Valencia city key 668776, radius 17km, `location_types: ["home"]` only (not "recent" — tourists don't book workshops)
+- **Bid strategy**: always LOWEST_COST_WITHOUT_CAP
+- **Targeting automation**: always `{"advantage_audience": 0}` to prevent Meta from overriding locale/age
+- **All entities**: always created as PAUSED — Diana activates herself
+- **Locale**: always verify via `/search?type=adlocale` API, never hardcode from memory
+- Do not reactivate old campaigns with ENGAGEMENT objective or all-Spain/all-country geo — rebuild them properly instead
+
 ## Hard Constraints
 
 - **EU compliance** (Spain): explicit opt-in before Pixel fires. Consent banner in `script.js` — do not remove.
 - **RU + UA audiences separated**: never merge into one ad set. Localized creative per language.
 - **Ad spend reality**: €150/month total. No statistical A/B testing until volume grows.
+- **Age targeting**: never widen above 54. Audience is young adults and parents with kids. 55–64 click data was noise, not signal.
+- **Events**: never run paid ads for events. Events are promoted organically only.
+- **Campaign history**: never delete campaigns that ran and spent money — they are a record of mistakes and overspend. Only delete campaigns that were abandoned before going live (pure drafts).
 - **Meta Marketing API v25.0** pinned. v26.0 expected ~Sept 2026.
 
 ## What We Are NOT Doing
@@ -112,8 +127,19 @@ in Valencia. Reference implementation: the `verify_locale()` function in
 `scripts/local/build-meta-campaign.sh`. Canonical IDs as of 2026-06-09: Russian=17, Ukrainian=52,
 English (UK)=24, English (US)=6, Spanish=23. Verify every time — don't trust this list either.
 
+**GEO CITY KEY VERIFICATION (non-negotiable)**: NEVER use a city key from memory, comments, or
+older docs when creating or modifying ad set geo targeting. Always verify via
+`/search?type=adgeolocation&q=<city>&location_types=["city"]` at runtime and confirm the returned
+`name` + `country_code` match before sending the payload.
+
+**Past incident (2026-07-20)**: all 7 active ad sets were built with city key `668776`, which
+resolves to Shubra Tana, Egypt — not Valencia, Spain. Correct Valencia Spain key is `699854`.
+€95.46 spent with 0 possible bookings (second geo targeting loss after the locale incident).
+Total wasted to geo bugs: €237.35. Verify city keys the same way locale IDs are verified — runtime
+API call, not memory.
+
 - Read `REPORT.md` for the plain-English current state before suggesting changes
-- Diana is a UX designer — use plain language, design analogies
+- Diana is a product designer — use plain language, design analogies
 - One step at a time; don't batch big decisions
 - Always reference the relevant GitHub issue when proposing work
 - Don't recommend tooling beyond what's justified at €150/month spend
