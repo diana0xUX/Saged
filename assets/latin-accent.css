@@ -1,0 +1,27 @@
+/* Latin-language typography: Costa is the expressive accent; Inter remains UI/body. */
+@font-face {
+  font-family: "Costa";
+  src: url("fonts/costa-light.otf?v=20260915") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+html:is([lang="en"], [lang="es"]) :is(h1, h2, .display) {
+  font-family: "Costa", "Cormorant Garamond", Georgia, serif !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 0.98 !important;
+  text-transform: none;
+}
+
+html:is([lang="en"], [lang="es"]) :is(.eyebrow, .label, nav, .cta, .btn, button) {
+  font-family: Inter, Arial, sans-serif;
+}
+
+@media (max-width: 760px) {
+  html:is([lang="en"], [lang="es"]) h1 {
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+}

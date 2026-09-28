@@ -14,13 +14,15 @@
 <meta name="theme-color" content="#9F4D2D">
 <link rel="canonical" href="https://saged.club/private/">
 <link rel="alternate" hreflang="ru" href="https://saged.club/private/">
-<link rel="alternate" hreflang="uk" href="https://saged.club/ua/private/">
 <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/language-select.css?v=20260921">
+<link rel="stylesheet" href="../assets/navigation-2026.css?v=20260921">
+<script src="../assets/navigation-2026.js?v=20260921" defer></script>
 <style>
   /* ── Hero ── */
   .priv-hero {
@@ -172,14 +174,16 @@
     <a href="../studio/">Взрослым</a>
     <a href="../kids/">Детям</a>
     <a href="../coworking/">Коворкинг</a>
-    <a href="../events/">Events</a>
+    <a href="../events/">События</a>
     <a href="../gifts/">Подарки</a>
     <span class="topnav__current">Приватно</span>
   </nav>
-  <nav class="lang" aria-label="Language">
-    <span class="lang__current">RU</span>
-    <a href="../ua/private/" class="lang__alt">UA</a>
-  </nav>
+  <a class="nav-cta" href="https://ig.me/m/saged.club" target="_blank" rel="noopener">Обсудить</a>
+  <details class="mobile-nav"><summary>Меню</summary><nav class="mobile-nav__panel" aria-label="Мобильная навигация"><a href="/studio/">Взрослым</a><a href="/kids/">Детям</a><a href="/coworking/">Коворкинг</a><a href="/events/">События</a><a href="/gifts/">Подарки</a><a href="/private/">Приватно</a><a class="mobile-nav__cta" href="https://ig.me/m/saged.club">Обсудить событие</a></nav></details>
+  <details class="language-select">
+    <summary aria-label="Выбрать язык">RU</summary>
+    <div class="language-select__menu" role="list"><span class="language-select__option" aria-current="page">Русский</span><span class="language-select__option" aria-disabled="true">Українська <small>скоро</small></span><span class="language-select__option" aria-disabled="true">English <small>soon</small></span><span class="language-select__option" aria-disabled="true">Español <small>pronto</small></span></div>
+  </details>
 </header>
 
 <main>
@@ -363,6 +367,6 @@
   <p class="muted small">© 2026 Saged.club · <a href="../privacy.html">Privacy</a> · <a href="../cookies.html">Cookies</a></p>
 </footer>
 
-<script src="../assets/script.js"></script>
+<script src="../assets/script.js?v=20260921"></script>
 </body>
 </html>
