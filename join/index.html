@@ -86,17 +86,16 @@ body{
 .step-lead{font-size:17px;color:var(--muted);line-height:1.6;max-width:400px}
 
 /* ── FAQ link ── */
-.faq-link{font-size:14px;color:var(--clay);text-decoration:none;display:inline-block}
+.faq-link{font-size:13px;color:var(--clay);text-decoration:none;letter-spacing:.04em}
 .faq-link:hover{text-decoration:underline}
+.faq-link:focus{outline:none}
 
 /* ── Benefits (info list) ── */
-.benefit-list{display:flex;flex-direction:column;gap:12px}
-.benefit{
-  display:flex;align-items:flex-start;gap:12px;
-}
-.benefit-icon{font-size:20px;line-height:1;flex:none;margin-top:2px}
-.benefit-text strong{display:block;font-weight:600;font-size:15px}
-.benefit-text span{font-size:14px;color:var(--muted)}
+.benefit-list{display:flex;flex-direction:column;gap:10px;padding-left:2px}
+.benefit{display:flex;align-items:baseline;gap:10px}
+.benefit::before{content:'—';color:var(--line);flex:none;font-size:14px}
+.benefit-text{font-size:15px;color:var(--muted);line-height:1.5}
+.benefit-text strong{display:inline;font-weight:500;color:var(--ink)}
 
 /* ── Form fields ── */
 .field-group{display:flex;flex-direction:column;gap:14px}
@@ -248,35 +247,23 @@ body{
   <section class="step active" id="step-welcome">
     <div>
       <p class="step-eyebrow">Asociación Cultural Saged</p>
-      <h1 class="step-title">Стать<br>частью<br>Saged</h1>
+      <h1 class="step-title">Стать<br>своим<br>в Saged</h1>
     </div>
-    <p class="step-lead">Saged — зарегистрированная культурная ассоциация. По испанскому законодательству все услуги ассоциации — пространство, занятия, события, публикации — доступны только её членам.</p>
+    <p class="step-lead">Здесь не продают билеты. Saged — ассоциация, и всё, что здесь происходит, открыто только своим.</p>
     <div class="benefit-list">
       <div class="benefit">
-        <div class="benefit-icon">🏺</div>
-        <div class="benefit-text">
-          <strong>Студия и программы</strong>
-          <span>Керамика, арт-классы, музыка, события — всё доступно после вступления</span>
-        </div>
+        <div class="benefit-text">студия, занятия, события — <strong>всё своё</strong></div>
       </div>
       <div class="benefit">
-        <div class="benefit-icon">📣</div>
-        <div class="benefit-text">
-          <strong>Платформа и соцсети</strong>
-          <span>Публикации, анонсы, упоминания в Instagram и Telegram Saged</span>
-        </div>
+        <div class="benefit-text">публикации, анонсы, <strong>появляетесь в историях Saged</strong></div>
       </div>
       <div class="benefit">
-        <div class="benefit-icon">🏛</div>
-        <div class="benefit-text">
-          <strong>Официальный статус</strong>
-          <span>Запись в реестре Generalitat Valenciana, голос на годовом собрании</span>
-        </div>
+        <div class="benefit-text"><strong>официальная запись</strong> в испанском реестре, голос на собрании</div>
       </div>
     </div>
-    <a href="/join/faq/" class="faq-link">Часто задаваемые вопросы о членстве →</a>
+    <a href="/join/faq/" class="faq-link">Вопросы о членстве →</a>
     <div class="actions">
-      <button class="btn-next" onclick="next()">Начать заявку →</button>
+      <button class="btn-next" onclick="next()">Стать своим →</button>
     </div>
   </section>
 
