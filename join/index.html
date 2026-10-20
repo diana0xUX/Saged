@@ -85,14 +85,12 @@ body{
 }
 .step-lead{font-size:17px;color:var(--muted);line-height:1.6;max-width:400px}
 
-/* ── Cards (welcome benefits) ── */
-.benefit-list{display:flex;flex-direction:column;gap:10px}
+/* ── Benefits (info list) ── */
+.benefit-list{display:flex;flex-direction:column;gap:12px}
 .benefit{
-  display:flex;align-items:flex-start;gap:14px;
-  background:var(--white);border:1px solid var(--line);
-  border-radius:var(--radius);padding:16px 18px;
+  display:flex;align-items:flex-start;gap:12px;
 }
-.benefit-icon{font-size:22px;line-height:1;flex:none;margin-top:2px}
+.benefit-icon{font-size:20px;line-height:1;flex:none;margin-top:2px}
 .benefit-text strong{display:block;font-weight:600;font-size:15px}
 .benefit-text span{font-size:14px;color:var(--muted)}
 
@@ -221,7 +219,7 @@ body{
 @media(max-width:480px){
   .join-wrap{padding:88px 0 100px}
   .step-title{font-size:clamp(30px,10vw,42px)}
-  .benefit{padding:12px 14px}
+
   .review-row{grid-template-columns:100px 1fr;padding:12px 14px}
 }
 </style>
@@ -282,17 +280,17 @@ body{
     <div class="field-group">
       <div class="field">
         <label for="f-first">Имя *</label>
-        <input type="text" id="f-first" autocomplete="given-name" placeholder="Катя">
+        <input type="text" id="f-first" autocomplete="given-name" placeholder="Богослав">
         <span class="err-msg">Введите имя</span>
       </div>
       <div class="field">
         <label for="f-last">Фамилия *</label>
-        <input type="text" id="f-last" autocomplete="family-name" placeholder="Шарова">
+        <input type="text" id="f-last" autocomplete="family-name" placeholder="Светлов">
         <span class="err-msg">Введите фамилию</span>
       </div>
       <div class="field">
         <label for="f-email">Email *</label>
-        <input type="email" id="f-email" autocomplete="email" placeholder="katya@example.com">
+        <input type="email" id="f-email" autocomplete="email" placeholder="bogoslav@example.com">
         <span class="err-msg">Введите корректный email</span>
       </div>
       <div class="field">
