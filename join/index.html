@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Вступить в Saged — Asociación Cultural Saged</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:Costa;src:url('../assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+@font-face{font-family:SagedCyr;src:url('../assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+
+:root{
+  --paper:#f9f4ed;
+  --sand:#efe5d6;
+  --ink:#2a2520;
+  --muted:#6b5f54;
+  --line:#ded1bf;
+  --clay:#9f4d2d;
+  --orange:#ff7a23;
+  --sage:#6e7f5a;
+  --white:#fffdf8;
+  --radius:20px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  min-height:100svh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── Progress bar ── */
+.progress-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:3px;background:var(--line);
+}
+.progress-fill{
+  height:100%;background:var(--clay);
+  transition:width .4s ease;
+  width:0%;
+}
+
+/* ── Header ── */
+.join-header{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  padding:14px 20px 0;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.join-logo{height:32px;opacity:.7}
+.step-label{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+
+/* ── Wrapper ── */
+.join-wrap{
+  width:min(calc(100% - 40px), 520px);
+  margin:0 auto;
+  padding:100px 0 80px;
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+}
+
+/* ── Steps ── */
+.step{display:none;animation:fadeUp .35s ease both}
+.step.active{display:flex;flex-direction:column;gap:28px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Typography ── */
+.step-eyebrow{
+  font-size:11px;text-transform:uppercase;
+  letter-spacing:.18em;color:var(--clay);font-weight:700;
+}
+.step-title{
+  font-family:SagedCyr,Costa,Georgia,serif;
+  font-size:clamp(36px,8vw,52px);
+  line-height:.95;letter-spacing:-.03em;
+  color:var(--ink);
+}
+.step-lead{font-size:17px;color:var(--muted);line-height:1.6;max-width:400px}
+
+/* ── Cards (welcome benefits) ── */
+.benefit-list{display:flex;flex-direction:column;gap:10px}
+.benefit{
+  display:flex;align-items:flex-start;gap:14px;
+  background:var(--white);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 18px;
+}
+.benefit-icon{font-size:22px;line-height:1;flex:none;margin-top:2px}
+.benefit-text strong{display:block;font-weight:600;font-size:15px}
+.benefit-text span{font-size:14px;color:var(--muted)}
+
+/* ── Form fields ── */
+.field-group{display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.02em}
+.field .hint{font-size:12px;color:var(--muted);line-height:1.4}
+.field input,.field select,.field textarea{
+  width:100%;
+  height:52px;
+  padding:0 16px;
+  border:1.5px solid var(--line);
+  border-radius:12px;
+  background:var(--white);
+  color:var(--ink);
+  font:500 16px Inter,sans-serif;
+  outline:none;
+  transition:border-color .15s;
+  -webkit-appearance:none;appearance:none;
+}
+.field textarea{height:90px;padding:14px 16px;resize:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--clay)}
+.field input.error,.field select.error{border-color:#c0392b}
+.field .err-msg{font-size:12px;color:#c0392b;display:none}
+.field input.error ~ .err-msg,.field select.error ~ .err-msg{display:block}
+
+/* ── Type cards ── */
+.type-cards{display:flex;flex-direction:column;gap:10px}
+.type-card{
+  border:2px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;cursor:pointer;
+  transition:border-color .15s, background .15s;
+  display:flex;flex-direction:column;gap:4px;
+}
+.type-card:hover{border-color:var(--clay);background:var(--white)}
+.type-card.selected{border-color:var(--clay);background:var(--white)}
+.type-card input[type=radio]{display:none}
+.type-card__name{font-weight:600;font-size:16px}
+.type-card__desc{font-size:14px;color:var(--muted);line-height:1.45}
+.type-card__price{font-size:13px;color:var(--clay);font-weight:600;margin-top:4px}
+.type-card.selected .type-card__name::before{content:'✓ ';color:var(--clay)}
+
+/* ── Estatutos ── */
+.estatutos-scroll{
+  background:var(--sand);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;max-height:220px;overflow-y:auto;
+  font-size:14px;color:var(--muted);line-height:1.6;
+}
+.estatutos-scroll h4{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);margin:16px 0 6px}
+.estatutos-scroll h4:first-child{margin-top:0}
+.accept-row{display:flex;align-items:flex-start;gap:12px;cursor:pointer}
+.accept-row input[type=checkbox]{
+  flex:none;width:22px;height:22px;margin-top:1px;
+  border:2px solid var(--line);border-radius:6px;cursor:pointer;
+  accent-color:var(--clay);
+}
+.accept-row span{font-size:15px;line-height:1.5}
+
+/* ── Signature ── */
+.sig-wrap{
+  background:var(--white);border:1.5px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;position:relative;
+}
+#sig-canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
+.sig-hint{
+  position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;
+  font-size:15px;color:var(--muted);pointer-events:none;
+  transition:opacity .2s;
+}
+.sig-hint.hidden{opacity:0}
+.sig-clear{
+  background:none;border:none;cursor:pointer;
+  font-size:13px;color:var(--muted);text-decoration:underline;
+  padding:6px 0;align-self:flex-start;
+}
+
+/* ── Review ── */
+.review-block{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;
+}
+.review-row{
+  display:grid;grid-template-columns:120px 1fr;gap:8px;
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  font-size:15px;
+}
+.review-row:last-child{border-bottom:none}
+.review-row dt{color:var(--muted);font-size:13px;font-weight:600;padding-top:1px}
+.review-sig{max-height:60px;border-radius:8px;margin-top:4px}
+
+/* ── Actions ── */
+.actions{display:flex;gap:10px;align-items:center;margin-top:4px}
+.btn-next{
+  flex:1;height:56px;border:none;border-radius:999px;
+  background:var(--ink);color:var(--white);
+  font:600 16px Inter,sans-serif;cursor:pointer;
+  transition:background .15s, transform .1s;
+}
+.btn-next:hover{background:var(--clay)}
+.btn-next:active{transform:scale(.98)}
+.btn-next:disabled{opacity:.4;cursor:not-allowed}
+.btn-back{
+  flex:none;width:56px;height:56px;border-radius:50%;
+  border:1.5px solid var(--line);background:var(--white);
+  color:var(--ink);font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .15s;
+}
+.btn-back:hover{border-color:var(--clay)}
+
+/* ── Done screen ── */
+.done-circle{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--sage);display:flex;align-items:center;
+  justify-content:center;font-size:36px;
+}
+.done-detail{
+  background:var(--sand);border-radius:var(--radius);
+  padding:18px 20px;font-size:15px;line-height:1.6;
+}
+.done-detail strong{font-weight:600}
+
+/* ── Mobile tweaks ── */
+@media(max-width:480px){
+  .join-wrap{padding:88px 0 100px}
+  .step-title{font-size:clamp(30px,10vw,42px)}
+  .benefit{padding:12px 14px}
+  .review-row{grid-template-columns:100px 1fr;padding:12px 14px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<header class="join-header">
+  <img src="../assets/images/logo.png" alt="Saged" class="join-logo"
+       onerror="this.style.display='none'">
+  <span class="step-label" id="step-label">Вступление</span>
+</header>
+
+<main class="join-wrap">
+
+  <!-- Step 1: Welcome -->
+  <section class="step active" id="step-welcome">
+    <div>
+      <p class="step-eyebrow">Asociación Cultural Saged</p>
+      <h1 class="step-title">Стать<br>частью<br>Saged</h1>
+    </div>
+    <p class="step-lead">Мы — зарегистрированная культурная ассоциация в Валенсии. Членство — это не подписка, а участие в сообществе.</p>
+    <div class="benefit-list">
+      <div class="benefit">
+        <div class="benefit-icon">🏛</div>
+        <div class="benefit-text">
+          <strong>Официальное членство</strong>
+          <span>Вы вписаны в реестр Generalitat Valenciana</span>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🎨</div>
+        <div class="benefit-text">
+          <strong>Доступ к пространству</strong>
+          <span>Студия, мастер-классы, события</span>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🗳</div>
+        <div class="benefit-text">
+          <strong>Голос в ассоциации</strong>
+          <span>Участие в годовом собрании и решениях</span>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-next" onclick="next()">Начать заявку →</button>
+    </div>
+  </section>
+
+  <!-- Step 2: About you -->
+  <section class="step" id="step-about">
+    <div>
+      <p class="step-eyebrow">Шаг 1 из 6</p>
+      <h2 class="step-title">О вас</h2>
+    </div>
+    <div class="field-group">
+      <div class="field">
+        <label for="f-first">Имя *</label>
+        <input type="text" id="f-first" autocomplete="given-name" placeholder="Катя">
+        <span class="err-msg">Введите имя</span>
+      </div>
+      <div class="field">
+        <label for="f-last">Фамилия *</label>
+        <input type="text" id="f-last" autocomplete="family-name" placeholder="Шарова">
+        <span class="err-msg">Введите фамилию</span>
+      </div>
+      <div class="field">
+        <label for="f-email">Email *</label>
+        <input type="email" id="f-email" autocomplete="email" placeholder="katya@example.com">
+        <span class="err-msg">Введите корректный email</span>
+      </div>
+      <div class="field">
+        <label for="f-phone">Телефон *</label>
+        <input type="tel" id="f-phone" autocomplete="tel" placeholder="+34 600 000 000">
+        <span class="err-msg">Введите телефон</span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-back" onclick="back()" title="Назад">←</button>
+      <button class="btn-next" onclick="nextAbout()">Далее →</button>
+    </div>
+  </section>
+
+  <!-- Step 3: Registry (legal) -->
+  <section class="step" id="step-registry">
+    <div>
+      <p class="step-eyebrow">Шаг 2 из 6</p>
+      <h2 class="step-title">Для реестра</h2>
+    </div>
+    <p class="step-lead" style="margin-top:-8px">Эти данные обязательны по испанскому законодательству для всех членов ассоциации.</p>
+    <div class="field-group">
+      <div class="field">
+        <label for="f-nie">NIE или номер паспорта *</label>
+        <input type="text" id="f-nie" autocomplete="off" placeholder="X1234567A" style="text-transform:uppercase">
+        <span class="hint">NIE для резидентов Испании, иначе — номер загранпаспорта</span>
+        <span class="err-msg">Введите NIE или номер паспорта</span>
+      </div>
+      <div class="field">
+        <label for="f-dob">Дата рождения *</label>
+        <input type="date" id="f-dob" autocomplete="bday">
+        <span class="err-msg">Введите дату рождения</span>
+      </div>
+      <div class="field">
+        <label for="f-address">Адрес в Валенсии *</label>
+        <input type="text" id="f-address" autocomplete="street-address" placeholder="Calle Example 12, 1º, Valencia">
+        <span class="err-msg">Введите адрес</span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-back" onclick="back()" title="Назад">←</button>
+      <button class="btn-next" onclick="nextRegistry()">Далее →</button>
+    </div>
+  </section>
+
+  <!-- Step 4: Membership type -->
+  <section class="step" id="step-type">
+    <div>
+      <p class="step-eyebrow">Шаг 3 из 6</p>
+      <h2 class="step-title">Тип участия</h2>
+    </div>
+    <div class="type-cards">
+      <label class="type-card" id="card-member" onclick="selectType('member', this)">
+        <input type="radio" name="mtype" value="member">
+        <span class="type-card__name">Участник</span>
+        <span class="type-card__desc">Мастер-классы, события, голосование на собрании ассоциации</span>
+      </label>
+      <label class="type-card" id="card-resident" onclick="selectType('resident', this)">
+        <input type="radio" name="mtype" value="resident">
+        <span class="type-card__name">Резидент студии</span>
+        <span class="type-card__desc">Постоянный доступ в студию 10:00–22:00, хранение работ, коворкинг</span>
+      </label>
+      <label class="type-card" id="card-artist" onclick="selectType('artist', this)">
+        <input type="radio" name="mtype" value="artist">
+        <span class="type-card__name">Мастер</span>
+        <span class="type-card__desc">Хочу вести мастер-классы или программы в Saged — подаю заявку на рассмотрение</span>
+      </label>
+    </div>
+    <div class="actions">
+      <button class="btn-back" onclick="back()" title="Назад">←</button>
+      <button class="btn-next" id="btn-type" onclick="nextType()" disabled>Далее →</button>
+    </div>
+  </section>
+
+  <!-- Step 5: Estatutos -->
+  <section class="step" id="step-estatutos">
+    <div>
+      <p class="step-eyebrow">Шаг 4 из 6</p>
+      <h2 class="step-title">Устав</h2>
+    </div>
+    <p class="step-lead" style="margin-top:-8px">Прочитайте основные положения устава Asociación Cultural Saged.</p>
+    <div class="estatutos-scroll">
+      <p>Asociación Cultural Saged зарегистрирована в Реестре ассоциаций Comunidad Valenciana (ASINS/46/2026/0756). Цель ассоциации — культурный обмен, художественное образование и сообщество через мастер-классы, события и открытое творческое пространство.</p>
+      <p style="margin-top:12px">Членом может стать любое физическое лицо старше 18 лет. Члены вправе участвовать в деятельности, голосовать на общем собрании и знакомиться с финансовой документацией. Членство прекращается по заявлению или при нарушении устава.</p>
+      <p style="margin-top:12px">Ассоциацией управляет правление. Вступая в ассоциацию, вы берёте на себя обязательство уважать устав, решения правления, пространство и других участников.</p>
+    </div>
+    <label class="accept-row" id="accept-row">
+      <input type="checkbox" id="accept-cb" onchange="toggleAccept()">
+      <span>Я прочитал(а) и принимаю устав Asociación Cultural Saged</span>
+    </label>
+    <div class="actions">
+      <button class="btn-back" onclick="back()" title="Назад">←</button>
+      <button class="btn-next" id="btn-accept" onclick="next()" disabled>Далее →</button>
+    </div>
+  </section>
+
+  <!-- Step 6: Signature -->
+  <section class="step" id="step-signature">
+    <div>
+      <p class="step-eyebrow">Шаг 5 из 6</p>
+      <h2 class="step-title">Подпись</h2>
+    </div>
+    <p class="step-lead" style="margin-top:-8px">Распишитесь в поле ниже — подтверждение вашей заявки.</p>
+    <div class="sig-wrap">
+      <canvas id="sig-canvas" height="180"></canvas>
+      <div class="sig-hint" id="sig-hint">Проведите пальцем или мышью</div>
+    </div>
+    <button class="sig-clear" onclick="clearSig()">Очистить подпись</button>
+    <div class="actions">
+      <button class="btn-back" onclick="back()" title="Назад">←</button>
+      <button class="btn-next" id="btn-sig" onclick="nextSig()" disabled>Далее →</button>
+    </div>
+  </section>
+
+  <!-- Step 7: Review -->
+  <section class="step" id="step-review">
+    <div>
+      <p class="step-eyebrow">Шаг 6 из 6</p>
+      <h2 class="step-title">Проверьте</h2>
+    </div>
+    <p class="step-lead" style="margin-top:-8px">Всё верно? После отправки Диана рассмотрит вашу заявку в течение 48 часов.</p>
+    <dl class="review-block">
+      <div class="review-row"><dt>Имя</dt><dd id="rv-name">—</dd></div>
+      <div class="review-row"><dt>Email</dt><dd id="rv-email">—</dd></div>
+      <div class="review-row"><dt>Телефон</dt><dd id="rv-phone">—</dd></div>
+      <div class="review-row"><dt>NIE / Паспорт</dt><dd id="rv-nie">—</dd></div>
+      <div class="review-row"><dt>Дата рожд.</dt><dd id="rv-dob">—</dd></div>
+      <div class="review-row"><dt>Адрес</dt><dd id="rv-address">—</dd></div>
+      <div class="review-row"><dt>Тип</dt><dd id="rv-type">—</dd></div>
+      <div class="review-row"><dt>Подпись</dt><dd><img id="rv-sig" class="review-sig" alt="подпись"></dd></div>
+    </dl>
+    <div class="actions">
+      <button class="btn-back" onclick="back()" title="Назад">←</button>
+      <button class="btn-next" onclick="submit()" style="background:var(--clay)">Отправить заявку ✓</button>
+    </div>
+  </section>
+
+  <!-- Step 8: Done -->
+  <section class="step" id="step-done">
+    <div class="done-circle">✓</div>
+    <div>
+      <p class="step-eyebrow">Заявка отправлена</p>
+      <h2 class="step-title">Добро<br>пожало-<br>вать</h2>
+    </div>
+    <div class="done-detail">
+      <strong>Что дальше:</strong> Диана получила вашу заявку и ответит в WhatsApp или по email в течение 48 часов. После подтверждения вы получите номер участника и добавитесь в реестр ассоциации.
+    </div>
+    <p style="font-size:14px;color:var(--muted)">Вопросы — <a href="https://wa.me/34605543300" style="color:var(--clay)">WhatsApp</a> или <a href="mailto:hello@saged.club" style="color:var(--clay)">hello@saged.club</a></p>
+  </section>
+
+</main>
+
+<script>
+const STEPS = ['welcome','about','registry','type','estatutos','signature','review','done']
+const LABELS = ['Вступление','О вас','Реестр','Тип участия','Устав','Подпись','Проверка','Готово']
+const TYPE_NAMES = {member:'Участник',resident:'Резидент студии',artist:'Мастер'}
+let cur = 0
+let selectedType = null
+let sigHasData = false
+
+function show(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'))
+  document.getElementById('step-'+STEPS[i]).classList.add('active')
+  document.getElementById('step-label').textContent = LABELS[i]
+  const pct = i === 0 ? 0 : Math.round((i / (STEPS.length-1)) * 100)
+  document.getElementById('progress').style.width = pct + '%'
+  if(STEPS[i] === 'signature') resizeCanvas()
+  window.scrollTo(0,0)
+  cur = i
+}
+
+function next(){ show(cur+1) }
+function back(){ if(cur>0) show(cur-1) }
+
+// Step 2: About
+function nextAbout(){
+  const first = document.getElementById('f-first')
+  const last  = document.getElementById('f-last')
+  const email = document.getElementById('f-email')
+  const phone = document.getElementById('f-phone')
+  let ok = true
+  ;[first,last,phone].forEach(f=>{
+    const v = f.value.trim()
+    f.classList.toggle('error', !v)
+    if(!v) ok=false
+  })
+  const ev = email.value.trim()
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)
+  email.classList.toggle('error', !emailOk)
+  if(!emailOk) ok=false
+  if(ok) next()
+}
+
+// Step 3: Registry
+function nextRegistry(){
+  const nie  = document.getElementById('f-nie')
+  const dob  = document.getElementById('f-dob')
+  const addr = document.getElementById('f-address')
+  let ok = true
+  ;[nie,dob,addr].forEach(f=>{
+    const v = f.value.trim()
+    f.classList.toggle('error', !v)
+    if(!v) ok=false
+  })
+  if(ok) next()
+}
+
+// Step 4: Type
+function selectType(val, el){
+  selectedType = val
+  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('selected'))
+  el.classList.add('selected')
+  document.getElementById('btn-type').disabled = false
+}
+function nextType(){
+  if(selectedType) next()
+}
+
+// Step 5: Estatutos
+function toggleAccept(){
+  document.getElementById('btn-accept').disabled =
+    !document.getElementById('accept-cb').checked
+}
+
+// Step 6: Signature canvas
+const canvas = document.getElementById('sig-canvas')
+const ctx = canvas.getContext('2d')
+let drawing = false
+
+function resizeCanvas(){
+  const w = canvas.parentElement.clientWidth
+  const ratio = window.devicePixelRatio || 1
+  canvas.width = w * ratio
+  canvas.height = 180 * ratio
+  canvas.style.width = w + 'px'
+  canvas.style.height = '180px'
+  ctx.scale(ratio, ratio)
+  ctx.strokeStyle = '#2a2520'
+  ctx.lineWidth = 2.2
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+}
+resizeCanvas()
+
+function getPos(e){
+  const r = canvas.getBoundingClientRect()
+  const t = e.touches ? e.touches[0] : e
+  return { x: t.clientX - r.left, y: t.clientY - r.top }
+}
+canvas.addEventListener('mousedown', e=>{ drawing=true; ctx.beginPath(); const p=getPos(e); ctx.moveTo(p.x,p.y) })
+canvas.addEventListener('mousemove', e=>{ if(!drawing) return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); onSigDraw() })
+canvas.addEventListener('mouseup', ()=>drawing=false)
+canvas.addEventListener('mouseleave', ()=>drawing=false)
+canvas.addEventListener('touchstart', e=>{ e.preventDefault(); drawing=true; ctx.beginPath(); const p=getPos(e); ctx.moveTo(p.x,p.y) }, {passive:false})
+canvas.addEventListener('touchmove', e=>{ e.preventDefault(); if(!drawing) return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); onSigDraw() }, {passive:false})
+canvas.addEventListener('touchend', ()=>drawing=false)
+
+function onSigDraw(){
+  if(!sigHasData){
+    sigHasData=true
+    document.getElementById('sig-hint').classList.add('hidden')
+    document.getElementById('btn-sig').disabled=false
+  }
+}
+function clearSig(){
+  ctx.clearRect(0,0,canvas.width,canvas.height)
+  sigHasData=false
+  document.getElementById('sig-hint').classList.remove('hidden')
+  document.getElementById('btn-sig').disabled=true
+}
+function nextSig(){
+  if(!sigHasData) return
+  // populate review
+  const d = collect()
+  document.getElementById('rv-name').textContent    = d.name
+  document.getElementById('rv-email').textContent   = d.email
+  document.getElementById('rv-phone').textContent   = d.phone
+  document.getElementById('rv-nie').textContent     = d.nie
+  document.getElementById('rv-dob').textContent     = d.dob
+  document.getElementById('rv-address').textContent = d.address
+  document.getElementById('rv-type').textContent    = TYPE_NAMES[d.type] || d.type
+  document.getElementById('rv-sig').src = canvas.toDataURL('image/png')
+  next()
+}
+
+function collect(){
+  return {
+    name:    document.getElementById('f-first').value.trim()+' '+document.getElementById('f-last').value.trim(),
+    email:   document.getElementById('f-email').value.trim(),
+    phone:   document.getElementById('f-phone').value.trim(),
+    nie:     document.getElementById('f-nie').value.trim().toUpperCase(),
+    dob:     document.getElementById('f-dob').value,
+    address: document.getElementById('f-address').value.trim(),
+    type:    selectedType,
+  }
+}
+
+const NOTION_PROXY = 'https://api.saged.club/members'
+
+function submit(){
+  const d = collect()
+  const typeName = TYPE_NAMES[d.type] || d.type
+
+  // Send to Notion database
+  if(NOTION_PROXY !== 'PASTE_APPS_SCRIPT_URL_HERE'){
+    fetch(NOTION_PROXY, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ ...d, typeName })
+    }).catch(()=>{})
+  }
+
+  show(STEPS.indexOf('done'))
+}
+</script>
+</body>
+</html>
