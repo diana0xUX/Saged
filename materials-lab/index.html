@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materials Lab: Natural Pigments — Season 1 — Saged Club</title>
+<meta name="description" content="Materials Lab is Saged Club's first cultural research project. Painter Katya explores how natural stones become pigments for painting on clay.">
+<meta property="og:title" content="Materials Lab: Natural Pigments — Saged Club">
+<meta property="og:description" content="A year-long research project on making ceramic pigments from stone. Season 1: October 2026 – October 2027.">
+<meta property="og:type" content="website">
+
+<!-- Costa Light: works when opened on Diana's Mac. Falls back to Playfair Display for Katya. -->
+<style>
+  @font-face {
+    font-family: 'Costa';
+    src: url('../assets/fonts/costa-light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── Brand tokens (from saged.club/assets/style.css) ─── */
+  :root {
+    --bg:          #FAF7F2;
+    --bg-sand:     #F1E9DA;
+    --ink:         #2A2520;
+    --muted:       #6B5F54;
+    --terracotta:  #9F4D2D;
+    --sage:        #6E7F5A;
+    --line:        #E1D6C5;
+
+    /* pigment palette — used only for the swatch decorations and project accents */
+    --pigment-ochre:     #c9962f;
+    --pigment-sienna:    #a5532d;
+    --pigment-umber:     #5e4330;
+    --pigment-malachite: #3f7d62;
+    --pigment-lapis:     #2f4f8a;
+    --pigment-chalk:     #e0d8c8;
+
+    /* Katya note */
+    --note-bg:     #fffbef;
+    --note-border: #e8c84a;
+    --note-text:   #5c4a10;
+
+    --max: 1040px;
+    --gutter: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.65 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Costa', 'Playfair Display', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  p { margin: 0 0 1rem; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid currentColor; }
+  a:hover { color: var(--ink); }
+  ul { margin: 0; padding: 0 0 0 20px; }
+  ul li { margin-bottom: 8px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ─── Katya note blocks ─── */
+  .katya-note {
+    background: var(--note-bg);
+    border: 1.5px dashed var(--note-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 0;
+    color: var(--note-text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .katya-note::before {
+    content: "✏  Katya — ";
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .katya-note p, .katya-note ul { margin: 0; color: var(--note-text); }
+  .katya-note ul { margin-top: 6px; }
+
+  /* ─── Nav ─── */
+  nav {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 10;
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 16px; padding-bottom: 16px;
+  }
+  .nav-home {
+    font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none; border-bottom: none; color: var(--muted);
+  }
+  .nav-home:hover { color: var(--ink); }
+  .nav-label { font-size: 13px; color: var(--muted); }
+
+  /* ─── Hero ─── */
+  .hero { padding: 80px 0 72px; }
+
+  .eyebrow {
+    display: block;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
+  }
+
+  .season-tag {
+    display: inline-block;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--ink); color: var(--bg);
+    border-radius: 999px; padding: 5px 14px; margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    max-width: 14ch;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--terracotta); }
+
+  .hero .lead {
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    max-width: 42ch; margin: 0 0 32px;
+    color: var(--muted);
+    font-family: 'Costa', 'Playfair Display', Georgia, serif;
+    font-style: italic;
+  }
+
+  /* Pigment swatches — decorative, represent the project subject */
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .swatch {
+    width: 60px; height: 60px;
+    border-radius: 50% 46% 52% 48% / 48% 54% 46% 52%;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,.13);
+  }
+  .s1 { background: var(--pigment-ochre); }
+  .s2 { background: var(--pigment-sienna); }
+  .s3 { background: var(--pigment-umber); }
+  .s4 { background: var(--pigment-malachite); }
+  .s5 { background: var(--pigment-lapis); }
+  .s6 { background: var(--pigment-chalk); border: 1px solid var(--line); }
+
+  /* ─── Sections ─── */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+
+  .section-label {
+    display: block;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--terracotta); font-family: 'Inter', sans-serif;
+    font-weight: 600; margin-bottom: 14px;
+  }
+
+  .grid-2col { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
+  .grid-2col h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); }
+
+  /* ─── Photos ─── */
+  .photo {
+    width: 100%; display: block;
+    border-radius: 4px; object-fit: cover;
+    background: var(--bg-sand);
+  }
+  .photo-wide  { aspect-ratio: 16/7;  margin-top: 24px; }
+  .photo-tall  { aspect-ratio: 3/4; }
+  .photo-sq    { aspect-ratio: 1; }
+  .photo-nat   { width: 100%; height: auto; }
+
+  /* Still-needed placeholders (for Katya's own photos) */
+  .photo-placeholder {
+    background: var(--bg-sand);
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--muted); font-size: 13px; text-align: center;
+    gap: 6px; padding: 20px;
+  }
+  .photo-placeholder .icon { font-size: 24px; opacity: .4; }
+  .photo-placeholder-wide { aspect-ratio: 16/7; margin-top: 24px; }
+  .photo-placeholder-sq   { aspect-ratio: 1; }
+
+  /* Hero split layout */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 56px; align-items: start;
+  }
+  .hero-grid .hero-img {
+    aspect-ratio: 4/5; object-fit: cover;
+    border-radius: 4px; width: 100%;
+    display: block;
+  }
+
+  /* Photo strip */
+  .photo-strip-label {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); font-family: 'Inter', sans-serif; font-weight: 500;
+    margin: 32px 0 10px;
+  }
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .photo-strip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; display: block; }
+
+  @media (max-width: 640px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-grid .hero-img { aspect-ratio: 4/3; }
+    .photo-strip { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Goals list ─── */
+  .goals-list { list-style: none; padding: 0; margin: 24px 0 0; }
+  .goals-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    display: flex; gap: 16px; align-items: baseline;
+  }
+  .goals-list li:first-child { border-top: 1px solid var(--line); }
+  .goals-list .dash { color: var(--terracotta); flex-shrink: 0; font-weight: 500; }
+
+  /* ─── Research question ─── */
+  .research-q {
+    margin-top: 32px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--terracotta);
+    background: var(--bg-sand);
+    border-radius: 0 4px 4px 0;
+  }
+  .research-q .label {
+    display: block;
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--terracotta); font-weight: 600; font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+  }
+  .research-q blockquote {
+    margin: 0;
+    font-family: 'Costa', 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-style: italic; color: var(--ink); line-height: 1.5;
+  }
+
+  /* ─── Methodology steps ─── */
+  .steps { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .steps li {
+    background: var(--bg-sand);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 16px;
+  }
+  .steps .num {
+    font-family: 'Costa', 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem; color: var(--terracotta);
+    display: block; margin-bottom: 8px; line-height: 1;
+  }
+  .steps h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .steps p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  .safety-note {
+    margin-top: 20px;
+    background: var(--bg-sand);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px 22px;
+    font-size: 14px; color: var(--muted);
+  }
+  .safety-note strong { color: var(--ink); }
+
+  /* ─── Timeline ─── */
+  .timeline { margin-top: 40px; }
+  .timeline-bar {
+    position: relative;
+    height: 3px; background: var(--line);
+    margin-bottom: 0;
+  }
+  .timeline-fill {
+    position: absolute; top: 0; left: 0;
+    width: 14%; height: 100%;
+    background: var(--terracotta); border-radius: 2px;
+  }
+  .timeline-nodes {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    position: relative; margin-top: 0;
+  }
+  .tnode { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 0; }
+  .tnode-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--line); margin-top: -8px; margin-bottom: 12px;
+    border: 2px solid var(--bg); flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .tnode.active .tnode-dot {
+    width: 18px; height: 18px; margin-top: -11px;
+    background: var(--terracotta);
+    box-shadow: 0 0 0 5px rgba(159,77,45,.15);
+  }
+  .tnode-when {
+    font-size: 12px; color: var(--muted);
+    letter-spacing: .08em; text-transform: uppercase;
+    font-weight: 500; font-family: 'Inter', sans-serif;
+    margin-bottom: 3px;
+  }
+  .tnode.active .tnode-when { color: var(--terracotta); font-weight: 600; }
+  .tnode-label { font-size: 13px; color: var(--ink); font-weight: 500; line-height: 1.3; }
+  .tnode.active .tnode-label { font-weight: 700; }
+  .tnode-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+  /* ─── Journal ─── */
+  .journal-posts { display: flex; flex-direction: column; gap: 32px; margin-top: 32px; }
+
+  .post {
+    background: var(--bg);
+    border: 1.5px solid var(--line);
+    border-radius: 4px; overflow: hidden;
+  }
+  .post--draft {
+    background: transparent;
+    border-style: dashed;
+  }
+  .draft-badge {
+    font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    background: var(--note-bg); color: var(--note-text);
+    border: 1px solid var(--note-border);
+    border-radius: 999px; padding: 2px 10px;
+    font-family: 'Inter', sans-serif;
+  }
+  .post-meta {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    padding: 18px 22px 0;
+    font-size: 13px; color: var(--muted); font-family: 'Inter', sans-serif;
+  }
+  .post-date { font-weight: 500; color: var(--ink); }
+  .post-tag {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 2px 10px; font-size: 11px;
+    letter-spacing: .05em; color: var(--muted);
+  }
+  .post-body { padding: 14px 22px 22px; }
+  .post-body h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); margin-bottom: 14px; }
+  .post-body p { font-size: 16px; }
+
+  /* ─── Show block (dark band) ─── */
+  .show-block {
+    background: var(--ink); color: var(--bg);
+    border-radius: 4px; padding: clamp(40px, 5vw, 72px);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .show-label {
+    display: block;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--pigment-ochre); font-weight: 600; font-family: 'Inter', sans-serif;
+    margin-bottom: 14px;
+  }
+  .show-block h2 { font-size: clamp(1.8rem, 3.8vw, 3rem); color: var(--bg); margin-bottom: 16px; }
+  .show-block p { color: #c8bfb0; font-size: 16px; }
+
+  .show-date {
+    display: block;
+    font-family: 'Costa', 'Playfair Display', Georgia, serif;
+    font-size: clamp(3rem, 5vw, 5rem); line-height: 1;
+    color: var(--bg); margin-bottom: 10px;
+  }
+  .show-tbc { font-size: 12px; color: #8a7f72; letter-spacing: .08em; font-family: 'Inter', sans-serif; }
+
+  .show-block .photo-placeholder {
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.15);
+    color: rgba(255,255,255,.35);
+  }
+
+  /* ─── CTA (matches main site .cta) ─── */
+  .cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px;
+    background: var(--terracotta); color: var(--bg);
+    border: 2px solid var(--terracotta);
+    border-radius: 999px; padding: 0.75rem 1.5rem;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px;
+    text-decoration: none; border-bottom: none;
+    transition: background .15s, color .15s, border-color .15s;
+    margin-top: 20px;
+  }
+  .cta:hover { background: var(--bg); color: var(--terracotta); }
+  .cta--on-dark { background: transparent; border-color: rgba(255,255,255,.4); color: var(--bg); }
+  .cta--on-dark:hover { background: var(--bg); color: var(--terracotta); border-color: var(--bg); }
+
+  /* ─── Credits ─── */
+  .credits {
+    background: var(--bg-sand);
+    border: 1px solid var(--line);
+    border-radius: 4px; padding: 28px 32px;
+  }
+  .credits p { max-width: 60ch; }
+  .funder-slot {
+    margin-top: 24px; padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 14px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  footer a { color: var(--muted); border-bottom: none; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 860px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+    .show-block { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 48px 0 40px; }
+    .grid-2col { grid-template-columns: 1fr; gap: 20px; }
+    .steps { grid-template-columns: 1fr; }
+    .timeline-nodes { grid-template-columns: 1fr; }
+    .timeline-bar { display: none; }
+    .tnode { flex-direction: row; text-align: left; align-items: flex-start; gap: 12px; margin-top: 16px; }
+    .tnode-dot { margin-top: 4px; margin-bottom: 0; }
+    .swatch { width: 48px; height: 48px; }
+    section { padding: 48px 0; }
+    .show-block { padding: 28px 22px; }
+    .credits { padding: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Nav ─── -->
+<nav>
+  <div class="wrap">
+    <a href="/" class="nav-home">← Saged Club</a>
+    <span class="nav-label">Materials Lab · Season 1</span>
+  </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Saged Club · Cultural Research Project</span>
+        <span class="season-tag">Season 1 · October 2026 – October 2027</span>
+        <h1>From stone to <em>pigment</em> to clay</h1>
+        <p class="lead">Our first cultural research project. Painter Katya explores how natural stones become pigments for painting on ceramic.</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch s1" title="Ochre"></span>
+          <span class="swatch s2" title="Sienna"></span>
+          <span class="swatch s3" title="Umber"></span>
+          <span class="swatch s4" title="Malachite"></span>
+          <span class="swatch s5" title="Lapis"></span>
+          <span class="swatch s6" title="Chalk"></span>
+        </div>
+      </div>
+      <img
+        class="hero-img"
+        src="https://images.unsplash.com/photo-1783067727360-33aacf486424?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200"
+        alt="Natural pigment powders — ochre, sienna and earth tones laid out on a surface">
+    </div>
+  </div>
+</header>
+
+<!-- ─── The Project ─── -->
+<section id="project">
+  <div class="wrap">
+    <div class="grid-2col">
+      <div>
+        <span class="section-label">The project</span>
+        <h2>What we're researching and why</h2>
+      </div>
+      <div>
+        <p>Before paint came in tubes, colour came from the ground. Ochres, umbers, and blue and green minerals were crushed, washed, and ground by hand. The painter's knowledge was inseparable from the material.</p>
+        <p>In the Materials Lab, Katya is reviving that knowledge for ceramics. She makes pigments from natural stones and tests them on clay slabs — fired and unfired — to understand how colour changes through heat.</p>
+        <p>The focus is the methodology: a repeatable, documented way to make pigment from stone, written down step by step so the knowledge can be shared. Stones from around Valencia join the palette wherever they can.</p>
+
+        <div class="katya-note">
+          Add 1–2 sentences in your own words about why you wanted to work with natural pigments, and why on clay specifically. What drew you to this material research?
+        </div>
+
+        <div class="photo-placeholder photo-placeholder-wide">
+          <span class="icon">📷</span>
+          <span>[photo TBC — your portrait or a shot of you working]</span>
+        </div>
+        <div class="katya-note" style="margin-top:10px;">
+          Replace this placeholder with your own photo — a portrait or shot of you working. Landscape (horizontal) works best.
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals -->
+    <div style="margin-top: 56px;">
+      <span class="section-label">Season 1 goals</span>
+      <ul class="goals-list">
+        <li><span class="dash">—</span> Develop a repeatable, documented method for making ceramic pigments from natural stone</li>
+        <li><span class="dash">—</span> Build a pigment library and a set of painted sample slabs</li>
+        <li><span class="dash">—</span> Test how stone pigments behave fired and unfired, and record the differences</li>
+        <li><span class="dash">—</span> Share the knowledge in a public open session and a sample show at the studio</li>
+        <li><span class="dash">—</span> Include stones from the Spanish landscape wherever possible</li>
+      </ul>
+      <div class="katya-note">
+        Do these goals feel right to you? Add, remove, or reword anything — these are your goals, we just drafted a starting point.
+      </div>
+    </div>
+
+    <!-- Research question -->
+    <div class="research-q">
+      <span class="label">Research question</span>
+      <blockquote>"How can natural stones be processed into stable pigments for painting on clay?"</blockquote>
+    </div>
+    <div class="katya-note">
+      Is this your question, or would you phrase it differently? This sentence anchors the whole project — take your time with it.
+    </div>
+  </div>
+</section>
+
+<!-- ─── Methodology ─── -->
+<section id="method">
+  <div class="wrap">
+    <div class="grid-2col" style="margin-bottom: 32px; align-items: end;">
+      <div>
+        <span class="section-label">Methodology</span>
+        <h2>The process, step by step</h2>
+      </div>
+      <p style="color: var(--muted);">Every stone goes through the same five steps, so results can be compared and shared. The method is the product — not just the pigments it produces.</p>
+    </div>
+
+    <ol class="steps">
+      <li><span class="num">1</span><h3>Select</h3><p>Choose and identify the stone — name, source, mineral family.</p></li>
+      <li><span class="num">2</span><h3>Grind</h3><p>Crush and grind by hand into a fine powder.</p></li>
+      <li><span class="num">3</span><h3>Refine</h3><p>Wash and settle out the finest particle pigment.</p></li>
+      <li><span class="num">4</span><h3>Paint</h3><p>Bind the pigment and paint test slabs, fired and unfired.</p></li>
+      <li><span class="num">5</span><h3>Fire</h3><p>Fire some slabs and record exactly how the colour changes.</p></li>
+    </ol>
+
+    <p class="photo-strip-label">From the process</p>
+    <div class="photo-strip">
+      <img src="https://images.unsplash.com/photo-1781450951170-72a1b92cd3ed?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200"
+           alt="Stone being ground in a mortar — the grinding step in natural pigment-making">
+      <img src="https://images.unsplash.com/photo-1560427450-00fa9481f01e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200"
+           alt="Assorted natural stones and minerals — raw materials for pigment">
+    </div>
+
+    <div class="katya-note" style="margin-top: 20px;">
+      You have a fuller 10-step method in your project framework. Would you like to show all the steps here, or keep these 5 public-facing ones? Either works — just let Diana know.
+    </div>
+
+    <div class="safety-note">
+      <strong>Safety and care.</strong> Wet grinding is used throughout to minimise dust. Toxic or suspect minerals are excluded from the palette. All painted pieces produced in the lab are <strong>decorative only and not suitable for food use</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- ─── Timeline ─── -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="grid-2col" style="margin-bottom: 40px; align-items: end;">
+      <div>
+        <span class="section-label">Timeline</span>
+        <h2>Season 1 at a glance</h2>
+      </div>
+      <p style="color: var(--muted);">One year, five milestones, two public events. The research runs from October 2026 to the final show in October 2027.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-bar"><div class="timeline-fill"></div></div>
+      <div class="timeline-nodes">
+        <div class="tnode active">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">Oct 2026</div>
+            <div class="tnode-label">Kickoff</div>
+            <div class="tnode-sub">Research begins</div>
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">Winter 2026–27</div>
+            <div class="tnode-label">Research & testing</div>
+            <div class="tnode-sub">Stones, grinding, firing tests</div>
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">Spring 2027</div>
+            <div class="tnode-label">Sample selection</div>
+            <div class="tnode-sub">Pigment library takes shape</div>
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">TBC · 2027</div>
+            <div class="tnode-label">Open session</div>
+            <div class="tnode-sub">Live demo at the studio</div>
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">Oct 2027</div>
+            <div class="tnode-label">Final show</div>
+            <div class="tnode-sub">Exact date to be announced</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="katya-note" style="margin-top: 28px;">
+      Does this timeline feel realistic? If you already have rough dates for the open session, add them. If you'd like to break the research into phases (e.g. earth tones first, then blues), we can add those too.
+    </div>
+  </div>
+</section>
+
+<!-- ─── Journal ─── -->
+<section id="journal">
+  <div class="wrap">
+    <div class="grid-2col" style="margin-bottom: 32px; align-items: end;">
+      <div>
+        <span class="section-label">Journal</span>
+        <h2>Updates from the lab</h2>
+      </div>
+      <p style="color: var(--muted);">Notes from the research as it develops — stones found, tests run, surprises discovered. We'll add a post roughly once a month.</p>
+    </div>
+
+    <div class="journal-posts">
+
+      <!-- Post 1 -->
+      <article class="post">
+        <div class="post-meta">
+          <span class="post-date">October 2026</span>
+          <span class="post-tag">kickoff</span>
+          <span class="post-tag">methodology</span>
+        </div>
+        <div class="post-body">
+          <h3>Season 1 begins</h3>
+          <p>Materials Lab is Saged Club's first cultural research project, and it starts this month. Painter Katya is spending the next year learning how natural stones become pigments for painting on clay.</p>
+          <p>The focus isn't just making pigments — it's writing the method down. A repeatable, step-by-step process that anyone can follow, adapt, and build on. At the end of Season 1 we'll share it at a public open session and a sample show here at the studio.</p>
+          <p>The approach: every stone goes through the same five steps — select, grind, refine, paint, fire. The method stays constant. The variable is the stone. That's how you learn what the stone is actually doing.</p>
+          <p>We'll post updates here as the work develops. First stones coming soon.</p>
+          <div class="photo-placeholder photo-placeholder-wide" style="margin-top:20px;">
+            <span class="icon">📷</span>
+            <span>[photo TBC — add a photo of you in the studio or with your materials]</span>
+          </div>
+          <div class="katya-note">
+            This is the first journal post — read it over and change anything that doesn't sound like you. Add a line about what you're looking forward to or what feels uncertain.
+          </div>
+        </div>
+      </article>
+
+      <!-- Post 2 — template -->
+      <article class="post post--draft">
+        <div class="post-meta">
+          <span class="post-date">November 2026</span>
+          <span class="draft-badge">Draft</span>
+          <span class="post-tag">stones</span>
+          <span class="post-tag">grinding</span>
+        </div>
+        <div class="post-body">
+          <h3>First stones</h3>
+          <div class="katya-note" style="margin-top: 0;">
+            This is the template for your second post. Fill in:
+            <ul>
+              <li>Which stones did you start with? (names if you know them)</li>
+              <li>Where did you find or source them?</li>
+              <li>What did the first grinding session feel like?</li>
+              <li>Any surprises?</li>
+              <li>1–2 photos: the stones before grinding, or the powder after.</li>
+            </ul>
+            Send the text and photos to Diana and she'll publish this post.
+          </div>
+          <img
+            class="photo photo-wide"
+            src="https://images.unsplash.com/photo-1595351298020-038700609878?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200"
+            alt="Hands at a pottery wheel — the clay surface that will carry the pigment"
+            style="margin-top:16px;">
+        </div>
+      </article>
+
+    </div>
+
+    <p style="margin-top: 28px; font-size: 14px; color: var(--muted);">
+      <strong style="color: var(--ink);">Adding a post:</strong> each update follows the same pattern — date, tags, title, 100–300 words, 1–2 photos. Send Diana the text and photos and she'll add it. Aim for roughly once a month, no fixed schedule.
+    </p>
+  </div>
+</section>
+
+<!-- ─── Final show ─── -->
+<section id="show">
+  <div class="wrap">
+    <div class="show-block">
+      <div>
+        <span class="show-label">Season 1 finale</span>
+        <h2>The sample show</h2>
+        <p>At the end of Season 1, Katya presents the pigment library and painted sample slabs — one year of research made visible. The studio will host an open session with a live pigment-making demonstration, followed by the sample show.</p>
+        <a href="mailto:hello@saged.club?subject=Materials Lab — I'd like to come" class="cta cta--on-dark">Register your interest</a>
+        <p style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.6;">
+          ✏ <em>Katya —</em> One event or two (demo + show on separate days)? Any preference for timing in October 2027?
+        </p>
+      </div>
+      <div>
+        <span class="show-date">October 2027</span>
+        <span class="show-tbc">Exact date to be announced</span>
+        <div class="photo-placeholder photo-placeholder-sq" style="margin-top:24px; border-radius:4px;">
+          <span class="icon">📷</span>
+          <span>[photo TBC — Katya's sample slabs or pigment library]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Credits ─── -->
+<section id="credits">
+  <div class="wrap">
+    <span class="section-label">Credits &amp; support</span>
+    <div class="credits">
+      <p>A research project by <strong>Katya</strong>, hosted and supported by Asociación Cultural Saged at Saged Club. The studio documents the process and co-curates the show.</p>
+      <div class="katya-note">
+        Add your full name if you'd like — "A research project by Katya [Surname]". Also: do you have a website, Instagram, or other link you'd like credited here?
+      </div>
+      <div class="funder-slot">
+        Support and acknowledgements will appear here as the project develops.
+        <div class="katya-note" style="margin-top: 10px;">
+          If you receive any support for this project — materials, equipment, residencies, grants — let Diana know and we'll add the acknowledgement here with the funder's required credit line.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Materials Lab is Saged Club's first cultural research project.</span>
+    <span>Asociación Cultural Saged · C/ de les Cuines 8, Ciutat Vella, Valencia · <a href="/">saged.club</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
