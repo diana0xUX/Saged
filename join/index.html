@@ -85,6 +85,10 @@ body{
 }
 .step-lead{font-size:17px;color:var(--muted);line-height:1.6;max-width:400px}
 
+/* ── FAQ link ── */
+.faq-link{font-size:14px;color:var(--clay);text-decoration:none;display:inline-block}
+.faq-link:hover{text-decoration:underline}
+
 /* ── Benefits (info list) ── */
 .benefit-list{display:flex;flex-direction:column;gap:12px}
 .benefit{
@@ -246,30 +250,31 @@ body{
       <p class="step-eyebrow">Asociación Cultural Saged</p>
       <h1 class="step-title">Стать<br>частью<br>Saged</h1>
     </div>
-    <p class="step-lead">Мы — зарегистрированная культурная ассоциация в Валенсии. Членство — это не подписка, а участие в сообществе.</p>
+    <p class="step-lead">Saged — зарегистрированная культурная ассоциация. По испанскому законодательству все услуги ассоциации — пространство, занятия, события, публикации — доступны только её членам.</p>
     <div class="benefit-list">
+      <div class="benefit">
+        <div class="benefit-icon">🏺</div>
+        <div class="benefit-text">
+          <strong>Студия и программы</strong>
+          <span>Керамика, арт-классы, музыка, события — всё доступно после вступления</span>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">📣</div>
+        <div class="benefit-text">
+          <strong>Платформа и соцсети</strong>
+          <span>Публикации, анонсы, упоминания в Instagram и Telegram Saged</span>
+        </div>
+      </div>
       <div class="benefit">
         <div class="benefit-icon">🏛</div>
         <div class="benefit-text">
-          <strong>Официальное членство</strong>
-          <span>Вы вписаны в реестр Generalitat Valenciana</span>
-        </div>
-      </div>
-      <div class="benefit">
-        <div class="benefit-icon">🎨</div>
-        <div class="benefit-text">
-          <strong>Доступ к пространству</strong>
-          <span>Студия, мастер-классы, события</span>
-        </div>
-      </div>
-      <div class="benefit">
-        <div class="benefit-icon">🗳</div>
-        <div class="benefit-text">
-          <strong>Голос в ассоциации</strong>
-          <span>Участие в годовом собрании и решениях</span>
+          <strong>Официальный статус</strong>
+          <span>Запись в реестре Generalitat Valenciana, голос на годовом собрании</span>
         </div>
       </div>
     </div>
+    <a href="/join/faq/" class="faq-link">Часто задаваемые вопросы о членстве →</a>
     <div class="actions">
       <button class="btn-next" onclick="next()">Начать заявку →</button>
     </div>

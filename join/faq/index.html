@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Вопросы о членстве — Saged</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:SagedCyr;src:url('../../assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+
+:root{
+  --paper:#f9f4ed;
+  --sand:#efe5d6;
+  --ink:#2a2520;
+  --muted:#6b5f54;
+  --line:#ded1bf;
+  --clay:#9f4d2d;
+  --white:#fffdf8;
+  --radius:16px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+.header{
+  padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--line);
+}
+.header-back{
+  font-size:14px;color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+}
+.header-back:hover{color:var(--ink)}
+.header-logo{
+  font-family:SagedCyr,Georgia,serif;
+  font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:-.02em;
+}
+
+.wrap{
+  width:min(calc(100% - 40px), 600px);
+  margin:0 auto;
+  padding:52px 0 80px;
+}
+
+.page-eyebrow{
+  font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+  color:var(--clay);font-weight:700;margin-bottom:12px;
+}
+.page-title{
+  font-family:SagedCyr,Georgia,serif;
+  font-size:clamp(32px,7vw,48px);
+  line-height:.95;letter-spacing:-.03em;
+  color:var(--ink);margin-bottom:28px;
+}
+.page-lead{
+  font-size:17px;color:var(--muted);line-height:1.6;
+  max-width:480px;margin-bottom:48px;
+  padding-bottom:36px;border-bottom:1px solid var(--line);
+}
+
+/* FAQ list */
+.faq-list{display:flex;flex-direction:column;gap:0}
+
+.faq-item{
+  border-bottom:1px solid var(--line);
+  padding:24px 0;
+}
+.faq-item:first-child{border-top:none;padding-top:0}
+
+.faq-q{
+  font-weight:600;font-size:16px;color:var(--ink);
+  line-height:1.4;margin-bottom:10px;
+}
+.faq-a{
+  font-size:15px;color:var(--muted);line-height:1.65;
+}
+.faq-a p+p{margin-top:10px}
+.faq-a strong{color:var(--ink);font-weight:600}
+
+.cta-block{
+  margin-top:52px;padding:28px;
+  background:var(--sand);border-radius:var(--radius);
+  border:1px solid var(--line);
+}
+.cta-block p{font-size:15px;color:var(--muted);margin-bottom:16px}
+.btn{
+  display:inline-block;
+  background:var(--ink);color:var(--white);
+  font-size:15px;font-weight:600;font-family:inherit;
+  padding:14px 28px;border-radius:100px;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:opacity .15s;
+}
+.btn:hover{opacity:.85}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="header-back" href="/join/">← Назад к вступлению</a>
+  <a class="header-logo" href="/">Saged</a>
+</header>
+
+<main class="wrap">
+
+  <p class="page-eyebrow">Членство в Saged</p>
+  <h1 class="page-title">Вопросы<br>и ответы</h1>
+  <p class="page-lead">Всё, что нужно знать перед тем, как подать заявку.</p>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <p class="faq-q">Зачем вообще вступать в ассоциацию? Почему нельзя просто купить билет на занятие?</p>
+      <div class="faq-a">
+        <p>Saged — зарегистрированная некоммерческая культурная ассоциация (Asociación Cultural). По испанскому законодательству ассоциация вправе предоставлять свои услуги, пространство и ресурсы <strong>только зарегистрированным членам</strong>. Это не маркетинговое решение — это правовая форма, в которой мы работаем.</p>
+        <p>Членство открывает доступ ко всему: студии, занятиям, событиям, публикациям и платформе Saged. Без регистрации доступ невозможен.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Что именно входит в членство?</p>
+      <div class="faq-a">
+        <p>Членство открывает полный доступ к ассоциации:</p>
+        <p><strong>Физическое пространство</strong> — студия керамики, залы для занятий и событий по адресу C/ de les Cuines, 8, Valencia.</p>
+        <p><strong>Программы</strong> — занятия керамикой, арт-классы, музыкальные занятия (хэндпан), нарративная терапия, чайные церемонии, события и выставки.</p>
+        <p><strong>Платформа Saged</strong> — публикации в Instagram и Telegram, анонсы событий, упоминания участников и мастеров в коммуникациях ассоциации.</p>
+        <p><strong>Статус</strong> — официальная запись в Registro de Asociaciones de la Comunitat Valenciana. Право голоса на ежегодном Общем собрании.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Сколько стоит членство?</p>
+      <div class="faq-a">
+        <p>Размер ежегодного взноса утверждается Общим собранием ассоциации. Актуальный размер взноса указывается при подаче заявки и в подтверждающем письме после одобрения.</p>
+        <p>Занятия и мастер-классы оплачиваются отдельно от членского взноса — по расписанию и тарифам программ.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Нужен ли испанский ВНЖ или NIE?</p>
+      <div class="faq-a">
+        <p>Нет. Членом ассоциации может стать любой человек старше 18 лет вне зависимости от гражданства и статуса проживания. Документ, удостоверяющий личность (паспорт), нужен только для официальной записи в реестр ассоциации.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Обязательно ли ходить на годовое собрание?</p>
+      <div class="faq-a">
+        <p>Нет, посещение Общего собрания (<em>Asamblea General</em>) необязательно. Но как зарегистрированный член вы имеете право голоса — вы можете прийти и повлиять на решения ассоциации: программу, бюджет, направление развития. Собрание проводится раз в год.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Как быстро рассматривается заявка?</p>
+      <div class="faq-a">
+        <p>Правление рассматривает заявки в течение нескольких рабочих дней. После одобрения вы получите письмо с подтверждением, реквизитами для оплаты взноса и дальнейшими инструкциями.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Можно ли выйти из ассоциации?</p>
+      <div class="faq-a">
+        <p>Да, в любой момент. Достаточно написать на <a href="mailto:hello@saged.club" style="color:var(--clay)">hello@saged.club</a> с просьбой прекратить членство. Взнос за текущий период не возвращается. Ваши данные будут хранены ещё 5 лет в соответствии с требованиями RGPD, после чего удалены.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Я хочу вести занятия в Saged. Как это работает?</p>
+      <div class="faq-a">
+        <p>В форме заявки выберите тип участия <strong>«Мастер»</strong>. Правление ассоциации рассмотрит заявку и свяжется с вами. Ведение занятий возможно только для членов ассоциации.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Что происходит с моими персональными данными?</p>
+      <div class="faq-a">
+        <p>Данные обрабатываются в соответствии с Reglamento (UE) 2016/679 (RGPD) и Ley Orgánica 3/2018 (LOPD-GDD). Цель — ведение реестра членов и уведомления о деятельности ассоциации. Данные не передаются третьим сторонам без вашего согласия. Для запросов на доступ, исправление или удаление: <a href="mailto:hello@saged.club" style="color:var(--clay)">hello@saged.club</a>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Остались вопросы?</p>
+      <div class="faq-a">
+        <p>Пишите на <a href="mailto:hello@saged.club" style="color:var(--clay)">hello@saged.club</a> или в WhatsApp <a href="https://wa.me/34605543300" style="color:var(--clay)">+34 605 54 33 00</a> — ответим в течение дня.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-block">
+    <p>Готовы вступить? Заявка занимает около 3 минут.</p>
+    <a class="btn" href="/join/">Начать заявку →</a>
+  </div>
+
+</main>
+</body>
+</html>
