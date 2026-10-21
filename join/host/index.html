@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Become a host — Saged</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:SagedCyr;src:url('/assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+@font-face{font-family:Costa;src:url('/assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+:root{--paper:#f9f4ed;--sand:#efe5d6;--ink:#2a2520;--muted:#6b5f54;--line:#ded1bf;--clay:#9f4d2d;--clay-light:#faf0e6;--white:#fffdf8;--radius:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.draft-bar{background:#2a2520;color:#f0e8df;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.04em}
+.draft-bar a{color:#F08A60;text-decoration:none}
+
+.nav{padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(249,244,237,.96);backdrop-filter:blur(8px);z-index:20}
+.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;transition:all .15s}
+.nav-cta:hover{background:var(--clay);color:var(--white)}
+@media(max-width:640px){.nav-links{display:none}.nav{padding:16px 20px}}
+
+.wrap{width:min(calc(100% - 40px),640px);margin:0 auto;padding:52px 0 100px}
+
+.page-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--clay);font-weight:700;margin-bottom:14px}
+.page-title{font-family:Costa,Georgia,serif;font-size:clamp(40px,8vw,64px);line-height:.91;letter-spacing:-.04em;color:var(--ink);margin-bottom:22px}
+.page-lead{font-size:17px;color:var(--muted);line-height:1.65;max-width:480px;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+
+.value-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:52px}
+@media(max-width:500px){.value-grid{grid-template-columns:1fr}}
+.value-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 20px}
+.value-icon{font-size:22px;margin-bottom:10px}
+.value-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.value-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+.steps{margin-bottom:52px}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px}
+.step{display:grid;grid-template-columns:32px 1fr;gap:16px;align-items:start;margin-bottom:24px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--clay-light);color:var(--clay);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--muted);line-height:1.55}
+
+.form-section{margin-bottom:12px}
+.form-label{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px}
+.form-hint{font-size:12px;color:var(--muted);margin-bottom:8px}
+.form-input,.form-textarea,.form-select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;outline:none;transition:border-color .15s;-webkit-appearance:none}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--clay)}
+.form-textarea{resize:vertical;min-height:100px;line-height:1.55}
+.form-group{margin-bottom:20px}
+.form-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
+.form-note a{color:var(--clay)}
+.btn-submit{width:100%;background:var(--clay);color:var(--white);font-family:inherit;font-size:16px;font-weight:600;padding:16px;border:none;border-radius:100px;cursor:pointer;transition:opacity .15s;margin-top:8px}
+.btn-submit:hover{opacity:.88}
+.form-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+</style>
+  <script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="draft-bar">Prototype · <a href="/prototype.html">← Home</a> · <a href="/hosts/">Hosts</a> · <a href="/join/">Membership</a></div>
+
+<nav class="nav">
+  <a class="nav-logo" href="/prototype.html"><img src="/assets/images/logo-saged-club.svg" alt="Saged" height="26"></a>
+  <div class="nav-links">
+    <a href="/events/">What's on</a>
+    <a href="/hosts/">Hosts</a>
+    <a href="/space/">Space</a>
+    <a href="/join/" class="active">Join</a>
+  </div>
+  <a class="nav-cta" href="/join/host/">Become a host</a>
+</nav>
+
+<main class="wrap">
+
+  <p class="page-eyebrow">For makers & facilitators</p>
+  <h1 class="page-title">Host<br>classes<br>at Saged</h1>
+  <p class="page-lead">Studio, audience and community — for those who want to teach classes, workshops or events in Valencia.</p>
+
+  <div class="section-label">What you get</div>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-icon">🏺</div>
+      <div class="value-title">Ready-to-use studio</div>
+      <div class="value-desc">Fully equipped space — ceramics studio, event hall, kitchen, projector.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">👥</div>
+      <div class="value-title">Club audience</div>
+      <div class="value-desc">Access to Saged members — Russian- and Ukrainian-speaking residents of Valencia already looking for practice.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌐</div>
+      <div class="value-title">Profile on the website</div>
+      <div class="value-desc">Your page on saged.club, visibility through events and club social media.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">Community</div>
+      <div class="value-desc">Host group, collaborative projects, cross-promotion between facilitators.</div>
+    </div>
+  </div>
+
+  <div class="section-label">How it works</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Submit an application</div>
+        <div class="step-desc">Fill in the form below — who you are, what you teach, how you want to work.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Board reviews</div>
+        <div class="step-desc">We reply within a few days. We'll clarify details, discuss format and terms.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Join the association</div>
+        <div class="step-desc">All hosts are members of Asociación Cultural Saged. This is a legal requirement to work in an association's space.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Run your first class</div>
+        <div class="step-desc">Your profile goes live on the website, your class appears in the events calendar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Application</div>
+  <div class="form-card">
+    <form action="https://api.saged.club/host-apply" method="post" id="hostForm">
+
+      <div class="form-group">
+        <label class="form-label" for="name">Your name</label>
+        <input class="form-input" type="text" id="name" name="name" placeholder="What's your name" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="practice">Your practice</label>
+        <div class="form-hint">What you teach — one line</div>
+        <input class="form-input" type="text" id="practice" name="practice" placeholder="e.g. yoga, ceramics, breathwork, sound healing…" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="description">Tell us about yourself</label>
+        <div class="form-hint">2–4 sentences — experience, approach, what you'd like to offer at Saged</div>
+        <textarea class="form-textarea" id="description" name="description" placeholder="What you do, how long you've been doing it, what you'd like to bring to the club…" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="format">Format</label>
+        <select class="form-select" id="format" name="format">
+          <option value="">Choose…</option>
+          <option value="class">Regular classes (weekly)</option>
+          <option value="workshop">One-off workshops</option>
+          <option value="event">Events and ceremonies</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="instagram">Instagram</label>
+        <input class="form-input" type="text" id="instagram" name="instagram" placeholder="@yourhandle">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="contact">Telegram or WhatsApp</label>
+        <input class="form-input" type="text" id="contact" name="contact" placeholder="+34 … or @username" required>
+      </div>
+
+      <button class="btn-submit" type="submit">Submit application →</button>
+
+      <p class="form-note">By clicking Submit you agree that we may contact you via the details provided. Data is not shared with third parties. See our <a href="/privacy.html">privacy policy</a>.</p>
+    </form>
+  </div>
+
+</main>
+
+<script>
+document.getElementById('hostForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this));
+  const msg = encodeURIComponent(
+    `Host application: ${data.name} · ${data.practice} · ${data.contact}`
+  );
+  const a = document.createElement('a');
+  a.href = `https://wa.me/34605543300?text=${msg}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+});
+</script>
+
+</body>
+</html>

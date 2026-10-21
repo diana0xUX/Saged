@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Space — Saged</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:SagedCyr;src:url('/assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+@font-face{font-family:Costa;src:url('/assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+:root{--paper:#f9f4ed;--sand:#efe5d6;--ink:#2a2520;--muted:#6b5f54;--line:#ded1bf;--clay:#9f4d2d;--clay-light:#faf0e6;--white:#fffdf8;--radius:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.draft-bar{background:#2a2520;color:#f0e8df;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.04em}
+.draft-bar a{color:#F08A60;text-decoration:none}
+
+.nav{padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(249,244,237,.96);backdrop-filter:blur(8px);z-index:20}
+.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;transition:all .15s}
+.nav-cta:hover{background:var(--clay);color:var(--white)}
+@media(max-width:640px){.nav-links{display:none}.nav{padding:16px 20px}}
+
+.wrap{width:min(calc(100% - 40px),920px);margin:0 auto;padding:52px 0 100px}
+
+.page-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--clay);font-weight:700;margin-bottom:14px}
+.page-title{font-family:Costa,Georgia,serif;font-size:clamp(42px,8vw,68px);line-height:.91;letter-spacing:-.04em;color:var(--ink);margin-bottom:22px}
+.page-lead{font-size:17px;color:var(--muted);line-height:1.65;max-width:520px;margin-bottom:48px}
+
+.photo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:10px;margin-bottom:60px;border-radius:var(--radius);overflow:hidden}
+@media(max-width:600px){.photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}}
+.photo-cell{background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);border:1px solid var(--line)}
+.photo-cell:first-child{grid-row:1/3}
+@media(max-width:600px){.photo-cell:first-child{grid-row:auto}}
+
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:20px}
+.use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:60px}
+@media(max-width:600px){.use-cases{grid-template-columns:1fr}}
+.use-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px}
+.use-icon{font-size:28px;margin-bottom:14px}
+.use-title{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.use-desc{font-size:14px;color:var(--muted);line-height:1.6}
+
+.amenities{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:60px}
+@media(max-width:500px){.amenities{grid-template-columns:1fr}}
+.amenity{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.amenity-icon{font-size:18px;flex-shrink:0}
+.amenity-text{font-size:14px;color:var(--ink)}
+
+.address-block{background:var(--sand);border-radius:var(--radius);border:1px solid var(--line);padding:28px;margin-bottom:60px}
+.address-block h3{font-size:15px;font-weight:600;margin-bottom:10px}
+.address-block p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.address-link{font-size:14px;font-weight:500;color:var(--clay);text-decoration:none}
+.address-link:hover{text-decoration:underline}
+
+.rent-section{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:36px;margin-bottom:40px}
+.rent-section h2{font-family:Costa,Georgia,serif;font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;line-height:.96;margin-bottom:14px}
+.rent-section p{font-size:15px;color:var(--muted);max-width:480px;margin-bottom:28px;line-height:1.65}
+.rent-options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+@media(max-width:560px){.rent-options{grid-template-columns:1fr}}
+.rent-option{border:1.5px solid var(--line);border-radius:12px;padding:18px}
+.rent-option-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.rent-option-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.rent-option-price{font-size:13px;font-weight:600;color:var(--clay)}
+
+.btn-primary{display:inline-block;background:var(--clay);color:var(--white);font-size:15px;font-weight:600;font-family:inherit;padding:14px 28px;border-radius:100px;text-decoration:none;transition:opacity .15s}
+.btn-primary:hover{opacity:.88}
+
+.coworking-block{background:var(--clay-light);border:1px solid #e8c8a8;border-radius:var(--radius);padding:28px}
+.coworking-block h3{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.coworking-block p{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.65}
+</style>
+  <script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="draft-bar">Prototype · <a href="/prototype.html">← Home</a> · <a href="/events/">Events</a> · <a href="/hosts/">Hosts</a></div>
+
+<nav class="nav">
+  <a class="nav-logo" href="/prototype.html"><img src="/assets/images/logo-saged-club.svg" alt="Saged" height="26"></a>
+  <div class="nav-links">
+    <a href="/events/">What's on</a>
+    <a href="/hosts/">Hosts</a>
+    <a href="/space/" class="active">Space</a>
+    <a href="/join/">Join</a>
+  </div>
+  <a class="nav-cta" href="/join/host/">Become a host</a>
+</nav>
+
+<main class="wrap">
+
+  <p class="page-eyebrow">Valencia · Ciutat Vella</p>
+  <h1 class="page-title">The Space</h1>
+  <p class="page-lead">Ceramics studio, event hall and workspace in Valencia's old city. C/ de les Cuines, 8.</p>
+
+  <div class="photo-grid">
+    <div class="photo-cell">Main studio photo</div>
+    <div class="photo-cell">Pottery wheel</div>
+    <div class="photo-cell">Event hall</div>
+    <div class="photo-cell">Details</div>
+    <div class="photo-cell">Entrance</div>
+  </div>
+
+  <div class="section-label">Three ways to use the space</div>
+  <div class="use-cases">
+    <div class="use-card">
+      <div class="use-icon">🏺</div>
+      <div class="use-title">Classes & workshops</div>
+      <div class="use-desc">Hosts run regular classes — ceramics, painting, yoga, music, therapy. Access through membership.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">✨</div>
+      <div class="use-title">Events & private hire</div>
+      <div class="use-desc">Workshops, birthdays, corporate events, private gatherings. The studio is available for external bookings.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">💻</div>
+      <div class="use-title">Studio residency</div>
+      <div class="use-desc">Coworking for makers and freelancers. Monthly access to the studio — a quiet workspace in Ciutat Vella.</div>
+    </div>
+  </div>
+
+  <div class="section-label">What's in the studio</div>
+  <div class="amenities">
+    <div class="amenity"><div class="amenity-icon">🏺</div><div class="amenity-text">Pottery wheel · clay and sculpting materials</div></div>
+    <div class="amenity"><div class="amenity-icon">🔥</div><div class="amenity-text">Kiln for firing</div></div>
+    <div class="amenity"><div class="amenity-icon">🪑</div><div class="amenity-text">Hall for up to ~20 people</div></div>
+    <div class="amenity"><div class="amenity-icon">📽️</div><div class="amenity-text">Projector and screen</div></div>
+    <div class="amenity"><div class="amenity-icon">☕</div><div class="amenity-text">Kitchen · tea and coffee</div></div>
+    <div class="amenity"><div class="amenity-icon">🎵</div><div class="amenity-text">Sound system</div></div>
+    <div class="amenity"><div class="amenity-icon">📶</div><div class="amenity-text">Wi-Fi</div></div>
+    <div class="amenity"><div class="amenity-icon">🕐</div><div class="amenity-text">Open 10:00–22:00</div></div>
+  </div>
+
+  <div class="address-block">
+    <h3>Address</h3>
+    <p>C/ de les Cuines, 8<br>Ciutat Vella, 46001 Valencia, Spain</p>
+    <a class="address-link" href="https://maps.app.goo.gl/RqsReEo929aeUAPN9" target="_blank">Open in Google Maps →</a>
+  </div>
+
+  <div class="rent-section">
+    <h2>Hire the<br>space</h2>
+    <p>Suitable for workshops, birthday parties, corporate events, photo shoots and private meetings.</p>
+    <div class="rent-options">
+      <div class="rent-option">
+        <div class="rent-option-title">Half day (4 h)</div>
+        <div class="rent-option-desc">10:00–14:00 or 15:00–19:00</div>
+        <div class="rent-option-price">Price on request</div>
+      </div>
+      <div class="rent-option">
+        <div class="rent-option-title">Full day (8 h)</div>
+        <div class="rent-option-desc">10:00–18:00</div>
+        <div class="rent-option-price">Price on request</div>
+      </div>
+      <div class="rent-option">
+        <div class="rent-option-title">Evening (3 h)</div>
+        <div class="rent-option-desc">19:00–22:00</div>
+        <div class="rent-option-price">Price on request</div>
+      </div>
+    </div>
+    <a class="btn-primary" href="https://wa.me/34605543300?text=I+want+to+hire+the+Saged+space" target="_blank">Get pricing →</a>
+  </div>
+
+  <div class="coworking-block">
+    <h3>Studio residency</h3>
+    <p>Monthly access to the studio every day from 10:00 to 22:00. 5 spots, one taken. For makers, freelancers and Saged hosts.</p>
+    <a class="btn-primary" href="https://wa.me/34605543300?text=I+want+studio+residency+at+Saged" target="_blank">Find out more →</a>
+  </div>
+
+</main>
+</body>
+</html>

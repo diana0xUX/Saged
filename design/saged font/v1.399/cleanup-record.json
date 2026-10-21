@@ -1,0 +1,435 @@
+{
+  "moved": [
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-display-cyrillic",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-display-cyrillic",
+      "files": 103
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/fonts/saged-display-cyrillic",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/fonts/saged-display-cyrillic",
+      "files": 107
+    },
+    {
+      "original": "/Users/diana/Downloads/saged-display-cyrillic-alphabet-v1.300.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/saged-display-cyrillic-alphabet-v1.300.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Library/Fonts/saged-v1.396.ttf",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Library/Fonts/saged-v1.396.ttf",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/Vector.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/Vector.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/euro sign.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/euro sign.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/Group 441.png",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/Group 441.png",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/letter-042b-Ы.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/letter-042b-Ы.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-researched-v3.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-researched-v3.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/em-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/em-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/sha-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/sha-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/el-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/el-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v6.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v6.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v7.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v7.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/short-i-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/short-i-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/hard-sign-user-v3.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/hard-sign-user-v3.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v5.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v5.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/hard-sign-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/hard-sign-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v10.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v10.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ge-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ge-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/tse-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/tse-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/soft-sign-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/soft-sign-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/de-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/de-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/shcha-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/shcha-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/tse-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/tse-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/de-user-v3.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/de-user-v3.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/be-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/be-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/be-user-v3.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/be-user-v3.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/zhe-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/zhe-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/de-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/de-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v9.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v9.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/yu-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/yu-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v8.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-vector-v8.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/yery-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/yery-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/e-reversed-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/e-reversed-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/pe-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/pe-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user-v4.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user-v4.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/zhe-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/zhe-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/pe-user.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/pe-user.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user-v3.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/euro-user-v3.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-v4.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/ef-user-v4.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/yery-user-v2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/yery-user-v2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-041c-М.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-041c-М.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-2.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-2.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Slice 1.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Slice 1.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-7.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-7.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-0411-Б-open.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-0411-Б-open.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-042b-Ы.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-042b-Ы.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-9.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-9.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-0423-У.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/letter-0423-У.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-13.svg",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/design/saged font/v1.399/sources/glyph-sources/batch-v1.381-originals/Vector-13.svg",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.383.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.383.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.376.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.376.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.377.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.377.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.382.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.382.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.384.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.384.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.378.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.378.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.381.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.381.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.375.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.375.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.380.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.380.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.379.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.379.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.383.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.383.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.376.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.376.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.377.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.377.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.394.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.394.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.382.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.382.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.393.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.393.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.392.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.392.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.384.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.384.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.378.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.378.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.381.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.381.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.375.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.375.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.380.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.380.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.379.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.379.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.382.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.382.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.381.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.381.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.380.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.380.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Documents/saged.club/creative/prototypes/editorial-ru/assets/saged-display-cyrillic-v1.394.woff",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Documents/saged.club/creative/prototypes/editorial-ru/assets/saged-display-cyrillic-v1.394.woff",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/font-creation-skill/test-output/saged-cyrillic-proof.png",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/font-creation-skill/test-output/saged-cyrillic-proof.png",
+      "files": 1
+    },
+    {
+      "original": "/Users/diana/Downloads/codex-design-studio/projects/font-creation-skill/test-output/saged-cyrillic-proof-v1.377.png",
+      "trash": "/Users/diana/.Trash/saged-font-cleanup-20261021-221452/Downloads/codex-design-studio/projects/font-creation-skill/test-output/saged-cyrillic-proof-v1.377.png",
+      "files": 1
+    }
+  ],
+  "kept_referenced_web_fonts": [
+    "/Users/diana/Downloads/codex-design-studio/projects/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.396.woff",
+    "/Users/diana/Downloads/codex-design-studio/outputs/websites/saged-site-redesign/assets/fonts/saged-display-cyrillic-v1.396.woff",
+    "/Users/diana/Downloads/codex-design-studio/outputs/brand-guides/saged-brand-audit/assets/saged-display-cyrillic-v1.396.woff",
+    "/Users/diana/Documents/saged.club/creative/prototypes/editorial-ru/assets/saged-display-cyrillic-v1.396.woff"
+  ]
+}

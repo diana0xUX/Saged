@@ -1,0 +1,14 @@
+finances/
+data/
+reports/
+scripts/
+references/
+docs/
+.env
+.env.*
+*.pdf
+*.json
+Ritual/
+oct/
+design/
+creative/

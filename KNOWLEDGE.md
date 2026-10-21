@@ -2,7 +2,7 @@
 
 The canonical source of truth for everything about the studio. Update this file as facts change; future Claude sessions read it for context.
 
-Last updated: **2026-07-09**
+Last updated: **2026-10-21**
 
 ---
 
@@ -11,11 +11,16 @@ Last updated: **2026-07-09**
 | | |
 |---|---|
 | **Brand name** | Saged.club |
+| **Legal name** | Asociación Cultural Saged |
+| **Legal status** | Registered non-profit cultural association — *careciendo de ánimo de lucro* |
+| **Registration** | Conselleria de Justícia, Transparència i Participació, Generalitat Valenciana |
+| **File number** | ASINS/46/2026/0756 |
+| **Tax regime** | IS partial exemption (Art. 9.3 LIS); IVA exempt for cultural classes (Art. 20 LIVA) |
 | **Business portfolio (Meta BM)** | Saged.design |
 | **Domain** | saged.club (bought, DNS pending) |
 | **Address** | C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia, Spain |
 | **Google Maps** | https://maps.app.goo.gl/RqsReEo929aeUAPN9 |
-| **Type** | Ceramic + cultural workshop space ("art community platform") |
+| **Type** | Multidisciplinary creative club / cultural association |
 | **Existing tagline** | "A place to slow down, create, and connect through art, music, and hands-on making." |
 | **Languages served** | Russian, Ukrainian (primary); English (some); Spanish (some) |
 
@@ -35,23 +40,19 @@ Last updated: **2026-07-09**
 - Aesthetic: minimalist ceramic art, slow tactile process
 - **Studio shifts**: Thursdays + weekends (Korytsia leads the adult Thursday cohort + weekend events)
 - Also responsible for kiln shelf repair (in progress as of 2026-06-08)
+- **Partnership terms (as of 2026-09-30)**: 50/50 revenue split on all studio income. Korytsia's side covers: teaching/running classes, all studio operations (kiln, supplies, cleanliness, member access). Studio (Diana's side) covers: material costs for classes, bills, rent, water, tea/coffee for studio members. Split is of net revenue after studio expenses.
+- **Stated vision (Sep 2026)**: Wants to contribute 3 days/week to classes (Thu + Sat + Sun) and work on her own craft after. Identity is artist first, teacher second. @korytsia_studio is her personal brand — separate from Saged.
+- **Schedule at full capacity**: 13 classes/week across 3 days. Monthly gross potential: €8,880 (6 people/class) to €11,840 (8 people/class).
+- **Open question (as of Sep 30, 2026)**: Builder or instructor? Has not been asked directly. Diana needs to have this conversation before proposing any partnership restructure. Key signal to listen for: does she say "we" about Saged's future, or does she talk about her own craft/time/brand as the real thing?
+- **Financial stakes of the choice**: As resident (current model) at full capacity she earns €4,440–€5,920/month. As equal partner she'd earn €3,585–€5,065/month (€855 less — the cost of shared expenses including mom's salary). She gains co-ownership upside (events, coworking, future instructors) in exchange. Whether that trade makes sense to her depends on whether she wants to build Saged or just teach at Saged.
+- **August 2026 outstanding**: €287.50 she collected in cash and hasn't passed to Diana. Resolve before any new structure starts.
 
-### Vita — Ceramic instructor (joining)
-- Onboarding as second instructor alongside Korytsia
-- **IG handle**: @vivivivivivivivi
-- **Studio shifts**: Wednesday + Friday PM classes
-- **Soft launch**: Wednesday 2026-06-10, 17:00 — invite-only session for her friends who want to support her in clay work. First time leading at Saged.
-- **First public promotion (organic, unpaid)**: 2026-06-10 IG story from her own handle, tagged @saged.club. EN copy, "Ceramic Co-Working Session," Friday 17:00–19:00, €40, DM-only booking. Friends-circle shoutout. Useful free signal for EN audience demand — ask her 2026-06-11 how many DMs and in what language.
-- **Format she's testing**: "co-working session" — open studio, work on own project, beginner support included. Differentiated from Korytsia's structured 2-day cohort.
-- Engagement: independent autónoma + service contract (no SS burden on the studio — see partnership structure)
-
-## Team schedule (confirmed at 2026-06-08 meeting)
+## Team schedule (as of October 2026)
 
 | Day | Lead | Format |
 |---|---|---|
-| Wednesday PM | Vita | Class |
+| Tuesday–Friday | Diana | Adult ceramics (EN/ES) |
 | Thursday | Korytsia | Adult cohort (3 slots) |
-| Friday PM | Vita | Class |
 | Weekends | Korytsia | Events / birthdays / weekend bookings |
 
 ## Contact Channels (all working as of 2026-05-11)
@@ -93,6 +94,22 @@ Last updated: **2026-07-09**
 ### Why two sessions
 Clay must dry + go through first (bisque) firing before glazing. That cycle takes a week. This isn't a workaround — it's the actual ceramic process.
 
+## Typography rule — Euro sign (hard rule, non-negotiable)
+
+The Costa font does not include a proper € glyph. **Never type `€` inside a Costa font element.**
+
+Use the custom SVG glyph instead:
+```html
+<img class="euro-sign" src="/assets/images/euro-sign.svg" alt="€">
+```
+With this CSS (copy into every page that uses Costa + prices):
+```css
+img.euro-sign{height:.72em;width:auto;vertical-align:baseline;position:relative;top:.04em;display:inline}
+```
+Source file: `/design/saged font/euro sign.svg` (canonical), copied to `/assets/images/euro-sign.svg` (web path).
+
+This applies to ALL large price displays in Costa font — hero prices, pricing cards, any display-size number. Small prices in Inter body text (event cards, host profiles) may use the regular `€` character since they are in Inter, not Costa.
+
 ## Brand Voice & Tone
 
 Cues borrowed from the existing saged.club site + Koritsa's Instagram:
@@ -117,7 +134,17 @@ Beyond ceramics, the studio has hosted:
 - **Gua sha self-massage** workshop
 - **Saged.club community gatherings** (Eastern European / post-Soviet diaspora)
 
-Future scope: same landing structure can serve any of these. Current focus = ceramics only.
+Historical website focus was ceramics. As of 2026-09-30, the new direction is a multidisciplinary creative club; ceramics remains a core program alongside recurring art classes and handpan lessons.
+
+## Creative club direction (added 2026-09-30)
+
+- Saged.club should be positioned and designed as a multidisciplinary creative club, not primarily as a ceramic studio.
+- Ceramics remains a core, fully documented program but should share homepage prominence with other recurring creative practices.
+- New recurring program: art classes, 4 sessions per week. Exact schedule, teacher, languages, age range, prices and materials still need confirmation.
+- New recurring program: handpan music lesson, once per week. **Price confirmed: €50 flat per session (total, not per person).** Exact schedule, teacher, language, duration, group size and instrument requirements still need confirmation.
+- Saged also hosts one-off events, birthdays and private group celebrations. These should be visible as distinct ways to use the club.
+- Website inspiration: Creative Lunch Club (https://www.creativelunchclub.com/) — adapt its community-first positioning, recurring rhythm, real-member stories and simple joining path without copying its brand.
+- Draft redesign proposal: `docs/creative-club-redesign-proposal.md`.
 
 ## Product Lines (active as of 2026-05-26)
 
@@ -163,9 +190,9 @@ July income breakdown (after July 9 update: +€553):
 - Jul 18: €50 · Jul 19: €25 · Jul 21: €50
 - Kiln: €43 (€30 + €13)
 
-- Fixed monthly costs (no ads): €1,569
-- Fixed monthly costs (with €366/month ads): €1,935
-- Break-even income needed: €1,935
+- Fixed monthly costs (no ads, from Sep 2026): ~€1,273 (rent + electricity + water + GWS + Notion + Anthropic + GitHub). TGSS, Vuka, Artlist all discontinued Sep 2026.
+- Fixed monthly costs (with ~€45/month ads): ~€1,318
+- Break-even income needed: ~€1,318
 - Best month: June €1,123 (first month of correct RU+UA locale targeting)
 
 ### Active ad spend (as of 2026-07-09)
@@ -181,6 +208,14 @@ July income breakdown (after July 9 update: +€553):
 | Kids · RU | €3.00 | Russian-speaking parents 28–45, Valencia 17km |
 | Kids · UA | €2.00 | Ukrainian-speaking parents 28–45, Valencia 17km |
 | Coworking | €1.50 | All languages, Valencia 17km |
+
+### Meta safety audit and October drafts (2026-09-30)
+
+- Live audit found two Instagram-created campaigns active with unsafe targeting: `Sept` (`120249679890510513`) and `Sept – Site` (`120249745435670513`). Both targeted Castellón, Gandía, Paterna and Sagunto rather than Valencia, combined RU+UA, included recent/frequent visitors, used Advantage+ expansion, and allowed age 65. Both were paused on 2026-09-30; preserve their history.
+- Spend before pause: €35.10 from 24–30 Sep, 474 link clicks, 0 attributed bookings, 0 Pixel events in the latest 24h.
+- Prepared two replacement campaign structures, all paused: Adult Ceramics `120249772446440513` and Kids Ceramics `120249772447210513`. Each has separate RU/UA ad sets, age 25–54, Valencia key `699854`, 17km, Advantage+ off, landing-page-view optimization, €1.25/day per ad set (€5/day total if all four are activated).
+- Launch blocker: Meta automatically saves `location_types` as `home` + `frequently_in` even when the API explicitly sends `home` only. A second explicit update produced the same result. Do not activate until this is accepted as a platform limitation or a stricter supported targeting method is found.
+- The drafts contain no ads yet. Approved RU/UA copy, images, destination URLs and UTM parameters must be added before launch.
 
 ### Campaign IDs (active, also in .campaign-ids)
 
@@ -506,3 +541,136 @@ Account state: lifetime spend €143.43, status UNSETTLED (cleared 2026-05-11). 
 - Existing translated URLs should redirect to their matching Russian page to prevent dead ends.
 - The header language dropdown shows Russian as active and UA/EN/ES as coming soon until their translations are rebuilt from the approved Russian site.
 - The shared 2026 navigation uses a warm floating-glass bar, Inter UI labels, a terracotta contextual CTA, a compact mobile menu, and the language dropdown across every Russian page.
+
+## October 2026 events and programme launches
+
+- 3 October: Handpan School opening.
+- October launch: Story Therapy.
+- October launch: beginner ceramics in Spanish and English.
+- 17 October at 13:00: Creative Lunch Club × Saged.club collaboration, with vinyl by Alisher. This is the confirmed date/time shown in the current event creative.
+- 17 October at 16:00: mantra singing and meditation with Suma and Laura of Terapia Sonora.
+- Lono Project event: date TBC.
+- Tea Club: recurring October programme; dates not yet confirmed.
+- Painting classes with Katerina: recurring October programme; dates not yet confirmed.
+
+### Fairy Tale Therapy / Story Therapy format
+
+- Participants build clay characters and miniature settings inspired by popular fairy tales and stories.
+- Visual language: imaginative handmade story worlds rather than a conventional ceramics class.
+
+---
+
+## Korica (Lena) — Madeira trip
+
+Korica is in Madeira from Thursday 9 October (temporary, not a departure from the studio).
+
+---
+
+## Studio finances — September 2026 summary
+
+| Period | Amount | Type | Notes |
+|--------|--------|------|-------|
+| Sep 1–21 | €235.90 | Stripe | Clients direct |
+| Sep 1–21 | €130 | Cash | Max collected |
+| Sep 21 balance | €52.90 | Reconciliation | Studio 50% of €235.90 = €117.95; €65 cash on hand; difference = €52.90 |
+| Sep 22 | €60 | Stripe | Gift certificate |
+| Sep 25 | €60 | Cash | Collected |
+| Sep 28 | €50 | Stripe | Class payment |
+| Oct 5 | Pending | Stripe | Children's class — mum said she would pay |
+
+---
+
+## Active Stripe links (as of Sep 2026)
+
+| Link | Amount | Notes |
+|------|--------|-------|
+| https://buy.stripe.com/4gMeVfcgmboi3PUcqqffy08 | €60 | Couple |
+| https://buy.stripe.com/bJe9AVa8eboi1HM8aaffy09 | €30/person × 2 | Two people |
+| https://book.stripe.com/aFa00l94a8c6bimduuffy0a | Variable | Booking link |
+| https://buy.stripe.com/6oU6oJ806dwq3PU9eeffy07 | Variable | General payment |
+
+## Handpan school Stripe links (added Oct 2026)
+
+| Link | Amount | Notes |
+|------|--------|-------|
+| https://book.stripe.com/28E28t806gIC5Y21LMffy0o | €25 / €30 | One lesson (€25 first class, €30 drop-in) |
+| https://buy.stripe.com/5kQcN794a9ga86a2PQffy0p | €100 | Monthly pass (4 Sundays) |
+
+## Handpan school Stripe promo codes (Oct 2026)
+
+| Promo code ID | Code | Use |
+|---------------|------|-----|
+| `promo_1UT7qIQuDZY27kuF6RusUQtx` | FRIENDS20 | Monthly subscription discount — shown on pricing card |
+| `promo_1UT7ogQuDZY27kuFBdDrWJQB` | *(coupon, updated/replaced by above)* | Previous coupon — superseded |
+
+---
+
+## Tourist ceramic painting concept (on website, Sep 2026)
+
+Diana confirmed that a "tourist tile painting" concept is already on the saged.club website:
+- Tourist visits → paints a tile or ceramic piece at the studio
+- Studio fires it → ships the finished piece to the client's home address
+- Mentioned Airbnb and Groupon as potential distribution channels
+- Spanish classic tile painting techniques (easy ones) are part of the planned tourist session offering
+
+---
+
+## Other studio contacts (Oct 2026)
+
+- **Sandro**: finishing work at the studio in the evening (30 Sep). Likely a coworking member.
+
+## October Instagram handpan announcement — 2026-10-09
+
+- Diana requested a text-free hero background using the actual handpan session screenshot `~/Downloads/Screenshot 2026-10-09 at 14.03.08.png`.
+- Match the supplied October feed references in `oct/Instagram post opening 56.png`, `61.png`, and `63.png`–`66.png`: periwinkle/lavender, pink, and warm coral-orange photographic grading.
+- Announcement: Handpan School is open; schedule will be supplied in text separately. Do not infer a schedule from older graphics.
+
+## Halloween event artwork — 2026-10-21
+
+- Supplied `oct/Frame 98.png` announces Saged Club Halloween Witch Party, Friday 30 October 2026 at 16:00.
+- No price, booking requirement, or programme details supplied with this artwork.
+
+## Helena tea photo editing preference — 2026-10-21
+
+- Diana rejected harsh cinematic facial shadows and dark grading on Helena's tea portrait. Use soft peach tones and preserve Helena's appearance.
+- Requested removal of wall cords and extension of the photograph on both left and right sides.
+- Revised asset: `oct/saged-helena-tea-peach-wide.png`.
+
+## «Через огонь» franchise proposal — read 2026-10-21
+
+Source: `Ritual/Франшиза «Через огонь».pdf`, dated 15 October 2026, 5 pages. Treat as a proposal, not approved commercial terms.
+- Two-day Saged amulet ritual: intuitive selection, intention, symbol story, underglaze painting, firing, collective kiln opening. Symbols: Lotus (opening), Koi (movement toward a goal), Hamsa (protection).
+- Diana supplies bisque amulets, symbol cards and cords; facilitator provides venue, group facilitation, approved pigments/glaze and firing. Molds stay with Diana. Proposed first facilitator: Koritsa.
+- Suggested group 6–10; facilitator training and assisting Diana required; consistent script and brand.
+- Proposed model: €15 participant kit including license. Suggested retail €55 early / €65 standard / €120 for two. These are discussion figures, not finalized prices. Entry fee, ordering lead time, territory and license terms remain open.
+- Document states day one about 3 hours, but listed stages total 195 minutes (3h15); day two about 40 minutes. Next-morning opening depends on kiln cooling, not a guaranteed timing.
+
+## «Через огонь» marketing drafts — received 2026-10-21
+
+Source: `Ritual/Анонс «Через огонь».pdf`, 10 pages; Diana identifies these as marketing drafts, not approved publication-ready copy.
+- Includes main announcement; Lotus, Koi and Hamsa symbol posts; compact promotional creative; teaser, process and remaining-spaces stories; landing-page draft with pricing and FAQ.
+- Positioning: intuitive amulet choice, intention for a new phase, painting, firing and collective kiln opening. No drawing experience needed; relief guides painting.
+- Draft pricing repeats €55 early / €65 standard / €120 for two. Date, time, capacity, early-booking deadline, refund terms and Instagram remain placeholders.
+- Draft CTAs vary between direct message, profile link and payment. Gift certificates are offered in draft; operational availability not confirmed by this document.
+- Editorial issue to resolve: public symbol explanations reveal the meanings before the promised intuitive choice without knowing meanings. Next-morning kiln opening remains an operational dependency, not verified by these drafts.
+
+## Saged font 1.399 — 2026-10-21
+
+- Diana supplied updated € and Ы SVGs, `Vector.svg` (Ю), and `Group 441.png` (Й).
+- New local font package: `design/saged font/v1.399/`, includes TTF, WOFF, editable sources, build script and proof.
+- Based on editable 1.398 source found in `~/Downloads/codex-design-studio/projects/saged-display-cyrillic/src/`. Only €, Ы, Ю, Й outlines changed; lowercase shares uppercase designs; vertical metrics retained.
+- Й traced from supplied 105×148 PNG; needs Diana's visual review. No live website font replacement or system installation performed.
+
+## Font cleanup — 2026-10-21
+
+- At Diana's request, moved 293 old Saged font-work files to macOS Trash: previous development/output folders, older installed v1.396, duplicate supplied letter artwork, obsolete proofs and unreferenced web exports.
+- Canonical retained package: `design/saged font/v1.399/`; v1.399 remains installed in `~/Library/Fonts/`.
+- Pruned unused glyph-source revisions; 31 required glyph source files remain alongside the current supplied artwork and rebuild sources. Rebuild succeeded after cleanup without the old development folders.
+- Older web fonts still referenced by existing pages were retained to avoid breaking them. No site deployment or replacement performed.
+- Detailed move manifest: `design/saged font/v1.399/cleanup-record.json`.
+
+## Logo motion study — 2026-10-22
+
+- Diana requested animation between the supplied SPIRIT (green), MUSIC (purple), and ART (orange) PNG logos, exploring flips, turns, merging and warping.
+- Local study in `design/logo-motion/`: 12-second square loop, 800×800 MP4 at 30 fps, GIF preview, HTML player, and editable `render.py`.
+- Sequence: SPIRIT → MUSIC turning flip, MUSIC → ART liquid merge, ART → SPIRIT twisting warp. Original PNG lettering and colours retained at rest; dark background. This is a local creative study, not a website deployment.

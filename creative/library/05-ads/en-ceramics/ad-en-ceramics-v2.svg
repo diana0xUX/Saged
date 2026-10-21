@@ -1,0 +1,83 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>
+    @font-face { font-family:'Costa'; src:url('../assets/fonts/costa-light.otf') format('opentype'); font-weight:300; }
+    @font-face { font-family:'Summer Font'; src:url('../assets/fonts/summer-font-light.otf') format('opentype'); font-weight:300; }
+  </style>
+  <clipPath id="photo-clip">
+    <rect x="60" y="280" width="440" height="520" rx="220"/>
+  </clipPath>
+  <clipPath id="logo-clip">
+    <rect x="880" y="30" width="160" height="160" rx="20"/>
+  </clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="1080" height="1350" fill="#F9F4ED"/>
+
+<!-- Scattered brand figures -->
+<image href="../assets/images/figures/figure 1.png"  x="-20"  y="60"   width="160" height="200" opacity="0.55"/>
+<image href="../assets/images/figures/figure 22.png" x="880"  y="160"  width="140" height="180" opacity="0.50"/>
+<image href="../assets/images/figures/figure 26.png" x="920"  y="900"  width="120" height="160" opacity="0.50"/>
+<image href="../assets/images/figures/figure 27.png" x="20"   y="1100" width="120" height="160" opacity="0.50"/>
+<image href="../assets/images/figures/figure 4.png"  x="780"  y="600"  width="100" height="130" opacity="0.45"/>
+<image href="../assets/images/figures/figure 6.png"  x="560"  y="1130" width="100" height="130" opacity="0.45"/>
+
+<!-- HEADER -->
+<text x="60" y="64" font-family="'Costa', Georgia, serif" font-size="22" fill="#2A2520" letter-spacing="6">SAGED CLUB</text>
+<image href="../assets/images/logo-saged-club.svg" x="888" y="28" width="140" height="64"/>
+
+<!-- BIG HEADLINE -->
+<text x="60" y="210" font-family="'Costa', Georgia, serif" font-size="168" fill="#2A2520" letter-spacing="-4">CERAMICS</text>
+<text x="60" y="380" font-family="'Costa', Georgia, serif" font-size="168" fill="#FF7A23" letter-spacing="-4">IN VALENCIA</text>
+
+<!-- Sub line -->
+<text x="60" y="440" font-family="'Costa', Georgia, serif" font-size="38" fill="#6B5F54" letter-spacing="1">with Koritsia</text>
+
+<!-- Photo (portrait cutout, left) -->
+<image href="../assets/images/koritsa-editorial.jpg" x="60" y="470" width="440" height="520" clip-path="url(#photo-clip)" preserveAspectRatio="xMidYMid slice"/>
+
+<!-- Photo label arrow + name -->
+<text x="280" y="465" font-family="'Costa', Georgia, serif" font-size="22" fill="#9F4D2D">KORITSIA →</text>
+
+<!-- Orange "EVERY THURSDAY" badge (right of photo) -->
+<rect x="530" y="490" width="500" height="100" rx="50" fill="#FF7A23"/>
+<text x="780" y="552" text-anchor="middle" font-family="'Costa', Georgia, serif" font-size="36" fill="#FAF7F2" letter-spacing="1">EVERY THURSDAY</text>
+
+<!-- Location -->
+<text x="530" y="640" font-family="'Costa', Georgia, serif" font-size="28" fill="#2A2520" letter-spacing="1">OLD CITY · VALENCIA</text>
+
+<!-- Course details block (right column) -->
+<text x="530" y="720" font-family="Inter, sans-serif" font-size="26" fill="#2A2520">2-day pottery course</text>
+<text x="530" y="758" font-family="Inter, sans-serif" font-size="22" fill="#6B5F54">Throw on the wheel · take your</text>
+<text x="530" y="790" font-family="Inter, sans-serif" font-size="22" fill="#6B5F54">ceramics home</text>
+<text x="530" y="840" font-family="Inter, sans-serif" font-size="22" fill="#6B5F54">Small group · all materials included</text>
+
+<!-- Sparkle / star decorators -->
+<text x="510" y="910" font-family="Inter, sans-serif" font-size="28" fill="#FF7A23">✦</text>
+<text x="860" y="470" font-family="Inter, sans-serif" font-size="20" fill="#9F4D2D">✦</text>
+<text x="140" y="1060" font-family="Inter, sans-serif" font-size="18" fill="#FF7A23">✦</text>
+
+<!-- Divider line -->
+<line x1="60" y1="1030" x2="1020" y2="1030" stroke="#E1D6C5" stroke-width="1.5"/>
+
+<!-- Price blob (bottom right) -->
+<rect x="770" y="1055" width="250" height="180" rx="90" fill="#FF7A23"/>
+<text x="895" y="1130" text-anchor="middle" font-family="'Costa', Georgia, serif" font-size="60" fill="#FAF7F2">€60</text>
+<text x="895" y="1165" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#FAF7F2">2 sessions · 2h each</text>
+<text x="895" y="1188" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#FAF7F2">groups up to 6</text>
+
+<!-- Address + contact (bottom left) -->
+<text x="60" y="1082" font-family="Inter, sans-serif" font-size="20" fill="#2A2520">C/ de la Correu, 8</text>
+<text x="60" y="1110" font-family="Inter, sans-serif" font-size="20" fill="#6B5F54">Casco Antiguo, Valencia</text>
+<text x="60" y="1150" font-family="Inter, sans-serif" font-size="20" fill="#2A2520">WhatsApp: +34 695 73 19 00</text>
+
+<!-- Symbols SVG (decorative, bottom strip) -->
+<image href="../assets/images/saged-symbols.svg" x="60" y="1230" width="400" height="80" opacity="0.25"/>
+
+<!-- Footer -->
+<line x1="60" y1="1280" x2="1020" y2="1280" stroke="#E1D6C5" stroke-width="1"/>
+<text x="60" y="1316" font-family="'Costa', Georgia, serif" font-size="26" fill="#2A2520" letter-spacing="1">saged.club</text>
+<text x="1020" y="1316" text-anchor="end" font-family="Inter, sans-serif" font-size="20" fill="#6B5F54">@saged_diana</text>
+
+</svg>

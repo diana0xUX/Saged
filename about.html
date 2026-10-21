@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Asociación Cultural Saged — Valencia</title>
+<meta name="description" content="Asociación Cultural Saged is a non-profit cultural association registered in Valencia, Spain. It promotes intercultural dialogue, creative education, and community building through art and cultural programming.">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:Costa;src:url('assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+
+:root{
+  --paper:  #F9F4ED;
+  --sand:   #F1E9DA;
+  --ink:    #2A2520;
+  --muted:  #6B5F54;
+  --white:  #FFFDF8;
+  --orange: #FF7A23;
+  --clay:   #9F4D2D;
+  --line:   #E3D9CC;
+  --max:    980px;
+  --max-wide: 1160px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+img{display:block}
+a{color:inherit;text-decoration:none}
+
+.wrap{width:min(calc(100% - 48px),var(--max));margin:auto}
+.wrap--wide{width:min(calc(100% - 48px),var(--max-wide));margin:auto}
+
+/* ── Unified global nav ── */
+.gn{position:fixed;top:0;left:0;right:0;z-index:50;height:62px;background:rgba(249,244,237,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .25s}
+.gn.scrolled{box-shadow:0 2px 24px rgba(42,37,32,.08)}
+.gn__inner{height:100%;width:min(calc(100% - 48px),var(--max-wide));margin:auto;display:flex;align-items:center;gap:4px}
+.gn__logo img{height:32px;width:auto;display:block}
+.gn__links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.gn__links a{padding:8px 14px;font-size:14px;font-weight:500;color:var(--muted);border-radius:8px;text-decoration:none;transition:color .15s,background .15s}
+.gn__links a:hover{color:var(--ink);background:var(--sand)}
+.gn__links a.active{color:var(--ink);font-weight:600}
+.gn__cta{margin-left:10px;padding:10px 22px;border-radius:999px;background:var(--orange);color:#fff;font:600 14px/1 Inter,sans-serif;text-decoration:none;white-space:nowrap;transition:opacity .15s}
+.gn__cta:hover{opacity:.85}
+.gn__burger{display:none;width:44px;height:44px;border:1.5px solid var(--line);border-radius:8px;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;margin-left:8px}
+.gn__burger span{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px}
+@media(max-width:680px){
+  .gn__links{display:none}
+  .gn__cta{display:none}
+  .gn__burger{display:flex}
+  .gn__links.open{display:flex;position:absolute;top:66px;left:12px;right:12px;flex-direction:column;align-items:stretch;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:0 16px 48px rgba(42,37,32,.14)}
+  .gn__links.open a{padding:12px 16px;border-radius:10px;font-size:15px}
+}
+
+/* ── Masthead ── */
+.masthead{background:var(--ink);color:var(--white);padding:clamp(72px,10vw,120px) 0 clamp(60px,8vw,96px);margin-top:62px}
+.masthead__inner{width:min(calc(100% - 48px),var(--max-wide));margin:auto}
+.masthead__label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:32px}
+.masthead__name{font-family:Costa,Georgia,serif;font-size:clamp(52px,7vw,96px);line-height:.88;letter-spacing:-.04em;color:var(--white);margin-bottom:32px}
+.masthead__name em{font-style:normal;color:var(--orange)}
+.masthead__meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px}
+.masthead__badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 14px}
+.masthead__badge::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);flex-shrink:0}
+.masthead__badge--active::before{background:var(--orange)}
+.masthead__summary{font-size:clamp(17px,1.8vw,20px);line-height:1.65;color:rgba(255,255,255,.75);max-width:720px;border-top:1px solid rgba(255,255,255,.12);padding-top:40px}
+
+/* ── Section base ── */
+.section{padding:clamp(64px,8vw,104px) 0}
+.section--sand{background:var(--sand)}
+.section--ink{background:var(--ink);color:var(--white)}
+.section__label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:20px}
+.section--ink .section__label{color:var(--orange)}
+.section__title{font-family:Costa,Georgia,serif;font-size:clamp(34px,4.5vw,60px);line-height:.92;letter-spacing:-.04em;margin-bottom:clamp(40px,5vw,64px)}
+.section--ink .section__title{color:var(--white)}
+.divider{height:1px;background:var(--line)}
+
+/* ── Mission ── */
+.mission__body{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.mission__statement{font-size:clamp(18px,2vw,22px);line-height:1.6;color:var(--ink);font-style:italic}
+.mission__detail{font-size:15px;line-height:1.8;color:var(--muted)}
+.mission__detail p{margin-bottom:16px}
+.mission__detail p:last-child{margin-bottom:0}
+@media(max-width:700px){.mission__body{grid-template-columns:1fr}}
+
+/* ── Governing body ── */
+.board__table{border-top:1px solid var(--line);margin-top:8px}
+.board__row{display:grid;grid-template-columns:220px 1fr 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.board__name{font-size:17px;font-weight:600;color:var(--ink);line-height:1.3}
+.board__role{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--clay)}
+.board__note{font-size:14px;color:var(--muted);line-height:1.5}
+@media(max-width:700px){.board__row{grid-template-columns:1fr;gap:4px}.board__name{font-size:16px}}
+
+/* ── Purposes ── */
+.purposes__list{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.purpose{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:26px 0;border-top:1px solid rgba(255,255,255,.1)}
+.purpose:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.purpose__num{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--orange);padding-top:3px}
+.purpose__title{font-size:17px;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:6px}
+.purpose__body{font-size:14px;line-height:1.65;color:rgba(255,255,255,.55)}
+
+/* ── Activities ── */
+.activities__grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:8px}
+.activity{background:var(--paper);padding:26px 28px;display:flex;flex-direction:column;gap:8px}
+.activity__id{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay)}
+.activity__title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
+.activity__body{font-size:14px;line-height:1.6;color:var(--muted)}
+@media(max-width:620px){.activities__grid{grid-template-columns:1fr}}
+
+/* ── Programmes ── */
+.programmes__intro{font-size:15px;line-height:1.75;color:var(--muted);max-width:640px;margin-bottom:40px}
+.programmes__list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.programme{display:grid;grid-template-columns:260px 1fr auto;gap:32px;padding:24px 0;border-bottom:1px solid var(--line);align-items:start}
+.programme__name{font-size:16px;font-weight:600;color:var(--ink);line-height:1.3}
+.programme__type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--clay);margin-bottom:4px}
+.programme__desc{font-size:14px;line-height:1.65;color:var(--muted)}
+.programme__meta{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap;padding-top:2px}
+.programme__lang{display:inline-flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.lang-pill{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted)}
+@media(max-width:760px){.programme{grid-template-columns:1fr;gap:6px}.programme__meta{text-align:left}}
+
+/* ── Membership ── */
+.membership__grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:8px}
+.member-card{border:1px solid var(--line);border-radius:20px;padding:28px 28px 32px;background:var(--white);display:flex;flex-direction:column;gap:12px}
+.member-card--featured{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.member-card__label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--clay)}
+.member-card--featured .member-card__label{color:var(--orange)}
+.member-card__title{font-family:Costa,Georgia,serif;font-size:28px;line-height:.95;letter-spacing:-.025em}
+.member-card__body{font-size:14px;line-height:1.7;color:var(--muted);flex:1}
+.member-card--featured .member-card__body{color:rgba(255,255,255,.6)}
+.member-card__action{margin-top:8px;font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;width:fit-content}
+.member-card--featured .member-card__action{color:var(--orange)}
+@media(max-width:700px){.membership__grid{grid-template-columns:1fr}}
+
+/* ── Legal record ── */
+.legal__intro{font-size:15px;line-height:1.75;color:var(--muted);max-width:580px;margin-bottom:36px}
+.legal__intro strong{color:var(--ink)}
+.legal__card{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.legal__row{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--line)}
+.legal__row:last-child{border-bottom:none}
+.legal__key{padding:16px 24px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:var(--sand);border-right:1px solid var(--line)}
+.legal__val{padding:16px 24px;font-size:14px;font-weight:500;color:var(--ink);line-height:1.5}
+.status-dot{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--orange)}
+.status-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--orange);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@media(max-width:580px){.legal__row{grid-template-columns:1fr}.legal__key{border-right:none;border-bottom:1px solid var(--line)}}
+
+/* ── Contact ── */
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.contact-card{border:1px solid var(--line);border-radius:16px;padding:24px 26px;background:var(--white)}
+.contact-card__label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+.contact-card__value{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.contact-card__note{font-size:13px;color:var(--muted)}
+@media(max-width:580px){.contact__grid{grid-template-columns:1fr}}
+
+/* ── Footer ── */
+.footer{padding:32px 0 56px;border-top:1px solid var(--line)}
+.footer__inner{width:min(calc(100% - 48px),var(--max-wide));margin:auto;display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.footer__links{display:flex;gap:20px}
+.footer__links a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<header class="gn">
+  <div class="gn__inner">
+    <a href="/" class="gn__logo" aria-label="Saged.club home">
+      <img src="assets/images/logo-saged-club.svg" alt="Saged Club">
+    </a>
+    <nav class="gn__links" aria-label="Main navigation">
+      <a href="/#classes">Classes</a>
+      <a href="/#schedule">Schedule</a>
+      <a href="/#people">People</a>
+      <a href="/#visit">Visit</a>
+      <a href="/about.html" class="active">Association</a>
+    </nav>
+    <a href="https://wa.me/34605543300?text=Hi!+I'd+like+to+book+a+class+at+Saged.club" class="gn__cta">Book a class ↗</a>
+    <button class="gn__burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ── Masthead ── -->
+<header class="masthead">
+  <div class="masthead__inner">
+    <div class="masthead__label">Cultural Association · Valencia, Spain · Est. 2026</div>
+    <h1 class="masthead__name">Asociación<br>Cultural <em>Saged</em></h1>
+    <div class="masthead__meta">
+      <span class="masthead__badge masthead__badge--active">Registration in progress · ASINS/46/2026/0756</span>
+      <span class="masthead__badge">Non-profit · careciendo de ánimo de lucro</span>
+      <span class="masthead__badge">Generalitat Valenciana</span>
+    </div>
+    <p class="masthead__summary">
+      Asociación Cultural Saged is a non-profit cultural association constituted in Valencia, Spain, for the promotion and development of intercultural dialogue, creative education, and community-building through art, ceramics, music, and cultural programming. It provides infrastructure — physical space, legal structure, and institutional capacity — for the cultural initiatives of its members and the communities it serves.
+    </p>
+  </div>
+</header>
+
+<!-- ── Mission ── -->
+<section class="section" id="mission">
+  <div class="wrap">
+    <div class="section__label">Mission</div>
+    <div class="mission__body">
+      <p class="mission__statement">
+        "To build and maintain a shared creative space — physical and social — where people of different cultures, languages, and backgrounds make things together and, through that act, integrate."
+      </p>
+      <div class="mission__detail">
+        <p>Valencia is home to one of the largest Russian and Ukrainian-speaking communities in Spain. Asociación Cultural Saged was founded to provide this community — and the broader intercultural population of the city — with a stable, professionally run cultural infrastructure.</p>
+        <p>The association holds a physical studio in Ciutat Vella and operates a programme of ceramics classes, music education, children's creative workshops, and community events in Russian, Ukrainian, English, and Spanish.</p>
+        <p>It was constituted as a cultural association to formalise this work: to make it fundable, scalable, and institutionally legible — while keeping it rooted in the direct relationships and creative practices that make it work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Governing Body ── -->
+<section class="section section--sand" id="governance">
+  <div class="wrap">
+    <div class="section__label">Governing body · Órgano Provisional de Gobierno</div>
+    <h2 class="section__title">Founding members.</h2>
+    <div class="board__table" role="table" aria-label="Founding members">
+      <div class="board__row" role="row">
+        <div class="board__name" role="cell">Diana Voroneca</div>
+        <div class="board__role" role="cell">President · Founder</div>
+        <div class="board__note" role="cell">UX designer and ceramicist. Founded Saged.club in 2026. Responsible for studio operations, programme direction, and institutional development.</div>
+      </div>
+      <div class="board__row" role="row">
+        <div class="board__name" role="cell">Veranika Imashava</div>
+        <div class="board__role" role="cell">Founding member</div>
+        <div class="board__note" role="cell">Founding member of the governing body.</div>
+      </div>
+      <div class="board__row" role="row">
+        <div class="board__name" role="cell">Yuliia Polianchych</div>
+        <div class="board__role" role="cell">Founding member</div>
+        <div class="board__note" role="cell">Founding member of the governing body.</div>
+      </div>
+      <div class="board__row" role="row">
+        <div class="board__name" role="cell">Vitaliia Rubanenko</div>
+        <div class="board__role" role="cell">Founding member</div>
+        <div class="board__note" role="cell">Founding member of the governing body.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Founding Purposes ── -->
+<section class="section section--ink" id="purposes">
+  <div class="wrap">
+    <div class="section__label">Founding purposes · Art. 4, Estatutos</div>
+    <h2 class="section__title">Six statutory<br>purposes.</h2>
+    <div class="purposes__list" role="list">
+      <div class="purpose" role="listitem">
+        <div class="purpose__num">01</div>
+        <div>
+          <div class="purpose__title">Community and cultural space</div>
+          <p class="purpose__body">To promote and develop a community and cultural space around art, culture, creativity, and collective cultural initiatives.</p>
+        </div>
+      </div>
+      <div class="purpose" role="listitem">
+        <div class="purpose__num">02</div>
+        <div>
+          <div class="purpose__title">Support for member initiatives</div>
+          <p class="purpose__body">To support the creative, cultural, and educational initiatives of community members, facilitating the conditions for their development.</p>
+        </div>
+      </div>
+      <div class="purpose" role="listitem">
+        <div class="purpose__num">03</div>
+        <div>
+          <div class="purpose__title">Intercultural exchange</div>
+          <p class="purpose__body">To create an environment of cultural exchange, dialogue, and cooperation between people of different countries, cultures, and professions.</p>
+        </div>
+      </div>
+      <div class="purpose" role="listitem">
+        <div class="purpose__num">04</div>
+        <div>
+          <div class="purpose__title">Education and knowledge exchange</div>
+          <p class="purpose__body">To develop cultural and educational programmes for the exchange of knowledge and creative practices.</p>
+        </div>
+      </div>
+      <div class="purpose" role="listitem">
+        <div class="purpose__num">05</div>
+        <div>
+          <div class="purpose__title">Social integration</div>
+          <p class="purpose__body">To foster social integration, intercultural understanding, and active participation in the cultural life of the community.</p>
+        </div>
+      </div>
+      <div class="purpose" role="listitem">
+        <div class="purpose__num">06</div>
+        <div>
+          <div class="purpose__title">Cultural development</div>
+          <p class="purpose__body">To promote the creation and development of cultural projects, initiatives, and spaces that enrich cultural life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Statutory Activities ── -->
+<section class="section" id="activities">
+  <div class="wrap">
+    <div class="section__label">Statutory activities · Art. 5, Estatutos</div>
+    <h2 class="section__title">How the purposes<br>are put into practice.</h2>
+    <div class="activities__grid" role="list">
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(a)</div>
+        <div class="activity__title">Cultural events and workshops</div>
+        <p class="activity__body">Organisation of cultural encounters, events, workshops, conferences, concerts, and artistic and educational activities.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(b)</div>
+        <div class="activity__title">Community-driven programmes</div>
+        <p class="activity__body">Development of cultural programmes driven by community members, with the support of the association.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(c)</div>
+        <div class="activity__title">Educational programmes</div>
+        <p class="activity__body">Creation of educational, creative, and formative programmes for the development of skills and collective creation.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(d)</div>
+        <div class="activity__title">Creative collaboration</div>
+        <p class="activity__body">Promotion of collaboration between artists, musicians, teachers, researchers, and cultural professionals.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(e)</div>
+        <div class="activity__title">Residencies and creative labs</div>
+        <p class="activity__body">Organisation of artistic residencies, creative laboratories, workshops, and cultural cooperation projects.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(f)</div>
+        <div class="activity__title">Institutional partnerships</div>
+        <p class="activity__body">Agreements and collaborations with public and private entities for the development of cultural and educational projects.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(g)</div>
+        <div class="activity__title">Fundraising and grants</div>
+        <p class="activity__body">Fundraising through public grants, donations, and sponsorships at local, national, and European levels.</p>
+      </div>
+      <div class="activity" role="listitem">
+        <div class="activity__id">Art. 5(h)</div>
+        <div class="activity__title">Dissemination</div>
+        <p class="activity__body">Dissemination of the association's activities through publications, digital media, and social networks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Active Programmes ── -->
+<section class="section section--sand" id="programmes">
+  <div class="wrap">
+    <div class="section__label">Active programming · 2026</div>
+    <h2 class="section__title">Current cultural<br>programme.</h2>
+    <p class="programmes__intro">The following recurring programmes are operated by the association at its studio in Ciutat Vella, Valencia. All programmes are led by qualified instructors. Languages noted per programme.</p>
+    <div class="programmes__list" role="list">
+
+      <div class="programme" role="listitem">
+        <div>
+          <div class="programme__type">Ceramics · Adults</div>
+          <div class="programme__name">Ceramics with Korytsia</div>
+        </div>
+        <p class="programme__desc">Hand-building ceramic classes for adults led by Korincia Gasikóvska (Korytsia), a Ukrainian ceramic artist based in Valencia. Runs as a two-session mini-course (€60) or single drop-in session (€30). Maximum 6 participants per session. Every Thursday, three time slots.</p>
+        <div class="programme__meta">
+          <div>Thursday · 3 slots</div>
+          <div class="programme__lang">
+            <span class="lang-pill">RU</span>
+            <span class="lang-pill">UA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="programme" role="listitem">
+        <div>
+          <div class="programme__type">Clay therapy · Children ages 5+</div>
+          <div class="programme__name">Story Therapy</div>
+        </div>
+        <p class="programme__desc">A clay-based creative programme for children in which participants build characters and miniature settings inspired by fairy tales and stories. Designed around imaginative play and hands-on process. Led by Korytsia. Ages 5 and up.</p>
+        <div class="programme__meta">
+          <div>Thu / Sat / Sun</div>
+          <div class="programme__lang">
+            <span class="lang-pill">RU</span>
+            <span class="lang-pill">UA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="programme" role="listitem">
+        <div>
+          <div class="programme__type">Music education</div>
+          <div class="programme__name">Handpan School</div>
+        </div>
+        <p class="programme__desc">Group handpan music lessons for beginners. Launched October 2026. One session per week. The handpan is a steel tongue instrument well-suited to contemplative, community-oriented music practice.</p>
+        <div class="programme__meta">
+          <div>Weekly</div>
+          <div class="programme__lang">
+            <span class="lang-pill">RU</span>
+            <span class="lang-pill">UA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="programme" role="listitem">
+        <div>
+          <div class="programme__type">Ceramics · Adults · Beginners</div>
+          <div class="programme__name">Ceramics with Diana</div>
+        </div>
+        <p class="programme__desc">Beginner and evening ceramics sessions led by Diana Voroneca. Structured for participants with no prior experience. Runs Tuesday, Wednesday, and Friday. Classes conducted in English and Spanish.</p>
+        <div class="programme__meta">
+          <div>Tue / Wed / Fri</div>
+          <div class="programme__lang">
+            <span class="lang-pill">EN</span>
+            <span class="lang-pill">ES</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="programme" role="listitem">
+        <div>
+          <div class="programme__type">Community events</div>
+          <div class="programme__name">Cultural evenings and ceremonies</div>
+        </div>
+        <p class="programme__desc">Recurring community gatherings including tea ceremonies, sound meditation sessions, kirtan evenings, and intercultural social events. Open to all. Organised in collaboration with guest practitioners.</p>
+        <div class="programme__meta">
+          <div>Various</div>
+          <div class="programme__lang">
+            <span class="lang-pill">RU</span>
+            <span class="lang-pill">UA</span>
+            <span class="lang-pill">EN</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="programme" role="listitem">
+        <div>
+          <div class="programme__type">Private &amp; group bookings</div>
+          <div class="programme__name">Private events and birthdays</div>
+        </div>
+        <p class="programme__desc">The studio hosts private group events — birthday ceramics sessions, team workshops, and tailored creative gatherings. Available to groups of up to 10 participants. Available in all four languages.</p>
+        <div class="programme__meta">
+          <div>By arrangement</div>
+          <div class="programme__lang">
+            <span class="lang-pill">RU</span>
+            <span class="lang-pill">UA</span>
+            <span class="lang-pill">EN</span>
+            <span class="lang-pill">ES</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Membership ── -->
+<section class="section" id="membership">
+  <div class="wrap">
+    <div class="section__label">Membership</div>
+    <h2 class="section__title">How to be part<br>of the association.</h2>
+    <div class="membership__grid">
+      <div class="member-card">
+        <div class="member-card__label">Participants</div>
+        <div class="member-card__title">Attend a programme</div>
+        <p class="member-card__body">No membership is required to attend classes and events. The studio is open to anyone. Contact us directly to book a session or enquire about the schedule.</p>
+        <a href="/#schedule" class="member-card__action">See the schedule ↗</a>
+      </div>
+      <div class="member-card member-card--featured">
+        <div class="member-card__label">Association membership</div>
+        <div class="member-card__title">Become a member</div>
+        <p class="member-card__body">Any person who shares the purposes of the association and wishes to participate in its governance and activities may apply for membership. Members have the right to vote in general assemblies and propose initiatives.</p>
+        <a href="/join/?type=member" class="member-card__action">Apply for membership ↗</a>
+      </div>
+      <div class="member-card">
+        <div class="member-card__label">Institutional</div>
+        <div class="member-card__title">Partner or sponsor</div>
+        <p class="member-card__body">We welcome collaboration with cultural institutions, educational bodies, municipal partners, and private sponsors whose work aligns with the association's mission of intercultural dialogue and creative education.</p>
+        <a href="mailto:hello@saged.club?subject=Partnership%20enquiry" class="member-card__action">hello@saged.club ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Legal record ── -->
+<section class="section section--sand" id="legal">
+  <div class="wrap">
+    <div class="section__label">Legal record</div>
+    <h2 class="section__title">Registration<br>details.</h2>
+    <p class="legal__intro">Asociación Cultural Saged is constituted under the <strong>Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación</strong> and the <strong>Llei 14/2008, de 18 de novembre, d'Associacions de la Comunitat Valenciana</strong>. Registration is in progress with the Conselleria de Justícia, Transparència i Participació of the Generalitat Valenciana.</p>
+    <div class="legal__card">
+      <div class="legal__row">
+        <div class="legal__key">Full legal name</div>
+        <div class="legal__val">Asociación Cultural Saged</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">File number</div>
+        <div class="legal__val">ASINS/46/2026/0756</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Registration body</div>
+        <div class="legal__val">Conselleria de Justícia, Transparència i Participació · Generalitat Valenciana</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Application submitted</div>
+        <div class="legal__val">21 September 2026 · correction filed on time (21 Sep, within 10-day window)</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Character</div>
+        <div class="legal__val">Non-profit cultural association · <em>careciendo de ánimo de lucro</em></div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Duration</div>
+        <div class="legal__val">Indefinite</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Registered address</div>
+        <div class="legal__val">C/ Juristas, 17 BJS, 46001 Valencia, Spain</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Studio address</div>
+        <div class="legal__val">C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia, Spain</div>
+      </div>
+      <div class="legal__row">
+        <div class="legal__key">Registration status</div>
+        <div class="legal__val"><span class="status-dot">Registration in progress — application under review</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section__label">Contact</div>
+    <h2 class="section__title">Get in touch.</h2>
+    <div class="contact__grid">
+      <div class="contact-card">
+        <div class="contact-card__label">General enquiries</div>
+        <div class="contact-card__value">hello@saged.club</div>
+        <div class="contact-card__note">Classes, bookings, programme information</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card__label">Institutional enquiries</div>
+        <div class="contact-card__value">hello@saged.club</div>
+        <div class="contact-card__note">Membership, partnerships, grants, collaboration</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card__label">Studio address</div>
+        <div class="contact-card__value">C/ de les Cuines, 8</div>
+        <div class="contact-card__note">Ciutat Vella · 46001 Valencia · Spain</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card__label">Social</div>
+        <div class="contact-card__value">@saged.club</div>
+        <div class="contact-card__note">Instagram · Facebook · saged.club</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span>© 2026 Asociación Cultural Saged · Valencia, Spain</span>
+    <div class="footer__links">
+      <a href="/">saged.club</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/cookies.html">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('.gn').classList.toggle('scrolled',window.scrollY>4)
+},{passive:true})
+document.querySelector('.gn__burger').addEventListener('click',function(){
+  var links=document.querySelector('.gn__links')
+  var open=links.classList.toggle('open')
+  this.setAttribute('aria-expanded',open)
+})
+</script>
+
+</body>
+</html>

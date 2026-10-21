@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saged — Brand Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Costa';
+    src: url('../assets/fonts/costa-light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Saged Cyrillic';
+    src: url('../assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  :root {
+    --bg:        #FAF7F2;
+    --bg-sand:   #F1E9DA;
+    --ink:       #2A2520;
+    --muted:     #6B5F54;
+    --terracotta:#9F4D2D;
+    --logo-org:  #FF7A23;
+    --sage:      #6E7F5A;
+    --line:      #E1D6C5;
+    --radius:    10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: Inter, sans-serif; font-size: 14px; }
+
+  header {
+    padding: 48px 64px 32px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 32px;
+  }
+  header img { height: 40px; }
+  header h1 { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 28px; color: var(--muted); letter-spacing: 1px; }
+
+  main { padding: 48px 64px; display: flex; flex-direction: column; gap: 56px; }
+
+  .section-title {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--muted); margin-bottom: 20px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+
+  /* COLORS */
+  .colors { display: flex; gap: 16px; flex-wrap: wrap; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .swatch-block { width: 80px; height: 80px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.06); }
+  .swatch-name { font-size: 11px; color: var(--muted); }
+  .swatch-hex  { font-size: 12px; font-weight: 500; color: var(--ink); font-family: monospace; }
+
+  /* TYPOGRAPHY */
+  .type-samples { display: flex; flex-direction: column; gap: 24px; }
+  .type-row { display: flex; align-items: baseline; gap: 24px; }
+  .type-label { font-size: 11px; color: var(--muted); width: 140px; flex-shrink: 0; }
+  .type-display { font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 300; line-height: 1; }
+  .type-body    { font-family: Inter, sans-serif; font-size: 17px; }
+  .type-small   { font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); }
+
+  /* IMAGES GRID */
+  .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+  .img-tile { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--bg-sand); aspect-ratio: 1; }
+  .img-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .img-tile .img-name {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(42,37,32,0.65); color: #FAF7F2;
+    font-size: 10px; padding: 4px 8px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* ADS GRID — taller tiles */
+  .ads-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .ad-tile { border-radius: var(--radius); overflow: hidden; background: var(--bg-sand); }
+  .ad-tile img, .ad-tile iframe, .ad-tile embed { width: 100%; display: block; }
+  .ad-tile .ad-name { font-size: 11px; color: var(--muted); padding: 8px 10px; background: white; border-top: 1px solid var(--line); }
+
+  /* EVENTS GRID */
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .event-tile { border-radius: var(--radius); overflow: hidden; background: var(--bg-sand); }
+  .event-tile img { width: 100%; display: block; }
+  .event-tile .event-name { font-size: 11px; color: var(--muted); padding: 8px 10px; background: white; border-top: 1px solid var(--line); }
+
+  /* SVG AD preview */
+  .svg-preview { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: white; }
+  .svg-preview object { width: 100%; max-width: 360px; display: block; }
+  .svg-preview .ad-name { font-size: 11px; color: var(--muted); padding: 8px 10px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="../assets/images/logo-saged-club.svg" alt="Saged logo">
+  <h1>Brand Board</h1>
+</header>
+
+<main>
+
+  <!-- COLORS -->
+  <section>
+    <div class="section-title">Colour tokens</div>
+    <div class="colors">
+      <div class="swatch">
+        <div class="swatch-block" style="background:#FAF7F2;"></div>
+        <div class="swatch-name">Background</div>
+        <div class="swatch-hex">#FAF7F2</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#F1E9DA;"></div>
+        <div class="swatch-name">Sand</div>
+        <div class="swatch-hex">#F1E9DA</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#2A2520;"></div>
+        <div class="swatch-name">Ink</div>
+        <div class="swatch-hex">#2A2520</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#6B5F54;"></div>
+        <div class="swatch-name">Muted</div>
+        <div class="swatch-hex">#6B5F54</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#9F4D2D;"></div>
+        <div class="swatch-name">Terracotta (UI)</div>
+        <div class="swatch-hex">#9F4D2D</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#FF7A23;"></div>
+        <div class="swatch-name">Logo orange</div>
+        <div class="swatch-hex">#FF7A23</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#6E7F5A;"></div>
+        <div class="swatch-name">Sage</div>
+        <div class="swatch-hex">#6E7F5A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#E1D6C5;"></div>
+        <div class="swatch-name">Line / border</div>
+        <div class="swatch-hex">#E1D6C5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section>
+    <div class="section-title">Typography</div>
+    <div class="type-samples">
+      <div class="type-row">
+        <div class="type-label">Saged Cyrillic<br><span style="font-size:10px;color:#aaa;">Cyrillic display / headings</span></div>
+        <div style="font-family:'Saged Cyrillic',Georgia,serif;font-size:48px;font-weight:400;line-height:1;">Керамика с Корицей</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Costa Light<br><span style="font-size:10px;color:#aaa;">Latin display / headings</span></div>
+        <div style="font-family:'Costa',Georgia,serif;font-size:48px;font-weight:300;line-height:1;">Ceramics in Valencia</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Inter 400<br><span style="font-size:10px;color:#aaa;">Body copy</span></div>
+        <div class="type-body">Small groups · all levels welcome · from €30</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Inter 400, muted<br><span style="font-size:10px;color:#aaa;">Captions / labels</span></div>
+        <div class="type-small">Weekend workshops · materials included · 2–3 hours</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYMBOLS -->
+  <section>
+    <div class="section-title">Brand symbols</div>
+    <div style="background:var(--bg-sand);border-radius:var(--radius);padding:32px;border:1px solid var(--line);">
+      <img src="../assets/images/saged-symbols.svg" style="max-width:100%;display:block;" alt="Saged brand symbols">
+    </div>
+  </section>
+
+  <!-- FIGURES -->
+  <section>
+    <div class="section-title">Brand figures — characters &amp; illustrations</div>
+    <div class="img-grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/000.png" alt=""><div class="img-name">000</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/Diana.png" alt=""><div class="img-name">Diana</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/Vlada.png" alt=""><div class="img-name">Vlada</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/koritsa.png" alt=""><div class="img-name">Koritsa</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/helena.png" alt=""><div class="img-name">Helena</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/liza.png" alt=""><div class="img-name">Liza</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/figure 1.png" alt=""><div class="img-name">figure 1</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/figure 19.png" alt=""><div class="img-name">figure 19</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/figure 22.png" alt=""><div class="img-name">figure 22</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/figure 24.png" alt=""><div class="img-name">figure 24</div></div>
+      <div class="img-tile" style="background:#F1E9DA;"><img src="../assets/images/figures/figure 27.png" alt=""><div class="img-name">figure 27</div></div>
+    </div>
+    <div class="section-title" style="margin-top:24px;">Logo variants — from figures folder</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+      <div style="background:#FAF7F2;padding:24px;border-radius:var(--radius);border:1px solid var(--line);"><img src="../assets/images/figures/saged logo.png" style="height:48px;" alt="Saged logo"></div>
+      <div style="background:#FAF7F2;padding:24px;border-radius:var(--radius);border:1px solid var(--line);"><img src="../assets/images/figures/saged logo-1.png" style="height:48px;" alt="Saged logo-1"></div>
+      <div style="background:#FAF7F2;padding:24px;border-radius:var(--radius);border:1px solid var(--line);"><img src="../assets/images/figures/saged logo-2.png" style="height:48px;" alt="Saged logo-2"></div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section>
+    <div class="section-title">Logo</div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
+      <div style="background:#FAF7F2;padding:24px 32px;border-radius:var(--radius);border:1px solid var(--line);">
+        <img src="../assets/images/logo-saged-club.svg" style="height:32px;" alt="Saged logo on light">
+      </div>
+      <div style="background:#2A2520;padding:24px 32px;border-radius:var(--radius);">
+        <img src="../assets/images/logo-saged-club.svg" style="height:32px;filter:brightness(0) invert(1);" alt="Saged logo on dark">
+      </div>
+      <div style="background:#9F4D2D;padding:24px 32px;border-radius:var(--radius);">
+        <img src="../assets/images/logo-saged-club.svg" style="height:32px;filter:brightness(0) invert(1);" alt="Saged logo on terracotta">
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW AD CREATIVE -->
+  <section>
+    <div class="section-title">Ad creative — in progress</div>
+    <div class="ads-grid">
+      <div class="svg-preview">
+        <object data="ad-en-ceramics-v1.svg" type="image/svg+xml" style="max-width:100%;"></object>
+        <div class="ad-name">EN Ceramics v1 · 1080×1350 · 4:5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXISTING AD IMAGES -->
+  <section>
+    <div class="section-title">Existing ads — Kids Ceramics</div>
+    <div class="ads-grid">
+      <div class="ad-tile">
+        <img src="../assets/images/ad-kids-ru-1x1.png" alt="Kids RU 1x1">
+        <div class="ad-name">Kids · RU · 1:1</div>
+      </div>
+      <div class="ad-tile">
+        <img src="../assets/images/ad-kids-ru-4x5.png" alt="Kids RU 4x5">
+        <div class="ad-name">Kids · RU · 4:5</div>
+      </div>
+      <div class="ad-tile">
+        <img src="../assets/images/ad-kids-ru-9x16.png" alt="Kids RU 9x16">
+        <div class="ad-name">Kids · RU · 9:16</div>
+      </div>
+      <div class="ad-tile">
+        <img src="../assets/images/ad-kids-ua-1x1.png" alt="Kids UA 1x1">
+        <div class="ad-name">Kids · UA · 1:1</div>
+      </div>
+      <div class="ad-tile">
+        <img src="../assets/images/ad-kids-ua-4x5.png" alt="Kids UA 4x5">
+        <div class="ad-name">Kids · UA · 4:5</div>
+      </div>
+      <div class="ad-tile">
+        <img src="../assets/images/ad-kids-ua-9x16.png" alt="Kids UA 9x16">
+        <div class="ad-name">Kids · UA · 9:16</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT POSTERS -->
+  <section>
+    <div class="section-title">Event posters</div>
+    <div class="events-grid">
+      <div class="event-tile">
+        <img src="../assets/images/events/slow-friending.png" alt="Slow Friending">
+        <div class="event-name">Slow Friending</div>
+      </div>
+      <div class="event-tile">
+        <img src="../assets/images/events/cacao-sound.png" alt="Cacao Sound">
+        <div class="event-name">Cacao Sound</div>
+      </div>
+      <div class="event-tile">
+        <img src="../assets/images/events/cigun.png" alt="Cigun">
+        <div class="event-name">Cigun</div>
+      </div>
+      <div class="event-tile">
+        <img src="../assets/images/events/koritsa.png" alt="Koritsa event">
+        <div class="event-name">Koritsa</div>
+      </div>
+      <div class="event-tile">
+        <img src="../assets/images/events/kundoglini.png" alt="Kundoglini">
+        <div class="event-name">Kundoglini</div>
+      </div>
+      <div class="event-tile">
+        <img src="../assets/images/koffee-with-koritsa-poster.png" alt="Koffee with Koritsa">
+        <div class="event-name">Koffee with Koritsa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO / KEY PHOTOS -->
+  <section>
+    <div class="section-title">Hero &amp; key photos</div>
+    <div class="img-grid">
+      <div class="img-tile"><img src="../assets/images/hero-1.jpg" alt=""><div class="img-name">hero-1</div></div>
+      <div class="img-tile"><img src="../assets/images/hero-2.jpg" alt=""><div class="img-name">hero-2</div></div>
+      <div class="img-tile"><img src="../assets/images/hero-3.jpg" alt=""><div class="img-name">hero-3</div></div>
+      <div class="img-tile"><img src="../assets/images/workshop-1.jpg" alt=""><div class="img-name">workshop-1</div></div>
+      <div class="img-tile"><img src="../assets/images/workshop-2.jpg" alt=""><div class="img-name">workshop-2</div></div>
+      <div class="img-tile"><img src="../assets/images/workshop-teaching.jpg" alt=""><div class="img-name">workshop-teaching</div></div>
+      <div class="img-tile"><img src="../assets/images/koritsa.jpg" alt=""><div class="img-name">koritsa</div></div>
+      <div class="img-tile"><img src="../assets/images/koritsa-editorial.jpg" alt=""><div class="img-name">koritsa-editorial</div></div>
+      <div class="img-tile"><img src="../assets/images/koritsa-exhibition.jpg" alt=""><div class="img-name">koritsa-exhibition</div></div>
+      <div class="img-tile"><img src="../assets/images/koritsa-village.jpg" alt=""><div class="img-name">koritsa-village</div></div>
+      <div class="img-tile"><img src="../assets/images/koritsya-portrait.png" alt=""><div class="img-name">koritsya-portrait</div></div>
+      <div class="img-tile"><img src="../assets/images/private-event.jpg" alt=""><div class="img-name">private-event</div></div>
+      <div class="img-tile"><img src="../assets/images/gift-certificate.jpg" alt=""><div class="img-name">gift-certificate</div></div>
+      <div class="img-tile"><img src="../assets/images/beads-art.jpg" alt=""><div class="img-name">beads-art</div></div>
+      <div class="img-tile"><img src="../assets/images/gallery-1.jpg" alt=""><div class="img-name">gallery-1</div></div>
+      <div class="img-tile"><img src="../assets/images/gallery-5.jpg" alt=""><div class="img-name">gallery-5</div></div>
+      <div class="img-tile"><img src="../assets/images/gallery-9.jpg" alt=""><div class="img-name">gallery-9</div></div>
+      <div class="img-tile"><img src="../assets/images/gallery-12.jpg" alt=""><div class="img-name">gallery-12</div></div>
+      <div class="img-tile"><img src="../assets/images/gallery-beads.jpg" alt=""><div class="img-name">gallery-beads</div></div>
+    </div>
+  </section>
+
+  <!-- PRODUCT PHOTOS -->
+  <section>
+    <div class="section-title">Product photos</div>
+    <div class="img-grid">
+      <div class="img-tile"><img src="../assets/images/product-1.jpg" alt=""><div class="img-name">product-1</div></div>
+      <div class="img-tile"><img src="../assets/images/product-2.jpg" alt=""><div class="img-name">product-2</div></div>
+      <div class="img-tile"><img src="../assets/images/product-3.jpg" alt=""><div class="img-name">product-3</div></div>
+      <div class="img-tile"><img src="../assets/images/product-4.jpg" alt=""><div class="img-name">product-4</div></div>
+      <div class="img-tile"><img src="../assets/images/product-5.jpg" alt=""><div class="img-name">product-5</div></div>
+    </div>
+  </section>
+
+  <!-- INBOX / RECENT PHOTOS -->
+  <section>
+    <div class="section-title">Inbox — recent unprocessed photos</div>
+    <div class="img-grid">
+      <div class="img-tile"><img src="../inbox/Koritsa portrait.jpg" alt=""><div class="img-name">Koritsa portrait</div></div>
+      <div class="img-tile"><img src="../inbox/product photo 1.jpg" alt=""><div class="img-name">product photo 1</div></div>
+      <div class="img-tile"><img src="../inbox/product photo 2.jpg" alt=""><div class="img-name">product photo 2</div></div>
+      <div class="img-tile"><img src="../inbox/product photo 3.jpg" alt=""><div class="img-name">product photo 3</div></div>
+      <div class="img-tile"><img src="../inbox/product photo 4.jpg" alt=""><div class="img-name">product photo 4</div></div>
+      <div class="img-tile"><img src="../inbox/product photo 5.jpg" alt=""><div class="img-name">product photo 5</div></div>
+      <div class="img-tile"><img src="../inbox/Breathwork August 23-20.jpg" alt=""><div class="img-name">Breathwork Aug</div></div>
+      <div class="img-tile"><img src="../inbox/Breathwork August 23-41.jpg" alt=""><div class="img-name">Breathwork Aug 2</div></div>
+      <div class="img-tile"><img src="../inbox/photo_1_2026-05-11_21-19-12.jpg" alt=""><div class="img-name">May 2026 · 1</div></div>
+      <div class="img-tile"><img src="../inbox/photo_2_2026-05-11_21-19-12.jpg" alt=""><div class="img-name">May 2026 · 2</div></div>
+      <div class="img-tile"><img src="../inbox/photo_3_2026-05-11_21-19-12.jpg" alt=""><div class="img-name">May 2026 · 3</div></div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL SHOOT — BOOSI -->
+  <section>
+    <div class="section-title">Professional shoot — Boosi (selection)</div>
+    <div class="img-grid">
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08572.jpg" alt=""><div class="img-name">DSC08572</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08576.jpg" alt=""><div class="img-name">DSC08576</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08584.jpg" alt=""><div class="img-name">DSC08584</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08592.jpg" alt=""><div class="img-name">DSC08592</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08601.jpg" alt=""><div class="img-name">DSC08601</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08607.jpg" alt=""><div class="img-name">DSC08607</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08616.jpg" alt=""><div class="img-name">DSC08616</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08624.jpg" alt=""><div class="img-name">DSC08624</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08631.jpg" alt=""><div class="img-name">DSC08631</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08640.jpg" alt=""><div class="img-name">DSC08640</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08651.jpg" alt=""><div class="img-name">DSC08651</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08660.jpg" alt=""><div class="img-name">DSC08660</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08665.jpg" alt=""><div class="img-name">DSC08665</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08670.jpg" alt=""><div class="img-name">DSC08670</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08675.jpg" alt=""><div class="img-name">DSC08675</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08680.jpg" alt=""><div class="img-name">DSC08680</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08685.jpg" alt=""><div class="img-name">DSC08685</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08691.jpg" alt=""><div class="img-name">DSC08691</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08697.jpg" alt=""><div class="img-name">DSC08697</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08704.jpg" alt=""><div class="img-name">DSC08704</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08711.jpg" alt=""><div class="img-name">DSC08711</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08717.jpg" alt=""><div class="img-name">DSC08717</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08725.jpg" alt=""><div class="img-name">DSC08725</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08730.jpg" alt=""><div class="img-name">DSC08730</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08740.jpg" alt=""><div class="img-name">DSC08740</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08746.jpg" alt=""><div class="img-name">DSC08746</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08761.jpg" alt=""><div class="img-name">DSC08761</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08770.jpg" alt=""><div class="img-name">DSC08770</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08779.jpg" alt=""><div class="img-name">DSC08779</div></div>
+      <div class="img-tile"><img src="../photos/Boosi photos/DSC08787.jpg" alt=""><div class="img-name">DSC08787</div></div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

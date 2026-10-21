@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Diana Sage — Saged</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:SagedCyr;src:url('/assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+@font-face{font-family:Costa;src:url('/assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+:root{--paper:#f9f4ed;--sand:#efe5d6;--ink:#2a2520;--muted:#6b5f54;--line:#ded1bf;--clay:#9f4d2d;--clay-light:#faf0e6;--white:#fffdf8;--radius:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.draft-bar{background:#2a2520;color:#f0e8df;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.04em}
+.draft-bar a{color:#F08A60;text-decoration:none}
+
+.nav{padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(249,244,237,.96);backdrop-filter:blur(8px);z-index:20}
+.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;transition:all .15s}
+.nav-cta:hover{background:var(--clay);color:var(--white)}
+@media(max-width:640px){.nav-links{display:none}.nav{padding:16px 20px}}
+
+.wrap{width:min(calc(100% - 40px),720px);margin:0 auto;padding:52px 0 100px}
+
+/* Hero photo with overlapping avatar */
+.profile-hero{position:relative;border-radius:var(--radius);overflow:hidden;margin-bottom:52px}
+.profile-hero-photo{width:100%;height:340px;object-fit:cover;object-position:center top;display:block}
+@media(max-width:520px){.profile-hero-photo{height:260px}}
+.profile-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,37,32,.7) 0%,transparent 50%)}
+.profile-hero-content{position:absolute;bottom:0;left:0;right:0;padding:28px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.profile-hero-text{}
+.profile-back{font-size:13px;color:rgba(255,255,255,.7);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
+.profile-back:hover{color:#fff}
+.profile-name{font-family:Costa,Georgia,serif;font-size:clamp(36px,6vw,52px);line-height:.92;letter-spacing:-.04em;color:#fff;margin-bottom:6px}
+.profile-practice{font-size:15px;color:rgba(255,255,255,.75)}
+.profile-avatar-float{width:80px;height:80px;border-radius:12px;overflow:hidden;border:3px solid rgba(255,255,255,.3);flex-shrink:0}
+.profile-avatar-float img{width:100%;height:100%;object-fit:cover;display:block}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 12px;border-radius:100px;background:var(--clay-light);color:var(--clay)}
+.profile-links{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.profile-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--line);border-radius:100px;transition:all .15s}
+.profile-link:hover{border-color:var(--clay);color:var(--clay)}
+
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px}
+.bio{font-size:16px;color:var(--ink);line-height:1.75;margin-bottom:52px}
+
+.events-list{display:flex;flex-direction:column;gap:12px;margin-bottom:52px}
+.event-row{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:inherit;transition:border-color .15s}
+.event-row:hover{border-color:var(--clay)}
+.event-row-left{flex:1}
+.event-row-date{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:4px}
+.event-row-title{font-size:15px;font-weight:600;color:var(--ink)}
+.event-row-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.event-row-price{font-size:14px;font-weight:600;color:var(--ink)}
+.btn-sm{display:inline-block;background:var(--clay);color:var(--white);font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;text-decoration:none;transition:opacity .15s;white-space:nowrap}
+.btn-sm:hover{opacity:.88}
+
+.contact-block{background:var(--sand);border-radius:var(--radius);border:1px solid var(--line);padding:28px}
+.contact-block h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.contact-block p{font-size:14px;color:var(--muted);margin-bottom:20px}
+.contact-block .btn-sm{font-size:14px;padding:12px 24px}
+</style>
+  <script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="draft-bar">Prototype · <a href="/prototype.html">← Home</a> · <a href="/hosts/">← All hosts</a> · <a href="/events/">Events</a></div>
+
+<nav class="nav">
+  <a class="nav-logo" href="/prototype.html"><img src="/assets/images/logo-saged-club.svg" alt="Saged" height="26"></a>
+  <div class="nav-links">
+    <a href="/events/">What's on</a>
+    <a href="/hosts/" class="active">Hosts</a>
+    <a href="/space/">Space</a>
+    <a href="/join/">Join</a>
+  </div>
+  <a class="nav-cta" href="/join/host/">Become a host</a>
+</nav>
+
+<main class="wrap">
+
+  <div class="profile-hero">
+    <img class="profile-hero-photo" src="/assets/images/diana-portrait.jpg" alt="Diana Sage">
+    <div class="profile-hero-overlay"></div>
+    <div class="profile-hero-content">
+      <div class="profile-hero-text">
+        <a class="profile-back" href="/hosts/">← All hosts</a>
+        <h1 class="profile-name">Diana<br>Sage</h1>
+        <p class="profile-practice">Studio founder · ceramicist · Valencia</p>
+      </div>
+      <div class="profile-avatar-float">
+        <img src="/assets/images/diana-portrait.jpg" alt="Diana Sage">
+      </div>
+    </div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Ceramics</span>
+    <span class="tag">Clay rituals</span>
+    <span class="tag">Talisman making</span>
+    <span class="tag">Ceremonies</span>
+    <span class="tag">Studio founder</span>
+  </div>
+
+  <div class="profile-links">
+    <a class="profile-link" href="https://t.me/dvoroneca" target="_blank">↗ Telegram @dvoroneca</a>
+    <a class="profile-link" href="mailto:dvoroneca@gmail.com">↗ dvoroneca@gmail.com</a>
+  </div>
+
+  <div class="section-label">About</div>
+  <div class="bio">
+    <p>Diana is the founder of Saged — a ceramics studio and cultural space in the old city of Valencia. She started working with clay during the pandemic and hasn't stopped since. Saged grew from her own need for a place to slow down, make things with hands, and find community in a new city.</p>
+    <br>
+    <p>At the studio she runs ritual workshops: talisman making, seasonal ceremonies, and creative gatherings where clay meets intention. Her practice sits at the intersection of craft, design, and the kind of meaning-making you can only do with your hands.</p>
+  </div>
+
+  <div class="section-label">Upcoming events</div>
+  <div class="events-list">
+
+    <a class="event-row" href="https://wa.me/34605543300?text=I+want+to+book+talisman+ritual" target="_blank">
+      <div class="event-row-left">
+        <div class="event-row-date">November · date TBC</div>
+        <div class="event-row-title">Clay talisman ritual</div>
+      </div>
+      <div class="event-row-right">
+        <span class="event-row-price">Price on request</span>
+        <span class="btn-sm">Book</span>
+      </div>
+    </a>
+
+    <a class="event-row" href="https://wa.me/34605543300?text=I+want+to+book+witch+party" target="_blank">
+      <div class="event-row-left">
+        <div class="event-row-date">Fri, 31 Oct · 20:00</div>
+        <div class="event-row-title">Witch party</div>
+      </div>
+      <div class="event-row-right">
+        <span class="event-row-price">Price on request</span>
+        <span class="btn-sm">Book</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="contact-block">
+    <h3>Write to Diana</h3>
+    <p>Questions about the studio, events, or membership — reach out directly.</p>
+    <a class="btn-sm" href="https://wa.me/34605543300?text=Hi+Diana" target="_blank">Write on WhatsApp →</a>
+  </div>
+
+</main>
+</body>
+</html>

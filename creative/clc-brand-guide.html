@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Lunch Club — Reverse-Engineered Brand Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple:       #6B3FD4;
+      --purple-dark:  #4A2A9A;
+      --purple-light: #EDE6FA;
+      --orange:       #FF8C3A;
+      --orange-light: #FFF0E4;
+      --ink:          #1A1025;
+      --muted:        #6B6080;
+      --bg:           #F8F6FF;
+      --white:        #FFFFFF;
+      --border:       #E0D8F5;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--purple);
+      color: var(--white);
+      padding: 72px 80px 64px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+
+    .hero-accent { color: var(--orange); }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .hero-note {
+      margin-top: 32px;
+      display: inline-block;
+      font-size: 12px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      padding: 8px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Layout ── */
+    .page { max-width: 960px; margin: 0 auto; padding: 64px 40px; }
+
+    .section { margin-bottom: 64px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    p { color: var(--muted); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 28px;
+      box-shadow: 0 1px 4px rgba(107,63,212,0.06);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+
+    /* ── Essence box ── */
+    .essence {
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 12px;
+    }
+
+    .essence-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 14px;
+    }
+
+    .essence p {
+      color: rgba(255,255,255,0.9);
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .essence strong { color: var(--orange); font-weight: 600; }
+
+    /* ── Colour swatches ── */
+    .swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .swatch-block {
+      height: 80px;
+    }
+
+    .swatch-info {
+      padding: 12px 14px;
+      background: var(--white);
+    }
+
+    .swatch-name { font-size: 12px; font-weight: 600; color: var(--ink); }
+    .swatch-hex { font-size: 11px; font-family: monospace; color: var(--muted); }
+    .swatch-use { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* ── Type samples ── */
+    .type-display {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--purple);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .type-body-sample {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .type-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+
+    /* ── Voice ── */
+    .voice-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .voice-do {
+      background: #E8F5E9;
+      padding: 16px 18px;
+    }
+
+    .voice-dont {
+      background: #FDE8E8;
+      padding: 16px 18px;
+    }
+
+    .voice-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .voice-tag.green { color: #2E7D32; }
+    .voice-tag.red { color: #C62828; }
+
+    .voice-text { font-size: 13px; color: var(--ink); line-height: 1.5; }
+
+    /* ── Personality pills ── */
+    .pill {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin: 4px;
+    }
+
+    .pill-purple { background: var(--purple-light); color: var(--purple-dark); }
+    .pill-orange { background: var(--orange-light); color: #C05A00; }
+
+    /* ── Quotes ── */
+    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .quote-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .quote-text {
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .quote-author { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+    /* ── CTA strip ── */
+    .orange-strip {
+      background: var(--orange);
+      color: var(--white);
+      padding: 48px 80px;
+      text-align: center;
+    }
+
+    .orange-strip h2 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--purple);
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .orange-strip p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    /* ── Photo style ── */
+    .photo-rule {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .photo-rule:last-child { border-bottom: none; }
+
+    .photo-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .photo-icon.yes { background: #E8F5E9; }
+    .photo-icon.no  { background: #FDE8E8; }
+
+    .photo-rule-text { color: var(--ink); line-height: 1.5; padding-top: 4px; }
+    .photo-rule-text span { color: var(--muted); font-size: 12px; display: block; margin-top: 2px; }
+
+    /* ── Key phrases ── */
+    .phrase {
+      display: inline-block;
+      background: var(--purple);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 4px;
+    }
+
+    /* ── Audience ── */
+    .audience-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+    }
+
+    .audience-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .audience-detail { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Positioning ── */
+    .positioning {
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+
+    .positioning p {
+      color: rgba(255,255,255,0.75);
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .positioning strong { color: var(--orange); font-weight: 600; }
+
+    /* ── Meta note ── */
+    .meta-note {
+      background: var(--purple-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 12px;
+      color: var(--purple-dark);
+      margin-top: 48px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">Reverse-engineered brand guide · September 2026</div>
+  <h1>Creative Lunch<br><span class="hero-accent">Club</span></h1>
+  <p class="hero-sub">A brand study built from public materials — copy, photography, UI patterns, member language, and tone observed across the website.</p>
+  <span class="hero-note">Not an official document · Produced for Saged.club reference</span>
+</div>
+
+<div class="page">
+
+  <!-- Brand Essence -->
+  <div class="section">
+    <div class="section-label">Brand essence</div>
+
+    <div class="essence">
+      <div class="essence-tag">One sentence</div>
+      <p><strong>Anti-corporate networking dressed as lunch</strong> — a global community that turns the awkward business card ritual into a genuine meal between two strangers who might become collaborators, clients, or friends.</p>
+    </div>
+
+    <div class="card">
+      <h3>The core tension they resolve</h3>
+      <p>Freelance creatives are professionally isolated. They want to grow their network but hate networking events — they feel transactional, stiff, forgettable. Creative Lunch Club removes the event format entirely and replaces it with something everyone already does: eat lunch. <strong style="color:var(--ink);">The food is the excuse. The connection is the product.</strong></p>
+    </div>
+  </div>
+
+  <!-- Personality -->
+  <div class="section">
+    <div class="section-label">Brand personality</div>
+    <div class="card">
+      <p style="margin-bottom:16px;">Five words that describe how the brand behaves — not what it sells.</p>
+      <div>
+        <span class="pill pill-purple">Casually warm</span>
+        <span class="pill pill-purple">Founder-voiced</span>
+        <span class="pill pill-purple">Unpretentious</span>
+        <span class="pill pill-orange">Quietly global</span>
+        <span class="pill pill-orange">Genuinely human</span>
+      </div>
+      <p style="margin-top:18px;font-size:13px;">The brand never shows off its scale (100+ cities). It leads with intimacy — two people having lunch. The global reach is the proof point, not the pitch.</p>
+    </div>
+  </div>
+
+  <!-- Colour Palette -->
+  <div class="section">
+    <div class="section-label">Colour palette</div>
+    <div class="grid-4" style="margin-bottom:12px;">
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#6B3FD4;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand purple</div>
+          <div class="swatch-hex">#6B3FD4</div>
+          <div class="swatch-use">Dominant — backgrounds, UI, forms, hero</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#FF8C3A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm orange</div>
+          <div class="swatch-hex">#FF8C3A</div>
+          <div class="swatch-use">Accent — CTA buttons, footer strip, highlights</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#FFFFFF; border:1px solid #E0D8F5;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-use">Text on purple, card backgrounds, content areas</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-block" style="background:#1A1025;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Near-black</div>
+          <div class="swatch-hex">#1A1025</div>
+          <div class="swatch-use">Body text, dark UI elements</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h3>How they use colour</h3>
+      <p>Purple is the identity — saturated, confident, unexpected for a food/social brand. It signals creativity without trying to look like a design agency. Orange is strictly the action colour: every button, every CTA strip, every moment where something needs to happen is orange. White creates breathing room inside the purple world. The combination reads as playful and warm, not corporate-tech.</p>
+      <p style="margin-top:10px;font-size:12px;background:var(--purple-light);padding:10px 14px;border-radius:6px;color:var(--purple-dark);">⚠️ Exact hex values are approximated from visual observation — the real values may vary ±10 points.</p>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="section">
+    <div class="section-label">Typography</div>
+    <div class="grid-2">
+
+      <div class="card">
+        <div class="type-label">Display / wordmark style</div>
+        <div style="font-size:32px;font-weight:800;letter-spacing:-0.03em;color:var(--purple);text-transform:uppercase;line-height:1.1;margin-bottom:12px;">JOIN THE<br>CREATIVE<br>LUNCH CLUB</div>
+        <p style="font-size:12px;">The footer and headline display uses a <strong style="color:var(--ink);">hand-drawn, chalky, all-caps</strong> style — playful and irreverent. Evokes chalkboards, handmade signs, community bulletin boards. Anti-corporate by design.</p>
+        <p style="font-size:12px;">Exact font unconfirmed — consistent with typefaces like <em>Необычный</em>, <em>Boogaloo</em>, <em>Fredoka One</em>, or a custom lettering file.</p>
+      </div>
+
+      <div class="card">
+        <div class="type-label">Body / UI</div>
+        <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px;line-height:1.2;">Meet other creatives for lunch.</div>
+        <div class="type-body-sample" style="margin-bottom:14px;">A community for people working in the creative industries. No agenda, no name tags, no awkward elevator pitches. Just lunch.</div>
+        <p style="font-size:12px;">Clean, modern sans-serif for all body copy and UI. Likely <strong style="color:var(--ink);">Inter</strong> or a system sans. Generous line-height. Never decorative at small sizes.</p>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <h3>Type rules</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:12px;">
+        <div>
+          <div class="type-label">Display</div>
+          <p style="font-size:13px;">All-caps, hand-drawn style. Used for hero moments only — footer CTA, section headers, event titles. Never body copy.</p>
+        </div>
+        <div>
+          <div class="type-label">Headlines</div>
+          <p style="font-size:13px;">Clean sans-serif, bold or semibold. Short. Benefit-first. "Meet other creatives for lunch." Not "Our platform connects creatives."</p>
+        </div>
+        <div>
+          <div class="type-label">Body</div>
+          <p style="font-size:13px;">Regular weight, comfortable size. Conversational sentences. No bullet-point abuse. Reads like a person talking, not a brand deck.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voice & Tone -->
+  <div class="section">
+    <div class="section-label">Voice & tone</div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-tag green">✓ Say this</div>
+        <div class="voice-text">"Networking events are boring. Lunch isn't."</div>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-tag red">✗ Not this</div>
+        <div class="voice-text">"We facilitate meaningful professional connections in a relaxed environment."</div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-tag green">✓ Say this</div>
+        <div class="voice-text">"There are no rules for lunch."</div>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-tag red">✗ Not this</div>
+        <div class="voice-text">"Our structured yet flexible format enables authentic engagement."</div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-tag green">✓ Say this</div>
+        <div class="voice-text">"Slide in my Insta DMs." (Klaus, founder, literally on the about page)</div>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-tag red">✗ Not this</div>
+        <div class="voice-text">"Contact our team via the enquiry form."</div>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-tag green">✓ Say this</div>
+        <div class="voice-text">"You know that feeling when you find your people? That's exactly what I feel."</div>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-tag red">✗ Not this</div>
+        <div class="voice-text">"Members report high satisfaction and strong community engagement metrics."</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <h3>Voice principles</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px;">
+        <div>
+          <p style="font-size:13px;"><strong style="color:var(--ink);">Personal, not corporate.</strong> Klaus writes in first person on the about page. The brand is a person, not an institution. Use "I" and "you."</p>
+          <p style="font-size:13px;"><strong style="color:var(--ink);">Problem-first.</strong> Name the thing people hate ("networking events are boring") before offering the fix. They feel seen first.</p>
+          <p style="font-size:13px;"><strong style="color:var(--ink);">Understate the scale.</strong> 100+ cities is buried. The pitch is always two people at lunch, not a global platform.</p>
+        </div>
+        <div>
+          <p style="font-size:13px;"><strong style="color:var(--ink);">Let members speak.</strong> The reviews page is the brand's strongest asset. Real quotes, real names, real outcomes. No paraphrasing.</p>
+          <p style="font-size:13px;"><strong style="color:var(--ink);">Casual confidence.</strong> "Et voilà." "Easy as that." Short, complete sentences. No hedging. No "we believe" or "we strive to."</p>
+          <p style="font-size:13px;"><strong style="color:var(--ink);">Outcome-specific.</strong> "Make friends." "Find clients." "Get inspired." Not "grow your network" — too vague and too LinkedIn.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key phrases -->
+  <div class="section">
+    <div class="section-label">Signature phrases — recurring language</div>
+    <div class="card">
+      <p style="margin-bottom:16px;">These phrases appear repeatedly across the site. They are the brand's verbal identity.</p>
+      <div>
+        <span class="phrase">Meet other creatives for lunch</span>
+        <span class="phrase">No rules for lunch</span>
+        <span class="phrase">Networking events are boring</span>
+        <span class="phrase">Find your people</span>
+        <span class="phrase">Modern third place</span>
+        <span class="phrase">Easy as that</span>
+        <span class="phrase">Et voilà</span>
+        <span class="phrase">Low-key</span>
+        <span class="phrase">Real human connection</span>
+        <span class="phrase">Your people</span>
+        <span class="phrase">Thoughtful connections</span>
+        <span class="phrase">Creative industries</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Target audience -->
+  <div class="section">
+    <div class="section-label">Target audience</div>
+    <div class="grid-3">
+
+      <div class="audience-card">
+        <div class="audience-title">Primary — the freelancer</div>
+        <div class="audience-detail">Works alone, from home or a café. Misses the collision of office life — the hallway conversation, the lunch table. Professionally capable but socially isolated. Wants peers, not mentors.</div>
+      </div>
+
+      <div class="audience-card">
+        <div class="audience-title">Secondary — the agency creative</div>
+        <div class="audience-detail">Works at a small creative studio. Wants perspective from outside their bubble. Looking for collaborators, referrals, and fresh ideas from adjacent fields. Tired of LinkedIn.</div>
+      </div>
+
+      <div class="audience-card">
+        <div class="audience-title">Tertiary — the creative switcher</div>
+        <div class="audience-detail">Just moved city, just went freelance, just changed field. Needs to rebuild their network from scratch. CLC is the fastest way to meet people without the awkwardness of cold outreach.</div>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <h3>What they never say to their audience</h3>
+      <p>"Accelerate your career." "Unlock your potential." "Level up." "Scale your business." — These are the phrases of hustle culture and self-help marketing. CLC's audience is exhausted by that register. The brand speaks to the human need (connection, belonging, conversation) and lets professional outcomes follow quietly.</p>
+    </div>
+  </div>
+
+  <!-- Photography -->
+  <div class="section">
+    <div class="section-label">Photography & visual content</div>
+    <div class="grid-2">
+
+      <div class="card">
+        <h3 style="margin-bottom:14px;">What they shoot</h3>
+        <div class="photo-rule">
+          <div class="photo-icon yes">✓</div>
+          <div class="photo-rule-text">Real people laughing at a table<span>Not models. Real members. Food in the frame, but background.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon yes">✓</div>
+          <div class="photo-rule-text">Intimate group size (2–6 people)<span>Never a crowd. The intimacy of the format shows in every photo.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon yes">✓</div>
+          <div class="photo-rule-text">Diverse, international cast<span>Reflects the 100+ cities reality without announcing it.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon yes">✓</div>
+          <div class="photo-rule-text">Natural light, relaxed settings<span>Restaurants, cafés, outdoor tables. Natural and warm.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon yes">✓</div>
+          <div class="photo-rule-text">Genuine moments — mid-conversation<span>Not posed looking at camera. Caught in the act of talking.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:14px;">What they avoid</h3>
+        <div class="photo-rule">
+          <div class="photo-icon no">✗</div>
+          <div class="photo-rule-text">Corporate meeting aesthetics<span>No conference tables, no name tags, no projectors.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon no">✗</div>
+          <div class="photo-rule-text">Stock photography<span>Immediately breaks the authenticity. Audience can tell.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon no">✗</div>
+          <div class="photo-rule-text">Aspirational lifestyle shots<span>No luxury restaurants, no over-styled food, no fashion-mag energy.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon no">✗</div>
+          <div class="photo-rule-text">Solo portraits with title cards<span>This is a community brand, not a speaker brand.</span></div>
+        </div>
+        <div class="photo-rule">
+          <div class="photo-icon no">✗</div>
+          <div class="photo-rule-text">Brand-heavy product shots<span>No mugs with logos, no purple backgrounds. Food and people only.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- What members say -->
+  <div class="section">
+    <div class="section-label">Member language — the brand in their words</div>
+    <div class="quote-grid">
+
+      <div class="quote-card">
+        <div class="quote-text">"You know that feeling when you find your people? That's exactly what I feel."</div>
+        <div class="quote-author">Otega Ajuchi</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-text">"The easiest, most low-key way to grow your network — maybe even make friends."</div>
+        <div class="quote-author">Mara Lehmann</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-text">"A modern third place — also a digital community and a way to network."</div>
+        <div class="quote-author">Inga F Eric</div>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-text">"Everything about Creative Lunch Club makes me happy — the concept, the people."</div>
+        <div class="quote-author">Suma Balaram Schippers</div>
+      </div>
+
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <h3>What these quotes tell you about brand perception</h3>
+      <p>Members don't talk about features (matching, cities, meetups). They talk about feelings: finding their people, belonging, ease. The brand has successfully shifted its value proposition from "networking tool" to "community." That's the hardest thing to do in B2C — and they've done it through consistent voice and format, not advertising.</p>
+    </div>
+  </div>
+
+  <!-- Positioning -->
+  <div class="section">
+    <div class="section-label">Positioning statement (reverse-engineered)</div>
+    <div class="positioning">
+      <p>For <strong>freelance and independent creative professionals</strong> who are professionally capable but personally isolated, Creative Lunch Club is <strong>the community that turns lunch into belonging</strong> — because unlike LinkedIn, networking apps, or industry events, CLC removes the professional performance entirely and replaces it with the most natural human ritual: sharing a meal.</p>
+    </div>
+  </div>
+
+  <!-- What this means for Saged -->
+  <div class="section">
+    <div class="section-label">What this means for Saged as a host venue</div>
+    <div class="grid-2">
+
+      <div class="card" style="border-top:3px solid var(--purple);">
+        <h3>Where Saged fits perfectly</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;font-size:13px;">
+          <div style="display:flex;gap:8px;"><span style="color:var(--purple);font-weight:700;">✓</span> <span>Real community, real space — not a hired room</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--purple);font-weight:700;">✓</span> <span>International mix of residents — fits CLC's diversity value</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--purple);font-weight:700;">✓</span> <span>Hands-on clay activity = memorable moment CLC can photograph</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--purple);font-weight:700;">✓</span> <span>Warm, non-corporate aesthetic matches brand photography style</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--purple);font-weight:700;">✓</span> <span>Diana as host = founder-voiced, personal — same as Klaus's brand energy</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--orange);">
+        <h3>How to speak their language</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;font-size:13px;">
+          <div style="display:flex;gap:8px;"><span style="color:var(--orange);font-weight:700;">→</span> <span>Lead with the feeling, not the features ("clay on your hands, conversation over lunch")</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--orange);font-weight:700;">→</span> <span>Use "community" and "people" — not "clients" or "guests"</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--orange);font-weight:700;">→</span> <span>Short sentences. No corporate hedging. Direct offers.</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--orange);font-weight:700;">→</span> <span>The vegan buffet from a community member is perfect — it's exactly their ethos</span></div>
+          <div style="display:flex;gap:8px;"><span style="color:var(--orange);font-weight:700;">→</span> <span>Don't oversell. CLC trusts understatement.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="meta-note">
+    <strong>Methodology note:</strong> This brand guide was reverse-engineered from public materials — website copy, UI patterns, photography, member testimonials, and form UX — observed September 2026. Colour hex values and font names are approximated from visual observation. This document is a working reference for Saged.club, not an official CLC publication.
+  </div>
+
+</div>
+
+<!-- Orange footer strip -->
+<div class="orange-strip">
+  <h2>Join the Creative Lunch Club</h2>
+  <p>Observed and documented by Saged.club · September 2026</p>
+</div>
+
+</body>
+</html>

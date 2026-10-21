@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saged.club — Font Specimen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Costa';
+      src: url('../assets/fonts/costa-light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Saged Cyrillic';
+      src: url('../assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    :root {
+      --bg: #FAF7F2;
+      --bg-sand: #F1E9DA;
+      --ink: #2A2520;
+      --muted: #6B5F54;
+      --terracotta: #9F4D2D;
+      --sage: #6E7F5A;
+      --line: #E1D6C5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 3rem 2rem 6rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1.page-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1rem;
+    }
+
+    .specimen {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .specimen:last-child { border-bottom: none; }
+
+    .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .use-case {
+      font-size: 11px;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    /* ── Costa Light ── */
+    .costa-hero {
+      font-family: 'Costa', Georgia, serif;
+      font-weight: 300;
+      font-size: 72px;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .costa-large {
+      font-family: 'Costa', Georgia, serif;
+      font-weight: 300;
+      font-size: 48px;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .costa-medium {
+      font-family: 'Costa', Georgia, serif;
+      font-weight: 300;
+      font-size: 32px;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    /* ── Saged Cyrillic ── */
+    .cyrillic-hero {
+      font-family: 'Saged Cyrillic', 'Costa', Georgia, serif;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .cyrillic-large {
+      font-family: 'Saged Cyrillic', 'Costa', Georgia, serif;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .cyrillic-medium {
+      font-family: 'Saged Cyrillic', 'Costa', Georgia, serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: var(--ink);
+    }
+
+    /* ── Inter ── */
+    .inter-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 580px;
+      margin-bottom: 0.75rem;
+    }
+    .inter-small {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 0.75rem;
+    }
+    .inter-caption {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Colour swatches ── */
+    .swatches {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .swatch-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+    .swatch-name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .swatch-value {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    /* ── Live pairing example ── */
+    .pairing {
+      background: var(--bg-sand);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      margin-top: 1.5rem;
+    }
+    .pairing h2 {
+      font-family: 'Saged Cyrillic', 'Costa', Georgia, serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .pairing h3 {
+      font-family: 'Costa', Georgia, serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+    .pairing p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 1.25rem;
+    }
+    .pairing .btn {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.65rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 0.75rem;
+    }
+    .pairing .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title">Saged.club — Font Specimen &amp; Colour Tokens</h1>
+
+  <!-- ── 1. Costa Light ─────────────────────────────────── -->
+  <div class="specimen">
+    <div class="label">Costa Light</div>
+    <div class="use-case">Used for: Latin display headings (h1, h2, h3), nav, language switcher</div>
+
+    <div class="costa-hero">Saged.club</div>
+    <div class="costa-large">Ceramics &amp; Culture</div>
+    <div class="costa-medium">Valencia old city</div>
+  </div>
+
+  <!-- ── 2. Saged Cyrillic ──────────────────────────────── -->
+  <div class="specimen">
+    <div class="label">Saged Cyrillic v1.396</div>
+    <div class="use-case">Used for: Cyrillic display headings (h1, h2) — custom brand display face</div>
+
+    <div class="cyrillic-hero">Керамика</div>
+    <div class="cyrillic-large">Студия Сейдж</div>
+    <div class="cyrillic-medium">Валенсия, старый город</div>
+  </div>
+
+  <!-- ── 3. Inter ───────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="label">Inter (Google Fonts)</div>
+    <div class="use-case">Used for: body text, h2/h3 on sub-pages, UI labels, captions, buttons</div>
+
+    <div class="inter-body">Два занятия — лепим и расписываем. Всё включено: глина, глазурь, обжиг, инструменты. Уносите готовое изделие домой.</div>
+    <div class="inter-small">€60 · Каждый четверг · Старый город Валенсии · Группы до 6 человек</div>
+    <div class="inter-caption">Студия · Детям · События · Подарки</div>
+  </div>
+
+  <!-- ── 4. Colour tokens ───────────────────────────────── -->
+  <div class="specimen">
+    <div class="label">Colour Tokens</div>
+    <div class="use-case">Defined as CSS custom properties in :root of style.css</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-box" style="background:#FAF7F2;"></div>
+        <div class="swatch-name">--bg</div>
+        <div class="swatch-value">#FAF7F2</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#F1E9DA;"></div>
+        <div class="swatch-name">--bg-sand</div>
+        <div class="swatch-value">#F1E9DA</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#2A2520;"></div>
+        <div class="swatch-name">--ink</div>
+        <div class="swatch-value">#2A2520</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#6B5F54;"></div>
+        <div class="swatch-name">--muted</div>
+        <div class="swatch-value">#6B5F54</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#9F4D2D;"></div>
+        <div class="swatch-name">--terracotta</div>
+        <div class="swatch-value">#9F4D2D</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#6E7F5A;"></div>
+        <div class="swatch-name">--sage</div>
+        <div class="swatch-value">#6E7F5A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#E1D6C5;"></div>
+        <div class="swatch-name">--line</div>
+        <div class="swatch-value">#E1D6C5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. Live pairing example ────────────────────────── -->
+  <div class="specimen">
+    <div class="label">Live Pairing — as it looks on a real section</div>
+    <div class="use-case">Saged Cyrillic hero + Costa subhead + Inter body + terracotta button</div>
+    <div class="pairing">
+      <h2>Керамика с Корицей</h2>
+      <h3>Two-day ceramics course — €60, everything included</h3>
+      <p>Два занятия в студии старого города Валенсии. Лепим, расписываем, обжигаем. Готовое изделие — ваше.</p>
+      <a class="btn" href="#">Записаться →</a>
+      <a class="btn btn-ghost" href="#">Написать в WhatsApp</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saged.club — Finances 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --bg: #faf8f5;
+    --sand: #f0ebe3;
+    --terracotta: #b85c38;
+    --sage: #7a8c6e;
+    --muted: #8a8178;
+    --positive: #5a8a6e;
+    --negative: #b85c38;
+    --warning: #c08020;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); padding: 2rem; font-size: 14px; max-width: 900px; margin: 0 auto; }
+  h1 { font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 0.25rem; }
+  h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2.5rem; font-size: 13px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .card { background: white; border-radius: 8px; padding: 1.5rem; border: 1px solid #e8e2da; }
+  .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.5rem; }
+  .card .value { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 600; }
+  .card .value.neg { color: var(--negative); }
+  .card .value.pos { color: var(--positive); }
+  .card .value.warn { color: var(--warning); }
+  .card .note { font-size: 11px; color: var(--muted); margin-top: 0.4rem; }
+  .section { background: white; border-radius: 8px; padding: 1.5rem; border: 1px solid #e8e2da; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 0 0.75rem 0.75rem; border-bottom: 1px solid #e8e2da; }
+  th:not(:first-child) { text-align: right; }
+  td { padding: 0.65rem 0.75rem; border-bottom: 1px solid #f0ece6; font-size: 13px; }
+  td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.total td { border-top: 2px solid #e8e2da; border-bottom: none; font-weight: 600; }
+  .neg { color: var(--negative); }
+  .pos { color: var(--positive); }
+  .warn { color: var(--warning); }
+  .muted { color: var(--muted); font-size: 12px; }
+
+  /* Bar chart */
+  .chart { margin-top: 0.5rem; }
+  .chart-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.7rem; }
+  .chart-label { width: 2.8rem; font-size: 12px; color: var(--muted); flex-shrink: 0; }
+  .chart-track { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .bar { height: 9px; border-radius: 3px; min-width: 2px; }
+  .bar.income { background: var(--sage); }
+  .bar.expense { background: #e8c4b0; }
+  .bar.target { background: #c8d8c0; border: 1px dashed var(--sage); height: 7px; }
+  .chart-val { width: 4rem; text-align: right; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+  .legend { display: flex; gap: 1.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 12px; color: var(--muted); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* Progress bar */
+  .progress-wrap { background: #f0ece6; border-radius: 4px; height: 8px; margin: 0.5rem 0 0.25rem; overflow: hidden; }
+  .progress-bar { height: 100%; border-radius: 4px; background: var(--sage); }
+  .progress-bar.warn { background: var(--warning); }
+
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 0.55rem 0; border-bottom: 1px solid #f0ece6; font-size: 13px; }
+  .row:last-child { border-bottom: none; }
+  .row strong { font-weight: 600; }
+  .tag { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 500; margin-left: 6px; }
+  .tag.new { background: #e8f0e8; color: var(--sage); }
+  .tag.partial { background: #f0ece6; color: var(--muted); }
+
+  .vs-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid #f0ece6; font-size: 13px; gap: 1rem; }
+  .vs-row:last-child { border-bottom: none; }
+  .vs-label { flex: 1; }
+  .vs-plan { color: var(--muted); text-align: right; min-width: 70px; }
+  .vs-actual { font-weight: 500; text-align: right; min-width: 70px; }
+  .vs-delta { font-size: 11px; text-align: right; min-width: 60px; }
+
+  @media (max-width: 640px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    body { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Saged.club</h1>
+<p class="subtitle">Financial overview · Updated July 25, 2026</p>
+
+<!-- Geo bug warning -->
+<div style="background:#fff8f0;border:1.5px solid #e0a060;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+  <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#c08020;margin-bottom:0.6rem;font-weight:600;">⚠️ Wasted ad spend — targeting bugs</div>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:0 0.75rem 0.5rem 0;color:#8a8178;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid #e8d8c0;">Bug</th>
+        <th style="text-align:right;padding:0 0 0.5rem 0.75rem;color:#8a8178;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid #e8d8c0;">Wasted spend</th>
+        <th style="text-align:right;padding:0 0 0.5rem 0.75rem;color:#8a8178;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid #e8d8c0;">Lost revenue (est.)</th>
+        <th style="text-align:right;padding:0 0 0.5rem 0.75rem;color:#8a8178;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid #e8d8c0;">Lost net (est.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem 0.75rem 0.5rem 0;border-bottom:1px solid #f0e8d8;">Wrong locale IDs <span style="font-size:11px;color:#8a8178;">May–Jun 2026, 30 days</span></td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid #f0e8d8;color:#b85c38;">€141.89</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid #f0e8d8;color:#8a8178;">~€540</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid #f0e8d8;color:#8a8178;">~€405</td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem 0.75rem 0.5rem 0;border-bottom:1px solid #f0e8d8;">Wrong city key — Egypt <span style="font-size:11px;color:#8a8178;">Jun–Jul 2026, 6 weeks</span></td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid #f0e8d8;color:#b85c38;">€95.46</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid #f0e8d8;color:#8a8178;">~€420</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid #f0e8d8;color:#8a8178;">~€315</td>
+      </tr>
+      <tr style="font-weight:600;">
+        <td style="padding:0.5rem 0.75rem 0.5rem 0;">Total</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;color:#b85c38;">€237.35</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;color:#8a8178;">~€960</td>
+        <td style="text-align:right;padding:0.5rem 0 0.5rem 0.75rem;color:#8a8178;">~€720</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#8a8178;margin-top:0.75rem;line-height:1.6">Both bugs are fixed. Locale IDs now verified at runtime (Jun 9). City key now verified via API (Jul 20). The €237.35 wasted spend is included in the monthly totals above — it produced zero bookings.</p>
+</div>
+
+<!-- KPI cards -->
+<div class="grid-3">
+  <div class="card">
+    <div class="label">Total income (Feb–Jul)</div>
+    <div class="value">€4,493</div>
+    <div class="note">Across 6 months</div>
+  </div>
+  <div class="card">
+    <div class="label">Total loss to date</div>
+    <div class="value neg">−€6,580</div>
+    <div class="note">Excl. €23k setup sunk cost</div>
+  </div>
+  <div class="card">
+    <div class="label">Break-even target</div>
+    <div class="value">€1,935</div>
+    <div class="note">Per month with ads</div>
+  </div>
+</div>
+
+<!-- Monthly P&L table + chart -->
+<div class="section">
+  <h2>Monthly P&L</h2>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--sage)"></div> Income</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e8c4b0"></div> Expenses</div>
+  </div>
+  <div class="chart">
+    <div class="chart-row">
+      <div class="chart-label">Feb</div>
+      <div class="chart-track">
+        <div class="bar income" style="width:4%"></div>
+        <div class="bar expense" style="width:84%"></div>
+      </div>
+      <div class="chart-val neg">−€1,534</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Mar</div>
+      <div class="chart-track">
+        <div class="bar income" style="width:51%"></div>
+        <div class="bar expense" style="width:89%"></div>
+      </div>
+      <div class="chart-val neg">−€745</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Apr</div>
+      <div class="chart-track">
+        <div class="bar income" style="width:37%"></div>
+        <div class="bar expense" style="width:87%"></div>
+      </div>
+      <div class="chart-val neg">−€959</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">May</div>
+      <div class="chart-track">
+        <div class="bar income" style="width:26%"></div>
+        <div class="bar expense" style="width:95%"></div>
+      </div>
+      <div class="chart-val neg">−€1,332</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Jun</div>
+      <div class="chart-track">
+        <div class="bar income" style="width:58%"></div>
+        <div class="bar expense" style="width:100%"></div>
+      </div>
+      <div class="chart-val neg">−€920</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">Jul ✦</div>
+      <div class="chart-track">
+        <div class="bar income" style="width:54%"></div>
+        <div class="bar expense" style="width:97%"></div>
+      </div>
+      <div class="chart-val warn">−€891</div>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:0.75rem">✦ July to 25th only · expenses include Meta €101 + materials €160 + water €185</p>
+  <br>
+  <table>
+    <thead>
+      <tr><th>Month</th><th>Income</th><th>Expenses</th><th>Net</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>February</td><td>€80</td><td>€1,614</td><td class="neg">−€1,534</td></tr>
+      <tr><td>March</td><td>€982</td><td>€1,727</td><td class="neg">−€745</td></tr>
+      <tr><td>April</td><td>€716</td><td>€1,674</td><td class="neg">−€959</td></tr>
+      <tr><td>May</td><td>€494</td><td>€1,826</td><td class="neg">−€1,332</td></tr>
+      <tr><td>June</td><td>€1,123</td><td>€2,043</td><td class="neg">−€920</td></tr>
+      <tr><td>July <span class="muted">(to 25th)</span></td><td class="pos">€1,098</td><td class="warn">€1,989</td><td class="neg">−€891</td></tr>
+      <tr class="total"><td>Total</td><td>€4,493</td><td>€11,073</td><td class="neg">−€6,580</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- July detail -->
+<div class="grid-2">
+  <div class="section">
+    <h2>July income</h2>
+    <div class="row"><span>Before Jul 9</span><span>€360</span></div>
+    <div class="row"><span>Coworking (Ekaterina)</span><span>€200</span></div>
+    <div class="row"><span>Jul 11 — ceramics</span><span>€87.50</span></div>
+    <div class="row"><span>Jul 12 — ceramics</span><span>€60</span></div>
+    <div class="row"><span>Jul 16</span><span>€37.50</span></div>
+    <div class="row"><span>Jul 18</span><span>€50</span></div>
+    <div class="row"><span>Jul 19</span><span>€25</span></div>
+    <div class="row"><span>Jul 21</span><span>€50</span></div>
+    <div class="row"><span>Kiln</span><span>€43</span></div>
+    <div class="row"><span>Stripe — CACAO & SOUND × 2 <span class="tag new">Stripe</span></span><span>€80</span></div>
+    <div class="row"><span>Stripe — CACAO & SOUND <span class="tag new">Stripe</span></span><span>€40</span></div>
+    <div class="row"><span>Stripe — subscription <span class="tag new">Stripe</span></span><span>€10</span></div>
+    <div class="row"><span>Jul 23 — class</span><span>€25</span></div>
+    <div class="row"><span>Jul 25 — class</span><span>€30</span></div>
+    <div class="row"><strong>Total to Jul 25</strong><strong class="pos">€1,098</strong></div>
+    <div class="row"><span>Expected to Jul 31</span><span class="warn">+€65</span></div>
+    <div class="row"><strong>Projected full month</strong><strong class="pos">€1,163</strong></div>
+  </div>
+
+  <div class="section">
+    <h2>July expenses</h2>
+    <div class="row"><span>Rent</span><span>€1,173</span></div>
+    <div class="row"><span>Accountant</span><span>€70</span></div>
+    <div class="row"><span>Social tax (autónomo)</span><span>€300</span></div>
+    <div class="row"><span>Meta ads (Jul 1–23) <span class="tag new">actual</span></span><span>€101</span></div>
+    <div class="row"><span>Materials <span class="tag new">added</span></span><span>€160</span></div>
+    <div class="row"><span>Viva Aqua — water <span class="tag new">actual</span></span><span>€36.91</span></div>
+    <div class="row"><span>Valencia-aqua — water <span class="tag new">actual</span></span><span>€147.70</span></div>
+    <div class="row"><strong>Total to Jul 23</strong><strong>€1,989</strong></div>
+    <br>
+    <div class="muted">Remaining ~8 days: ~€30 more Meta ads expected</div>
+  </div>
+</div>
+
+<!-- Plan A comparison -->
+<div class="section">
+  <h2>July vs Plan A projection</h2>
+  <p class="muted" style="margin-bottom:1.25rem">Plan A Q1 target (Jun–Aug 2026): 12 adult students + 8 kids/month at current prices</p>
+
+  <div class="vs-row">
+    <div class="vs-label">Income target</div>
+    <div class="vs-plan">€1,310</div>
+    <div class="vs-actual">€1,098 <span class="muted">(to 25th)</span></div>
+    <div class="vs-delta warn">84% ↑ 6 days left</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-label">Projected full-month income</div>
+    <div class="vs-plan">€1,310</div>
+    <div class="vs-actual">€1,163</div>
+    <div class="vs-delta warn">89%</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-label">Expenses</div>
+    <div class="vs-plan">€1,817</div>
+    <div class="vs-actual">~€2,020</div>
+    <div class="vs-delta neg">+€203 over</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-label">Net (projected full month)</div>
+    <div class="vs-plan">−€507</div>
+    <div class="vs-actual">~−€857</div>
+    <div class="vs-delta neg">−€350</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-label">Break-even gap</div>
+    <div class="vs-plan">€1,935</div>
+    <div class="vs-actual">€772 short</div>
+    <div class="vs-delta warn">60% of target</div>
+  </div>
+
+
+  <br>
+  <div class="muted" style="line-height:1.8">
+    <strong style="color:var(--ink)">What's missing:</strong> Plan A assumed 12 adult students at €60 + 8 kids at €30 + 1 birthday at €350/month. July's income looks mostly single-session drop-ins (€25–€60) + Cacao &amp; Sound event (€120 via Stripe) with no birthday party captured yet. The coworking €200 is a bonus not in Plan A.<br><br>
+    <strong style="color:var(--ink)">Geo fix impact:</strong> Ads only started hitting Valencia correctly on July 20. First real conversion data arrives this week — the next 7 days are the first meaningful signal.
+  </div>
+
+  <br>
+  <div class="label" style="margin-bottom:0.4rem">Progress to break-even (€1,935)</div>
+  <div class="progress-wrap">
+    <div class="progress-bar warn" style="width:60%"></div>
+  </div>
+  <div class="muted">€1,163 projected income / €1,935 target — 60% · expenses higher than plan due to water bills (€185)</div>
+</div>
+
+<!-- Ad spend -->
+<div class="section">
+  <h2>Active ad spend</h2>
+  <table>
+    <thead>
+      <tr><th>Ad set</th><th>Daily</th><th>Jul 1–23 actual</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Kids · RU</td><td>€3.00</td><td>—</td></tr>
+      <tr><td>Kids · UA</td><td>€2.00</td><td>—</td></tr>
+      <tr><td>Workshops · UA</td><td>€2.00</td><td>—</td></tr>
+      <tr><td>Workshops · RU</td><td>€1.50</td><td>—</td></tr>
+      <tr><td>Coworking</td><td>€1.50</td><td>—</td></tr>
+      <tr><td>Workshops · EN</td><td>€0.90</td><td>—</td></tr>
+      <tr><td>Workshops · ES</td><td>€0.90</td><td>—</td></tr>
+      <tr><td>IG posts (boosted)</td><td>varies</td><td>—</td></tr>
+      <tr class="total"><td>All campaigns combined</td><td>~€11.80</td><td><strong>€101.09</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:0.75rem">⚠️ Zero campaign-attributed bookings so far. Ads only targeting Valencia correctly since Jul 20.</p>
+</div>
+
+</body>
+</html>

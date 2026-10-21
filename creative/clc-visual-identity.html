@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Lunch Club — Visual Identity Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Boogaloo&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      /* CLC Brand tokens */
+      --clc-purple:       #6B3FD4;
+      --clc-purple-mid:   #8B5CF6;
+      --clc-purple-light: #EDE9FE;
+      --clc-purple-dark:  #4C1D95;
+      --clc-orange:       #FF8C3A;
+      --clc-orange-dark:  #E5720A;
+      --clc-orange-light: #FFF3E8;
+      --clc-white:        #FFFFFF;
+      --clc-ink:          #1A1025;
+      --clc-muted:        #6E6080;
+      --clc-bg:           #FAFAFA;
+      --clc-border:       #E8E0F5;
+
+      /* Book layout */
+      --page-bg: #F0EDF8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page-bg);
+      color: var(--clc-ink);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════
+       BOOK PAGES
+    ══════════════════════════════════════ */
+
+    .page {
+      max-width: 1040px;
+      margin: 40px auto;
+      background: var(--clc-white);
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(107,63,212,0.12), 0 1px 4px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .page-inner {
+      padding: 72px 80px;
+    }
+
+    /* ══════════════════════════════════════
+       COVER PAGE
+    ══════════════════════════════════════ */
+
+    .cover {
+      background: var(--clc-purple);
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 72px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      left: -120px; bottom: -120px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(255,140,58,0.08);
+    }
+
+    .cover-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .cover-title {
+      font-family: 'Boogaloo', 'Inter', sans-serif;
+      font-size: 96px;
+      line-height: 0.95;
+      color: var(--clc-white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-title span { color: var(--clc-orange); }
+
+    .cover-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      max-width: 360px;
+      line-height: 1.6;
+    }
+
+    .cover-meta {
+      text-align: right;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════
+       CHAPTER HEADERS
+    ══════════════════════════════════════ */
+
+    .chapter-header {
+      background: var(--clc-purple);
+      padding: 56px 80px 48px;
+      color: var(--clc-white);
+    }
+
+    .chapter-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    .chapter-title {
+      font-family: 'Boogaloo', sans-serif;
+      font-size: 52px;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--clc-white);
+      margin-bottom: 14px;
+    }
+
+    .chapter-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION LABELS
+    ══════════════════════════════════════ */
+
+    .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clc-muted);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--clc-border);
+    }
+
+    .section { margin-bottom: 56px; }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--clc-ink);
+    }
+
+    p { color: var(--clc-muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ══════════════════════════════════════
+       COLOUR SYSTEM
+    ══════════════════════════════════════ */
+
+    .swatch-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--clc-border);
+      margin-bottom: 16px;
+    }
+
+    .swatch-col { }
+
+    .swatch-color {
+      height: 120px;
+    }
+
+    .swatch-info {
+      padding: 14px 16px;
+      background: var(--clc-white);
+      border-top: 1px solid var(--clc-border);
+    }
+
+    .swatch-name { font-size: 12px; font-weight: 700; color: var(--clc-ink); margin-bottom: 2px; }
+    .swatch-hex  { font-size: 11px; font-family: monospace; color: var(--clc-muted); margin-bottom: 4px; }
+    .swatch-role { font-size: 11px; color: var(--clc-muted); line-height: 1.4; }
+
+    /* Colour combos */
+    .combo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .combo {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--clc-border);
+    }
+
+    .combo-preview {
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      min-height: 90px;
+    }
+
+    .combo-label {
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--clc-muted);
+      background: var(--clc-white);
+      border-top: 1px solid var(--clc-border);
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════
+       TYPOGRAPHY SYSTEM
+    ══════════════════════════════════════ */
+
+    .type-specimen {
+      border: 1px solid var(--clc-border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .type-preview {
+      padding: 40px 40px 32px;
+      background: var(--clc-white);
+    }
+
+    .type-meta {
+      padding: 14px 20px;
+      background: var(--clc-bg);
+      border-top: 1px solid var(--clc-border);
+      display: flex;
+      gap: 24px;
+      font-size: 11px;
+      color: var(--clc-muted);
+    }
+
+    .type-meta strong { color: var(--clc-ink); font-weight: 600; }
+
+    .type-scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: 32px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--clc-border);
+      flex-wrap: wrap;
+    }
+
+    .type-scale-row:last-child { border-bottom: none; }
+
+    .type-scale-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clc-muted);
+      width: 90px;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       COMPONENT LIBRARY
+    ══════════════════════════════════════ */
+
+    .component-box {
+      border: 1px solid var(--clc-border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .component-preview {
+      padding: 40px;
+      background: var(--clc-white);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .component-preview.dark {
+      background: var(--clc-purple);
+    }
+
+    .component-spec {
+      padding: 14px 20px;
+      background: var(--clc-bg);
+      border-top: 1px solid var(--clc-border);
+      font-size: 11px;
+      color: var(--clc-muted);
+      line-height: 1.7;
+    }
+
+    .component-spec code {
+      background: var(--clc-border);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+      color: var(--clc-ink);
+      font-size: 10.5px;
+    }
+
+    /* ── Actual CLC components ── */
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--clc-orange);
+      color: var(--clc-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: var(--clc-orange-dark); }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--clc-purple);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 34px;
+      border-radius: 50px;
+      border: 2px solid var(--clc-purple);
+      cursor: pointer;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--clc-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px 0;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .btn-join {
+      display: inline-block;
+      background: var(--clc-orange);
+      color: var(--clc-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      background: var(--clc-purple);
+      color: var(--clc-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Form components */
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 300px;
+    }
+
+    .form-label-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--clc-white);
+    }
+
+    .form-input {
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.12);
+      color: var(--clc-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-input::placeholder { color: rgba(255,255,255,0.4); }
+
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--clc-orange);
+      color: var(--clc-white);
+      padding: 16px 22px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      max-width: 340px;
+    }
+
+    .checkbox-icon {
+      width: 22px; height: 22px;
+      background: var(--clc-white);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--clc-orange);
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      display: flex;
+      gap: 4px;
+      padding: 16px 0;
+      width: 100%;
+    }
+
+    .progress-seg {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+    }
+
+    .progress-seg.done { background: var(--clc-orange); }
+    .progress-seg.active { background: var(--clc-orange); opacity: 0.5; }
+    .progress-seg.todo { background: rgba(255,255,255,0.2); }
+
+    /* Pricing card */
+    .pricing-card {
+      background: var(--clc-white);
+      border: 2px solid var(--clc-purple);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      width: 220px;
+    }
+
+    .pricing-period {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clc-purple);
+      margin-bottom: 12px;
+    }
+
+    .pricing-amount {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--clc-ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pricing-sub {
+      font-size: 12px;
+      color: var(--clc-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Navigation */
+    .nav-demo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: var(--clc-white);
+      border: 1px solid var(--clc-border);
+      border-radius: 10px;
+    }
+
+    .nav-logo {
+      font-family: 'Boogaloo', sans-serif;
+      font-size: 20px;
+      color: var(--clc-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--clc-muted);
+      text-decoration: none;
+    }
+
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+    .nav-login {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--clc-ink);
+    }
+
+    /* Member card */
+    .member-card {
+      background: var(--clc-white);
+      border: 1px solid var(--clc-border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .member-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--clc-purple-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--clc-purple);
+      flex-shrink: 0;
+    }
+
+    .member-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .member-role { font-size: 12px; color: var(--clc-muted); margin-bottom: 8px; }
+    .member-city { font-size: 11px; color: var(--clc-muted); }
+    .member-tag {
+      display: inline-block;
+      background: var(--clc-purple-light);
+      color: var(--clc-purple);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Quote block */
+    .quote-block {
+      border-left: 3px solid var(--clc-orange);
+      padding: 16px 20px;
+      background: var(--clc-orange-light);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-text {
+      font-size: 15px;
+      color: var(--clc-ink);
+      font-style: italic;
+      line-height: 1.65;
+      margin-bottom: 8px;
+    }
+
+    .quote-author { font-size: 12px; font-weight: 600; color: var(--clc-muted); }
+
+    /* Orange strip component */
+    .orange-strip-demo {
+      background: var(--clc-orange);
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .orange-strip-title {
+      font-family: 'Boogaloo', sans-serif;
+      font-size: 42px;
+      color: var(--clc-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    .orange-strip-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ══════════════════════════════════════
+       GRID + SPACING
+    ══════════════════════════════════════ */
+
+    .spacing-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--clc-border);
+    }
+
+    .spacing-row:last-child { border-bottom: none; }
+
+    .spacing-box {
+      background: var(--clc-purple-light);
+      border: 1px solid var(--clc-purple);
+    }
+
+    .spacing-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--clc-muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════════════
+       DESIGN PRINCIPLES
+    ══════════════════════════════════════ */
+
+    .principle {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--clc-border);
+    }
+
+    .principle:last-child { border-bottom: none; }
+
+    .principle-num {
+      font-family: 'Boogaloo', sans-serif;
+      font-size: 40px;
+      color: var(--clc-purple-light);
+      line-height: 1;
+      width: 48px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .principle-title { font-size: 15px; font-weight: 700; color: var(--clc-ink); margin-bottom: 4px; }
+    .principle-body  { font-size: 13px; color: var(--clc-muted); line-height: 1.6; }
+
+    /* ══════════════════════════════════════
+       LAYOUTS / PAGE ANATOMY
+    ══════════════════════════════════════ */
+
+    .layout-demo {
+      border: 1px solid var(--clc-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .layout-nav-bar {
+      background: var(--clc-white);
+      border-bottom: 1px solid var(--clc-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .layout-hero {
+      background: var(--clc-purple);
+      padding: 48px 32px 40px;
+      color: var(--clc-white);
+    }
+
+    .layout-hero-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 14px;
+    }
+
+    .layout-hero-h {
+      font-family: 'Boogaloo', sans-serif;
+      font-size: 52px;
+      text-transform: uppercase;
+      color: var(--clc-white);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .layout-hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      max-width: 420px;
+      margin-bottom: 24px;
+    }
+
+    .layout-content {
+      background: var(--clc-white);
+      padding: 40px 32px;
+    }
+
+    .layout-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .layout-card {
+      border: 1px solid var(--clc-border);
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 12px;
+      color: var(--clc-muted);
+    }
+
+    .layout-card-title { font-size: 13px; font-weight: 600; color: var(--clc-ink); margin-bottom: 6px; }
+
+    .layout-cta {
+      background: var(--clc-orange);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════════════
+       FORM PAGE ANATOMY (from screenshots)
+    ══════════════════════════════════════ */
+
+    .form-page-demo {
+      background: var(--clc-purple);
+      padding: 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .form-page-top {
+      padding: 24px 40px 0;
+    }
+
+    .form-page-body {
+      padding: 48px 80px 56px;
+      min-height: 320px;
+    }
+
+    .form-page-footer {
+      background: var(--clc-orange);
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    .form-page-footer-text {
+      font-family: 'Boogaloo', sans-serif;
+      font-size: 24px;
+      color: var(--clc-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ══════════════════════════════════════
+       DIVIDERS
+    ══════════════════════════════════════ */
+
+    .divider {
+      height: 1px;
+      background: var(--clc-border);
+      margin: 48px 0;
+    }
+
+    /* ══════════════════════════════════════
+       GRID UTIL
+    ══════════════════════════════════════ */
+
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    /* ══════════════════════════════════════
+       FOOTNOTE
+    ══════════════════════════════════════ */
+
+    .footnote {
+      text-align: center;
+      font-size: 11px;
+      color: #9090A0;
+      padding: 40px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-eyebrow">Visual Identity Book · Reverse-Engineered · September 2026</div>
+    <div class="cover-title">Creative<br>Lunch<br><span>Club</span></div>
+    <div class="cover-bottom">
+      <div class="cover-sub">A complete design system built from observation of public materials — UI, colour, type, components, and layout patterns.</div>
+      <div class="cover-meta">
+        Produced for Saged.club<br>
+        Not an official document<br>
+        creativelunchclub.com
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     01 · COLOUR SYSTEM
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 01</div>
+    <div class="chapter-title">Colour System</div>
+    <div class="chapter-sub">Five tokens, two roles — purple owns the identity, orange owns the action.</div>
+  </div>
+
+  <div class="page-inner">
+
+    <div class="section">
+      <div class="label">Primary palette</div>
+      <div class="swatch-row">
+
+        <div class="swatch-col">
+          <div class="swatch-color" style="background:#6B3FD4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Brand Purple</div>
+            <div class="swatch-hex">#6B3FD4</div>
+            <div class="swatch-role">Identity colour. Backgrounds, forms, hero sections, navigation highlights.</div>
+          </div>
+        </div>
+
+        <div class="swatch-col">
+          <div class="swatch-color" style="background:#FF8C3A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Action Orange</div>
+            <div class="swatch-hex">#FF8C3A</div>
+            <div class="swatch-role">Every CTA, every button, every moment that requires action. Never decorative.</div>
+          </div>
+        </div>
+
+        <div class="swatch-col">
+          <div class="swatch-color" style="background:#FFFFFF; border-bottom:1px solid #E8E0F5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex">#FFFFFF</div>
+            <div class="swatch-role">Text on purple. Content area backgrounds. Card fills. Breathing room.</div>
+          </div>
+        </div>
+
+        <div class="swatch-col">
+          <div class="swatch-color" style="background:#1A1025;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Ink</div>
+            <div class="swatch-hex">#1A1025</div>
+            <div class="swatch-role">Body text on white backgrounds. Headlines in content areas.</div>
+          </div>
+        </div>
+
+        <div class="swatch-col">
+          <div class="swatch-color" style="background:#6E6080;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Muted</div>
+            <div class="swatch-hex">#6E6080</div>
+            <div class="swatch-role">Secondary text, captions, meta info. Never used for primary messages.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Colour combinations — what works</div>
+      <div class="combo-grid">
+
+        <div class="combo">
+          <div class="combo-preview" style="background:#6B3FD4;color:#FFFFFF;">White on Purple</div>
+          <div class="combo-label">Primary text combination. Used for all body copy and headlines on purple backgrounds. High contrast, high legibility.</div>
+        </div>
+
+        <div class="combo">
+          <div class="combo-preview" style="background:#FF8C3A;color:#FFFFFF;">White on Orange</div>
+          <div class="combo-label">Button labels. CTA text. Always white on orange — never purple or dark text on orange buttons.</div>
+        </div>
+
+        <div class="combo">
+          <div class="combo-preview" style="background:#FF8C3A;color:#6B3FD4;font-family:'Boogaloo',sans-serif;font-size:22px;text-transform:uppercase;">Purple on Orange</div>
+          <div class="combo-label">Display headlines on the orange footer strip. The only instance of purple text — and only in the Boogaloo display font.</div>
+        </div>
+
+        <div class="combo">
+          <div class="combo-preview" style="background:#FFFFFF;color:#6B3FD4;">Purple on White</div>
+          <div class="combo-label">Links, nav items, secondary actions in content areas. Also used for logo/wordmark on white backgrounds.</div>
+        </div>
+
+        <div class="combo">
+          <div class="combo-preview" style="background:#FFFFFF;color:#1A1025;">Ink on White</div>
+          <div class="combo-label">Body text in content sections. The default for all long-form reading.</div>
+        </div>
+
+        <div class="combo">
+          <div class="combo-preview" style="background:#6B3FD4;color:#FF8C3A;font-weight:800;">Orange on Purple</div>
+          <div class="combo-label">Accent headlines, price callouts, emphasis text on purple backgrounds. Used sparingly.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Colour rule</div>
+      <div style="background:#1A1025;color:white;border-radius:10px;padding:28px 32px;">
+        <p style="color:rgba(255,255,255,0.75);font-size:15px;line-height:1.7;margin:0;"><strong style="color:#FF8C3A;">Purple is the world. Orange is the door.</strong> Every page lives in purple. Every moment of action (button, CTA strip, confirmation state) is orange. The two colours never compete — orange only appears when something needs to happen. This binary creates instant clarity: if it's orange, click it.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     02 · TYPOGRAPHY
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 02</div>
+    <div class="chapter-title">Typography</div>
+    <div class="chapter-sub">Two families, two registers — chalk-board display and clean sans-serif body. Never mix roles.</div>
+  </div>
+
+  <div class="page-inner">
+
+    <div class="section">
+      <div class="label">Display typeface — Boogaloo (or equivalent chalk/handmade sans)</div>
+      <div class="type-specimen">
+        <div class="type-preview" style="background:var(--clc-purple);">
+          <div style="font-family:'Boogaloo',sans-serif;font-size:80px;text-transform:uppercase;color:var(--clc-white);line-height:0.95;letter-spacing:0.01em;">Join The<br>Creative<br><span style="color:var(--clc-orange);">Lunch Club</span></div>
+        </div>
+        <div class="type-meta">
+          <span><strong>Family:</strong> Boogaloo / chalk handmade sans</span>
+          <span><strong>Weight:</strong> Regular (400) — the letterform does the work</span>
+          <span><strong>Case:</strong> Always uppercase</span>
+          <span><strong>Use:</strong> Hero headings, footer CTA, section display titles only</span>
+        </div>
+      </div>
+
+      <div class="type-specimen" style="margin-top:10px;">
+        <div class="type-preview" style="background:var(--clc-orange);">
+          <div style="font-family:'Boogaloo',sans-serif;font-size:48px;text-transform:uppercase;color:var(--clc-purple);line-height:1;letter-spacing:0.03em;">JOIN THE CREATIVE LUNCH CLUB</div>
+        </div>
+        <div class="type-meta">
+          <span><strong>Footer strip usage:</strong> Purple text on orange. Only instance of purple text in the system.</span>
+          <span><strong>Size:</strong> 40–56px at 1040px canvas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Body typeface — Inter (system sans-serif)</div>
+      <div class="type-specimen">
+        <div class="type-preview">
+          <div style="margin-bottom:24px;">
+            <div style="font-size:32px;font-weight:700;letter-spacing:-0.03em;color:var(--clc-ink);line-height:1.1;margin-bottom:8px;">Meet other creatives for lunch.</div>
+            <div style="font-size:17px;font-weight:300;color:var(--clc-muted);line-height:1.65;max-width:500px;">A community for people working in the creative industries. No agenda, no name tags, no awkward elevator pitches. Just lunch.</div>
+          </div>
+          <div style="font-size:13px;color:var(--clc-muted);">Navigation link &nbsp;·&nbsp; <span style="font-weight:600;color:var(--clc-ink);">Active nav item</span> &nbsp;·&nbsp; <span style="color:var(--clc-purple);">Hyperlink style</span></div>
+        </div>
+        <div class="type-meta">
+          <span><strong>Family:</strong> Inter</span>
+          <span><strong>Weights used:</strong> 300 (light body), 400 (body), 500 (labels), 600 (subheads), 700 (headlines), 800 (prices)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Type scale</div>
+      <div style="border:1px solid var(--clc-border);border-radius:10px;padding:24px 32px;">
+
+        <div class="type-scale-row">
+          <div class="type-scale-label">Display</div>
+          <div style="font-family:'Boogaloo',sans-serif;font-size:64px;text-transform:uppercase;color:var(--clc-purple);line-height:1;">Lunch Club</div>
+          <div style="font-size:11px;color:var(--clc-muted);">64px · Boogaloo · uppercase · hero moments</div>
+        </div>
+
+        <div class="type-scale-row">
+          <div class="type-scale-label">H1</div>
+          <div style="font-size:36px;font-weight:700;letter-spacing:-0.04em;color:var(--clc-ink);line-height:1.1;">Meet creative people for lunch</div>
+          <div style="font-size:11px;color:var(--clc-muted);">36px · Inter 700 · page titles</div>
+        </div>
+
+        <div class="type-scale-row">
+          <div class="type-scale-label">H2</div>
+          <div style="font-size:24px;font-weight:700;letter-spacing:-0.03em;color:var(--clc-ink);">How does it work?</div>
+          <div style="font-size:11px;color:var(--clc-muted);">24px · Inter 700 · section headers</div>
+        </div>
+
+        <div class="type-scale-row">
+          <div class="type-scale-label">H3</div>
+          <div style="font-size:17px;font-weight:600;color:var(--clc-ink);">Monthly matching</div>
+          <div style="font-size:11px;color:var(--clc-muted);">17px · Inter 600 · card titles, FAQ items</div>
+        </div>
+
+        <div class="type-scale-row">
+          <div class="type-scale-label">Body</div>
+          <div style="font-size:15px;font-weight:400;color:var(--clc-muted);max-width:400px;line-height:1.65;">You get matched with one or two other creative professionals for lunch. You organise the time and place together.</div>
+          <div style="font-size:11px;color:var(--clc-muted);">15px · Inter 400 · body copy</div>
+        </div>
+
+        <div class="type-scale-row">
+          <div class="type-scale-label">Label</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--clc-muted);">Creative Industries · Valencia</div>
+          <div style="font-size:11px;color:var(--clc-muted);">11px · Inter 700 · uppercase · labels, tags, eyebrows</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     03 · COMPONENT LIBRARY
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 03</div>
+    <div class="chapter-title">Components</div>
+    <div class="chapter-sub">Every interactive and display element, as observed across the live site.</div>
+  </div>
+
+  <div class="page-inner">
+
+    <div class="section">
+      <div class="label">Buttons</div>
+
+      <div class="component-box">
+        <div class="component-preview">
+          <button class="btn-primary">Great, let's sign me up!</button>
+          <button class="btn-primary">Continue</button>
+          <button class="btn-join">Join</button>
+        </div>
+        <div class="component-spec">
+          <strong>Primary button</strong> — Orange (#FF8C3A), white text, pill shape. <code>border-radius: 50px</code> <code>padding: 14px 36px</code> <code>font-weight: 600</code><br>
+          Used for every primary action: sign up, continue, join, submit. Always and only orange. Never purple, never outline.
+        </div>
+      </div>
+
+      <div class="component-box" style="margin-top:10px;">
+        <div class="component-preview dark">
+          <button class="btn-ghost">← Back</button>
+          <button class="btn-ghost">Learn more</button>
+        </div>
+        <div class="component-spec">
+          <strong>Ghost / text button</strong> — White, underlined, no background. Used on purple backgrounds for secondary/back navigation. Never competes with the orange primary.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Form elements</div>
+
+      <div class="component-box">
+        <div class="component-preview dark" style="flex-direction:column;align-items:flex-start;gap:20px;">
+
+          <!-- Progress -->
+          <div style="width:100%;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">Progress indicator</div>
+            <div class="progress-bar">
+              <div class="progress-seg done"></div>
+              <div class="progress-seg done"></div>
+              <div class="progress-seg active"></div>
+              <div class="progress-seg todo"></div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="form-field">
+            <div class="form-label-text">Tell us about your space</div>
+            <textarea class="form-input" style="height:80px;resize:none;">We have an international creative community...</textarea>
+          </div>
+
+          <!-- Checkbox option -->
+          <div class="checkbox-option">
+            <div class="checkbox-icon">✓</div>
+            Got it, I will organise the food.
+          </div>
+
+        </div>
+        <div class="component-spec">
+          <strong>Form backgrounds:</strong> Solid purple (#6B3FD4) page. <strong>Input fields:</strong> Semi-transparent white border, frosted glass effect on purple. <code>border: 1.5px solid rgba(255,255,255,0.3)</code><br>
+          <strong>Progress bar:</strong> Thin line segments at top. Orange = completed, faded orange = current, faded white = remaining.<br>
+          <strong>Checkbox option:</strong> Full-width orange button with white checkbox icon — selected state only; unselected is purple/ghost.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Navigation</div>
+      <div class="component-box">
+        <div class="component-preview" style="flex-direction:column;align-items:stretch;padding:0;">
+          <div class="nav-demo">
+            <div class="nav-logo">Creative Lunch Club</div>
+            <div class="nav-links">
+              <a class="nav-link" href="#">Cities</a>
+              <a class="nav-link" href="#">Reviews</a>
+              <a class="nav-link" href="#">Meetups</a>
+              <a class="nav-link" href="#">FAQ</a>
+              <a class="nav-link" href="#">Blog</a>
+            </div>
+            <div class="nav-actions">
+              <span class="nav-login">Member Login</span>
+              <button class="btn-join">Join</button>
+            </div>
+          </div>
+        </div>
+        <div class="component-spec">
+          White background, clean horizontal layout. Logo/wordmark left, primary nav centre, auth actions right. "Join" is always orange pill. "Member Login" is plain text, no button style.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Content cards</div>
+      <div class="g2">
+
+        <div class="component-box">
+          <div class="component-preview" style="flex-direction:column;align-items:stretch;">
+            <div class="member-card">
+              <div class="member-avatar">MJ</div>
+              <div>
+                <div class="member-name">Maria Johnson</div>
+                <div class="member-role">Graphic Designer · Freelance</div>
+                <div style="margin-bottom:8px;"><span class="member-tag">Valencia</span></div>
+                <div class="member-city">Member since June 2026</div>
+              </div>
+            </div>
+          </div>
+          <div class="component-spec">
+            <strong>Member card</strong> — White, bordered, 12px radius. Avatar circle in purple-light. Name bold, role muted, city tag in purple pill.
+          </div>
+        </div>
+
+        <div class="component-box">
+          <div class="component-preview" style="flex-direction:column;align-items:stretch;">
+            <div class="quote-block">
+              <div class="quote-text">"You know that feeling when you find your people? That's exactly what I feel."</div>
+              <div class="quote-author">Otega Ajuchi · Designer · London</div>
+            </div>
+          </div>
+          <div class="component-spec">
+            <strong>Testimonial block</strong> — Orange left border, orange-tinted background. Italic quote text, small bold author. Used across reviews page and homepage.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Pricing card</div>
+      <div class="component-box">
+        <div class="component-preview" style="gap:20px;justify-content:center;">
+
+          <div class="pricing-card">
+            <div class="pricing-period">Monthly</div>
+            <div class="pricing-amount">€7.50</div>
+            <div class="pricing-sub">per month</div>
+            <button class="btn-primary" style="width:100%;font-size:14px;padding:12px 20px;">Sign me up</button>
+          </div>
+
+          <div class="pricing-card" style="border-color:var(--clc-orange);">
+            <div class="pricing-period" style="color:var(--clc-orange);">Quarterly</div>
+            <div class="pricing-amount">€15</div>
+            <div class="pricing-sub">every 3 months · save €7.50</div>
+            <button class="btn-primary" style="width:100%;font-size:14px;padding:12px 20px;">Sign me up</button>
+          </div>
+
+        </div>
+        <div class="component-spec">
+          <strong>Pricing cards</strong> — White card, purple border default, orange border for recommended tier. Price in large heavy Inter. CTA always orange full-width pill. Simple, no feature lists.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Orange CTA strip — signature pattern</div>
+      <div class="component-box">
+        <div class="component-preview" style="padding:0;">
+          <div class="orange-strip-demo" style="width:100%;border-radius:0;">
+            <div class="orange-strip-title">Join the Creative Lunch Club</div>
+            <div class="orange-strip-sub">Meet other creatives for lunch · 100+ cities worldwide</div>
+          </div>
+        </div>
+        <div class="component-spec">
+          <strong>Signature CTA strip</strong> — Full-width orange band. Boogaloo display title in purple. Subtitle in white. Appears at the bottom of every page. The most recognisable brand element after the purple.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     04 · LAYOUT & PAGE ANATOMY
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 04</div>
+    <div class="chapter-title">Layout & Page Anatomy</div>
+    <div class="chapter-sub">How the purple world is structured — from navigation to the orange door out.</div>
+  </div>
+
+  <div class="page-inner">
+
+    <div class="section">
+      <div class="label">Standard content page structure</div>
+      <div class="layout-demo">
+
+        <div class="layout-nav-bar">
+          <div style="font-family:'Boogaloo',sans-serif;font-size:16px;color:var(--clc-purple);text-transform:uppercase;">Creative Lunch Club</div>
+          <div style="display:flex;gap:20px;font-size:12px;color:var(--clc-muted);">Cities &nbsp; Reviews &nbsp; Meetups &nbsp; FAQ</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:12px;"><span>Member Login</span><button class="btn-join" style="font-size:12px;padding:7px 16px;">Join</button></div>
+        </div>
+
+        <div class="layout-hero">
+          <div class="layout-hero-tag">Creative Professionals · 100+ Cities</div>
+          <div class="layout-hero-h">Meet Other<br>Creatives<br><span style="color:var(--clc-orange);">For Lunch</span></div>
+          <div class="layout-hero-sub">No agenda, no name tags. Just lunch with people who get it.</div>
+          <button class="btn-primary">Join the community</button>
+        </div>
+
+        <div class="layout-content">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--clc-muted);margin-bottom:20px;">How it works</div>
+          <div class="layout-cards">
+            <div class="layout-card"><div class="layout-card-title">Get matched</div>Every month, we match you with 1–2 other creatives in your city.</div>
+            <div class="layout-card"><div class="layout-card-title">Organise lunch</div>Pick a time and place together. No rules, no agenda.</div>
+            <div class="layout-card"><div class="layout-card-title">Meet &amp; talk</div>Show up. The rest takes care of itself.</div>
+          </div>
+          <div class="quote-block">
+            <div class="quote-text">"The easiest, most low-key way to grow your network — maybe even make friends."</div>
+            <div class="quote-author">Mara Lehmann · Designer</div>
+          </div>
+        </div>
+
+        <div class="layout-cta">
+          <div style="font-family:'Boogaloo',sans-serif;font-size:32px;text-transform:uppercase;color:var(--clc-purple);margin-bottom:6px;">Join the Creative Lunch Club</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.85);">€7.50/month · Cancel anytime</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Form / onboarding page structure</div>
+      <div class="form-page-demo">
+        <div class="form-page-top">
+          <div class="progress-bar" style="padding:20px 0 0;">
+            <div class="progress-seg done"></div>
+            <div class="progress-seg done"></div>
+            <div class="progress-seg active"></div>
+            <div class="progress-seg todo"></div>
+          </div>
+        </div>
+        <div class="form-page-body">
+          <div style="font-size:22px;font-weight:600;color:var(--clc-white);margin-bottom:8px;">Tell us a bit more about your place.</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:24px;">What it is, who comes there, what it feels like. A few sentences is plenty.</div>
+          <textarea class="form-input" style="width:100%;max-width:480px;height:100px;resize:none;">We have an international creative community...</textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;max-width:480px;">
+            <button class="btn-ghost">← Back</button>
+            <button class="btn-primary">Continue</button>
+          </div>
+        </div>
+        <div class="form-page-footer">
+          <div class="form-page-footer-text">Join the Creative Lunch Club</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--clc-muted);padding:12px 16px;background:var(--clc-bg);border:1px solid var(--clc-border);border-radius:6px;">
+        Full-purple background throughout. Progress bar top. Single-question format — one question per step, no walls of form fields. Back ghost + Continue orange at bottom. Orange footer strip persists as brand anchor.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Spacing system</div>
+      <div style="border:1px solid var(--clc-border);border-radius:10px;padding:24px 32px;">
+        <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:20px;">
+          <div style="text-align:center;">
+            <div style="width:8px;height:8px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">4px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:12px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">8px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:16px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">12px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:20px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">16px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:28px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">24px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:40px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">32px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:56px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">48px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:72px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">64px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:8px;height:96px;background:var(--clc-purple);margin:0 auto;"></div>
+            <div style="font-size:10px;color:var(--clc-muted);margin-top:6px;">80px</div>
+          </div>
+        </div>
+        <p style="font-size:13px;">Base unit: 4px. All spacing is a multiple of 4. Page padding: 72–80px. Section gaps: 48–56px. Component internal: 16–24px. Card padding: 18–28px. Border radius: 8–16px for cards, 50px for buttons (pill).</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     05 · DESIGN PRINCIPLES
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 05</div>
+    <div class="chapter-title">Design Principles</div>
+    <div class="chapter-sub">The rules behind every visual decision — observed, not stated.</div>
+  </div>
+
+  <div class="page-inner">
+
+    <div class="principle">
+      <div class="principle-num">01</div>
+      <div>
+        <div class="principle-title">Purple is total, orange is singular</div>
+        <div class="principle-body">Purple owns every surface. Orange appears exactly once per view — the primary action. This is not a guideline, it is structural: if you put two orange elements on a page, neither works. The system depends on orange being the rarest colour in any given frame.</div>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">02</div>
+      <div>
+        <div class="principle-title">Chalk for moments, Inter for everything else</div>
+        <div class="principle-body">Boogaloo (or the chalk equivalent) is not a display font for frequent use — it is a personality signal deployed at key moments: the hero, the footer, the wordmark. Inter carries 90% of all reading. The playfulness comes from the rare display moments, not from making body copy quirky.</div>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">03</div>
+      <div>
+        <div class="principle-title">One question at a time</div>
+        <div class="principle-body">The onboarding flow puts a single question on a full purple page. No sidebar, no progress summary, no previews. This is a deliberate UX choice: one question feels conversational, not like filling in a form. It reduces perceived effort and signals that the brand values your attention, not your data.</div>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">04</div>
+      <div>
+        <div class="principle-title">Understate the scale, lead with the moment</div>
+        <div class="principle-body">100+ cities. 1000s of members. This is never the headline. The headline is always two people, one lunch, one city. Scale is proof, not pitch. Visually this means small group photos, intimate card layouts, first-person testimonials — never dashboards, maps, or aggregate statistics as hero content.</div>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">05</div>
+      <div>
+        <div class="principle-title">Real people, raw moments</div>
+        <div class="principle-body">Photography is mid-conversation, natural light, small groups. The camera catches something already happening — it never poses. This is non-negotiable: the brand's authenticity claim collapses the moment a stock photo appears. Photos must feel like someone's phone, not a brand shoot.</div>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">06</div>
+      <div>
+        <div class="principle-title">The brand is a person, not a platform</div>
+        <div class="principle-body">Klaus writes in first person on the about page and tells you to DM him. This founder-voice carries through all copy: "I" not "we," direct address, casual register. Design should match: human-scaled type, generous white space, no feature lists or matrix tables. It's a conversation, not a product catalogue.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     06 · BRAND IN USE — SAGED CONTEXT
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter 06</div>
+    <div class="chapter-title">Brand in Use</div>
+    <div class="chapter-sub">How to apply CLC's visual language when collaborating as a host venue.</div>
+  </div>
+
+  <div class="page-inner">
+
+    <div class="section">
+      <div class="label">What CLC expects from a host's venue page</div>
+      <div class="g2">
+
+        <div style="border:1px solid var(--clc-border);border-radius:10px;padding:24px;">
+          <h3 style="margin-bottom:12px;">Visual requirements</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-purple);font-weight:700;">→</span><span>Real photos of the space with people in it — not empty room shots</span></div>
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-purple);font-weight:700;">→</span><span>Natural light preferred — warm and approachable</span></div>
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-purple);font-weight:700;">→</span><span>Show the community — group shots, hands at work, conversation</span></div>
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-purple);font-weight:700;">→</span><span>The food — even informal, even simple — deserves a photo</span></div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--clc-border);border-radius:10px;padding:24px;">
+          <h3 style="margin-bottom:12px;">Copy requirements</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-orange);font-weight:700;">→</span><span>First person, present tense: "We have..." not "The studio features..."</span></div>
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-orange);font-weight:700;">→</span><span>People before features: who comes here, not what equipment you have</span></div>
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-orange);font-weight:700;">→</span><span>3–5 sentences max — their format is tight</span></div>
+            <div style="display:flex;gap:8px;"><span style="color:var(--clc-orange);font-weight:700;">→</span><span>End on a feeling, not a fact: "warm," "unhurried," "you stay longer than planned"</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Saged × CLC — venue description (approved copy)</div>
+      <div style="background:var(--clc-purple);border-radius:10px;padding:36px 40px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">How Saged describes itself in CLC's language</div>
+        <p style="color:var(--clc-white);font-size:16px;line-height:1.75;font-weight:300;margin:0;">"We have an international creative community studio in Valencia's old city — a ceramic workshop and coworking space where makers, artists, and curious locals come to work with clay, share a table, and slow down. The studio has kilns, a hand-building room, and open coworking desks. People here are a mix of expats, locals, and creatives who found each other through ceramics. The atmosphere is relaxed and hands-on — think mismatched mugs, clay dust, and good conversation. Perfect for a lunch where people actually talk."</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Food & experience — the vegan buffet frame</div>
+      <div class="quote-block">
+        <div class="quote-text">"We'll ask one of our community members to prepare a vegan buffet — we have people in our circle who cook and love an excuse to feed a creative crowd."</div>
+        <div class="quote-author">This matches CLC's ethos perfectly: community-sourced, casual, personal. Not catered, not corporate.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Hands-on activity offer</div>
+      <div class="quote-block">
+        <div class="quote-text">"We'd love to make it a hands-on experience — guests could try a quick pinch pot or leave with a small clay piece they made during the lunch."</div>
+        <div class="quote-author">This is a differentiator. CLC's best venue pages have a memorable hook — this is Saged's. Keep it in every communication with them.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footnote">
+  Creative Lunch Club Visual Identity Book · Reverse-engineered from public materials · September 2026<br>
+  Produced for Saged.club reference only · Not an official CLC document · creativelunchclub.com
+</div>
+
+</body>
+</html>

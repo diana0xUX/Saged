@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nav School Switcher — Saged</title>
+<style>
+  :root{
+    --ink:#2a2520;--muted:#6b5f54;--paper:#f9f4ed;--line:rgba(42,37,32,.12);
+    --sand:#f1e9da;--orange:#c25e33;--purple:#8a60a8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;background:#ede8e0;color:var(--ink);padding:0 0 80px;-webkit-font-smoothing:antialiased}
+
+  /* ── page labels ── */
+  .page-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);text-align:center;padding:40px 0 14px}
+  .page-label span{display:inline-block;background:var(--ink);color:#fff;border-radius:6px;padding:2px 10px;font-size:10px;letter-spacing:.12em}
+  .note{max-width:680px;margin:0 auto 0;font-size:13px;color:var(--muted);line-height:1.6;text-align:center;padding:0 24px 32px}
+  .divider{border:none;border-top:1px dashed rgba(42,37,32,.18);margin:48px 24px}
+
+  /* ── nav shell ── */
+  .gn{position:relative;top:0;left:0;right:0;z-index:50;padding:14px 12px}
+  .gn__inner{
+    height:62px;max-width:1200px;margin:auto;padding:0 8px 0 10px;
+    border:1px solid var(--line);border-radius:999px;
+    background:rgba(249,244,237,.97);
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 8px 32px rgba(42,37,32,.08);
+  }
+
+  /* ── school switcher ── */
+  .school-switcher{display:flex;align-items:center;gap:0;flex-shrink:0}
+  .school-logo{
+    display:flex;align-items:center;height:44px;padding:0 6px;border-radius:10px;
+    text-decoration:none;transition:opacity .2s,background .2s;position:relative;
+  }
+  .school-logo img{height:40px;width:auto;display:block;mix-blend-mode:multiply}
+  .school-logo--inactive{opacity:.28}
+  .school-logo--inactive:hover{opacity:.65;background:var(--sand)}
+  .school-logo--active{opacity:1}
+
+  .switcher-divider{width:1px;height:24px;background:var(--line);margin:0 4px;flex-shrink:0}
+
+  /* ── nav links ── */
+  .gn__links{display:flex;align-items:center;gap:2px;margin-left:auto}
+  .gn__links a:not(.pill){
+    padding:7px 12px;font-size:13.5px;font-weight:500;
+    color:var(--muted);border-radius:8px;text-decoration:none;
+    transition:color .15s,background .15s;white-space:nowrap;
+  }
+  .gn__links a:not(.pill):hover{color:var(--ink);background:var(--sand)}
+  .gn__links .pill{
+    margin-left:6px;min-height:38px;padding:0 20px;border-radius:999px;
+    text-decoration:none;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;color:#fff;white-space:nowrap;
+  }
+  .pill--purple{background:var(--purple)}
+  .pill--orange{background:var(--orange)}
+
+  /* ── how it works ── */
+  .explainer{max-width:720px;margin:32px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 24px}
+  .card{background:rgba(249,244,237,.9);border:1px solid rgba(42,37,32,.1);border-radius:14px;padding:16px 20px;font-size:13px;line-height:1.6}
+  .card strong{display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ CONCEPT EXPLANATION ════════════════════ -->
+<div class="page-label">The idea</div>
+<p class="note">
+  Both school logos live in the nav at all times — the one you're on is bright, the other is faded. One click switches you between schools. No back links, no chip labels — the logos carry everything.
+</p>
+
+<!-- ════════════════════ MUSIC SCHOOL NAV ════════════════════ -->
+<div class="page-label"><span>You are here →</span> Music school</div>
+
+<nav class="gn">
+  <div class="gn__inner">
+
+    <!-- switcher: music active, art faded -->
+    <div class="school-switcher">
+      <a class="school-logo school-logo--active" href="/handpan/" title="Школа хэндпана">
+        <img src="/design/logo-music.png" alt="Saged Club Music">
+      </a>
+      <div class="switcher-divider"></div>
+      <a class="school-logo school-logo--inactive" href="/" title="Арт-студия — керамика">
+        <img src="/design/logo-art.png" alt="Saged Club Art">
+      </a>
+    </div>
+
+    <div class="gn__links">
+      <a href="#formats">Занятия</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#pricing">Цены</a>
+      <a href="#teachers">Преподаватель</a>
+      <a class="pill pill--purple" href="#book">Записаться ↗</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="explainer">
+  <div class="card"><strong>Active logo</strong>Full colour — instantly tells you which school you're in, no reading required. Purple = music.</div>
+  <div class="card"><strong>Faded logo</strong>Art studio at 28% opacity. Hover brightens it. Click → ceramics page. One step to switch.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ════════════════════ ART SCHOOL NAV ════════════════════ -->
+<div class="page-label"><span>You are here →</span> Art school (ceramics)</div>
+
+<nav class="gn">
+  <div class="gn__inner">
+
+    <!-- switcher: art active, music faded -->
+    <div class="school-switcher">
+      <a class="school-logo school-logo--active" href="/" title="Арт-студия — керамика">
+        <img src="/design/logo-art.png" alt="Saged Club Art">
+      </a>
+      <div class="switcher-divider"></div>
+      <a class="school-logo school-logo--inactive" href="/handpan/" title="Школа хэндпана">
+        <img src="/design/logo-music.png" alt="Saged Club Music">
+      </a>
+    </div>
+
+    <div class="gn__links">
+      <a href="#classes">Classes</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#people">People</a>
+      <a href="#visit">Visit</a>
+      <a class="pill pill--orange" href="#book">Book a class ↗</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="explainer">
+  <div class="card"><strong>Reversed</strong>Art is now active in orange. Music is faded. Same layout, different state — visitors always know which world they're in.</div>
+  <div class="card"><strong>Future-proof</strong>If Spirit school launches, a third logo joins the row. No redesign needed — the switcher grows naturally.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ════════════════════ FUTURE: 3 SCHOOLS ════════════════════ -->
+<div class="page-label">What happens when Spirit school launches</div>
+<p class="note">A third logo joins the switcher row. Same pattern, no redesign.</p>
+
+<nav class="gn">
+  <div class="gn__inner">
+
+    <div class="school-switcher">
+      <a class="school-logo school-logo--inactive" href="/" title="Art">
+        <img src="/design/logo-art.png" alt="Saged Club Art">
+      </a>
+      <div class="switcher-divider"></div>
+      <a class="school-logo school-logo--active" href="/handpan/" title="Music">
+        <img src="/design/logo-music.png" alt="Saged Club Music">
+      </a>
+      <div class="switcher-divider"></div>
+      <a class="school-logo school-logo--inactive" href="/spirit/" title="Spirit" style="opacity:.22;filter:grayscale(.4)">
+        <img src="/design/logo-spirit.png" alt="Saged Club Spirit">
+      </a>
+    </div>
+
+    <div class="gn__links">
+      <a href="#formats">Занятия</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#pricing">Цены</a>
+      <a href="#teachers">Преподаватель</a>
+      <a class="pill pill--purple" href="#book">Записаться ↗</a>
+    </div>
+
+  </div>
+</nav>
+
+</body>
+</html>

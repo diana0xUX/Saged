@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Audit Brief — Saged.club</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #F9F4ED;
+    --sand: #F1E9DA;
+    --ink: #2A2520;
+    --muted: #6B5F54;
+    --terracotta: #9F4D2D;
+    --orange: #FF7A23;
+    --sage: #6E7F5A;
+    --line: #E1D6C5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 48px 96px;
+  }
+
+  /* Header */
+  .doc-header {
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .doc-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .meta strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Sections */
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-top: 52px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  p strong, li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  a { color: var(--terracotta); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  ul, ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+    color: var(--muted);
+  }
+
+  li {
+    margin-bottom: 6px;
+  }
+
+  /* Issue cards */
+  .issue {
+    background: var(--sand);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .issue h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .issue p {
+    font-size: 14.5px;
+    margin-bottom: 8px;
+  }
+
+  .issue p:last-child { margin-bottom: 0; }
+
+  .issue .question {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* Code / path */
+  code {
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 12.5px;
+    background: #EDE7DC;
+    color: var(--ink);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  pre {
+    background: var(--ink);
+    color: #F9F4ED;
+    padding: 20px 24px;
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  /* Constraint pills */
+  .constraint-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0;
+  }
+
+  .constraint {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+
+  .constraint .tag {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-top: 1px;
+  }
+
+  /* Deliverables */
+  .deliverable {
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 12px 0;
+  }
+
+  .deliverable-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .deliverable h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .deliverable p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Asset tree */
+  .asset-tree {
+    background: var(--sand);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--ink);
+    margin: 16px 0;
+  }
+
+  .asset-tree .comment {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .doc-footer a { color: var(--muted); }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 40px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-label">Creative Brief · Brand Audit</div>
+    <h1>Brand Audit Brief<br>Saged.club</h1>
+    <div class="meta">
+      <span><strong>For:</strong> Freelance UI/brand designer</span>
+      <span><strong>Reference:</strong> <code>creative/SAGED-SOURCE-OF-TRUTH.md</code> — read this first</span>
+      <span><strong>Date:</strong> 2026-08-29</span>
+    </div>
+  </div>
+
+  <!-- WHAT IS SAGED -->
+  <h2>What is Saged</h2>
+  <p>A ceramic and cultural workshop space in the old city of Valencia, Spain. Real physical studio, owner-operated. People come to the address, make pottery, and leave with something they created. The studio also runs cultural events — sound healing, breathwork, tea ceremonies. Opened 2026.</p>
+  <p>Owner: <strong>Diana Sage</strong> — product designer and ceramicist (working with clay since COVID). Built this from scratch, handles brand and marketing herself.</p>
+  <p><strong>Primary audience:</strong> Russian and Ukrainian-speaking women, 25–45, long-term Valencia residents.<br>
+  <strong>Secondary:</strong> English-speaking expats (discovered via paid Meta ads).</p>
+  <p><strong>Website:</strong> saged.club — live, in production.</p>
+
+  <!-- SCOPE -->
+  <h2>Scope of Audit</h2>
+  <p>You are auditing the visual brand as it exists across two surfaces.</p>
+
+  <h3>Surface 1 — Website (saged.club)</h3>
+  <p>A live site built in vanilla HTML/CSS/JS, no framework, no build step. Hosted on GitHub Pages.</p>
+  <p>Pages:</p>
+  <ul>
+    <li><code>/</code> — Russian landing (primary)</li>
+    <li><code>/uk/</code> — Ukrainian landing (must stay identical structure to RU)</li>
+    <li><code>/en/</code> — English section</li>
+    <li><code>/kids/</code> — kids ceramics</li>
+    <li><code>/coworking/</code> — hot desk page</li>
+    <li><code>/events/</code> — events</li>
+    <li><code>/studio/</code> — studio page</li>
+    <li><code>/gifts/</code> — gift certificates</li>
+  </ul>
+
+  <h3>Surface 2 — Ad Creative</h3>
+  <p>Instagram feed ads (1080×1350 px), built as SVG files.</p>
+  <p>Reference creative at <code>creative/library/05-ads/</code>:</p>
+  <ul>
+    <li><code>koritsia-ceramics/</code> — the reference standard, the design to beat</li>
+    <li><code>en-ceramics/ad-en-ceramics-v4.svg</code> — current in-progress English version</li>
+    <li><code>kids-ceramics/</code> — 6 format variants</li>
+  </ul>
+
+  <!-- ASSETS -->
+  <h2>Brand Assets Available</h2>
+  <p>Start with the visual reference — open <code>creative/brand-board.html</code> in Chrome. It shows all colours, type, logos, figures, and photos side by side.</p>
+
+  <div class="asset-tree">
+    creative/brand-board.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">← open in Chrome first</span><br>
+    creative/library/01-brand/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">Colour swatches, fonts, logo variants</span><br>
+    creative/library/02-figures/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">41 illustrated character figures</span><br>
+    creative/library/03-photos/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">All photography</span><br>
+    creative/library/04-social/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">Instagram post and story exports</span><br>
+    creative/library/05-ads/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">All ad creative (SVG source + previews)</span><br>
+    creative/DESIGNER.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">Colour rules, type hierarchy, layout principles</span>
+  </div>
+
+  <!-- KNOWN ISSUES -->
+  <h2>Known Issues to Investigate</h2>
+  <p>These are documented problems. Your audit should confirm each, rate severity, and propose resolution.</p>
+
+  <div class="issue">
+    <h4>1 · Two accent colours doing the same job</h4>
+    <p><code>#FF7A23</code> (logo orange) — used in ads, print, all SVG creative.<br>
+    <code>#9F4D2D</code> (terracotta) — used on website for links, CTAs, buttons.</p>
+    <p>These are visually distinct and have never been reconciled. Someone landing from an ad sees orange; on the website they see terracotta. Not a two-tone system — an unresolved collision.</p>
+    <p class="question">Question to answer: Should they merge into one accent, or be formalised as distinct contexts (print vs web)? If merged, which wins?</p>
+  </div>
+
+  <div class="issue">
+    <h4>2 · Costa font on website ✅ resolved</h4>
+    <p>Costa Light is now the Latin display font on the website. Saged Cyrillic handles Cyrillic headings. Summer Font and Cormorant Garamond have been removed from all files.</p>
+  </div>
+
+  <div class="issue">
+    <h4>3 · Logo on dark backgrounds uses CSS invert</h4>
+    <p>The website applies <code>filter: invert(1)</code> to produce a white version of the logo. This is a workaround — not a real white-on-dark asset. A proper white PNG exists at <code>creative/library/01-brand/logos/logo-white.png</code>.</p>
+    <p class="question">Question to answer: Is the current approach acceptable, or does the site need a properly rendered dark-mode logo implementation?</p>
+  </div>
+
+  <div class="issue">
+    <h4>4 · No brand guidelines document</h4>
+    <p>Rules exist scattered across <code>DESIGNER.md</code>, <code>SAGED-SOURCE-OF-TRUTH.md</code>, and <code>CLAUDE.md</code>. There is no single designed brand guide a human freelancer can open and trust.</p>
+    <p class="question">Deliverable needed: A one-page brand reference — colour values, font names, logo rules, do/don't examples. PDF or HTML.</p>
+  </div>
+
+  <div class="issue">
+    <h4>5 · Photo categorization error</h4>
+    <p><code>creative/library/03-photos/koritsia/koritsa-editorial.jpg</code> is a fashion editorial photo — labeled as an instructor photo. It was accidentally used in early ad creative. Needs to be quarantined or relabeled so it's not used in ceramics ads.</p>
+  </div>
+
+  <div class="issue">
+    <h4>6 · No RU/UA adult ceramics ad in reproducible format</h4>
+    <p>The original Koritsia ceramics ad exists only as an <code>.ai</code> source file — not easily editable or variant-able. English ad has an SVG workflow (v1–v4). Russian equivalent doesn't.</p>
+    <p class="question">Flag this if you see it blocking campaign consistency.</p>
+  </div>
+
+  <!-- CONSTRAINTS -->
+  <h2>Constraints</h2>
+  <p>Do not propose solutions that break these.</p>
+
+  <h3>Technical</h3>
+  <div class="constraint-block">
+    <div class="constraint"><span class="tag">Hard</span>Website is vanilla HTML/CSS/JS — no React, no Tailwind, no build step. Changes must be plain CSS/HTML.</div>
+    <div class="constraint"><span class="tag">Hard</span>Hosted on GitHub Pages — no server-side rendering, no backend.</div>
+    <div class="constraint"><span class="tag">Hard</span>Font files must be self-hosted or Google Fonts. No Adobe Fonts/Typekit (GDPR consent complexity).</div>
+    <div class="constraint"><span class="tag">Hard</span>GDPR consent banner must fire before Meta Pixel tracking. Do not touch or propose removing consent logic in <code>script.js</code>.</div>
+    <div class="constraint"><span class="tag">Hard</span>RU landing (<code>index.html</code>) and UA landing (<code>uk/index.html</code>) must stay structurally identical — any layout change on one must be mirrored in the other.</div>
+  </div>
+
+  <h3>Creative</h3>
+  <div class="constraint-block">
+    <div class="constraint"><span class="tag">Hard</span>Brand personality stays: warm, handmade, playful, honest. Not minimalist-cold, not corporate, not tourist-brochure.</div>
+    <div class="constraint"><span class="tag">Hard</span>Cream background (<code>#F9F4ED</code>) is load-bearing — it IS the warmth. Do not replace with white.</div>
+    <div class="constraint"><span class="tag">Hard</span>Costa font is non-negotiable for print/ad creative. If it comes onto the website, it comes at full weight — not as a supplementary accent.</div>
+    <div class="constraint"><span class="tag">Hard</span>Brand figures (illustrated characters) stay — they are the texture of the brand.</div>
+    <div class="constraint"><span class="tag">Note</span>This is not a rebrand. It's a brand audit. Propose refinements, not replacement.</div>
+  </div>
+
+  <h3>Business</h3>
+  <div class="constraint-block">
+    <div class="constraint"><span class="tag">Note</span>Owner is one person with no design budget for a full system rebuild. Prioritise high-impact, low-effort fixes.</div>
+    <div class="constraint"><span class="tag">Note</span>The best-performing ad on record used English-language video + "Saged.club is for..." positioning. Proposals should be compatible with that creative direction.</div>
+    <div class="constraint"><span class="tag">Note</span>Events are promoted organically only — never via paid ads. Event-specific design changes don't need to be optimized for ad performance.</div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <h2>What Good Looks Like</h2>
+
+  <div class="deliverable">
+    <div class="deliverable-num">Deliverable 1</div>
+    <h4>Audit report</h4>
+    <p>Each of the 6 known issues assessed with a severity rating (critical / notable / minor) and a concrete recommendation. New issues you find that aren't listed above are welcome — add them.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-num">Deliverable 2</div>
+    <h4>Proposed changes document</h4>
+    <p>Specific, implementable changes. Not "improve type hierarchy" — instead "Costa Light at 72px, letter-spacing −0.04em, colour <code>#2A2520</code>." Enough detail that a developer or Claude Code session can implement each change without further design input.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-num">Deliverable 3</div>
+    <h4>One-page brand reference</h4>
+    <p>A designed PDF or HTML file: colour swatches with hex values, font names and weights, logo rules, do/don't examples. Something Diana can send to a new collaborator without needing to explain anything verbally.</p>
+  </div>
+
+  <div class="deliverable">
+    <div class="deliverable-num">Deliverable 4</div>
+    <h4>Priority order</h4>
+    <p>Which changes should Diana do first? Ordered by: user-facing impact × implementation effort. The top 3 should be doable in a single working session.</p>
+  </div>
+
+  <!-- PROCESS NOTES -->
+  <h2>Working with Diana</h2>
+  <p>Diana is a product designer — she thinks in systems, components, and design tokens. You can use that language. She doesn't want to be walked through basics.</p>
+  <p>She doesn't speak Spanish and doesn't make phone calls. All communication should be written — email, DM, document comments.</p>
+  <p>She built this project herself. Be direct about problems — she'd rather know something is broken than have it softened. Don't oversell fixes; she'll know if the recommendation is bloated for the problem.</p>
+
+  <div class="doc-footer">
+    <div>
+      Brief written 2026-08-29<br>
+      Contact: Diana Sage · <a href="https://wa.me/34695731900">WhatsApp +34 695 73 19 00</a> · @saged_diana
+    </div>
+    <div style="text-align:right;">
+      saged.club
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

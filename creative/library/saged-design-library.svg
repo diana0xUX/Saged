@@ -1,0 +1,171 @@
+<svg width="2800" height="3600" viewBox="0 0 2800 3600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>
+    @font-face { font-family:'Costa'; src:url('01-brand/fonts/costa-light.otf') format('opentype'); font-weight:300; }
+    @font-face { font-family:'Summer Font'; src:url('01-brand/fonts/summer-font-light.otf') format('opentype'); font-weight:300; }
+  </style>
+</defs>
+
+<!-- Background -->
+<rect width="2800" height="3600" fill="#FAF7F2"/>
+
+<!-- Grid lines -->
+<line x1="0" y1="80" x2="2800" y2="80" stroke="#E1D6C5" stroke-width="1"/>
+<line x1="0" y1="560" x2="2800" y2="560" stroke="#E1D6C5" stroke-width="0.5"/>
+<line x1="0" y1="920" x2="2800" y2="920" stroke="#E1D6C5" stroke-width="0.5"/>
+<line x1="0" y1="1280" x2="2800" y2="1280" stroke="#E1D6C5" stroke-width="0.5"/>
+<line x1="0" y1="1880" x2="2800" y2="1880" stroke="#E1D6C5" stroke-width="0.5"/>
+<line x1="0" y1="2360" x2="2800" y2="2360" stroke="#E1D6C5" stroke-width="0.5"/>
+<line x1="0" y1="2760" x2="2800" y2="2760" stroke="#E1D6C5" stroke-width="0.5"/>
+
+<!-- Header -->
+<rect width="2800" height="80" fill="#2A2520"/>
+<text x="60" y="50" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#FAF7F2" letter-spacing="3">SAGED.CLUB — DESIGN LIBRARY</text>
+<text x="2740" y="50" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#6B5F54">2026</text>
+
+<!-- ══════════════════════ SECTION 1: COLORS ══════════════════════ -->
+<text x="60" y="618" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6B5F54" letter-spacing="2">COLOUR TOKENS</text>
+
+<!-- Swatches row -->
+<rect x="60"  y="640" width="260" height="200" rx="12" fill="#FAF7F2" stroke="#E1D6C5" stroke-width="1"/>
+<text x="190" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Background</text>
+<text x="190" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#FAF7F2</text>
+
+<rect x="340" y="640" width="260" height="200" rx="12" fill="#F1E9DA"/>
+<text x="470" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Sand</text>
+<text x="470" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#F1E9DA</text>
+
+<rect x="620" y="640" width="260" height="200" rx="12" fill="#2A2520"/>
+<text x="750" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Ink</text>
+<text x="750" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#2A2520</text>
+
+<rect x="900" y="640" width="260" height="200" rx="12" fill="#6B5F54"/>
+<text x="1030" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Muted</text>
+<text x="1030" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#6B5F54</text>
+
+<rect x="1180" y="640" width="260" height="200" rx="12" fill="#9F4D2D"/>
+<text x="1310" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Terracotta</text>
+<text x="1310" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#9F4D2D</text>
+
+<rect x="1460" y="640" width="260" height="200" rx="12" fill="#FF7A23"/>
+<text x="1590" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Logo orange</text>
+<text x="1590" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#FF7A23</text>
+
+<rect x="1740" y="640" width="260" height="200" rx="12" fill="#6E7F5A"/>
+<text x="1870" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Sage</text>
+<text x="1870" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#6E7F5A</text>
+
+<rect x="2020" y="640" width="260" height="200" rx="12" fill="#E1D6C5" stroke="#D4C8B5" stroke-width="1"/>
+<text x="2150" y="868" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#2A2520">Line / border</text>
+<text x="2150" y="890" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B5F54">#E1D6C5</text>
+
+<!-- ══════════════════════ SECTION 2: TYPOGRAPHY ══════════════════════ -->
+<text x="60" y="978" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6B5F54" letter-spacing="2">TYPOGRAPHY</text>
+
+<text x="60" y="1050" font-family="'Costa', Georgia, serif" font-size="72" font-weight="300" fill="#2A2520">Ceramics in Valencia</text>
+<text x="60" y="1080" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Costa Light · display / brand headlines</text>
+
+<text x="60" y="1160" font-family="'Summer Font', Georgia, serif" font-size="72" font-weight="300" fill="#2A2520">Ceramics in Valencia</text>
+<text x="60" y="1190" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Summer Font Light · hero headlines</text>
+
+<text x="60" y="1250" font-family="'Cormorant Garamond', Georgia, serif" font-size="60" font-weight="300" fill="#2A2520">Ceramics in Valencia</text>
+<text x="60" y="1270" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Cormorant Garamond 300 · display (web)</text>
+
+<text x="1400" y="1050" font-family="Inter, sans-serif" font-size="36" font-weight="400" fill="#2A2520">Inter Regular — body copy</text>
+<text x="1400" y="1100" font-family="Inter, sans-serif" font-size="28" font-weight="500" fill="#2A2520">Inter Medium — labels &amp; CTAs</text>
+<text x="1400" y="1148" font-family="Inter, sans-serif" font-size="22" font-weight="400" fill="#6B5F54">Inter muted — captions &amp; notes</text>
+<text x="1400" y="1192" font-family="monospace" font-size="20" fill="#9F4D2D">Monospace — code &amp; hex values</text>
+
+<!-- ══════════════════════ SECTION 3: LOGO ══════════════════════ -->
+<text x="60" y="1338" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6B5F54" letter-spacing="2">LOGO VARIANTS</text>
+
+<rect x="60"  y="1360" width="460" height="200" rx="12" fill="#FAF7F2" stroke="#E1D6C5" stroke-width="1"/>
+<image href="01-brand/logos/logo-saged-club.svg" x="120" y="1400" width="340" height="120"/>
+<text x="290" y="1580" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">SVG vector · on light</text>
+
+<rect x="560" y="1360" width="460" height="200" rx="12" fill="#2A2520"/>
+<image href="01-brand/logos/logo-white.png" x="620" y="1390" width="340" height="140"/>
+<text x="790" y="1580" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">White · on dark</text>
+
+<rect x="1060" y="1360" width="460" height="200" rx="12" fill="#9F4D2D"/>
+<image href="01-brand/logos/logo-white.png" x="1120" y="1390" width="340" height="140"/>
+<text x="1290" y="1580" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">White · on terracotta</text>
+
+<rect x="1560" y="1360" width="460" height="200" rx="12" fill="#FAF7F2" stroke="#E1D6C5" stroke-width="1"/>
+<image href="01-brand/logos/logo-black.png" x="1620" y="1390" width="340" height="140"/>
+<text x="1790" y="1580" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">Black · on light</text>
+
+<rect x="2060" y="1360" width="460" height="200" rx="12" fill="#FAF7F2" stroke="#E1D6C5" stroke-width="1"/>
+<image href="01-brand/logos/logo-orange.png" x="2120" y="1390" width="340" height="140"/>
+<text x="2290" y="1580" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">Orange · on light</text>
+
+<!-- ══════════════════════ SECTION 4: FIGURES ══════════════════════ -->
+<text x="60" y="1940" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6B5F54" letter-spacing="2">BRAND FIGURES — CHARACTERS</text>
+
+<image href="02-figures/Diana.png"   x="60"   y="1960" width="220" height="280"/>
+<text x="170"  y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Diana</text>
+<image href="02-figures/koritsa.png" x="300"  y="1960" width="220" height="280"/>
+<text x="410"  y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Koritsa</text>
+<image href="02-figures/helena.png"  x="540"  y="1960" width="220" height="280"/>
+<text x="650"  y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Helena</text>
+<image href="02-figures/Vlada.png"   x="780"  y="1960" width="220" height="280"/>
+<text x="890"  y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Vlada</text>
+<image href="02-figures/liza.png"    x="1020" y="1960" width="220" height="280"/>
+<text x="1130" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Liza</text>
+<image href="02-figures/zhenya.png"  x="1260" y="1960" width="220" height="280"/>
+<text x="1370" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">Zhenya</text>
+<image href="02-figures/000.png"     x="1500" y="1960" width="220" height="280"/>
+<text x="1610" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">000</text>
+<image href="02-figures/figure 1.png"  x="1740" y="1960" width="220" height="280"/>
+<text x="1850" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">figure 1</text>
+<image href="02-figures/figure 19.png" x="1980" y="1960" width="220" height="280"/>
+<text x="2090" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">figure 19</text>
+<image href="02-figures/figure 22.png" x="2220" y="1960" width="220" height="280"/>
+<text x="2330" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">figure 22</text>
+<image href="02-figures/figure 24.png" x="2460" y="1960" width="220" height="280"/>
+<text x="2570" y="2260" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6B5F54">figure 24</text>
+
+<!-- ══════════════════════ SECTION 5: AD CREATIVE ══════════════════════ -->
+<text x="60" y="2420" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6B5F54" letter-spacing="2">AD CREATIVE</text>
+
+<rect x="60" y="2440" width="300" height="375" rx="12" fill="#F1E9DA" stroke="#E1D6C5" stroke-width="1"/>
+<image href="05-ads/en-ceramics/ad-en-ceramics-v1.svg" x="60" y="2440" width="300" height="375"/>
+<text x="210" y="2832" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">EN Ceramics v1 · 4:5</text>
+
+<image href="05-ads/kids-ceramics/ad-kids-ru-1x1.png"  x="400" y="2440" width="300" height="300"/>
+<text x="550" y="2756" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">Kids · RU · 1:1</text>
+<image href="05-ads/kids-ceramics/ad-kids-ua-1x1.png"  x="720" y="2440" width="300" height="300"/>
+<text x="870" y="2756" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">Kids · UA · 1:1</text>
+
+<image href="05-ads/kids-ceramics/ad-kids-ru-4x5.png"  x="1040" y="2440" width="280" height="350"/>
+<text x="1180" y="2804" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">Kids · RU · 4:5</text>
+<image href="05-ads/kids-ceramics/ad-kids-ua-4x5.png"  x="1340" y="2440" width="280" height="350"/>
+<text x="1480" y="2804" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">Kids · UA · 4:5</text>
+
+<!-- ══════════════════════ SECTION 6: KEY PHOTOS ══════════════════════ -->
+<text x="60" y="2820" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6B5F54" letter-spacing="2">KEY PHOTOS</text>
+
+<image href="03-photos/hero/hero-1.jpg"              x="60"   y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/hero/hero-2.jpg"              x="380"  y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/hero/hero-3.jpg"              x="700"  y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/workshop/workshop-1.jpg"      x="1020" y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/workshop/workshop-2.jpg"      x="1340" y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/koritsia/koritsa-editorial.jpg" x="1660" y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/products/product-1.jpg"       x="1980" y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+<image href="03-photos/products/product-2.jpg"       x="2300" y="2840" width="300" height="300" preserveAspectRatio="xMidYMid slice"/>
+
+<text x="210"  y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">hero-1</text>
+<text x="530"  y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">hero-2</text>
+<text x="850"  y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">hero-3</text>
+<text x="1170" y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">workshop-1</text>
+<text x="1490" y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">workshop-2</text>
+<text x="1810" y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">koritsa-editorial</text>
+<text x="2130" y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">product-1</text>
+<text x="2450" y="3164" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B5F54">product-2</text>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<rect x="0" y="3560" width="2800" height="40" fill="#2A2520"/>
+<text x="60" y="3586" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">saged.club · Design Library · 243 assets · 2026</text>
+<text x="2740" y="3586" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#6B5F54">creative/library/</text>
+
+</svg>

@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saged — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   CUSTOM FONTS
+───────────────────────────────────────────── */
+@font-face {
+  font-family: Costa;
+  src: url('../assets/fonts/costa-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: SagedCyr;
+  src: url('../assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  --paper:      #f9f4ed;   /* page background */
+  --sand:       #efe5d6;   /* subtle background */
+  --ink:        #2a2520;   /* primary text */
+  --muted:      #6b5f54;   /* secondary text */
+  --line:       #ded1bf;   /* borders */
+  --clay:       #9f4d2d;   /* primary brand / accent */
+  --clay-light: #faf0e6;   /* light clay background */
+  --white:      #fffdf8;   /* card background */
+  --radius:     16px;
+
+  /* category colours */
+  --cat-ceramics-color:  #c8704a;
+  --cat-ceramics-border: #e8c0a8;
+  --cat-sound-color:     #8a60a8;
+  --cat-sound-border:    #c8a8d8;
+  --cat-art-color:       #4a8858;
+  --cat-art-border:      #a0c8a8;
+  --cat-movement-color:  #3a8070;
+  --cat-movement-border: #90c0b8;
+  --cat-wellness-color:  #a84060;
+  --cat-wellness-border: #d8a0b0;
+  --cat-ceremony-color:  #b89040;
+  --cat-ceremony-border: #d8c080;
+}
+
+/* ─────────────────────────────────────────────
+   RESET + BASE
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+.ds-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+/* ─────────────────────────────────────────────
+   DS HEADER
+───────────────────────────────────────────── */
+.ds-header {
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 64px;
+}
+.ds-header__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--clay);
+  margin-bottom: 12px;
+}
+.ds-header__title {
+  font-family: Costa, Georgia, serif;
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: -.04em;
+  line-height: .92;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.ds-header__meta {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.ds-header__meta span::before {
+  content: '·';
+  margin-right: 20px;
+  color: var(--line);
+}
+.ds-header__meta span:first-child::before { content: none; }
+
+/* ─────────────────────────────────────────────
+   SECTION STRUCTURE
+───────────────────────────────────────────── */
+.ds-section {
+  margin-bottom: 72px;
+}
+.ds-section__label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--muted);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.ds-section__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.ds-section__note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+  font-family: 'Courier New', monospace;
+  background: var(--sand);
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ─────────────────────────────────────────────
+   COLORS SECTION
+───────────────────────────────────────────── */
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.color-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.color-swatch__block {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(42,37,32,.08);
+  flex-shrink: 0;
+}
+.color-swatch__name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.color-swatch__token {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: 'Courier New', monospace;
+}
+.color-swatch__hex {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: 'Courier New', monospace;
+}
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY SECTION
+───────────────────────────────────────────── */
+.type-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.type-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.type-row:last-child { border-bottom: none; }
+.type-row__meta {
+  flex-shrink: 0;
+}
+.type-row__label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+.type-row__spec {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+.type-row__sample { min-width: 0; }
+
+/* type styles — exactly as used on site */
+.ts-display {
+  font-family: Costa, Georgia, serif;
+  font-size: 64px;
+  font-weight: 300;
+  letter-spacing: -.04em;
+  line-height: .92;
+  color: var(--ink);
+}
+.ts-display-cyr {
+  font-family: SagedCyr, Inter, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: .92;
+  color: var(--ink);
+}
+.ts-page-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--clay);
+}
+.ts-page-title {
+  font-family: Costa, SagedCyr, Georgia, serif;
+  font-size: 52px;
+  font-weight: 300;
+  line-height: .91;
+  letter-spacing: -.04em;
+  color: var(--ink);
+}
+.ts-page-lead {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 480px;
+}
+.ts-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--muted);
+}
+.ts-body {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.ts-muted {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.ts-small {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS SECTION
+───────────────────────────────────────────── */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+/* btn-primary */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--clay);
+  color: var(--white);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .1s;
+  letter-spacing: .01em;
+}
+.btn-primary:hover { background: #7d3b21; }
+.btn-primary:active { transform: scale(.97); }
+
+/* btn-secondary */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+  letter-spacing: .01em;
+}
+.btn-secondary:hover { border-color: var(--ink); }
+
+/* nav-cta — clay outline pill (used in navigation) */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--clay);
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid var(--clay);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, color .15s;
+  letter-spacing: .01em;
+}
+.nav-cta:hover { background: var(--clay); color: var(--white); }
+
+/* btn-sm */
+.btn-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--clay);
+  color: var(--white);
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: .01em;
+}
+
+/* ─────────────────────────────────────────────
+   CATEGORY TAGS SECTION
+───────────────────────────────────────────── */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* base pill tag */
+.cat-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid;
+  background: var(--white);
+  letter-spacing: .01em;
+}
+.cat-tag--ceramics {
+  color: var(--cat-ceramics-color);
+  border-color: var(--cat-ceramics-border);
+}
+.cat-tag--sound {
+  color: var(--cat-sound-color);
+  border-color: var(--cat-sound-border);
+}
+.cat-tag--art {
+  color: var(--cat-art-color);
+  border-color: var(--cat-art-border);
+}
+.cat-tag--movement {
+  color: var(--cat-movement-color);
+  border-color: var(--cat-movement-border);
+}
+.cat-tag--wellness {
+  color: var(--cat-wellness-color);
+  border-color: var(--cat-wellness-border);
+}
+.cat-tag--ceremony {
+  color: var(--cat-ceremony-color);
+  border-color: var(--cat-ceremony-border);
+}
+
+/* ─────────────────────────────────────────────
+   FILTER BUTTONS SECTION
+───────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.filter-btn {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .15s;
+  line-height: 1;
+}
+.filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+.filter-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+/* category-coloured states */
+.filter-btn--ceramics { color: var(--cat-ceramics-color); border-color: var(--cat-ceramics-border); }
+.filter-btn--sound    { color: var(--cat-sound-color);    border-color: var(--cat-sound-border); }
+.filter-btn--art      { color: var(--cat-art-color);      border-color: var(--cat-art-border); }
+.filter-btn--movement { color: var(--cat-movement-color); border-color: var(--cat-movement-border); }
+.filter-btn--wellness { color: var(--cat-wellness-color); border-color: var(--cat-wellness-border); }
+.filter-btn--ceremony { color: var(--cat-ceremony-color); border-color: var(--cat-ceremony-border); }
+/* active overrides category text to white */
+.filter-btn--ceramics.active,
+.filter-btn--sound.active,
+.filter-btn--art.active,
+.filter-btn--movement.active,
+.filter-btn--wellness.active,
+.filter-btn--ceremony.active { color: var(--white); }
+
+/* ─────────────────────────────────────────────
+   NAVIGATION COMPONENT
+───────────────────────────────────────────── */
+.nav-demo {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.nav-demo-inner {
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(249,244,237,.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-demo-logo {
+  font-family: Costa, Georgia, serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -.03em;
+  color: var(--ink);
+}
+.nav-demo-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-demo-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav-demo-links a:hover { color: var(--ink); background: var(--sand); }
+.nav-demo-links a.active { color: var(--ink); }
+.nav-demo-lang {
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  font: 600 12px/1 Inter, sans-serif;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  margin-left: 4px;
+}
+.nav-demo-caption {
+  padding: 12px 20px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--sand);
+}
+
+/* Floating pill nav variant */
+.nav-pill-demo {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.nav-pill-inner {
+  margin: 16px 20px;
+  height: 62px;
+  padding: 10px 12px 10px 20px;
+  border: 1px solid rgba(42,37,32,.12);
+  border-radius: 999px;
+  background: rgba(249,244,237,.88);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 14px 44px rgba(42,37,32,.09);
+}
+.nav-pill-inner .logo-text {
+  font-family: Costa, Georgia, serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -.03em;
+  color: var(--ink);
+}
+.nav-pill-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+}
+.nav-pill-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .15s;
+}
+.nav-pill-links a:hover { color: var(--ink); }
+.nav-pill-caption {
+  padding: 12px 20px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--sand);
+}
+
+/* ─────────────────────────────────────────────
+   PAGE EYEBROW + TITLE PATTERN
+───────────────────────────────────────────── */
+.page-header-demo {
+  padding: 40px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.page-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--clay);
+  margin-bottom: 14px;
+}
+.page-title {
+  font-family: Costa, SagedCyr, Georgia, serif;
+  font-size: clamp(42px, 8vw, 68px);
+  line-height: .91;
+  letter-spacing: -.04em;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+.page-lead {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 500px;
+}
+
+/* ─────────────────────────────────────────────
+   DIVIDERS
+───────────────────────────────────────────── */
+.ds-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 0 0 72px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="ds-page">
+
+  <!-- HEADER -->
+  <header class="ds-header">
+    <div class="ds-header__eyebrow">Saged.club</div>
+    <h1 class="ds-header__title">Design System</h1>
+    <div class="ds-header__meta">
+      <span>v1.0</span>
+      <span>2026-10-21</span>
+      <span>Vanilla HTML/CSS — no framework</span>
+    </div>
+  </header>
+
+
+  <!-- ─────────────────── SECTION 1: COLORS ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">01 — Colors</div>
+
+    <div class="color-grid">
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#f9f4ed;"></div>
+        <div class="color-swatch__name">Paper</div>
+        <div class="color-swatch__token">--paper</div>
+        <div class="color-swatch__hex">#f9f4ed</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#efe5d6;"></div>
+        <div class="color-swatch__name">Sand</div>
+        <div class="color-swatch__token">--sand</div>
+        <div class="color-swatch__hex">#efe5d6</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#2a2520;"></div>
+        <div class="color-swatch__name">Ink</div>
+        <div class="color-swatch__token">--ink</div>
+        <div class="color-swatch__hex">#2a2520</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#6b5f54;"></div>
+        <div class="color-swatch__name">Muted</div>
+        <div class="color-swatch__token">--muted</div>
+        <div class="color-swatch__hex">#6b5f54</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#ded1bf;"></div>
+        <div class="color-swatch__name">Line</div>
+        <div class="color-swatch__token">--line</div>
+        <div class="color-swatch__hex">#ded1bf</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#9f4d2d;"></div>
+        <div class="color-swatch__name">Clay</div>
+        <div class="color-swatch__token">--clay</div>
+        <div class="color-swatch__hex">#9f4d2d</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#faf0e6;border:1px solid var(--line);"></div>
+        <div class="color-swatch__name">Clay Light</div>
+        <div class="color-swatch__token">--clay-light</div>
+        <div class="color-swatch__hex">#faf0e6</div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#fffdf8;border:1px solid var(--line);"></div>
+        <div class="color-swatch__name">White</div>
+        <div class="color-swatch__token">--white</div>
+        <div class="color-swatch__hex">#fffdf8</div>
+      </div>
+
+    </div>
+
+    <p class="ds-section__note">Note: #ff7a23 (logo orange) is for print/ads only — not a web token. --clay (#9f4d2d) is the web accent.</p>
+  </section>
+
+
+  <!-- ─────────────────── SECTION 2: TYPOGRAPHY ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">02 — Typography</div>
+
+    <div class="type-rows">
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Display</div>
+          <div class="type-row__spec">Costa Light<br>64px / -0.04em<br>lh: .92</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-display">Saged</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Display CYR</div>
+          <div class="type-row__spec">SagedCyr 400<br>64px / -0.035em<br>lh: .92</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-display-cyr">Керамика</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Page Eyebrow</div>
+          <div class="type-row__spec">Inter 700<br>11px / +0.18em<br>uppercase · --clay</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-page-eyebrow">Workshops &amp; Events</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Page Title</div>
+          <div class="type-row__spec">Costa / SagedCyr<br>42–68px / -0.04em<br>lh: .91</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-page-title">What's on</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Page Lead</div>
+          <div class="type-row__spec">Inter 400<br>17px<br>lh: 1.65 · --muted</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-page-lead">Classes, events and gatherings at Saged — a creative club in Valencia's old city.</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Section Label</div>
+          <div class="type-row__spec">Inter 700<br>10px / +0.2em<br>uppercase · --muted</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-section-label">02 — Typography</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Body</div>
+          <div class="type-row__spec">Inter 400<br>15px<br>lh: 1.6 · --ink</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-body">Clay must dry and go through bisque firing before glazing. That cycle takes a week — this isn't a workaround, it's the actual ceramic process.</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Muted</div>
+          <div class="type-row__spec">Inter 400<br>14px<br>lh: 1.6 · --muted</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-muted">Two sessions · every Thursday · group up to 6</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <div class="type-row__label">Small</div>
+          <div class="type-row__spec">Inter 400<br>12px<br>lh: 1.5 · --muted</div>
+        </div>
+        <div class="type-row__sample">
+          <span class="ts-small">Clay, tools, two firings and your finished piece — everything included.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────── SECTION 3: BUTTONS ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">03 — Buttons</div>
+
+    <div style="display:flex;flex-direction:column;gap:28px;">
+
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">btn-primary</div>
+        <div class="button-row">
+          <a href="#" class="btn-primary">Book a spot</a>
+          <a href="#" class="btn-primary">Записаться</a>
+        </div>
+        <div class="ds-section__note">.btn-primary — clay fill, white text, 48px tall, border-radius:999px</div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">btn-secondary</div>
+        <div class="button-row">
+          <a href="#" class="btn-secondary">Learn more</a>
+          <a href="#" class="btn-secondary">See all events</a>
+        </div>
+        <div class="ds-section__note">.btn-secondary — outline, --line border, 48px tall, border-radius:999px</div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">nav-cta</div>
+        <div class="button-row">
+          <a href="#" class="nav-cta">Become a host</a>
+          <a href="#" class="nav-cta">Join</a>
+        </div>
+        <div class="ds-section__note">.nav-cta — clay outline pill, 38px tall, used in navigation bar</div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">btn-sm</div>
+        <div class="button-row">
+          <a href="#" class="btn-sm">Book</a>
+          <a href="#" class="btn-sm">Sign up</a>
+        </div>
+        <div class="ds-section__note">.btn-sm — clay fill, 36px tall, 12px text, for compact contexts</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────── SECTION 4: CATEGORY TAGS ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">04 — Category Tags</div>
+
+    <div class="tag-row">
+      <span class="cat-tag cat-tag--ceramics">🏺 Ceramics</span>
+      <span class="cat-tag cat-tag--sound">🎵 Sound</span>
+      <span class="cat-tag cat-tag--art">🖌️ Art &amp; Painting</span>
+      <span class="cat-tag cat-tag--movement">🌿 Movement</span>
+      <span class="cat-tag cat-tag--wellness">✦ Wellness</span>
+      <span class="cat-tag cat-tag--ceremony">✨ Ceremony</span>
+    </div>
+
+    <div style="margin-top:28px;display:flex;flex-direction:column;gap:10px;">
+
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding-bottom:8px;border-bottom:1px solid var(--line);">
+        <span>Category</span>
+        <span>Icon</span>
+        <span>Color</span>
+        <span>Border</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:12px;padding:6px 0;">
+        <span style="font-weight:600;color:#c8704a;">Ceramics</span>
+        <span>🏺</span>
+        <span style="font-family:monospace;color:var(--muted);">#c8704a</span>
+        <span style="font-family:monospace;color:var(--muted);">#e8c0a8</span>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:12px;padding:6px 0;border-top:1px solid var(--line);">
+        <span style="font-weight:600;color:#8a60a8;">Sound</span>
+        <span>🎵</span>
+        <span style="font-family:monospace;color:var(--muted);">#8a60a8</span>
+        <span style="font-family:monospace;color:var(--muted);">#c8a8d8</span>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:12px;padding:6px 0;border-top:1px solid var(--line);">
+        <span style="font-weight:600;color:#4a8858;">Art / Painting</span>
+        <span>🖌️</span>
+        <span style="font-family:monospace;color:var(--muted);">#4a8858</span>
+        <span style="font-family:monospace;color:var(--muted);">#a0c8a8</span>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:12px;padding:6px 0;border-top:1px solid var(--line);">
+        <span style="font-weight:600;color:#3a8070;">Movement</span>
+        <span>🌿</span>
+        <span style="font-family:monospace;color:var(--muted);">#3a8070</span>
+        <span style="font-family:monospace;color:var(--muted);">#90c0b8</span>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:12px;padding:6px 0;border-top:1px solid var(--line);">
+        <span style="font-weight:600;color:#a84060;">Wellness</span>
+        <span>✦</span>
+        <span style="font-family:monospace;color:var(--muted);">#a84060</span>
+        <span style="font-family:monospace;color:var(--muted);">#d8a0b0</span>
+      </div>
+      <div style="display:grid;grid-template-columns:120px 80px 120px 1fr;gap:12px;align-items:center;font-size:12px;padding:6px 0;border-top:1px solid var(--line);">
+        <span style="font-weight:600;color:#b89040;">Ceremony</span>
+        <span>✨</span>
+        <span style="font-family:monospace;color:var(--muted);">#b89040</span>
+        <span style="font-family:monospace;color:var(--muted);">#d8c080</span>
+      </div>
+
+    </div>
+
+    <div class="ds-section__note">.cat-tag .cat-tag--{ceramics|sound|art|movement|wellness|ceremony}</div>
+  </section>
+
+
+  <!-- ─────────────────── SECTION 5: FILTER BUTTONS ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">05 — Filter Bar</div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:10px;">Default state (inactive)</div>
+      <div class="filter-bar">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn filter-btn--ceramics">🏺 Ceramics</button>
+        <button class="filter-btn filter-btn--sound">🎵 Sound</button>
+        <button class="filter-btn filter-btn--art">🖌️ Art</button>
+        <button class="filter-btn filter-btn--movement">🌿 Movement</button>
+        <button class="filter-btn filter-btn--wellness">✦ Wellness</button>
+        <button class="filter-btn filter-btn--ceremony">✨ Ceremony</button>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:10px;">Active state (one category selected)</div>
+      <div class="filter-bar">
+        <button class="filter-btn">All</button>
+        <button class="filter-btn filter-btn--ceramics active" style="background:#c8704a;border-color:#c8704a;">🏺 Ceramics</button>
+        <button class="filter-btn filter-btn--sound">🎵 Sound</button>
+        <button class="filter-btn filter-btn--art">🖌️ Art</button>
+        <button class="filter-btn filter-btn--movement">🌿 Movement</button>
+        <button class="filter-btn filter-btn--wellness">✦ Wellness</button>
+        <button class="filter-btn filter-btn--ceremony">✨ Ceremony</button>
+      </div>
+    </div>
+
+    <div class="ds-section__note">.filter-btn — default · .filter-btn.active — ink fill, white text · .filter-btn--{cat}.active — category color fill</div>
+  </section>
+
+
+  <!-- ─────────────────── SECTION 6: NAVIGATION ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">06 — Navigation</div>
+
+    <div style="display:flex;flex-direction:column;gap:32px;">
+
+      <!-- Variant A: Sticky top bar (events / hosts pages) -->
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">Variant A — Sticky bar (events / hosts / inner pages)</div>
+        <div class="nav-demo">
+          <div class="nav-demo-inner">
+            <div class="nav-demo-logo">Saged</div>
+            <div class="nav-demo-links">
+              <a href="#" class="active">What's on</a>
+              <a href="#">Hosts</a>
+              <a href="#">Space</a>
+              <select class="nav-demo-lang">
+                <option>RU</option>
+                <option>UA</option>
+                <option>EN</option>
+              </select>
+              <a href="#" class="nav-cta" style="margin-left:8px;">Become a host</a>
+            </div>
+          </div>
+          <div class="nav-demo-caption">Position: sticky · top: 0 · blur backdrop · 1px --line border-bottom</div>
+        </div>
+        <div class="ds-section__note">.nav — sticky top bar · .nav-links a.active — --ink text · .nav-cta — clay outline pill</div>
+      </div>
+
+      <!-- Variant B: Floating pill nav (home page) -->
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">Variant B — Floating pill (home page)</div>
+        <div class="nav-pill-demo">
+          <div class="nav-pill-inner">
+            <div class="logo-text">Saged</div>
+            <div class="nav-pill-links">
+              <a href="#">What's on</a>
+              <a href="#">Hosts</a>
+              <a href="#">Space</a>
+              <a href="#" class="nav-cta" style="margin-left:4px;">Join</a>
+            </div>
+          </div>
+          <div class="nav-pill-caption">Position: fixed · top: 14px · floating pill · border-radius: 999px · blur backdrop · box-shadow</div>
+        </div>
+        <div class="ds-section__note">.nav__inner — border-radius:999px pill · backdrop-filter:blur(18px) · box-shadow for depth</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─────────────────── SECTION 7: PAGE EYEBROW + TITLE ─────────────────── -->
+  <section class="ds-section">
+    <div class="ds-section__label">07 — Page Header Pattern</div>
+
+    <div style="display:flex;flex-direction:column;gap:24px;">
+
+      <!-- Latin (Costa) -->
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">Latin (Costa) — EN/ES pages</div>
+        <div class="page-header-demo">
+          <div class="page-eyebrow">Hosts &amp; Instructors</div>
+          <h1 class="page-title" style="font-family:Costa,Georgia,serif;">The makers<br>behind Saged</h1>
+          <p class="page-lead">Independent artists and instructors who bring their practice to the studio. Each runs their own classes and events.</p>
+        </div>
+      </div>
+
+      <!-- Cyrillic (SagedCyr) -->
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px;">Cyrillic (SagedCyr) — RU/UA pages</div>
+        <div class="page-header-demo">
+          <div class="page-eyebrow">Мастера и инструкторы</div>
+          <h1 class="page-title" style="font-family:SagedCyr,Inter,sans-serif;">Те, кто создаёт<br>Saged</h1>
+          <p class="page-lead">Независимые художники и инструкторы, которые приносят свою практику в студию. Каждый ведёт свои занятия и события.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ds-section__note">.page-eyebrow (11px Inter 700 uppercase --clay) → .page-title (Costa/SagedCyr, clamp 42–68px) → .page-lead (17px Inter --muted)</div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <div class="ds-divider"></div>
+  <div style="font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <span>Saged Design System · v1.0 · 2026-10-21</span>
+    <span style="font-family:monospace;">--radius: 16px · fonts: Costa, SagedCyr, Inter</span>
+  </div>
+
+</div><!-- /ds-page -->
+
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ceramics with Koritsa — Saged</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:SagedCyr;src:url('/assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+@font-face{font-family:Costa;src:url('/assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+:root{
+  --paper:#f5f0ea;--sand:#ede3d4;--ink:#1e1610;--muted:#6b5f54;
+  --line:#ddd5c8;--clay:#9f4d2d;--clay-light:#faf0e6;
+  --white:#ffffff;--radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.draft-bar{background:#1e1610;color:#e8ddd4;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.04em}
+.draft-bar a{color:#F08A60;text-decoration:none}
+
+.nav{padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(245,240,234,.96);backdrop-filter:blur(10px);z-index:20}
+.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;transition:all .15s}
+.nav-cta:hover{background:var(--clay);color:var(--white)}
+@media(max-width:640px){.nav-links{display:none}.nav{padding:14px 20px}}
+
+/* ── Page layout ── */
+.page-wrap{max-width:1040px;margin:0 auto;padding:40px 32px 100px}
+@media(max-width:680px){.page-wrap{padding:24px 20px 80px}}
+
+.back-link{font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px}
+.back-link:hover{color:var(--ink)}
+
+/* ── Event photo ── */
+.event-photo{width:100%;height:320px;border-radius:var(--radius);overflow:hidden;margin-bottom:28px;background:linear-gradient(160deg,#c8704a,#8a3010)}
+.event-photo img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:680px){.event-photo{height:200px}}
+
+/* ── Title area ── */
+.event-title{font-family:Costa,Georgia,serif;font-size:clamp(28px,5vw,42px);letter-spacing:-.03em;line-height:.96;color:var(--ink);margin-bottom:20px}
+
+/* ── Organizer row ── */
+.organizer-row{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:28px}
+.organizer-left{display:flex;align-items:center;gap:12px}
+.org-avatar{width:40px;height:40px;border-radius:8px;overflow:hidden;background:var(--sand);flex-shrink:0}
+.org-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.org-label{font-size:11px;color:var(--muted);margin-bottom:2px}
+.org-name{font-size:14px;font-weight:600;color:var(--ink)}
+.btn-outline{font-size:13px;font-weight:600;color:var(--clay);border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:all .15s}
+.btn-outline:hover{background:var(--clay);color:var(--white)}
+
+/* ── Two-column layout ── */
+.event-layout{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
+@media(max-width:840px){.event-layout{grid-template-columns:1fr}}
+
+/* ── Left content ── */
+.event-main{}
+
+/* Next session block */
+.session-block{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin-bottom:28px}
+.session-block-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.session-block-title{font-size:14px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px}
+.session-block-title svg{color:var(--clay)}
+.weekly-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--clay);background:var(--clay-light);padding:4px 10px;border-radius:100px}
+.session-date{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.session-time{font-size:14px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.session-repeat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.55}
+.session-repeat strong{color:var(--ink);display:block;margin-bottom:4px}
+
+/* Content sections */
+.content-section{margin-bottom:28px}
+.content-section-title{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.content-section-body{font-size:15px;color:var(--muted);line-height:1.7}
+.checklist{display:flex;flex-direction:column;gap:8px}
+.check-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink)}
+.check-icon{width:20px;height:20px;border-radius:50%;background:var(--clay-light);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:var(--clay)}
+
+/* About the organizer */
+.about-org{border-top:1px solid var(--line);padding-top:28px;margin-top:28px}
+.about-org-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px}
+.about-org-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.about-org-left{display:flex;align-items:center;gap:12px}
+.about-org-name{font-size:15px;font-weight:600;color:var(--ink)}
+.about-org-role{font-size:12px;color:var(--muted)}
+
+/* ── Right sidebar ── */
+.event-sidebar{position:sticky;top:80px}
+
+.info-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.info-card-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:16px}
+.info-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.info-row:last-child{border-bottom:none}
+.info-row-label{color:var(--muted)}
+.info-row-value{color:var(--ink);font-weight:500;text-align:right}
+.info-row-value a{color:var(--clay);text-decoration:none}
+.info-row-value a:hover{text-decoration:underline}
+
+.session-picker-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+.session-dates{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.date-btn{border:1.5px solid var(--line);border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;background:var(--paper);transition:all .15s;font-family:inherit}
+.date-btn:hover{border-color:var(--clay)}
+.date-btn.active{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.date-btn-day{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:2px}
+.date-btn.active .date-btn-day{color:rgba(255,255,255,.7)}
+.date-btn-num{font-size:22px;font-weight:700;color:var(--ink);display:block;line-height:1}
+.date-btn.active .date-btn-num{color:var(--white)}
+.date-btn-month{font-size:10px;color:var(--muted);display:block;margin-top:2px}
+.date-btn.active .date-btn-month{color:rgba(255,255,255,.7)}
+
+.time-picker-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.time-options{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.time-btn{border:1.5px solid var(--line);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer;background:var(--paper);font-family:inherit;color:var(--ink);transition:all .15s}
+.time-btn:hover{border-color:var(--clay)}
+.time-btn.active{background:var(--ink);border-color:var(--ink);color:var(--white)}
+
+.btn-book{width:100%;background:var(--ink);color:var(--white);font-family:inherit;font-size:15px;font-weight:600;padding:15px;border:none;border-radius:100px;cursor:pointer;transition:opacity .15s;margin-bottom:10px;display:block;text-align:center;text-decoration:none}
+.btn-book:hover{opacity:.85}
+.book-note{font-size:12px;color:var(--muted);text-align:center;margin-bottom:16px;line-height:1.5}
+.whatsapp-link{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:10px;border:1px solid var(--line);border-radius:10px;transition:all .15s}
+.whatsapp-link:hover{border-color:var(--ink);color:var(--ink)}
+.whatsapp-icon{width:18px;height:18px;flex-shrink:0}
+</style>
+  <script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<div class="draft-bar">Prototype · <a href="/prototype.html">← Home</a> · <a href="/events/">← Events</a> · <a href="/hosts/koritsa/">Koritsa's profile</a></div>
+
+<nav class="nav">
+  <a class="nav-logo" href="/prototype.html"><img src="/assets/images/logo-saged-club.svg" alt="Saged" height="26"></a>
+  <div class="nav-links">
+    <a href="/events/" class="active">What's on</a>
+    <a href="/hosts/">Hosts</a>
+    <a href="/space/">Space</a>
+    <a href="/join/">Join</a>
+  </div>
+  <a class="nav-cta" href="/join/host/">Become a host</a>
+</nav>
+
+<div class="page-wrap">
+
+  <a class="back-link" href="/events/">← Back to events</a>
+
+  <div class="event-photo"><img src="/assets/images/events/koritsa-class.jpg" alt="Ceramics with Koritsa"></div>
+
+  <h1 class="event-title">Ceramics with Koritsa</h1>
+
+  <div class="organizer-row">
+    <div class="organizer-left">
+      <div class="org-avatar"><img src="/design/koritsa.png" alt="Koritsa"></div>
+      <div>
+        <div class="org-label">Organized by</div>
+        <div class="org-name">Koritsa Kokoko</div>
+      </div>
+    </div>
+    <a class="btn-outline" href="/hosts/koritsa/">View profile →</a>
+  </div>
+
+  <div class="event-layout">
+
+    <!-- LEFT: main content -->
+    <div class="event-main">
+
+      <!-- Next session -->
+      <div class="session-block">
+        <div class="session-block-header">
+          <div class="session-block-title">Next session</div>
+          <span class="weekly-badge">Weekly</span>
+        </div>
+        <div class="session-date">Thursday, October 23</div>
+        <div class="session-time">🕐 12:00–14:00 · 2 hours</div>
+        <div class="session-repeat">
+          <strong>Repeats every week.</strong>
+          Three slots every Thursday: 12:00, 15:00 and 19:00. Choose the time that works for you before booking.
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="content-section">
+        <div class="content-section-title">Description</div>
+        <div class="content-section-body">
+          <p>A ceramics class for beginners and those with some experience. We combine wheel throwing and hand building techniques in a small group — a maximum of 5 people per session.</p>
+          <br>
+          <p>Each session ends with your own piece, which goes into the kiln after two sessions. Koritsa guides from the first touch to the final glaze — at your own pace, without rushing.</p>
+          <br>
+          <p>No experience needed. All materials are included.</p>
+        </div>
+      </div>
+
+      <!-- What's included -->
+      <div class="content-section">
+        <div class="content-section-title">What's included</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-icon">✓</div> All clay and sculpting materials</div>
+          <div class="check-item"><div class="check-icon">✓</div> Two firings (bisque + glaze)</div>
+          <div class="check-item"><div class="check-icon">✓</div> Glazes and finishing</div>
+          <div class="check-item"><div class="check-icon">✓</div> Tea and coffee</div>
+        </div>
+      </div>
+
+      <!-- What to bring -->
+      <div class="content-section">
+        <div class="content-section-title">What to bring</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-icon">→</div> Clothes you don't mind getting dirty</div>
+          <div class="check-item"><div class="check-icon">→</div> Good mood 🏺</div>
+        </div>
+      </div>
+
+      <!-- About the organizer -->
+      <div class="about-org">
+        <div class="about-org-label">About the host</div>
+        <div class="about-org-row">
+          <div class="about-org-left">
+            <div class="org-avatar"><img src="/design/koritsa.png" alt="Koritsa"></div>
+            <div>
+              <div class="about-org-name">Koritsa Kokoko</div>
+              <div class="about-org-role">Ceramics host at Saged</div>
+            </div>
+          </div>
+          <a class="btn-outline" href="/hosts/koritsa/">View profile →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: sidebar -->
+    <div class="event-sidebar">
+
+      <div class="info-card">
+        <div class="info-card-title">General information</div>
+        <div class="info-row">
+          <span class="info-row-label">Price</span>
+          <span class="info-row-value">€30</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Format</span>
+          <span class="info-row-value">In person</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Location</span>
+          <span class="info-row-value"><a href="https://maps.app.goo.gl/RqsReEo929aeUAPN9" target="_blank">Saged Studio<br>C/ de les Cuines, 8</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">City</span>
+          <span class="info-row-value">Valencia</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="session-picker-title">Choose your date</div>
+        <div class="session-dates">
+          <button class="date-btn active" onclick="selectDate(this)">
+            <span class="date-btn-day">Thu</span>
+            <span class="date-btn-num">23</span>
+            <span class="date-btn-month">Oct</span>
+          </button>
+          <button class="date-btn" onclick="selectDate(this)">
+            <span class="date-btn-day">Thu</span>
+            <span class="date-btn-num">30</span>
+            <span class="date-btn-month">Oct</span>
+          </button>
+          <button class="date-btn" onclick="selectDate(this)">
+            <span class="date-btn-day">Thu</span>
+            <span class="date-btn-num">6</span>
+            <span class="date-btn-month">Nov</span>
+          </button>
+        </div>
+
+        <div class="time-picker-title">Choose your time</div>
+        <div class="time-options">
+          <button class="time-btn active" onclick="selectTime(this)">12:00</button>
+          <button class="time-btn" onclick="selectTime(this)">15:00</button>
+          <button class="time-btn" onclick="selectTime(this)">19:00</button>
+        </div>
+
+        <button class="btn-book" id="bookBtn" onclick="openSignup()">Book session</button>
+        <div class="book-note" id="bookNote">€30 payable on checkout</div>
+        <a class="whatsapp-link" href="https://wa.me/34605543300?text=I+have+a+question+about+ceramics+with+Koritsa" target="_blank">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Write us on WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Signup modal ───────────────────────────────────────── -->
+<style>
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(30,22,16,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-card{
+  background:var(--white);
+  border-radius:22px;
+  width:100%;max-width:400px;
+  padding:36px 32px 32px;
+  position:relative;
+  transform:translateY(18px);transition:transform .28s cubic-bezier(.16,1,.3,1);
+}
+.modal-overlay.open .modal-card{transform:translateY(0)}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--sand);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:16px;transition:background .15s;
+}
+.modal-close:hover{background:var(--line)}
+.modal-back{
+  position:absolute;top:16px;left:16px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--sand);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:16px;transition:background .15s;
+}
+.modal-back:hover{background:var(--line)}
+
+/* Screen visibility */
+.modal-screen{display:none}
+.modal-screen.active{display:block}
+
+/* Screen 1 — offer */
+.offer-icon{font-size:40px;margin-bottom:16px}
+.offer-heading{
+  font-family:Costa,Georgia,serif;
+  font-size:30px;letter-spacing:-.03em;line-height:1;
+  color:var(--ink);margin-bottom:10px;
+}
+.offer-sub{font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:28px}
+.btn-modal-primary{
+  display:block;width:100%;
+  background:var(--ink);color:var(--white);
+  font-family:inherit;font-size:15px;font-weight:600;
+  padding:14px 20px;border:none;border-radius:100px;
+  cursor:pointer;text-align:center;transition:opacity .15s;
+  margin-bottom:12px;
+}
+.btn-modal-primary:hover{opacity:.85}
+.btn-modal-skip{
+  display:block;width:100%;text-align:center;
+  font-size:13px;color:var(--muted);
+  background:none;border:none;cursor:pointer;
+  font-family:inherit;padding:6px;transition:color .15s;
+}
+.btn-modal-skip:hover{color:var(--ink)}
+
+/* Screen 2 — register */
+.reg-heading{
+  font-family:Costa,Georgia,serif;
+  font-size:26px;letter-spacing:-.03em;line-height:1.05;
+  color:var(--ink);margin-bottom:6px;
+}
+.reg-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+.contact-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.contact-opt{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 16px;border-radius:12px;
+  border:1.5px solid var(--line);
+  cursor:pointer;background:var(--white);
+  font-family:inherit;font-size:14px;font-weight:500;color:var(--ink);
+  transition:border-color .15s,background .15s;text-align:left;
+  width:100%;
+}
+.contact-opt:hover{border-color:var(--clay)}
+.contact-opt.selected{border-color:var(--ink);background:var(--paper)}
+.contact-opt-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.input-wrap{margin-bottom:20px;display:none}
+.input-wrap.visible{display:block}
+.contact-input{
+  width:100%;padding:12px 16px;
+  border:1.5px solid var(--line);border-radius:10px;
+  font-family:inherit;font-size:15px;color:var(--ink);
+  background:var(--white);outline:none;
+  transition:border-color .15s;
+}
+.contact-input:focus{border-color:var(--ink)}
+.input-label{font-size:12px;color:var(--muted);margin-bottom:6px;display:block}
+
+/* Screen 3 — confirmation */
+.confirm-check{
+  width:56px;height:56px;border-radius:50%;
+  background:#e8f5e9;display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin:0 auto 20px;
+}
+.confirm-heading{
+  font-family:Costa,Georgia,serif;
+  font-size:26px;letter-spacing:-.03em;
+  color:var(--ink);text-align:center;margin-bottom:6px;
+}
+.confirm-sub{font-size:14px;color:var(--muted);text-align:center;margin-bottom:24px}
+.coupon-box{
+  background:var(--paper);border:2px dashed var(--line);
+  border-radius:14px;padding:18px;
+  text-align:center;margin-bottom:10px;cursor:pointer;
+  transition:border-color .15s;
+}
+.coupon-box:hover{border-color:var(--clay)}
+.coupon-code{
+  font-family:Costa,Georgia,serif;
+  font-size:32px;letter-spacing:.06em;color:var(--ink);
+  display:block;margin-bottom:4px;
+}
+.coupon-hint{font-size:12px;color:var(--muted)}
+.coupon-copied{font-size:12px;color:#2e7d32;display:none;margin-top:4px}
+.coupon-note{font-size:13px;color:var(--muted);text-align:center;margin-bottom:24px}
+</style>
+
+<!-- Modal markup -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+
+    <!-- Screen 1: Offer -->
+    <div class="modal-screen active" id="screen1">
+      <div class="offer-icon">🏺</div>
+      <h2 class="offer-heading">€5 off your<br>first class</h2>
+      <p class="offer-sub">Leave a contact — we'll send updates about new sessions and save your spot faster.</p>
+      <button class="btn-modal-primary" onclick="goToScreen(2)">Claim discount →</button>
+      <button class="btn-modal-skip" onclick="skipToStripe()">Skip, pay full price →</button>
+    </div>
+
+    <!-- Screen 2: Register -->
+    <div class="modal-screen" id="screen2">
+      <button class="modal-back" onclick="goToScreen(1)" aria-label="Back">←</button>
+      <div style="margin-top:8px">
+        <h2 class="reg-heading">How should<br>we reach you?</h2>
+        <p class="reg-sub">One tap — we don't spam.</p>
+        <div class="contact-options">
+          <button class="contact-opt" id="opt-email" onclick="selectContact('email')">
+            <div class="contact-opt-icon" style="background:#fce8e6">📧</div>
+            <span>Gmail or email</span>
+          </button>
+          <button class="contact-opt" id="opt-telegram" onclick="selectContact('telegram')">
+            <div class="contact-opt-icon" style="background:#e3f2fd">✈️</div>
+            <span>Telegram</span>
+          </button>
+          <button class="contact-opt" id="opt-whatsapp" onclick="selectContact('whatsapp')">
+            <div class="contact-opt-icon" style="background:#e8f5e9">💬</div>
+            <span>WhatsApp</span>
+          </button>
+        </div>
+        <div class="input-wrap" id="contactInputWrap">
+          <label class="input-label" id="contactInputLabel">Your email</label>
+          <input class="contact-input" id="contactInput" type="text" autocomplete="off">
+        </div>
+        <button class="btn-modal-primary" id="getCodeBtn" onclick="submitContact()" style="opacity:.4;pointer-events:none">Get my code →</button>
+      </div>
+    </div>
+
+    <!-- Screen 3: Confirmation -->
+    <div class="modal-screen" id="screen3">
+      <div class="confirm-check">✓</div>
+      <h2 class="confirm-heading">Your code is ready</h2>
+      <p class="confirm-sub">Use it at checkout — saves €5 on your first class.</p>
+      <div class="coupon-box" onclick="copyCoupon()">
+        <span class="coupon-code" id="couponDisplay">SAGED5</span>
+        <span class="coupon-hint">Tap to copy</span>
+        <div class="coupon-copied" id="couponCopied">Copied ✓</div>
+      </div>
+      <p class="coupon-note">Enter the code on the payment page.</p>
+      <button class="btn-modal-primary" onclick="goToStripe(true)">Book for €25 →</button>
+      <button class="btn-modal-skip" onclick="goToStripe(false)">Pay full €30 without code</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STRIPE_URL = 'https://buy.stripe.com/00w9AVdkq2RM0DI4XYffy0n';
+const COUPON    = 'SAGED5';
+
+const dateMap = {'23':'Thu 23 Oct','30':'Thu 30 Oct','6':'Thu 6 Nov'};
+let selectedDate = '23 Oct';
+let selectedTime = '12:00';
+let selectedContact = null;
+
+function selectDate(btn) {
+  document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedDate = btn.querySelector('.date-btn-num').textContent + ' ' + btn.querySelector('.date-btn-month').textContent;
+}
+function selectTime(btn) {
+  document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedTime = btn.textContent;
+}
+
+/* Modal flow */
+function openSignup() {
+  /* If already registered, skip straight to Stripe */
+  if (localStorage.getItem('sagedRegistered')) {
+    document.getElementById('bookNote').textContent = '€25 · code SAGED5 applied';
+    goToStripe(true);
+    return;
+  }
+  document.getElementById('signupModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('signupModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function goToScreen(n) {
+  document.querySelectorAll('.modal-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + n).classList.add('active');
+}
+
+function selectContact(type) {
+  selectedContact = type;
+  document.querySelectorAll('.contact-opt').forEach(o => o.classList.remove('selected'));
+  document.getElementById('opt-' + type).classList.add('selected');
+
+  const labels  = {email:'Your email address',telegram:'Your Telegram username',whatsapp:'Your WhatsApp number'};
+  const types   = {email:'email',telegram:'text',whatsapp:'tel'};
+  const holders = {email:'you@gmail.com',telegram:'@username',whatsapp:'+34 600 000 000'};
+
+  const wrap  = document.getElementById('contactInputWrap');
+  const label = document.getElementById('contactInputLabel');
+  const input = document.getElementById('contactInput');
+
+  label.textContent   = labels[type];
+  input.type          = types[type];
+  input.placeholder   = holders[type];
+  input.value         = '';
+  wrap.classList.add('visible');
+  input.focus();
+
+  const btn = document.getElementById('getCodeBtn');
+  btn.style.opacity = '1';
+  btn.style.pointerEvents = 'auto';
+}
+
+function submitContact() {
+  const val = document.getElementById('contactInput').value.trim();
+  if (!val) { document.getElementById('contactInput').focus(); return; }
+  /* Store locally — swap for an API call / form submission when ready */
+  localStorage.setItem('sagedRegistered', '1');
+  localStorage.setItem('sagedContact', JSON.stringify({type: selectedContact, value: val}));
+  goToScreen(3);
+}
+
+function copyCoupon() {
+  navigator.clipboard.writeText(COUPON).then(() => {
+    document.getElementById('couponCopied').style.display = 'block';
+    setTimeout(() => { document.getElementById('couponCopied').style.display = 'none'; }, 2000);
+  });
+}
+
+function skipToStripe() {
+  closeModal();
+  goToStripe(false);
+}
+
+function goToStripe(withCoupon) {
+  closeModal();
+  if (withCoupon) {
+    document.getElementById('bookNote').textContent = '€25 · code SAGED5 applied at checkout';
+  }
+  const url = withCoupon
+    ? STRIPE_URL + '?prefilled_promo_code=' + COUPON
+    : STRIPE_URL;
+  window.open(url, '_blank');
+}
+
+/* Close on backdrop click */
+document.getElementById('signupModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+
+</body>
+</html>

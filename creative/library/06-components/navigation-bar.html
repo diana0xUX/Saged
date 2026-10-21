@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navigation Bar — Saged Component</title>
+<style>
+  /* ── Page chrome ── */
+  body{margin:0;font-family:Inter,sans-serif;background:#f9f4ed;color:#2a2520}
+  .doc{max-width:900px;margin:80px auto;padding:0 24px 80px}
+  h1{font-size:28px;font-weight:700;margin:0 0 8px}
+  .subtitle{color:#6b5f54;margin:0 0 48px;font-size:15px}
+  h2{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6b5f54;margin:48px 0 12px;border-top:1px solid #e1d6c5;padding-top:24px}
+  pre{background:#2a2520;color:#f3eefa;padding:20px 24px;border-radius:12px;font-size:13px;line-height:1.6;overflow-x:auto;white-space:pre-wrap}
+  .rule{background:#fff8f2;border:1px solid #e1d6c5;border-radius:12px;padding:16px 20px;font-size:14px;line-height:1.7;color:#2a2520;margin-bottom:12px}
+  .rule strong{color:#9f4d2d}
+  .tag{display:inline-block;background:#f3eefa;border:1px solid #d8c8ee;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:600;color:#6e4a8c;margin-right:6px}
+  .preview-label{font-size:12px;color:#6b5f54;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px}
+
+  /* ── Live preview of the nav component ── */
+  .preview{border:1px solid #e1d6c5;border-radius:16px;overflow:hidden;margin-top:16px;background:#f9f4ed}
+  .gn{position:relative;top:0;left:0;right:0;z-index:50;height:62px;background:rgba(249,244,237,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e1d6c5}
+  .gn__inner{height:100%;max-width:1200px;margin:auto;padding:0 24px;display:flex;align-items:center;gap:4px}
+  .gn__logo{text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.05em;color:#2a2520;line-height:1.1;text-align:center}
+  .gn__logo span{display:block;color:#ff7a23}
+  .gn__links{display:flex;align-items:center;gap:4px;margin-left:auto}
+  .gn__links a:not(.pill){padding:8px 14px;font-size:14px;font-weight:500;color:#6b5f54;border-radius:8px;text-decoration:none;transition:color .15s,background .15s}
+  .gn__links a:not(.pill):hover{color:#2a2520;background:#f1e9da}
+  .gn__links .pill{margin-left:8px;min-height:40px;padding:0 20px;background:#8a60a8;color:#fff;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700;display:inline-flex;align-items:center}
+  .gn__links .back{color:#9f4d2d !important;font-weight:600}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <h1>Navigation Bar</h1>
+  <p class="subtitle">Saged.club global component · used on all pages · do not redesign without updating this file</p>
+
+  <!-- LIVE PREVIEW -->
+  <div class="preview-label">Live preview</div>
+  <div class="preview">
+    <header class="gn">
+      <div class="gn__inner">
+        <a class="gn__logo" href="/" aria-label="Saged.club home">
+          <span>SAGED</span>
+          <span style="color:#2a2520">CLUB</span>
+        </a>
+        <nav class="gn__links" aria-label="Main navigation">
+          <a href="#classes">Занятия</a>
+          <a href="#schedule">Расписание</a>
+          <a href="#people">Преподаватель</a>
+          <a href="#pricing">Цены</a>
+          <a class="back" href="/">← Saged Studio</a>
+          <a class="pill" href="#book">Записаться ↗</a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <!-- RULES -->
+  <h2>Rules — never break these</h2>
+
+  <div class="rule">
+    <strong>Height:</strong> always <code>62px</code>. Never taller, never shorter. This is a hard constraint — content below the nav uses <code>padding-top: 62px</code> to clear it.
+  </div>
+  <div class="rule">
+    <strong>Background:</strong> <code>rgba(249,244,237,.96)</code> + <code>backdrop-filter:blur(10px)</code>. Semi-transparent warm cream, blurs content scrolling beneath. Never solid white, never dark.
+  </div>
+  <div class="rule">
+    <strong>Logo:</strong> SVG <code>/assets/images/logo-saged-club.svg</code>, height <code>32px</code>. On sub-pages without the SVG, use stacked text: <em>SAGED</em> in orange, <em>CLUB</em> in ink. No other logo variants.
+  </div>
+  <div class="rule">
+    <strong>Links:</strong> 14px, weight 500, color <code>var(--muted)</code> (#6b5f54). Hover: ink color + sand background pill (<code>border-radius:8px</code>). No underlines. No bold on regular links.
+  </div>
+  <div class="rule">
+    <strong>CTA pill:</strong> always the rightmost item. Background <code>var(--orange)</code> (purple for handpan = <code>#8a60a8</code>, terracotta for main = <code>#9f4d2d</code> as pill). Min-height <code>40px</code>, padding <code>0 20px</code>, border-radius <code>999px</code>. One pill only — never two pill-style buttons in the nav.
+  </div>
+  <div class="rule">
+    <strong>Back link:</strong> sub-pages (handpan, materials-lab, etc.) add a <code>← Saged Studio</code> link before the CTA pill. Color: <code>var(--clay)</code> (#6e4a8c) or terracotta. Never a full URL — always readable label.
+  </div>
+  <div class="rule">
+    <strong>Scroll shadow:</strong> JS adds <code>.scrolled</code> class when <code>window.scrollY &gt; 4</code> → <code>box-shadow: 0 2px 24px rgba(42,37,32,.08)</code>. Required on every page.
+  </div>
+  <div class="rule">
+    <strong>Mobile:</strong> below <code>768px</code>, links hide, burger button appears (<code>height:40px</code>, border <code>1.5px solid var(--line)</code>, <code>border-radius:8px</code>). Tapping opens links as vertical dropdown with <code>border-radius:18px</code> card. Never a full-screen overlay.
+  </div>
+  <div class="rule">
+    <strong>Position:</strong> always <code>position:fixed</code>, <code>z-index:50</code>. Never <code>sticky</code> — sticky breaks on iOS Safari inside scroll containers.
+  </div>
+
+  <!-- CSS SOURCE -->
+  <h2>CSS — copy exactly</h2>
+<pre>
+.gn{position:fixed;top:0;left:0;right:0;z-index:50;height:62px;
+  background:rgba(249,244,237,.96);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  transition:box-shadow .25s}
+.gn.scrolled{box-shadow:0 2px 24px rgba(42,37,32,.08)}
+.gn__inner{height:100%;width:min(calc(100% - 40px),var(--max));margin:auto;
+  display:flex;align-items:center;gap:4px}
+.gn__logo img{height:32px;width:auto;display:block}
+.gn__links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.gn__links a:not(.pill){padding:8px 14px;font-size:14px;font-weight:500;
+  color:var(--muted);border-radius:8px;text-decoration:none;
+  transition:color .15s,background .15s}
+.gn__links a:not(.pill):hover{color:var(--ink);background:var(--sand)}
+.gn__links .pill{margin-left:8px;min-height:40px;padding:0 20px}
+.gn__burger{display:none;height:40px;padding:0 16px;
+  border:1.5px solid var(--line);border-radius:8px;background:transparent;
+  cursor:pointer;font:600 14px/1 Inter,sans-serif;color:var(--ink);margin-left:auto}
+
+/* Mobile */
+@media(max-width:768px){
+  .gn__links{display:none}
+  .gn__burger{display:inline-flex;align-items:center}
+  .gn__links.open{display:flex;position:absolute;top:66px;left:12px;right:12px;
+    flex-direction:column;align-items:stretch;gap:4px;background:var(--paper);
+    border:1px solid var(--line);border-radius:18px;padding:12px;
+    box-shadow:0 16px 48px rgba(42,37,32,.14);z-index:50}
+  .gn__links.open a{padding:12px 16px;border-radius:10px;font-size:15px}
+}
+</pre>
+
+  <!-- HTML SOURCE -->
+  <h2>HTML — copy exactly, change links only</h2>
+<pre>
+&lt;header class="gn"&gt;
+  &lt;div class="gn__inner"&gt;
+    &lt;a class="gn__logo" href="/" aria-label="Saged.club home"&gt;
+      &lt;img src="/assets/images/logo-saged-club.svg" alt="Saged Club"&gt;
+    &lt;/a&gt;
+    &lt;nav class="gn__links" aria-label="[Page] navigation"&gt;
+      &lt;a href="#section1"&gt;Link 1&lt;/a&gt;
+      &lt;a href="#section2"&gt;Link 2&lt;/a&gt;
+      &lt;a href="#section3"&gt;Link 3&lt;/a&gt;
+      &lt;!-- sub-pages only: --&gt;
+      &lt;a href="/"&gt;← Saged Studio&lt;/a&gt;
+      &lt;!-- always last: --&gt;
+      &lt;a class="pill" href="#book"&gt;Записаться ↗&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;button class="gn__burger" type="button"
+      aria-expanded="false" aria-controls="mobile-menu"&gt;Меню&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+</pre>
+
+  <!-- JS SOURCE -->
+  <h2>JS — required scroll + burger behaviour</h2>
+<pre>
+// Scroll shadow
+window.addEventListener('scroll', () => {
+  document.querySelector('.gn').classList.toggle('scrolled', window.scrollY > 4)
+}, {passive: true})
+
+// Mobile burger
+const menuButton = document.querySelector('.gn__burger')
+menuButton?.addEventListener('click', () => {
+  const open = menuButton.getAttribute('aria-expanded') === 'true'
+  menuButton.setAttribute('aria-expanded', String(!open))
+  document.querySelector('.gn__links').classList.toggle('open', !open)
+})
+</pre>
+
+  <!-- WHAT CHANGES PER PAGE -->
+  <h2>Per-page customisation</h2>
+  <div class="rule">
+    <span class="tag">main site</span> Links: Classes / Schedule / People / Visit / Association · CTA: "Book a class ↗" · No back link · Lang select after nav
+  </div>
+  <div class="rule">
+    <span class="tag">handpan</span> Links: Занятия / Расписание / Преподаватель / Цены · Back: "← Saged Studio" · CTA: "Записаться ↗" · Pill background: <code>#8a60a8</code>
+  </div>
+  <div class="rule">
+    <span class="tag">materials-lab</span> Links: adapt to page sections · Back: "← Saged Studio" · same CTA pattern
+  </div>
+  <div class="rule">
+    <strong>What never changes:</strong> height, background, blur, logo size, link font size/weight, pill shape, mobile dropdown shape, scroll shadow JS, z-index.
+  </div>
+
+</div>
+</body>
+</html>

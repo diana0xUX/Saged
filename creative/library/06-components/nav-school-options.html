@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nav School Options — Saged</title>
+<style>
+  body{margin:0;font-family:Inter,sans-serif;background:#f0ebe3;color:#2a2520;padding:48px 24px 80px}
+  .page{max-width:1100px;margin:auto}
+  h1{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#6b5f54;margin:0 0 6px}
+  .intro{font-size:14px;color:#6b5f54;margin:0 0 48px}
+
+  .option{margin-bottom:56px}
+  .option-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#6b5f54;margin-bottom:12px}
+  .option-name{font-size:20px;font-weight:700;margin:0 0 4px;color:#2a2520}
+  .option-desc{font-size:13px;color:#6b5f54;line-height:1.55;margin:0 0 16px;max-width:640px}
+
+  .preview{border-radius:16px;overflow:hidden;background:#f9f4ed;border:1px solid #e1d6c5;position:relative;height:90px;display:flex;align-items:center}
+
+  /* ── Shared nav base ── */
+  .gn{position:relative;top:0;left:0;right:0;z-index:50;width:100%}
+  .gn__inner{height:62px;width:calc(100% - 24px);margin:auto;padding:0 8px 0 20px;border:1px solid rgba(42,37,32,.12);border-radius:999px;background:rgba(249,244,237,.96);display:flex;align-items:center;gap:4px;box-shadow:0 8px 32px rgba(42,37,32,.08)}
+  .gn__logo{text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.05em;color:#ff7a23;line-height:1.15;text-align:left;flex-shrink:0}
+  .gn__logo span{display:block}
+  .gn__links{display:flex;align-items:center;gap:2px;margin-left:auto}
+  .gn__links a:not(.pill){padding:7px 12px;font-size:13px;font-weight:500;color:#6b5f54;border-radius:8px;text-decoration:none}
+  .gn__links .pill{margin-left:8px;min-height:36px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:700;display:inline-flex;align-items:center;color:#fff}
+  .pill--purple{background:#8a60a8}
+  .pill--orange{background:#c25e33}
+  .back{color:#9f4d2d !important;font-weight:600;font-size:13px}
+
+  /* pros/cons */
+  .verdict{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .verdict div{background:#fff;border:1px solid #e1d6c5;border-radius:10px;padding:12px 16px;font-size:13px;line-height:1.6}
+  .verdict .pro strong{color:#4a7c59}
+  .verdict .con strong{color:#9f4d2d}
+
+  /* divider */
+  hr{border:none;border-top:1px solid #d8cfc4;margin:0 0 56px}
+
+  /* ── Option A specific ── */
+  .logo-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8a60a8;margin-left:2px;vertical-align:middle;position:relative;top:-1px}
+  .logo-dot--orange{background:#c25e33}
+
+  /* ── Option B specific ── */
+  .school-chip{display:inline-block;background:#8a60a8;color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:2px 8px;margin-left:12px;white-space:nowrap;flex-shrink:0}
+  .school-chip--orange{background:#c25e33}
+
+  /* ── Option C specific ── */
+  .gn__logo-stack .logo-sub{display:block;font-size:10px;font-weight:500;color:#8a60a8;letter-spacing:.05em;text-transform:uppercase;margin-top:1px}
+  .gn__logo-stack .logo-sub--orange{color:#c25e33}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Nav School Options</h1>
+  <p class="intro">Two pages share one nav shell: Saged ceramic studio (orange) vs Handpan school (purple). Three ways to make it clear which one you're on.</p>
+
+  <!-- ════════════════════════════════════ OPTION A ════════════════════════════════════ -->
+  <div class="option">
+    <div class="option-label">Option A</div>
+    <div class="option-name">Colour dot on logo</div>
+    <div class="option-desc">A small dot appears under the logo in the school's accent colour. Everything else stays identical. The colour of the CTA pill already signals which school — the dot reinforces it.</div>
+
+    <!-- A: Ceramics -->
+    <div class="option-label" style="margin-top:16px;margin-bottom:6px">Ceramics (orange)</div>
+    <div class="preview">
+      <nav class="gn">
+        <div class="gn__inner">
+          <a class="gn__logo" href="#">
+            <span>SAGED</span>
+            <span>CLUB<span class="logo-dot logo-dot--orange"></span></span>
+          </a>
+          <div class="gn__links">
+            <a href="#">Classes</a>
+            <a href="#">Schedule</a>
+            <a href="#">People</a>
+            <a href="#">Visit</a>
+            <a class="pill pill--orange" href="#">Book a class ↗</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- A: Handpan -->
+    <div class="option-label" style="margin-top:12px;margin-bottom:6px">Handpan school (purple)</div>
+    <div class="preview">
+      <nav class="gn">
+        <div class="gn__inner">
+          <a class="gn__logo" href="#">
+            <span>SAGED</span>
+            <span>CLUB<span class="logo-dot"></span></span>
+          </a>
+          <div class="gn__links">
+            <a href="#">Занятия</a>
+            <a href="#">Расписание</a>
+            <a href="#">Преподаватель</a>
+            <a href="#">Цены</a>
+            <a class="back" href="#">← Saged Studio</a>
+            <a class="pill pill--purple" href="#">Записаться ↗</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="verdict">
+      <div class="pro"><strong>Pro:</strong> No extra clutter. Pure and minimal. CTA button already does most of the work — this just adds a second hint.</div>
+      <div class="con"><strong>Con:</strong> Very easy to miss. A first-time visitor reading fast won't see a 6px dot. Doesn't say "music" or "ceramics" in words.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ════════════════════════════════════ OPTION B ════════════════════════════════════ -->
+  <div class="option">
+    <div class="option-label">Option B</div>
+    <div class="option-name">School chip next to logo</div>
+    <div class="option-desc">A small badge reading "ШКОЛА ХЭНДПАНА" or "КЕРАМИКА" sits right next to the logo. Same coloured background as the CTA pill — consistent accent system.</div>
+
+    <!-- B: Ceramics -->
+    <div class="option-label" style="margin-top:16px;margin-bottom:6px">Ceramics (orange)</div>
+    <div class="preview">
+      <nav class="gn">
+        <div class="gn__inner">
+          <a class="gn__logo" href="#">
+            <span>SAGED</span>
+            <span style="color:#2a2520">CLUB</span>
+          </a>
+          <span class="school-chip school-chip--orange">Керамика</span>
+          <div class="gn__links">
+            <a href="#">Classes</a>
+            <a href="#">Schedule</a>
+            <a href="#">People</a>
+            <a href="#">Visit</a>
+            <a class="pill pill--orange" href="#">Book a class ↗</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- B: Handpan -->
+    <div class="option-label" style="margin-top:12px;margin-bottom:6px">Handpan school (purple)</div>
+    <div class="preview">
+      <nav class="gn">
+        <div class="gn__inner">
+          <a class="gn__logo" href="#">
+            <span>SAGED</span>
+            <span style="color:#2a2520">CLUB</span>
+          </a>
+          <span class="school-chip">Хэндпан</span>
+          <div class="gn__links">
+            <a href="#">Занятия</a>
+            <a href="#">Расписание</a>
+            <a href="#">Цены</a>
+            <a class="back" href="#">← Saged Studio</a>
+            <a class="pill pill--purple" href="#">Записаться ↗</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="verdict">
+      <div class="pro"><strong>Pro:</strong> Reads immediately — no guessing. Chip colour matches the CTA pill so the system is consistent. Easy to scan on mobile too.</div>
+      <div class="con"><strong>Con:</strong> Adds one more element near the logo. On narrow screens the chip + long link list can start to crowd. Needs to hide or shrink on mobile.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ════════════════════════════════════ OPTION C ════════════════════════════════════ -->
+  <div class="option">
+    <div class="option-label">Option C</div>
+    <div class="option-name">Sub-label under logo name</div>
+    <div class="option-desc">The logo gains a small third line: "Школа хэндпана" in 10px muted colour. No badge, no chip — pure typography, same weight as the nav links.</div>
+
+    <!-- C: Ceramics -->
+    <div class="option-label" style="margin-top:16px;margin-bottom:6px">Ceramics (orange)</div>
+    <div class="preview">
+      <nav class="gn">
+        <div class="gn__inner">
+          <a class="gn__logo gn__logo-stack" href="#">
+            <span>SAGED</span>
+            <span style="color:#2a2520">CLUB</span>
+            <span class="logo-sub logo-sub--orange">Керамика · Валенсия</span>
+          </a>
+          <div class="gn__links">
+            <a href="#">Classes</a>
+            <a href="#">Schedule</a>
+            <a href="#">People</a>
+            <a href="#">Visit</a>
+            <a class="pill pill--orange" href="#">Book a class ↗</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- C: Handpan -->
+    <div class="option-label" style="margin-top:12px;margin-bottom:6px">Handpan school (purple)</div>
+    <div class="preview">
+      <nav class="gn">
+        <div class="gn__inner">
+          <a class="gn__logo gn__logo-stack" href="#">
+            <span>SAGED</span>
+            <span style="color:#2a2520">CLUB</span>
+            <span class="logo-sub">Школа хэндпана</span>
+          </a>
+          <div class="gn__links">
+            <a href="#">Занятия</a>
+            <a href="#">Расписание</a>
+            <a href="#">Цены</a>
+            <a class="back" href="#">← Saged Studio</a>
+            <a class="pill pill--purple" href="#">Записаться ↗</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="verdict">
+      <div class="pro"><strong>Pro:</strong> Most typographically elegant. No extra UI elements. Works at any screen size — just text. The sub-label can even include the city ("Школа хэндпана · Валенсия").</div>
+      <div class="con"><strong>Con:</strong> 10px is small — slightly harder to read on non-retina screens. The logo block becomes 3 lines tall which can feel crowded inside 62px height.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saged.club · Керамическая студия и место для событий · Валенсия</title>
+<meta name="description" content="Saged.club — пространство в сердце старой Валенсии. Керамические курсы, детские занятия, чайные клубы и вечера для своих.">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20260921">
+<style>
+  /* Draft-only overrides — remove when merging */
+
+  /* ── HERO ── */
+  .home-hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4rem var(--gutter) 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .home-hero__copy { display: flex; flex-direction: column; align-items: flex-start; }
+  .home-hero h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.05; margin: 0.75rem 0 0.5rem; }
+  .home-hero .lead { font-size: 1.05rem; color: var(--muted); line-height: 1.65; margin: 0 0 0.75rem; }
+  .home-hero__price { font-size: 0.95rem; color: var(--terracotta); font-weight: 500; margin-bottom: 1.75rem; }
+  .home-hero__buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .home-hero__img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 20px; display: block; }
+  @media (max-width: 768px) {
+    .home-hero { grid-template-columns: 1fr; padding: 2.5rem var(--gutter) 2rem; }
+    .home-hero__img { aspect-ratio: 4/3; }
+    .home-hero__buttons { flex-direction: column; }
+  }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-sand); }
+  .trust-strip__inner {
+    max-width: var(--max); margin: 0 auto; padding: 1.75rem var(--gutter);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;
+  }
+  .trust-strip__item { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .trust-strip__item strong { display: block; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.25rem; }
+  @media (max-width: 600px) { .trust-strip__inner { grid-template-columns: 1fr; gap: 0.75rem; text-align: left; } }
+
+  /* ── OFFERING CARDS ── */
+  .offering { border-bottom: 1px solid var(--line); padding: 4rem var(--gutter); }
+  .offering--alt { background: var(--bg-sand); }
+  .offering__inner { max-width: 720px; margin: 0 auto; }
+  .offering h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin: 0.5rem 0 1rem; line-height: 1.1; }
+  .offering p { font-size: 1rem; color: var(--muted); line-height: 1.75; margin: 0 0 1rem; max-width: 560px; }
+  .offering__price { font-size: 1rem; color: var(--terracotta); font-weight: 600; margin: 0.25rem 0 1.5rem; }
+  .offering__instructor { display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0 1.75rem; }
+  .offering__instructor img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: var(--bg-sand); }
+  .offering__instructor span { font-size: 0.9rem; color: var(--muted); }
+  .offering__instructor strong { display: block; font-size: 0.95rem; color: var(--ink); }
+  .offering__list { list-style: none; padding: 0; margin: 0 0 2rem; max-width: 560px; }
+  .offering__list li { font-size: 0.92rem; color: var(--ink); padding: 0.65rem 0; border-bottom: 1px solid var(--line); }
+  .offering__cta {
+    display: inline-block; font-size: 0.85rem; font-weight: 500;
+    padding: 0.7rem 1.5rem; background: var(--terracotta); color: #fff;
+    border-radius: 999px; text-decoration: none; transition: background 0.2s; border-bottom: none;
+  }
+  .offering__cta:hover { background: var(--ink); color: #fff; }
+
+  /* ── KIDS CARD ── */
+  .kids-card {
+    border-bottom: 1px solid var(--line);
+    padding: 3rem var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: var(--max);
+    margin: 0 auto;
+    align-items: center;
+  }
+  .kids-card h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin: 0.5rem 0 0.75rem; }
+  .kids-card p { font-size: 1rem; color: var(--muted); line-height: 1.7; margin: 0 0 0.75rem; }
+  .kids-card__ages { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
+  .kids-card__age {
+    background: var(--bg-sand); border: 1px solid var(--line);
+    border-radius: 8px; padding: 0.75rem 1rem;
+    font-size: 0.88rem; color: var(--ink); line-height: 1.5;
+  }
+  .kids-card__age strong { display: block; color: var(--terracotta); font-size: 0.95rem; }
+  .kids-card img { width: 100%; border-radius: 16px; object-fit: cover; aspect-ratio: 4/3; background: var(--bg-sand); }
+  @media (max-width: 700px) { .kids-card { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* ── ABOUT ── */
+  .about-home { background: var(--bg-sand); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-home__inner { max-width: 640px; margin: 0 auto; padding: 4rem var(--gutter); text-align: center; }
+  .about-home__inner h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0.5rem 0 1.5rem; }
+  .about-home__inner p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin: 0 0 1rem; }
+  .about-home__sign { font-family: 'Inter', sans-serif; font-style: italic; font-size: 1.3rem !important; color: var(--ink) !important; margin-top: 1.5rem !important; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-home { padding: 4rem var(--gutter); }
+  .testimonials-home h2 { font-size: clamp(1.5rem, 3vw, 2rem); text-align: center; margin-bottom: 2.5rem; }
+  .testimonials-home__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: var(--max); margin: 0 auto; }
+  .testimonial-card {
+    background: var(--bg-sand); border-radius: 8px;
+    border-left: 3px solid var(--terracotta);
+    padding: 1.75rem;
+  }
+  .testimonial-card blockquote {
+    margin: 0 0 1.25rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem; line-height: 1.5; color: var(--ink);
+    font-style: italic;
+  }
+  .testimonial-card figcaption { font-size: 0.82rem; color: var(--muted); }
+  .testimonial-card figcaption strong { color: var(--ink); display: block; }
+  @media (max-width: 800px) { .testimonials-home__grid { grid-template-columns: 1fr; } }
+
+  /* ── FIND US ── */
+  .find-us { padding: 4rem var(--gutter); max-width: var(--max); margin: 0 auto; }
+  .find-us h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.5rem; }
+  .find-us__grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+  .find-us__map iframe { width: 100%; height: 300px; border-radius: 12px; border: none; display: block; }
+  .find-us__info p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin: 0 0 1rem; }
+  .find-us__info a { color: var(--terracotta); border-bottom: 1px solid currentColor; }
+  .find-us__contact { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+  .find-us__contact-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.75rem 1.25rem; border-radius: 8px;
+    font-size: 0.9rem; font-weight: 500; text-decoration: none;
+    border: 1px solid var(--line); color: var(--ink); background: var(--bg);
+    transition: border-color 0.15s, transform 0.15s; border-bottom: 1px solid var(--line);
+  }
+  .find-us__contact-btn:hover { border-color: var(--terracotta); transform: translateY(-1px); color: var(--ink); }
+  .find-us__contact-btn--wa { background: #25D366; color: #fff; border-color: #25D366; }
+  .find-us__contact-btn--wa:hover { background: #1ebe5d; border-color: #1ebe5d; color: #fff; }
+  @media (max-width: 700px) { .find-us__grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* ── DRAFT BANNER ── */
+  .draft-banner {
+    background: #FF7A23; color: #fff; text-align: center;
+    padding: 0.6rem 1rem; font-size: 0.85rem; font-family: Inter, sans-serif;
+    position: sticky; top: 0; z-index: 1000;
+  }
+</style>
+</head>
+<body>
+
+<div class="draft-banner">⚠ DRAFT — не публиковать. Только для проверки.</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="topbar">
+  <a class="brand" href="../" aria-label="Saged.club home">
+    <img src="../assets/images/logo-saged-club.svg" alt="Saged.club" width="88" height="40">
+  </a>
+  <nav class="topnav" aria-label="Sections">
+    <!-- ИЗМЕНЕНИЕ: Взрослым → Студия, убраны Коворкинг и Приватно -->
+    <a href="../studio/">Студия</a>
+    <a href="../kids/">Детям</a>
+    <a href="../events/">События</a>
+    <a href="../gifts/">Подарки</a>
+  </nav>
+  <nav class="lang" aria-label="Language">
+    <span class="lang__current">RU</span>
+    <a href="../ua/" class="lang__alt">UA</a>
+    <a href="../en/" class="lang__alt">EN</a>
+    <a href="../es/" class="lang__alt">ES</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ═══ БЛОК 1 — ГЕРОЙ ═══
+       Цель: за 5 секунд — кто мы, что предлагаем, сколько стоит.
+       CTA 1 → /studio/ (главный)   CTA 2 → /events/ (вторичный) -->
+  <section class="home-hero">
+    <div class="home-hero__copy">
+      <p class="eyebrow">Saged.club · Старая Валенсия</p>
+      <h1>Место, где учатся руками и встречают своих</h1>
+      <p class="lead">Керамическая студия и пространство для событий в сердце Валенсии. Маленькие группы, без спешки.</p>
+      <p class="home-hero__price">Курс с Корицей — €60 · два четверга · всё включено</p>
+      <div class="home-hero__buttons">
+        <a href="../studio/" class="cta">Записаться на керамику →</a>
+        <a href="../events/" class="cta cta--secondary">Ближайшие события</a>
+      </div>
+    </div>
+    <img class="home-hero__img"
+         src="../assets/images/workshop-1.jpg"
+         alt="Кориця ведёт занятие — глина и маленькая группа в Saged.club"
+         loading="eager">
+  </section>
+
+  <!-- ═══ БЛОК 2 — ПОЛОСА ДОВЕРИЯ ═══
+       Три факта, которые снимают сомнения без лишних слов. -->
+  <section class="trust-strip">
+    <div class="trust-strip__inner">
+      <div class="trust-strip__item">
+        <strong>50+ участников</strong>с мая 2026
+      </div>
+      <div class="trust-strip__item">
+        <strong>Группы до 6 человек</strong>каждый четверг · три слота
+      </div>
+      <div class="trust-strip__item">
+        <strong>C/ de les Cuines, 8</strong>Старая Валенсия · Ciutat Vella
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ БЛОК 3 — КЕРАМИКА (главное предложение) ═══
+       Цель: заинтересовать и направить на /studio/ для бронирования.
+       Здесь: что, почём, с кем. Не продаём — направляем. -->
+  <section class="offering">
+    <div class="offering__inner">
+      <p class="eyebrow">Керамическая студия</p>
+      <h2>Каждый четверг — за столом с глиной</h2>
+      <p>Два занятия с разницей в неделю: на первом — лепим, на втором — глазуруем. Ещё через две недели ваш предмет дома.</p>
+      <p class="offering__price">€60 · две встречи · глина, инструменты, два обжига и чай — всё включено</p>
+      <div class="offering__instructor">
+        <!-- Фото Кориці: заменить src на реальный путь -->
+        <img src="../assets/images/koritsia-portrait.jpg" alt="Кориця — керамист и преподаватель">
+        <div>
+          <strong>Кориця</strong>
+          <span>Украинский керамист · ведёт на RU, UA и EN</span>
+        </div>
+      </div>
+      <ul class="offering__list">
+        <li>Четверг 12:00 · 15:00 · 19:00 — выберите удобный слот</li>
+        <li>Начать можно с любого четверга</li>
+        <li>Группа до 6 человек</li>
+      </ul>
+      <a href="../studio/" class="offering__cta">Узнать о курсе и записаться →</a>
+    </div>
+  </section>
+
+  <!-- ═══ БЛОК 4 — СОБЫТИЯ ═══
+       Цель: показать живую программу с ценами и направить на /events/.
+       Обновлять еженедельно. -->
+  <section class="offering offering--alt">
+    <div class="offering__inner">
+      <p class="eyebrow">Saged.club · События</p>
+      <h2>Собираем хороших людей</h2>
+      <p>Небольшие вечера — чайный клуб, мастерские и встречи без программы. Просто хорошие люди в тёплом месте.</p>
+      <ul class="offering__list">
+        <li>27 сентября · Чайный клуб с Хеленой · €15</li>
+        <li>Скоро · Мастерская по кольцам с Корицей</li>
+        <li>Скоро · Мастерская по вазам</li>
+      </ul>
+      <a href="../events/" class="offering__cta">Смотреть все события →</a>
+    </div>
+  </section>
+
+  <!-- ═══ БЛОК 5 — ДЕТИ ═══
+       Цель: родители, которые искали "керамика для детей Валенсия".
+       Быстро: возраст → расписание → цена → WhatsApp. -->
+  <section class="kids-card">
+    <!-- Фото для детского блока: заменить src -->
+    <img src="../assets/images/kids-class.jpg" alt="Детский класс по керамике в Saged.club">
+    <div>
+      <p class="eyebrow">Детская керамика</p>
+      <h2>Занятия для детей от 4 лет</h2>
+      <p>Каждое занятие — один предмет: кружка, животное, тарелка. Всё включено, глина и обжиг.</p>
+      <div class="kids-card__ages">
+        <div class="kids-card__age">
+          <strong>€25 · 1.5 часа</strong>
+          7–14 лет · самостоятельно<br>
+          Ср + Пт в 16:30
+        </div>
+        <div class="kids-card__age">
+          <strong>€50 пара · 1.5 часа</strong>
+          4.5–7 лет · с родителем<br>
+          Чт 17:30 · Сб+Вс 12:00 и 14:30
+        </div>
+      </div>
+      <a href="../kids/" class="offering__cta">Записать ребёнка →</a>
+    </div>
+  </section>
+
+  <!-- ═══ БЛОК 6 — О ПРОСТРАНСТВЕ ═══
+       Цель: объяснить "зачем всё это" — для тех, кто новый в городе
+       и ищет людей, а не просто курс. -->
+  <section class="about-home">
+    <div class="about-home__inner">
+      <p class="eyebrow">О пространстве</p>
+      <h2>Место, в которое нам самим было нужно</h2>
+      <p>Многие из нас оказались в Валенсии — между переездами, в паузе, в поиске. Без своих людей, без привычного ритма.</p>
+      <p>Мы открыли Saged.club, чтобы было место, куда можно прийти с руками и остаться собой. Здесь нет программы успеха — есть глина, чай, и люди, которые понимают.</p>
+      <p class="about-home__sign">Приходите как есть.</p>
+    </div>
+  </section>
+
+  <!-- ═══ БЛОК 7 — ОТЗЫВЫ ═══
+       ВНИМАНИЕ: вставлять только реальные цитаты из Google, DM или IG.
+       Никаких выдуманных. Пустые слоты — явно помечены. -->
+  <section class="testimonials-home">
+    <h2>Что говорят участники</h2>
+    <div class="testimonials-home__grid">
+
+      <figure class="testimonial-card">
+        <blockquote>
+          <!-- [ОТЗЫВ — нужна реальная цитата из Google / Instagram / DM] -->
+          «[Тестимониал — ждём из Instagram или Google Reviews]»
+        </blockquote>
+        <figcaption>
+          <strong>[Имя]</strong>
+          [Google Reviews / Instagram]
+        </figcaption>
+      </figure>
+
+      <figure class="testimonial-card">
+        <blockquote>
+          «[Тестимониал — ждём из Instagram или Google Reviews]»
+        </blockquote>
+        <figcaption>
+          <strong>[Имя]</strong>
+          [Google Reviews / Instagram]
+        </figcaption>
+      </figure>
+
+      <figure class="testimonial-card">
+        <blockquote>
+          «[Тестимониал — ждём из Instagram или Google Reviews]»
+        </blockquote>
+        <figcaption>
+          <strong>[Имя]</strong>
+          [Google Reviews / Instagram]
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ═══ БЛОК 8 — КАК НАС НАЙТИ ═══
+       Цель: снять последнюю причину не прийти — "а где это вообще?" -->
+  <section class="find-us">
+    <p class="eyebrow">Как нас найти</p>
+    <h2>Мы в сердце старой Валенсии</h2>
+    <div class="find-us__grid">
+      <div class="find-us__map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.123456789!2d-0.3784!3d39.4697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6048b28f0d8c6b%3A0x123!2sC%2F%20de%20les%20Cuines%2C%208%2C%2046001%20Val%C3%A8ncia!5e0!3m2!1sru!2ses!4v1234567890"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Saged.club на карте">
+        </iframe>
+        <p style="margin-top:0.75rem; font-size:0.85rem; color:var(--muted); text-align:center;">
+          <a href="https://maps.app.goo.gl/RqsReEo929aeUAPN9" target="_blank" rel="noopener">Открыть в Google Maps →</a>
+        </p>
+      </div>
+      <div class="find-us__info">
+        <p>
+          <strong>C/ de les Cuines, 8</strong><br>
+          Ciutat Vella, 46001 Valencia
+        </p>
+        <p>Пн–Пт 10:00–22:00 · Сб–Вс по расписанию событий</p>
+        <div class="find-us__contact">
+          <a href="https://wa.me/34605543300?text=Привет!+Хочу+записаться+в+Saged.club"
+             class="find-us__contact-btn find-us__contact-btn--wa"
+             target="_blank" rel="noopener">
+            WhatsApp +34 605 54 33 00
+          </a>
+          <a href="https://instagram.com/saged.club"
+             class="find-us__contact-btn"
+             target="_blank" rel="noopener">
+            Instagram @saged.club
+          </a>
+          <a href="mailto:hello@saged.club" class="find-us__contact-btn">
+            hello@saged.club
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <p><strong>Saged.club</strong></p>
+  <p class="muted">Место, где можно замедлиться, создавать и соединяться.</p>
+  <p class="muted">C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia</p>
+  <p class="muted">
+    WhatsApp <a href="https://wa.me/34605543300">+34 605 54 33 00</a> ·
+    <a href="mailto:hello@saged.club">hello@saged.club</a> ·
+    <a href="https://instagram.com/saged.club">@saged.club</a>
+  </p>
+  <!-- Коворкинг и Приватно — только здесь, не в основной навигации -->
+  <p class="muted small">
+    <a href="../coworking/">Коворкинг</a> ·
+    <a href="../private/">Приватные события</a> ·
+    <a href="../privacy.html">Privacy</a> ·
+    <a href="../cookies.html">Cookies</a>
+  </p>
+  <p class="muted small">© 2026 Saged.club</p>
+</footer>
+
+</body>
+</html>

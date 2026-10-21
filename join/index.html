@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Вступить в Saged — Asociación Cultural Saged</title>
+<title>Join Saged — Asociación Cultural Saged</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="../assets/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,8 @@ body{
   padding:14px 20px 0;
   display:flex;align-items:center;justify-content:space-between;
 }
-.join-logo{height:32px;opacity:.7}
+.join-back{display:block;line-height:0}
+.join-logo{height:28px;opacity:.65;display:block}
 .step-label{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
 
 /* ── Wrapper ── */
@@ -230,15 +231,17 @@ body{
   .review-row{grid-template-columns:100px 1fr;padding:12px 14px}
 }
 </style>
+  <script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
 <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
 
 <header class="join-header">
-  <img src="../assets/images/logo.png" alt="Saged" class="join-logo"
-       onerror="this.style.display='none'">
-  <span class="step-label" id="step-label">Вступление</span>
+  <a href="/about.html#membership" class="join-back" title="Back to About">
+    <img src="../assets/images/logo-saged-club.svg" alt="Saged" class="join-logo">
+  </a>
+  <span class="step-label" id="step-label">Application</span>
 </header>
 
 <main class="join-wrap">
@@ -247,236 +250,236 @@ body{
   <section class="step active" id="step-welcome">
     <div>
       <p class="step-eyebrow">Asociación Cultural Saged</p>
-      <h1 class="step-title">Стать<br>своим<br>в Saged</h1>
+      <h1 class="step-title">Join<br>Saged</h1>
     </div>
-    <p class="step-lead">Здесь не продают билеты. Saged — ассоциация, и всё, что здесь происходит, открыто только своим.</p>
+    <p class="step-lead">Saged is an association, not a ticketing platform. Everything that happens here is open to its members.</p>
     <div class="benefit-list">
       <div class="benefit">
-        <div class="benefit-text">студия, занятия, события — <strong>всё своё</strong></div>
+        <div class="benefit-text">studio, classes and events — <strong>all yours</strong></div>
       </div>
       <div class="benefit">
-        <div class="benefit-text">публикации, анонсы, <strong>появляетесь в историях Saged</strong></div>
+        <div class="benefit-text">programme announcements, <strong>featured in Saged stories</strong></div>
       </div>
       <div class="benefit">
-        <div class="benefit-text"><strong>официальная запись</strong> в испанском реестре, голос на собрании</div>
+        <div class="benefit-text"><strong>official record</strong> in the Spanish registry, vote at the assembly</div>
       </div>
     </div>
-    <a href="/join/faq/" class="faq-link">Вопросы о членстве →</a>
+    <a href="/join/faq/" class="faq-link">Questions about membership →</a>
     <div class="actions">
-      <button class="btn-next" onclick="next()">Стать своим →</button>
+      <button class="btn-next" onclick="next()">Apply to join →</button>
     </div>
   </section>
 
   <!-- Step 2: About you -->
   <section class="step" id="step-about">
     <div>
-      <p class="step-eyebrow">Шаг 1 из 6</p>
-      <h2 class="step-title">О вас</h2>
+      <p class="step-eyebrow">Step 1 of 6</p>
+      <h2 class="step-title">About you</h2>
     </div>
     <div class="field-group">
       <div class="field">
-        <label for="f-first">Имя *</label>
-        <input type="text" id="f-first" autocomplete="given-name" placeholder="Богослав">
-        <span class="err-msg">Введите имя</span>
+        <label for="f-first">First name *</label>
+        <input type="text" id="f-first" autocomplete="given-name" placeholder="Maria">
+        <span class="err-msg">Please enter your first name</span>
       </div>
       <div class="field">
-        <label for="f-last">Фамилия *</label>
-        <input type="text" id="f-last" autocomplete="family-name" placeholder="Светлов">
-        <span class="err-msg">Введите фамилию</span>
+        <label for="f-last">Last name *</label>
+        <input type="text" id="f-last" autocomplete="family-name" placeholder="García">
+        <span class="err-msg">Please enter your last name</span>
       </div>
       <div class="field">
         <label for="f-email">Email *</label>
         <input type="email" id="f-email" autocomplete="email" placeholder="bogoslav@example.com">
-        <span class="err-msg">Введите корректный email</span>
+        <span class="err-msg">Please enter a valid email address</span>
       </div>
       <div class="field">
-        <label for="f-phone">Телефон *</label>
+        <label for="f-phone">Phone *</label>
         <input type="tel" id="f-phone" autocomplete="tel" placeholder="+34 600 000 000">
-        <span class="err-msg">Введите телефон</span>
+        <span class="err-msg">Please enter your phone number</span>
       </div>
     </div>
     <div class="actions">
-      <button class="btn-back" onclick="back()" title="Назад">←</button>
-      <button class="btn-next" onclick="nextAbout()">Далее →</button>
+      <button class="btn-back" onclick="back()" title="Back">←</button>
+      <button class="btn-next" onclick="nextAbout()">Next →</button>
     </div>
   </section>
 
   <!-- Step 3: Registry (legal) -->
   <section class="step" id="step-registry">
     <div>
-      <p class="step-eyebrow">Шаг 2 из 6</p>
-      <h2 class="step-title">Для реестра</h2>
+      <p class="step-eyebrow">Step 2 of 6</p>
+      <h2 class="step-title">Legal details</h2>
     </div>
-    <p class="step-lead" style="margin-top:-8px">Эти данные обязательны по испанскому законодательству для всех членов ассоциации.</p>
+    <p class="step-lead" style="margin-top:-8px">Required by Spanish law for all association members.</p>
     <div class="field-group">
       <div class="field">
-        <label for="f-nie">NIE или номер паспорта *</label>
+        <label for="f-nie">NIE or passport number *</label>
         <input type="text" id="f-nie" autocomplete="off" placeholder="X1234567A" style="text-transform:uppercase">
-        <span class="hint">NIE для резидентов Испании, иначе — номер загранпаспорта</span>
-        <span class="err-msg">Введите NIE или номер паспорта</span>
+        <span class="hint">NIE for Spanish residents, otherwise passport number</span>
+        <span class="err-msg">Please enter your NIE or passport number</span>
       </div>
       <div class="field">
-        <label for="f-dob">Дата рождения *</label>
+        <label for="f-dob">Date of birth *</label>
         <input type="date" id="f-dob" autocomplete="bday">
-        <span class="err-msg">Введите дату рождения</span>
+        <span class="err-msg">Please enter your date of birth</span>
       </div>
       <div class="field">
-        <label for="f-address">Адрес в Валенсии *</label>
+        <label for="f-address">Address in Valencia *</label>
         <input type="text" id="f-address" autocomplete="street-address" placeholder="Calle Example 12, 1º, Valencia">
-        <span class="err-msg">Введите адрес</span>
+        <span class="err-msg">Please enter your address</span>
       </div>
     </div>
     <div class="actions">
-      <button class="btn-back" onclick="back()" title="Назад">←</button>
-      <button class="btn-next" onclick="nextRegistry()">Далее →</button>
+      <button class="btn-back" onclick="back()" title="Back">←</button>
+      <button class="btn-next" onclick="nextRegistry()">Next →</button>
     </div>
   </section>
 
   <!-- Step 4: Membership type -->
   <section class="step" id="step-type">
     <div>
-      <p class="step-eyebrow">Шаг 3 из 6</p>
-      <h2 class="step-title">Тип участия</h2>
+      <p class="step-eyebrow">Step 3 of 6</p>
+      <h2 class="step-title">Membership type</h2>
     </div>
     <div class="type-cards">
       <label class="type-card" id="card-member" onclick="selectType('member', this)">
         <input type="radio" name="mtype" value="member">
-        <span class="type-card__name">Участник</span>
-        <span class="type-card__desc">Мастер-классы, события, голосование на собрании ассоциации</span>
+        <span class="type-card__name">Participant</span>
+        <span class="type-card__desc">Workshops, events, vote at the association assembly</span>
       </label>
       <label class="type-card" id="card-resident" onclick="selectType('resident', this)">
         <input type="radio" name="mtype" value="resident">
-        <span class="type-card__name">Резидент студии</span>
-        <span class="type-card__desc">Постоянный доступ в студию 10:00–22:00, хранение работ, коворкинг</span>
+        <span class="type-card__name">Studio resident</span>
+        <span class="type-card__desc">Full studio access 10:00–22:00, work storage, coworking</span>
       </label>
       <label class="type-card" id="card-artist" onclick="selectType('artist', this)">
         <input type="radio" name="mtype" value="artist">
-        <span class="type-card__name">Мастер</span>
-        <span class="type-card__desc">Хочу вести мастер-классы или программы в Saged — подаю заявку на рассмотрение</span>
+        <span class="type-card__name">Instructor</span>
+        <span class="type-card__desc">I'd like to lead classes or programmes at Saged — applying for consideration</span>
       </label>
     </div>
     <div class="actions">
-      <button class="btn-back" onclick="back()" title="Назад">←</button>
-      <button class="btn-next" id="btn-type" onclick="nextType()" disabled>Далее →</button>
+      <button class="btn-back" onclick="back()" title="Back">←</button>
+      <button class="btn-next" id="btn-type" onclick="nextType()" disabled>Next →</button>
     </div>
   </section>
 
   <!-- Step 5: Estatutos -->
   <section class="step" id="step-estatutos">
     <div>
-      <p class="step-eyebrow">Шаг 4 из 6</p>
-      <h2 class="step-title">Устав</h2>
+      <p class="step-eyebrow">Step 4 of 6</p>
+      <h2 class="step-title">Statutes</h2>
     </div>
-    <p class="step-lead" style="margin-top:-8px">Прочитайте манифест и устав Asociación Cultural Saged перед вступлением.</p>
+    <p class="step-lead" style="margin-top:-8px">Read the manifesto and statutes of Asociación Cultural Saged before joining.</p>
     <div class="estatutos-scroll">
 
-      <h4>Манифест</h4>
-      <p>Saged — пространство для медленного творчества в Валенсии. Мы верим, что искусство — это не привилегия, а практика. Что культура живёт в маленьких пространствах, где люди встречаются по-настоящему. Что замедление — не слабость, а мудрость.</p>
-      <p>Мы создаём сообщество для тех, кто находит смысл в процессе: в глине, в звуке, в разговоре, в совместном делании. Открытое для всех культур и языков, Saged — это место, где можно быть собой.</p>
+      <h4>Manifesto</h4>
+      <p>Saged is a space for slow creativity in Valencia. We believe that art is not a privilege but a practice. That culture lives in small spaces where people meet in a genuine way. That slowing down is not weakness but wisdom.</p>
+      <p>We are building a community for those who find meaning in the process: in clay, in sound, in conversation, in making things together. Open to all cultures and languages, Saged is a place where you can be yourself.</p>
       <ul>
-        <li>Медленное творчество — ценность процесса, а не только результата</li>
-        <li>Сообщество — искусство как способ встретиться</li>
-        <li>Открытость — разные языки, культуры, уровни мастерства</li>
-        <li>Уважение — к пространству, материалам, другим участникам</li>
-        <li>Честность — прозрачное управление, справедливые условия</li>
+        <li>Slow creativity — valuing process, not only outcome</li>
+        <li>Community — art as a way to connect</li>
+        <li>Openness — different languages, cultures, and levels of experience</li>
+        <li>Respect — for the space, the materials, and fellow members</li>
+        <li>Honesty — transparent governance and fair terms</li>
       </ul>
 
-      <h4>1. Наименование и правовой статус</h4>
-      <p>Asociación Cultural Saged (далее — Ассоциация) зарегистрирована в Registro de Asociaciones de la Comunitat Valenciana под номером <strong>ASINS/46/2026/0756</strong>, Conselleria de Justícia, Transparència i Participació, Generalitat Valenciana. Ассоциация действует в соответствии с Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación, и Ley 14/2008, de 18 de noviembre, de Asociaciones de la Comunitat Valenciana. Ассоциация не преследует коммерческих целей (<em>carece de ánimo de lucro</em>).</p>
-      <p><strong>Юридический адрес:</strong> C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia, España.<br>
-      <strong>Контакт:</strong> hello@saged.club</p>
+      <h4>1. Name and legal status</h4>
+      <p>Asociación Cultural Saged (hereinafter the Association) is registered in the Registro de Asociaciones de la Comunitat Valenciana under number <strong>ASINS/46/2026/0756</strong>, Conselleria de Justícia, Transparència i Participació, Generalitat Valenciana. The Association operates in accordance with Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación, and Ley 14/2008, de 18 de noviembre, de Asociaciones de la Comunitat Valenciana. The Association is non-profit (<em>carece de ánimo de lucro</em>).</p>
+      <p><strong>Registered address:</strong> C/ de les Cuines, 8, Ciutat Vella, 46001 Valencia, España.<br>
+      <strong>Contact:</strong> hello@saged.club</p>
 
-      <h4>2. Цели ассоциации</h4>
-      <p>Развитие культурного и художественного образования; организация творческих мастер-классов, концертов, выставок и событий; создание открытого многоязычного сообщества; поддержка деятелей культуры, художников и ремесленников.</p>
+      <h4>2. Purposes of the association</h4>
+      <p>Promoting cultural and artistic education; organising creative workshops, concerts, exhibitions and events; building an open multilingual community; supporting cultural practitioners, artists and craftspeople.</p>
 
-      <h4>3. Вступление в члены</h4>
-      <p>Членом может стать любое физическое лицо старше 18 лет, разделяющее цели Ассоциации. Заявка подаётся через официальную форму. Правление (<em>Junta Directiva</em>) рассматривает заявку и уведомляет о решении в разумные сроки. Членство вступает в силу после подтверждения правлением и уплаты первого взноса.</p>
+      <h4>3. Membership</h4>
+      <p>Any individual aged 18 or over who shares the purposes of the Association may become a member. Applications are submitted through the official form. The board (<em>Junta Directiva</em>) reviews the application and notifies the applicant of its decision within a reasonable period. Membership takes effect upon confirmation by the board and payment of the first membership fee.</p>
 
-      <h4>4. Членский взнос</h4>
-      <p>Ежегодный взнос (<em>cuota de socio</em>) утверждается Общим собранием (<em>Asamblea General</em>). Взнос не подлежит возврату в случае добровольного выхода из Ассоциации. Неуплата взноса более 6 месяцев является основанием для прекращения членства.</p>
+      <h4>4. Membership fee</h4>
+      <p>The annual membership fee (<em>cuota de socio</em>) is set by the General Assembly (<em>Asamblea General</em>). The fee is non-refundable in the event of voluntary withdrawal from the Association. Failure to pay the fee for more than 6 months is grounds for termination of membership.</p>
 
-      <h4>5. Права членов</h4>
-      <p>В соответствии со ст. 21 Ley Orgánica 1/2002 члены вправе:</p>
+      <h4>5. Member rights</h4>
+      <p>In accordance with Art. 21 of Ley Orgánica 1/2002, members are entitled to:</p>
       <ul>
-        <li>участвовать в программах и мероприятиях Ассоциации;</li>
-        <li>голосовать на Общем собрании (один голос на члена);</li>
-        <li>быть избранными в органы управления;</li>
-        <li>получать информацию о деятельности и финансах Ассоциации;</li>
-        <li>обжаловать решения правления на Общем собрании.</li>
+        <li>participate in the programmes and activities of the Association;</li>
+        <li>vote at the General Assembly (one vote per member);</li>
+        <li>stand for election to governing bodies;</li>
+        <li>receive information about the activities and finances of the Association;</li>
+        <li>appeal decisions of the board at the General Assembly.</li>
       </ul>
 
-      <h4>6. Обязанности членов</h4>
-      <p>В соответствии со ст. 22 Ley Orgánica 1/2002 члены обязаны:</p>
+      <h4>6. Member obligations</h4>
+      <p>In accordance with Art. 22 of Ley Orgánica 1/2002, members are required to:</p>
       <ul>
-        <li>соблюдать устав, внутренние правила и решения органов управления;</li>
-        <li>уплачивать членский взнос в установленные сроки;</li>
-        <li>бережно относиться к пространству, оборудованию и материалам;</li>
-        <li>уважать других членов и гостей;</li>
-        <li>не совершать действий, противоречащих целям Ассоциации или наносящих ей ущерб.</li>
+        <li>comply with the statutes, internal rules and decisions of the governing bodies;</li>
+        <li>pay the membership fee on time;</li>
+        <li>take care of the space, equipment and materials;</li>
+        <li>treat fellow members and guests with respect;</li>
+        <li>refrain from actions that contradict the purposes of the Association or cause it harm.</li>
       </ul>
 
-      <h4>7. Прекращение членства и дисциплинарные меры</h4>
-      <p>Членство прекращается: по письменному заявлению члена; при неуплате взноса более 6 месяцев; при нарушении устава или причинении ущерба Ассоциации. Исключение производится правлением с обязательным уведомлением члена и предоставлением возможности дать объяснения. Решение об исключении может быть обжаловано на Общем собрании в течение 30 дней.</p>
+      <h4>7. Termination of membership and disciplinary measures</h4>
+      <p>Membership ends: upon written notice from the member; for non-payment of the fee for more than 6 months; for breach of the statutes or causing harm to the Association. Expulsion is carried out by the board, which must notify the member and give them the opportunity to provide an explanation. A decision to expel a member may be appealed at the General Assembly within 30 days.</p>
 
-      <h4>8. Управление</h4>
-      <p>Ассоциацией управляет <em>Junta Directiva</em> (правление), избираемая Общим собранием на срок 4 года. Общее собрание проводится не реже одного раза в год. Чрезвычайное собрание созывается правлением или по требованию не менее 10% членов. Протоколы собраний доступны всем членам по запросу.</p>
+      <h4>8. Governance</h4>
+      <p>The Association is governed by the <em>Junta Directiva</em> (board), elected by the General Assembly for a term of 4 years. The General Assembly meets at least once a year. An extraordinary assembly is convened by the board or upon the request of at least 10% of members. Minutes of meetings are available to all members upon request.</p>
 
-      <h4>9. Защита персональных данных</h4>
-      <p>Персональные данные членов обрабатываются Ассоциацией в соответствии с Reglamento (UE) 2016/679 (RGPD) и Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPD-GDD). Цель обработки — ведение реестра членов и информирование о деятельности Ассоциации. Данные хранятся на срок членства плюс 5 лет. Данные не передаются третьим сторонам без явного согласия, за исключением случаев, предусмотренных законом. Для реализации прав на доступ, исправление, удаление или переносимость данных: hello@saged.club.</p>
+      <h4>9. Personal data protection</h4>
+      <p>Members' personal data are processed by the Association in accordance with Reglamento (UE) 2016/679 (RGPD) and Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPD-GDD). The purpose of processing is to maintain the membership register and communicate Association activities. Data are retained for the duration of membership plus 5 years. Data are not shared with third parties without explicit consent, except as required by law. To exercise rights of access, rectification, erasure or portability: hello@saged.club.</p>
 
-      <h4>10. Применимое право и юрисдикция</h4>
-      <p>Устав регулируется законодательством Испании: Ley Orgánica 1/2002, de 22 de marzo; Ley 14/2008, de 18 de noviembre, de Asociaciones de la Comunitat Valenciana. Споры, не урегулированные внутри Ассоциации, рассматриваются компетентными судами г. Валенсии (Valencia, España).</p>
-      <p style="margin-top:16px;font-size:12px;color:var(--muted)">Настоящий документ — русскоязычное изложение устава. Юридически обязывающим является устав, зарегистрированный на испанском языке в Conselleria de Justícia, Transparència i Participació.</p>
+      <h4>10. Applicable law and jurisdiction</h4>
+      <p>These statutes are governed by the laws of Spain: Ley Orgánica 1/2002, de 22 de marzo; Ley 14/2008, de 18 de noviembre, de Asociaciones de la Comunitat Valenciana. Disputes that cannot be resolved internally within the Association shall be referred to the competent courts of Valencia (Valencia, España).</p>
+      <p style="margin-top:16px;font-size:12px;color:var(--muted)">This document is an English-language summary of the statutes. The legally binding version is the statutes registered in Spanish with the Conselleria de Justícia, Transparència i Participació.</p>
 
     </div>
     <label class="accept-row" id="accept-row">
       <input type="checkbox" id="accept-cb" onchange="toggleAccept()">
-      <span>Я прочитал(а) и принимаю устав и условия членства Asociación Cultural Saged</span>
+      <span>I have read and accept the statutes and membership terms of Asociación Cultural Saged</span>
     </label>
     <div class="actions">
-      <button class="btn-back" onclick="back()" title="Назад">←</button>
-      <button class="btn-next" id="btn-accept" onclick="next()" disabled>Далее →</button>
+      <button class="btn-back" onclick="back()" title="Back">←</button>
+      <button class="btn-next" id="btn-accept" onclick="next()" disabled>Next →</button>
     </div>
   </section>
 
   <!-- Step 6: Signature -->
   <section class="step" id="step-signature">
     <div>
-      <p class="step-eyebrow">Шаг 5 из 6</p>
-      <h2 class="step-title">Подпись</h2>
+      <p class="step-eyebrow">Step 5 of 6</p>
+      <h2 class="step-title">Signature</h2>
     </div>
-    <p class="step-lead" style="margin-top:-8px">Распишитесь в поле ниже — подтверждение вашей заявки.</p>
+    <p class="step-lead" style="margin-top:-8px">Sign in the field below — this confirms your application.</p>
     <div class="sig-wrap">
       <canvas id="sig-canvas" height="180"></canvas>
-      <div class="sig-hint" id="sig-hint">Проведите пальцем или мышью</div>
+      <div class="sig-hint" id="sig-hint">Draw with your finger or mouse</div>
     </div>
-    <button class="sig-clear" onclick="clearSig()">Очистить подпись</button>
+    <button class="sig-clear" onclick="clearSig()">Clear signature</button>
     <div class="actions">
-      <button class="btn-back" onclick="back()" title="Назад">←</button>
-      <button class="btn-next" id="btn-sig" onclick="nextSig()" disabled>Далее →</button>
+      <button class="btn-back" onclick="back()" title="Back">←</button>
+      <button class="btn-next" id="btn-sig" onclick="nextSig()" disabled>Next →</button>
     </div>
   </section>
 
   <!-- Step 7: Review -->
   <section class="step" id="step-review">
     <div>
-      <p class="step-eyebrow">Шаг 6 из 6</p>
-      <h2 class="step-title">Проверьте</h2>
+      <p class="step-eyebrow">Step 6 of 6</p>
+      <h2 class="step-title">Review</h2>
     </div>
-    <p class="step-lead" style="margin-top:-8px">Всё верно? После отправки Диана рассмотрит вашу заявку в течение 48 часов.</p>
+    <p class="step-lead" style="margin-top:-8px">Everything correct? After submitting, Diana will review your application within 48 hours.</p>
     <dl class="review-block">
-      <div class="review-row"><dt>Имя</dt><dd id="rv-name">—</dd></div>
+      <div class="review-row"><dt>Name</dt><dd id="rv-name">—</dd></div>
       <div class="review-row"><dt>Email</dt><dd id="rv-email">—</dd></div>
-      <div class="review-row"><dt>Телефон</dt><dd id="rv-phone">—</dd></div>
-      <div class="review-row"><dt>NIE / Паспорт</dt><dd id="rv-nie">—</dd></div>
-      <div class="review-row"><dt>Дата рожд.</dt><dd id="rv-dob">—</dd></div>
-      <div class="review-row"><dt>Адрес</dt><dd id="rv-address">—</dd></div>
-      <div class="review-row"><dt>Тип</dt><dd id="rv-type">—</dd></div>
-      <div class="review-row"><dt>Подпись</dt><dd><img id="rv-sig" class="review-sig" alt="подпись"></dd></div>
+      <div class="review-row"><dt>Phone</dt><dd id="rv-phone">—</dd></div>
+      <div class="review-row"><dt>NIE / Passport</dt><dd id="rv-nie">—</dd></div>
+      <div class="review-row"><dt>Date of birth</dt><dd id="rv-dob">—</dd></div>
+      <div class="review-row"><dt>Address</dt><dd id="rv-address">—</dd></div>
+      <div class="review-row"><dt>Type</dt><dd id="rv-type">—</dd></div>
+      <div class="review-row"><dt>Signature</dt><dd><img id="rv-sig" class="review-sig" alt="signature"></dd></div>
     </dl>
     <div class="actions">
-      <button class="btn-back" onclick="back()" title="Назад">←</button>
-      <button class="btn-next" onclick="submit()" style="background:var(--clay)">Отправить заявку ✓</button>
+      <button class="btn-back" onclick="back()" title="Back">←</button>
+      <button class="btn-next" onclick="submit()" style="background:var(--clay)">Submit application ✓</button>
     </div>
   </section>
 
@@ -484,21 +487,27 @@ body{
   <section class="step" id="step-done">
     <div class="done-circle">✓</div>
     <div>
-      <p class="step-eyebrow">Заявка отправлена</p>
-      <h2 class="step-title">Добро<br>пожало-<br>вать</h2>
+      <p class="step-eyebrow">Application submitted</p>
+      <h2 class="step-title">Welcome</h2>
     </div>
     <div class="done-detail">
-      <strong>Что дальше:</strong> Диана получила вашу заявку и ответит в WhatsApp или по email в течение 48 часов. После подтверждения вы получите номер участника и добавитесь в реестр ассоциации.
+      <strong>What happens next:</strong> Diana has received your application and will reply via WhatsApp or email within 48 hours. After confirmation you will receive a member number and be added to the association registry.
     </div>
-    <p style="font-size:14px;color:var(--muted)">Вопросы — <a href="https://wa.me/34605543300" style="color:var(--clay)">WhatsApp</a> или <a href="mailto:hello@saged.club" style="color:var(--clay)">hello@saged.club</a></p>
+    <p style="font-size:14px;color:var(--muted)">Questions — <a href="https://wa.me/34605543300" style="color:var(--clay)">WhatsApp</a> or <a href="mailto:hello@saged.club" style="color:var(--clay)">hello@saged.club</a></p>
   </section>
 
 </main>
 
 <script>
+// Pre-select type from URL param (?type=member|resident|artist)
+const _urlType = new URLSearchParams(location.search).get('type')
+if(_urlType && ['member','resident','artist'].includes(_urlType)){
+  selectedType = _urlType
+}
+
 const STEPS = ['welcome','about','registry','type','estatutos','signature','review','done']
-const LABELS = ['Вступление','О вас','Реестр','Тип участия','Устав','Подпись','Проверка','Готово']
-const TYPE_NAMES = {member:'Участник',resident:'Резидент студии',artist:'Мастер'}
+const LABELS = ['Application','About you','Registry','Membership type','Statutes','Signature','Review','Done']
+const TYPE_NAMES = {member:'Participant',resident:'Studio resident',artist:'Instructor'}
 let cur = 0
 let selectedType = null
 let sigHasData = false
@@ -510,6 +519,10 @@ function show(i){
   const pct = i === 0 ? 0 : Math.round((i / (STEPS.length-1)) * 100)
   document.getElementById('progress').style.width = pct + '%'
   if(STEPS[i] === 'signature') resizeCanvas()
+  if(STEPS[i] === 'type' && selectedType){
+    const card = document.getElementById('card-'+selectedType)
+    if(card){ card.classList.add('selected'); document.getElementById('btn-type').disabled=false }
+  }
   window.scrollTo(0,0)
   cur = i
 }

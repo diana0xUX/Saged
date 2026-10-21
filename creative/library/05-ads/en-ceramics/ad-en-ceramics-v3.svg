@@ -1,0 +1,81 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>
+    @font-face { font-family:'Costa'; src:url('../assets/fonts/costa-light.otf') format('opentype'); font-weight:300; }
+    @font-face { font-family:'Summer Font'; src:url('../assets/fonts/summer-font-light.otf') format('opentype'); font-weight:300; }
+  </style>
+  <clipPath id="photo-clip">
+    <rect x="60" y="310" width="480" height="560" rx="24"/>
+  </clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="1080" height="1350" fill="#F9F4ED"/>
+
+<!-- Brand figures at edges -->
+<image href="../assets/images/figures/figure 1.png"  x="-15"  y="80"   width="140" height="180" opacity="0.50"/>
+<image href="../assets/images/figures/figure 22.png" x="920"  y="120"  width="130" height="170" opacity="0.48"/>
+<image href="../assets/images/figures/figure 27.png" x="930"  y="880"  width="120" height="155" opacity="0.48"/>
+<image href="../assets/images/figures/figure 6.png"  x="20"   y="1090" width="110" height="145" opacity="0.45"/>
+<image href="../assets/images/figures/figure 4.png"  x="640"  y="1140" width="100" height="130" opacity="0.42"/>
+
+<!-- HEADER -->
+<text x="60" y="64" font-family="'Costa', Georgia, serif" font-size="22" fill="#2A2520" letter-spacing="6">SAGED CLUB</text>
+<image href="../assets/images/logo-saged-club.svg" x="888" y="24" width="140" height="64"/>
+
+<!-- HEADLINE — big, confident, brief says "2-4 words, tell them what it IS" -->
+<text x="60" y="200" font-family="'Costa', Georgia, serif" font-size="172" fill="#2A2520" letter-spacing="-5">CERAMICS</text>
+<text x="60" y="370" font-family="'Costa', Georgia, serif" font-size="172" fill="#FF7A23" letter-spacing="-5">IN VALENCIA</text>
+
+<!-- POSITIONING LINE — "in English" is THE positioning, must be unmissable -->
+<rect x="60" y="388" width="252" height="44" rx="22" fill="#2A2520"/>
+<text x="186" y="417" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#F9F4ED" letter-spacing="2">IN ENGLISH</text>
+
+<!-- PHOTO — large, warm, left column. Brief: "a door left slightly open, warm light inside" -->
+<image href="../assets/images/koritsa-editorial.jpg" x="60" y="310" width="480" height="560" clip-path="url(#photo-clip)" preserveAspectRatio="xMidYMid slice"/>
+
+<!-- Photo label -->
+<text x="260" y="306" text-anchor="middle" font-family="'Costa', Georgia, serif" font-size="22" fill="#9F4D2D">KORITSIA →</text>
+
+<!-- Right column — info -->
+
+<!-- EVERY THURSDAY badge -->
+<rect x="576" y="490" width="448" height="84" rx="42" fill="#FF7A23"/>
+<text x="800" y="543" text-anchor="middle" font-family="'Costa', Georgia, serif" font-size="30" fill="#F9F4ED" letter-spacing="1">EVERY THURSDAY</text>
+<text x="800" y="568" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#F9F4ED" letter-spacing="1" opacity="0.85">OLD CITY · VALENCIA</text>
+
+<!-- Body copy — brief: include "take your piece home", 2 lines max -->
+<text x="576" y="638" font-family="'Costa', Georgia, serif" font-size="32" fill="#2A2520">2-day pottery course</text>
+
+<text x="576" y="688" font-family="Inter, sans-serif" font-size="23" fill="#6B5F54">Throw · glaze · take your piece home</text>
+<text x="576" y="720" font-family="Inter, sans-serif" font-size="23" fill="#6B5F54">Small group · all materials included</text>
+
+<!-- Sparkle -->
+<text x="576" y="778" font-family="Inter, sans-serif" font-size="26" fill="#FF7A23">✦</text>
+
+<!-- Price blob — brief: "visible and unashamed" -->
+<ellipse cx="790" cy="850" rx="190" ry="100" fill="#FF7A23"/>
+<text x="790" y="832" text-anchor="middle" font-family="'Costa', Georgia, serif" font-size="68" fill="#F9F4ED">€60</text>
+<text x="790" y="866" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" fill="#F9F4ED">2 sessions · 2h each · up to 6</text>
+
+<!-- Divider -->
+<line x1="60" y1="1000" x2="1020" y2="1000" stroke="#E1D6C5" stroke-width="1.5"/>
+
+<!-- BOTTOM STRIP -->
+
+<!-- Address + WhatsApp — brief: "WhatsApp first" -->
+<text x="60" y="1044" font-family="Inter, sans-serif" font-size="20" fill="#2A2520">C/ de la Correu, 8 · Casco Antiguo, Valencia</text>
+
+<!-- WhatsApp CTA — the ONLY success metric per the brief -->
+<rect x="60" y="1064" width="560" height="72" rx="10" fill="#2A2520"/>
+<text x="350" y="1108" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="500" fill="#F9F4ED">WhatsApp: +34 695 73 19 00  →</text>
+
+<!-- Symbols strip -->
+<image href="../assets/images/saged-symbols.svg" x="60" y="1160" width="460" height="72" opacity="0.18"/>
+
+<!-- Footer -->
+<line x1="60" y1="1272" x2="1020" y2="1272" stroke="#E1D6C5" stroke-width="1"/>
+<text x="60" y="1312" font-family="'Costa', Georgia, serif" font-size="28" fill="#2A2520" letter-spacing="1">saged.club</text>
+<text x="1020" y="1312" text-anchor="end" font-family="Inter, sans-serif" font-size="20" fill="#6B5F54">@saged_diana</text>
+
+</svg>

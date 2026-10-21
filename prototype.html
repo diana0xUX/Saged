@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Saged — creative club in Valencia</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:SagedCyr;src:url('/assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');font-display:swap}
+@font-face{font-family:Costa;src:url('/assets/fonts/costa-light.otf') format('opentype');font-display:swap}
+:root{
+  --paper:#f9f4ed;--sand:#efe5d6;--ink:#2a2520;--muted:#6b5f54;
+  --line:#ded1bf;--clay:#9f4d2d;--clay-light:#faf0e6;
+  --sage:#2e6e3e;--white:#fffdf8;--radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.draft-bar{background:#2a2520;color:#f0e8df;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.04em}
+.draft-bar a{color:#F08A60;text-decoration:none}
+
+.nav{padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(249,244,237,.96);backdrop-filter:blur(8px);z-index:20}
+.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;transition:all .15s}
+.nav-cta:hover{background:var(--clay);color:var(--white)}
+@media(max-width:640px){.nav-links{display:none}.nav{padding:16px 20px}}
+
+.hero{padding:88px 32px 80px;max-width:1000px;margin:0 auto}
+.hero-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--clay);font-weight:700;margin-bottom:22px}
+.hero-title{font-family:Costa,Georgia,serif;font-size:clamp(56px,9vw,100px);line-height:.87;letter-spacing:-.04em;color:var(--ink);margin-bottom:32px}
+.hero-lead{font-size:18px;color:var(--muted);line-height:1.65;max-width:460px;margin-bottom:44px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--clay);color:var(--white);font-size:15px;font-weight:600;font-family:inherit;padding:15px 28px;border-radius:100px;text-decoration:none;transition:opacity .15s}
+.btn-primary:hover{opacity:.88}
+.btn-ghost{display:inline-block;background:transparent;color:var(--ink);font-size:15px;font-weight:500;font-family:inherit;padding:15px 28px;border-radius:100px;text-decoration:none;border:1.5px solid var(--line);transition:all .15s}
+.btn-ghost:hover{border-color:var(--ink)}
+
+.stats-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);display:flex;overflow-x:auto}
+.stat-item{flex:1;min-width:140px;padding:22px 28px;text-align:center;border-right:1px solid var(--line)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:Costa,Georgia,serif;font-size:36px;letter-spacing:-.03em;color:var(--ink);display:block;line-height:1}
+.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;display:block}
+@media(max-width:600px){.stat-item{padding:18px 20px}.stat-num{font-size:28px}}
+
+.section{padding:72px 32px;max-width:1000px;margin:0 auto}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;gap:20px}
+.section-title{font-family:Costa,Georgia,serif;font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;line-height:.96}
+.section-link{font-size:14px;font-weight:500;color:var(--clay);text-decoration:none;white-space:nowrap}
+.section-link:hover{text-decoration:underline}
+.divider{border:none;border-top:1px solid var(--line);margin:0 32px}
+
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.events-grid{grid-template-columns:1fr}}
+.event-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,.04);transition:box-shadow .2s,transform .2s}
+.event-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.event-photo{height:160px;position:relative}
+.event-photo-ph{width:100%;height:100%;display:flex;align-items:flex-end;padding:12px}
+.event-loc{font-size:11px;font-weight:500;color:rgba(255,255,255,.92);background:rgba(0,0,0,.32);padding:4px 9px;border-radius:100px;display:inline-flex;align-items:center;gap:4px;backdrop-filter:blur(4px)}
+.event-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.event-cat{font-size:11px;font-weight:600}
+.event-date{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.event-title{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+.event-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px}
+.event-host{display:flex;align-items:center;gap:7px}
+.event-avatar{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;flex-shrink:0}
+.event-host-name{font-size:12px;color:var(--muted)}
+.event-price{font-size:13px;font-weight:700;color:var(--ink)}
+.photo-ceramics{background:linear-gradient(160deg,#c8704a,#8a3010)}
+.photo-sound{background:linear-gradient(160deg,#8a60a8,#503070)}
+.photo-movement{background:linear-gradient(160deg,#3a8070,#185050)}
+.tag-ceramics{color:#9f4d2d}
+.tag-sound{color:#7a558a}
+.tag-movement{color:#2a6a5a}
+
+.hosts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:800px){.hosts-grid{grid-template-columns:repeat(2,1fr)}}
+.host-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px 20px 24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;transition:border-color .2s,transform .2s;position:relative}
+.host-card:hover{border-color:var(--clay);transform:translateY(-2px)}
+.host-avatar-lg{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#fff;flex-shrink:0;margin-bottom:16px;box-shadow:0 0 0 4px var(--paper),0 0 0 5px var(--line)}
+.host-card-name{font-size:16px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:6px}
+.host-card-practice{font-size:13px;color:var(--muted);line-height:1.4;margin-bottom:14px}
+.host-card-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 12px;border-radius:100px;background:var(--clay-light);color:var(--clay);margin-bottom:18px}
+.host-card-cta{font-size:13px;font-weight:600;color:var(--clay);padding:9px 20px;border:1.5px solid var(--clay);border-radius:100px;transition:all .15s;margin-top:auto}
+.host-card:hover .host-card-cta{background:var(--clay);color:var(--white)}
+.host-card-join{border-style:dashed;background:transparent}
+.host-card-join .host-avatar-lg{background:var(--sand);font-size:28px}
+.host-card-join .host-card-name{color:var(--muted)}
+.host-card-join .host-card-practice{color:var(--muted)}
+.host-card-join .host-card-cta{color:var(--muted);border-color:var(--line)}
+.host-card-join:hover .host-card-cta{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+.programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:560px){.programs-grid{grid-template-columns:1fr}}
+.program-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
+.program-card:hover{border-color:var(--clay);transform:translateY(-1px)}
+.program-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.program-title{font-family:Costa,Georgia,serif;font-size:22px;letter-spacing:-.02em;line-height:1;margin-top:4px}
+.program-desc{font-size:14px;color:var(--muted);line-height:1.55}
+.program-meta{font-size:13px;color:var(--muted);margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.program-link{font-size:13px;font-weight:600;color:var(--clay);margin-top:4px}
+
+.space-teaser{background:var(--sand);border-radius:var(--radius);border:1px solid var(--line);padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:600px){.space-teaser{grid-template-columns:1fr}}
+.space-teaser h2{font-family:Costa,Georgia,serif;font-size:clamp(28px,4vw,38px);letter-spacing:-.03em;line-height:.96;margin-bottom:14px}
+.space-teaser p{font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:24px}
+.space-img-placeholder{background:var(--line);border-radius:12px;height:220px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)}
+
+.join-cta{text-align:center;padding:96px 32px}
+.join-cta h2{font-family:Costa,Georgia,serif;font-size:clamp(36px,6vw,60px);letter-spacing:-.04em;line-height:.92;margin-bottom:18px}
+.join-cta p{font-size:17px;color:var(--muted);max-width:400px;margin:0 auto 36px}
+
+footer{border-top:1px solid var(--line);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:12px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="draft-bar">Prototype — not public · <a href="/hosts/">Hosts</a> · <a href="/events/">Events</a> · <a href="/hosts/koritsa/">Profile</a> · <a href="/join/host/">Become a host</a> · <a href="/space/">Space</a></div>
+
+<nav class="nav">
+  <a class="nav-logo" href="/prototype.html"><img src="/assets/images/logo-saged-club.svg" alt="Saged" height="26"></a>
+  <div class="nav-links">
+    <a href="/events/" class="active">What's on</a>
+    <a href="/hosts/">Hosts</a>
+    <a href="/space/">Space</a>
+    <a href="/join/">Join</a>
+  </div>
+  <a class="nav-cta" href="/join/host/">Become a host</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Saged · C/ de les Cuines, 8, Valencia</p>
+  <h1 class="hero-title">A place to<br>slow down</h1>
+  <p class="hero-lead">Ceramics, painting, music, therapy and events in Valencia's old city — for those seeking community and practice.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="/events/">Browse events →</a>
+    <a class="btn-ghost" href="/hosts/">Meet the hosts</a>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-num">21</span>
+    <span class="stat-label">Members</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">6</span>
+    <span class="stat-label">Hosts</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">9</span>
+    <span class="stat-label">Events in October</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Years in Valencia</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Upcoming events</h2>
+    <a class="section-link" href="/events/">All events →</a>
+  </div>
+  <div class="events-grid">
+
+    <a class="event-card" href="/events/">
+      <div class="event-photo photo-ceramics event-photo-ph">
+        <span class="event-loc">📍 Saged · Valencia</span>
+      </div>
+      <div class="event-body">
+        <span class="event-cat tag-ceramics">🏺 Ceramics</span>
+        <div class="event-date">THU · 23 October · 19:00</div>
+        <div class="event-title">Ceramics with Koritsa</div>
+        <div class="event-foot">
+          <div class="event-host">
+            <div class="event-avatar" style="background:#9f4d2d;">КК</div>
+            <span class="event-host-name">Koritsa Kokoko</span>
+          </div>
+          <span class="event-price">€30</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="event-card" href="/events/">
+      <div class="event-photo photo-sound event-photo-ph">
+        <span class="event-loc">📍 Saged · Valencia</span>
+      </div>
+      <div class="event-body">
+        <span class="event-cat tag-sound">🎵 Sound & music</span>
+        <div class="event-date">FRI · 24 October · 18:00</div>
+        <div class="event-title">Handpan school — open class</div>
+        <div class="event-foot">
+          <div class="event-host">
+            <div class="event-avatar" style="background:#7a558a;">ДБ</div>
+            <span class="event-host-name">Denys Balykhin</span>
+          </div>
+          <span class="event-price">€30</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="event-card" href="/events/">
+      <div class="event-photo photo-movement event-photo-ph">
+        <span class="event-loc">📍 Saged · Valencia</span>
+      </div>
+      <div class="event-body">
+        <span class="event-cat tag-movement">🌿 Movement</span>
+        <div class="event-date">SUN · 26 October · 16:00</div>
+        <div class="event-title">Tea circle with Helena</div>
+        <div class="event-foot">
+          <div class="event-host">
+            <div class="event-avatar" style="background:#2a5a7a;">Х</div>
+            <span class="event-host-name">Helena</span>
+          </div>
+          <span class="event-price">€15</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Club hosts</h2>
+    <a class="section-link" href="/hosts/">All hosts →</a>
+  </div>
+  <div class="hosts-grid">
+
+    <a class="host-card" href="/hosts/koritsa/">
+      <div class="host-avatar-lg" style="background:#9f4d2d;">КК</div>
+      <div class="host-card-name">Koritsa Kokoko</div>
+      <div class="host-card-practice">Studio ceramics — wheel throwing and hand building</div>
+      <div class="host-card-tag">Ceramics</div>
+      <span class="host-card-cta">Book a class →</span>
+    </a>
+
+    <a class="host-card" href="/hosts/">
+      <div class="host-avatar-lg" style="background:#2a5a7a;">Х</div>
+      <div class="host-card-name">Helena</div>
+      <div class="host-card-practice">Kundalini yoga, movement, tea ceremonies</div>
+      <div class="host-card-tag">Movement</div>
+      <span class="host-card-cta">Book a class →</span>
+    </a>
+
+    <a class="host-card" href="/hosts/">
+      <div class="host-avatar-lg" style="background:#8a2a3a;">ТТ</div>
+      <div class="host-card-name">Tanya Tantra Touch</div>
+      <div class="host-card-practice">Somatic therapy, Story Therapy, narrative practices</div>
+      <div class="host-card-tag">Therapy</div>
+      <span class="host-card-cta">Book a session →</span>
+    </a>
+
+    <a class="host-card host-card-join" href="/join/host/">
+      <div class="host-avatar-lg">＋</div>
+      <div class="host-card-name">Running a practice?</div>
+      <div class="host-card-practice">Studio, audience and community — for practitioners in Valencia</div>
+      <div class="host-card-tag" style="background:var(--sand);color:var(--muted)">6 spots</div>
+      <span class="host-card-cta">Become a host →</span>
+    </a>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Programs</h2>
+  </div>
+  <div class="programs-grid">
+
+    <a class="program-card" href="/events/">
+      <div class="program-icon" style="background:#faf0e6;">🏺</div>
+      <div class="program-title">Ceramics</div>
+      <div class="program-desc">Pottery courses with Koritsa — wheel throwing and hand building. Small groups, your own piece, two firings.</div>
+      <div class="program-meta">Every Thursday · €30 per session</div>
+      <span class="program-link">Sign up →</span>
+    </a>
+
+    <a class="program-card" href="/events/">
+      <div class="program-icon" style="background:#f0eaf6;">🎵</div>
+      <div class="program-title">Handpan</div>
+      <div class="program-desc">Handpan school — from first touch to meditative playing. Individual and group sessions.</div>
+      <div class="program-meta">Schedule TBC · €30 per session</div>
+      <span class="program-link">Sign up →</span>
+    </a>
+
+    <a class="program-card" href="/events/">
+      <div class="program-icon" style="background:#eaf0e5;">🎨</div>
+      <div class="program-title">Painting</div>
+      <div class="program-desc">Painting and drawing classes with Katya — in a quiet studio, materials included, small group.</div>
+      <div class="program-meta">Schedule TBC · €15 per session</div>
+      <span class="program-link">Sign up →</span>
+    </a>
+
+    <a class="program-card" href="/events/">
+      <div class="program-icon" style="background:#f5eaec;">✦</div>
+      <div class="program-title">Story Therapy</div>
+      <div class="program-desc">Narrative practice for self-discovery through storytelling. Gentle group format, no clinical context.</div>
+      <div class="program-meta">October — starting soon · price on request</div>
+      <span class="program-link">Sign up →</span>
+    </a>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="space-teaser">
+    <div>
+      <h2>Space in<br>the old city</h2>
+      <p>Ceramics studio, rooms for classes and events at C/ de les Cuines, 8, Valencia. Open to club members.</p>
+      <a class="btn-primary" href="/space/">See the space →</a>
+    </div>
+    <div class="space-img-placeholder">Studio photo</div>
+  </div>
+</section>
+
+<section class="join-cta">
+  <h2>Join the club</h2>
+  <p>Saged is a registered cultural association. Membership opens access to everything.</p>
+  <a class="btn-primary" href="/join/">Apply →</a>
+</section>
+
+<footer>
+  <span>Saged · C/ de les Cuines, 8, Valencia · <a href="mailto:hello@saged.club">hello@saged.club</a></span>
+  <div style="display:flex;gap:20px">
+    <a href="/join/">Join</a>
+    <a href="/join/host/">Become a host</a>
+    <a href="/join/faq/">FAQ</a>
+  </div>
+</footer>
+
+</body>
+</html>

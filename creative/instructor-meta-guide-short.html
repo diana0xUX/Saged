@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saged · Meta Ads Setup Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --clay:       #B85A28;
+      --clay-light: #FAF0E8;
+      --sage:       #2E6E3E;
+      --sage-light: #E5F0E9;
+      --ink:        #1A0F07;
+      --muted:      #6B5A4A;
+      --border:     #DED6CB;
+      --surface:    #F9F4ED;
+      --card:       #FFFFFF;
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page-break { page-break-before: always; }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      background: var(--ink);
+      padding: 56px 56px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      right: -60px; bottom: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(184,90,40,0.15);
+    }
+
+    .cover-logo {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 32px;
+    }
+
+    .cover h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover h1 span { color: var(--clay); }
+
+    .cover-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      max-width: 440px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 32px 0 24px;
+    }
+
+    .cover-meta {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Content ── */
+    .content { padding: 40px 56px 48px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 36px; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--clay-light);
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+
+    h3:first-child { margin-top: 0; }
+
+    p { color: var(--muted); margin-bottom: 10px; font-size: 13px; }
+
+    /* ── Setting rows ── */
+    .settings-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .settings-block-header {
+      background: var(--surface);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .setting-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 12px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .setting-row:last-child { border-bottom: none; }
+
+    .setting-key {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      padding-top: 1px;
+    }
+
+    .setting-val {
+      font-size: 12px;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .setting-val code {
+      background: var(--clay-light);
+      border: 1px solid var(--clay-light);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--clay);
+      font-weight: 600;
+    }
+
+    .setting-val .note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      display: block;
+    }
+
+    /* ── Important box ── */
+    .important {
+      background: var(--clay-light);
+      border: 1px solid var(--clay-border);
+      border-left: 3px solid var(--clay);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
+
+    .important-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--clay);
+      margin-bottom: 5px;
+    }
+
+    .important-body { font-size: 12px; color: var(--ink); line-height: 1.55; }
+
+    /* ── Good box ── */
+    .good {
+      background: var(--sage-light);
+      border-left: 3px solid var(--sage);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
+
+    .good-title { font-size: 12px; font-weight: 700; color: var(--sage); margin-bottom: 5px; }
+    .good-body  { font-size: 12px; color: var(--ink); line-height: 1.55; }
+
+    /* ── Checklist ── */
+    .checklist {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .check-group-label {
+      background: var(--surface);
+      padding: 8px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    .check-item:last-child { border-bottom: none; }
+
+    .check-box {
+      width: 14px; height: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Creative grid ── */
+    .creative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .creative-col {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .creative-col-header {
+      padding: 8px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .creative-col-header.do   { background: var(--sage-light); color: var(--sage); }
+    .creative-col-header.dont { background: #FDE8E4; color: #A83218; }
+
+    .creative-item {
+      padding: 7px 14px;
+      font-size: 12px;
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 7px;
+      line-height: 1.4;
+    }
+
+    .creative-item:last-child { border-bottom: none; }
+    .creative-item .dot { flex-shrink: 0; margin-top: 2px; }
+
+    /* ── 2 col ── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* ── Budget table ── */
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th {
+      background: var(--surface);
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+
+    /* ── Footer ── */
+    .doc-footer {
+      background: var(--ink);
+      padding: 20px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .doc-footer-logo {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clay);
+    }
+
+    .doc-footer-meta {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      text-align: right;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="cover-logo">Saged.club</div>
+  <h1>Meta Ads Setup<br>Guide for <span>Instructors</span></h1>
+  <p class="cover-sub">The correct settings for promoting your classes at Saged on Instagram and Facebook — step by step.</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">Talk to Diana before launching · All campaigns run via the studio account</div>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <!-- Before you start -->
+  <div class="section">
+    <div class="section-label">Before you start</div>
+    <div class="important">
+      <div class="important-title">All campaigns go through Diana</div>
+      <div class="important-body">Your ads run under the Saged Meta Business account. Send Diana your settings, creative, and copy for review before anything goes live. She activates all campaigns. Contact: WhatsApp +34 605 54 33 00 · Telegram @dvoroneca</div>
+    </div>
+    <div class="good">
+      <div class="good-title">What works at Saged — the short version</div>
+      <div class="good-body">The studio's primary booking channels are Koritsia's Telegram community and word of mouth — not paid ads. Meta ads are a brand awareness layer that keeps Saged visible to new residents who later book through DM. Use them for visibility, not as your only booking channel. Your best ad is a great class that students want to talk about.</div>
+    </div>
+  </div>
+
+  <!-- Step 1 — Campaign -->
+  <div class="section">
+    <div class="section-label">Step 1 — Campaign settings</div>
+    <div class="settings-block">
+      <div class="settings-block-header">Campaign level</div>
+      <div class="setting-row">
+        <div class="setting-key">Objective</div>
+        <div class="setting-val">
+          <code>OUTCOME_TRAFFIC</code>
+          <span class="note">Always Traffic. Never Engagement (pays for likes, not bookings) and never Sales.</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Campaign name</div>
+        <div class="setting-val">
+          <code>Saged · [Class] · [Language] · [Month Year]</code>
+          <span class="note">Example: "Saged · Ceramics · RU · Oct 2026"</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Campaign budget</div>
+        <div class="setting-val">Off — set budget at ad set level, not here</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Status on creation</div>
+        <div class="setting-val"><code>PAUSED</code> — always. Diana activates.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 — Ad sets -->
+  <div class="section">
+    <div class="section-label">Step 2 — Ad sets (one per language)</div>
+    <div class="important" style="margin-bottom:12px;">
+      <div class="important-title">One ad set per language — never merge RU and UA</div>
+      <div class="important-body">Russian and Ukrainian audiences are separate communities. Create one ad set for Russian speakers, one for Ukrainian, one for English. Different copy for each. Never combine them into one ad set.</div>
+    </div>
+
+    <div class="settings-block">
+      <div class="settings-block-header">Ad set settings — same for every language</div>
+      <div class="setting-row">
+        <div class="setting-key">Ad set name</div>
+        <div class="setting-val"><code>[Class] · RU · Valencia</code> &nbsp;/&nbsp; <code>[Class] · UA · Valencia</code> &nbsp;/&nbsp; <code>[Class] · EN · Valencia</code></div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Conversion location</div>
+        <div class="setting-val">
+          <code>Messaging apps</code> (preferred) or <code>Website</code>
+          <span class="note">Messaging opens a WhatsApp DM directly — higher conversion for this audience and price point than website checkout.</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Budget</div>
+        <div class="setting-val">€3–€5 per day, or €50–€70 lifetime for a 2–3 week campaign</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Schedule</div>
+        <div class="setting-val">Start 3 weeks before your class date. End date 2 days before.</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Bid strategy</div>
+        <div class="setting-val"><code>Lowest cost without cap</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 — Audience -->
+  <div class="section">
+    <div class="section-label">Step 3 — Audience targeting</div>
+
+    <div class="settings-block" style="margin-bottom:10px;">
+      <div class="settings-block-header">Location</div>
+      <div class="setting-row">
+        <div class="setting-key">City</div>
+        <div class="setting-val">
+          Valencia, Spain
+          <span class="note">Always verify the city key via Meta API before use. Do not copy keys from memory or documents.</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Radius</div>
+        <div class="setting-val">17 km</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Location type</div>
+        <div class="setting-val">
+          <code>People who live here</code> only
+          <span class="note">"Recently in this location" includes tourists — they will never book a workshop. Residents only.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-block" style="margin-bottom:10px;">
+      <div class="settings-block-header">Language / locale</div>
+      <div class="setting-row">
+        <div class="setting-key">Locale IDs</div>
+        <div class="setting-val">
+          Russian <code>17</code> · Ukrainian <code>52</code> · English UK <code>24</code> · English US <code>6</code> · Spanish <code>23</code>
+          <span class="note" style="color:#A83218;font-weight:600;">Always verify these via the Meta API before every campaign. Never copy IDs from this document or from memory — they can change.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-block">
+      <div class="settings-block-header">Demographics & targeting</div>
+      <div class="setting-row">
+        <div class="setting-key">Age</div>
+        <div class="setting-val"><code>25–54</code> — never widen above 54</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Interest targeting</div>
+        <div class="setting-val">Leave off for locale campaigns — locale already narrows the audience enough</div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Advantage audience</div>
+        <div class="setting-val">
+          <code>OFF</code>
+          <span class="note">If left on, Meta can override your locale and age targeting. Always disable.</span>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div class="setting-key">Placements</div>
+        <div class="setting-val">
+          Instagram Feed · Stories · Reels only
+          <span class="note">Remove Audience Network (third-party apps). Your audience is on Instagram.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 — Creative -->
+  <div class="section">
+    <div class="section-label">Step 4 — Creative</div>
+
+    <div class="creative-grid">
+      <div class="creative-col">
+        <div class="creative-col-header do">✓ Do this</div>
+        <div class="creative-item"><span class="dot">·</span>Video of hands in clay — even 15 seconds</div>
+        <div class="creative-item"><span class="dot">·</span>Headline: 1 specific thing, under 6 words</div>
+        <div class="creative-item"><span class="dot">·</span>Copy: 2–3 sentences, conversational tone</div>
+        <div class="creative-item"><span class="dot">·</span>CTA button: "Send Message" or "Learn More"</div>
+        <div class="creative-item"><span class="dot">·</span>Real photos of Saged classes — real students</div>
+        <div class="creative-item"><span class="dot">·</span>Language matches the ad set exactly (RU copy → RU ad set)</div>
+        <div class="creative-item"><span class="dot">·</span>Both 1:1 (feed) and 9:16 (stories) formats</div>
+      </div>
+      <div class="creative-col">
+        <div class="creative-col-header dont">✗ Avoid this</div>
+        <div class="creative-item"><span class="dot">·</span>Stock ceramic photos — audience can tell immediately</div>
+        <div class="creative-item"><span class="dot">·</span>Flyer-style text over image (prices, dates, logos)</div>
+        <div class="creative-item"><span class="dot">·</span>"Spaces filling fast!" urgency if it isn't true</div>
+        <div class="creative-item"><span class="dot">·</span>CTA "Book Now" or "Shop Now" — too transactional</div>
+        <div class="creative-item"><span class="dot">·</span>Emoji as decoration (one purposeful emoji max)</div>
+        <div class="creative-item"><span class="dot">·</span>Same creative for RU and UA — always separate</div>
+        <div class="creative-item"><span class="dot">·</span>Advertising events — organic only for events</div>
+      </div>
+    </div>
+
+    <div class="good">
+      <div class="good-title">Best performing format at Saged — English video</div>
+      <div class="good-body">Short video (15–30s) showing hands working with clay. Clear single-line headline. WhatsApp CTA. In testing, this format achieved 5.17% CTR at €0.01 cost per click — reaching 29,000 people in 3 weeks on a small budget. Prioritise video over static image whenever possible.</div>
+    </div>
+  </div>
+
+  <!-- Step 5 — CTA destination -->
+  <div class="section">
+    <div class="section-label">Step 5 — Where to send people</div>
+    <div class="g2">
+      <div class="settings-block">
+        <div class="settings-block-header" style="background:var(--sage-light);color:var(--sage);">Recommended — WhatsApp DM</div>
+        <div style="padding:12px 14px;font-size:12px;color:var(--ink);line-height:1.6;">
+          Ad opens a WhatsApp conversation with Saged.<br><br>
+          Pre-fill the message with the class name so Diana knows which class the person saw the ad for.<br><br>
+          <strong>Why:</strong> For workshops at €40–€90, most people want to ask a question before paying. Message-first converts better than direct checkout.
+        </div>
+      </div>
+      <div class="settings-block">
+        <div class="settings-block-header">Also works — Landing page</div>
+        <div style="padding:12px 14px;font-size:12px;color:var(--muted);line-height:1.6;">
+          Send traffic to saged.club (RU) or saged.club/ua (UA). The booking section has both WhatsApp and Cal.com links.<br><br>
+          Good for general awareness. The landing page has all the class information for people who want to read more before reaching out.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Budget -->
+  <div class="section">
+    <div class="section-label">Budget reference</div>
+    <div class="settings-block">
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Budget</th>
+            <th>Ad sets</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>First campaign</strong></td>
+            <td>€30–€50</td>
+            <td>1 (RU or EN)</td>
+            <td>2 weeks</td>
+          </tr>
+          <tr>
+            <td><strong>Regular class</strong></td>
+            <td>€75–€100</td>
+            <td>2 (RU + EN or RU + UA)</td>
+            <td>3 weeks</td>
+          </tr>
+          <tr>
+            <td><strong>New class launch</strong></td>
+            <td>€100–€150</td>
+            <td>3 (RU + UA + EN)</td>
+            <td>4 weeks</td>
+          </tr>
+          <tr style="background:#FDE8E4;">
+            <td><strong>Events</strong></td>
+            <td style="color:#A83218;font-weight:600;">€0 — organic only</td>
+            <td>None</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pre-launch checklist -->
+  <div class="section">
+    <div class="section-label">Pre-launch checklist</div>
+    <div class="checklist">
+
+      <div class="check-group-label">Campaign</div>
+      <div class="check-item"><div class="check-box"></div>Objective is OUTCOME_TRAFFIC</div>
+      <div class="check-item"><div class="check-box"></div>Campaign is set to PAUSED</div>
+      <div class="check-item"><div class="check-box"></div>Name follows the naming convention</div>
+
+      <div class="check-group-label">Ad set — audience</div>
+      <div class="check-item"><div class="check-box"></div>Location: Valencia, Spain — city key verified via Meta API (not from memory)</div>
+      <div class="check-item"><div class="check-box"></div>Location type: People who live here only</div>
+      <div class="check-item"><div class="check-box"></div>Locale IDs verified via Meta API — not copied from a document</div>
+      <div class="check-item"><div class="check-box"></div>Age: 25–54</div>
+      <div class="check-item"><div class="check-box"></div>Advantage audience: OFF</div>
+      <div class="check-item"><div class="check-box"></div>Placements: Instagram only (Audience Network removed)</div>
+
+      <div class="check-group-label">Ad set — budget & schedule</div>
+      <div class="check-item"><div class="check-box"></div>Daily or lifetime budget set correctly</div>
+      <div class="check-item"><div class="check-box"></div>End date set — no open-ended campaigns</div>
+      <div class="check-item"><div class="check-box"></div>Separate ad sets for each language</div>
+
+      <div class="check-group-label">Creative</div>
+      <div class="check-item"><div class="check-box"></div>Ad language matches the ad set locale</div>
+      <div class="check-item"><div class="check-box"></div>Headline is specific and under 6 words</div>
+      <div class="check-item"><div class="check-box"></div>CTA is "Send Message" or "Learn More"</div>
+      <div class="check-item"><div class="check-box"></div>Destination link tested on mobile</div>
+      <div class="check-item"><div class="check-box"></div>Both 1:1 and 9:16 formats uploaded</div>
+
+      <div class="check-group-label">Final step</div>
+      <div class="check-item"><div class="check-box"></div>Diana has reviewed everything and confirmed ready to activate</div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="doc-footer">
+  <div class="doc-footer-logo">Saged.club</div>
+  <div class="doc-footer-meta">
+    Meta Ads Guide for Instructors · Internal<br>
+    saged.club · Valencia · 2026
+  </div>
+</div>
+
+</body>
+</html>

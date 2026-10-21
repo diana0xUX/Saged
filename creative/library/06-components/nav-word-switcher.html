@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nav Word Switcher — Saged</title>
+<style>
+  :root{
+    --ink:#2a2520;--muted:#6b5f54;--paper:#f9f4ed;--line:rgba(42,37,32,.12);
+    --sand:#f1e9da;--orange:#c25e33;--purple:#8a60a8;--green:#2bb86f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;background:#e8e2d9;color:var(--ink);padding:0 0 80px;-webkit-font-smoothing:antialiased}
+
+  .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);text-align:center;padding:44px 0 14px}
+  .note{max-width:660px;margin:0 auto 28px;font-size:13px;color:var(--muted);line-height:1.6;text-align:center;padding:0 24px}
+  hr{border:none;border-top:1px dashed rgba(42,37,32,.15);margin:48px 24px}
+
+  /* ── nav shell ── */
+  .gn{position:relative;padding:14px 12px}
+  .gn__inner{
+    height:62px;max-width:1200px;margin:auto;padding:0 8px 0 20px;
+    border:1px solid var(--line);border-radius:999px;
+    background:rgba(249,244,237,.97);
+    display:flex;align-items:center;gap:0;
+    box-shadow:0 8px 32px rgba(42,37,32,.08);
+  }
+
+  /* ── school word switcher ── */
+  .school-words{
+    display:flex;align-items:center;gap:0;
+    flex-shrink:0;
+  }
+  .school-word{
+    display:flex;align-items:center;height:38px;padding:0 8px;
+    border-radius:8px;text-decoration:none;
+    transition:opacity .18s, background .18s;
+    position:relative;
+  }
+  .school-word img{height:16px;width:auto;display:block}
+  .school-word--active{opacity:1}
+  .school-word--inactive{opacity:.22}
+  .school-word--inactive:hover{opacity:.55;background:var(--sand)}
+
+/* ── nav links ── */
+  .gn__links{display:flex;align-items:center;gap:2px;margin-left:auto}
+  .gn__links a:not(.pill){
+    padding:7px 12px;font-size:13.5px;font-weight:500;
+    color:var(--muted);border-radius:8px;text-decoration:none;
+    transition:color .15s,background .15s;white-space:nowrap;
+  }
+  .gn__links a:not(.pill):hover{color:var(--ink);background:var(--sand)}
+  .gn__links .pill{
+    margin-left:6px;min-height:38px;padding:0 20px;border-radius:999px;
+    text-decoration:none;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;color:#fff;white-space:nowrap;
+  }
+  .pill--purple{background:#8a60a8}
+  .pill--orange{background:#c25e33}
+
+  /* explainer cards */
+  .explainer{max-width:760px;margin:20px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:0 24px}
+  .card{background:rgba(249,244,237,.9);border:1px solid rgba(42,37,32,.1);border-radius:14px;padding:14px 18px;font-size:13px;line-height:1.6;color:var(--ink)}
+  .card strong{display:block;margin-bottom:4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="section-label">The idea</div>
+<p class="note">
+  "SAGED CLUB" stays as the main brand — it's always there. The school name (ART · MUSIC · SPIRIT) sits right beside it as small SVG wordmarks. Current school is lit up, others are faded. One click to switch. No back link needed.
+</p>
+
+<!-- ════ MUSIC SCHOOL ════ -->
+<div class="section-label">On the Music school page</div>
+
+<nav class="gn">
+  <div class="gn__inner">
+
+    <div class="school-words">
+      <a class="school-word school-word--inactive" href="/" title="Art studio — ceramics">
+        <img src="/design/logo-word-art.svg" alt="Art">
+      </a>
+
+      <a class="school-word school-word--active" href="/handpan/" title="Handpan school">
+        <img src="/design/logo-word-music.svg" alt="Music">
+      </a>
+
+      <a class="school-word school-word--inactive" href="/spirit/" title="Spirit school">
+        <img src="/design/logo-word-spirit.svg" alt="Spirit">
+      </a>
+    </div>
+
+    <div class="gn__links">
+      <a href="#formats">Занятия</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#pricing">Цены</a>
+      <a href="#teachers">Преподаватель</a>
+      <a class="pill pill--purple" href="#book">Записаться ↗</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="explainer">
+  <div class="card"><strong>What's always there</strong>SAGED CLUB — the parent brand, in orange. You always know it's a Saged school.</div>
+  <div class="card"><strong>What tells you where you are</strong>MUSIC is lit up in its own purple. ART and SPIRIT are nearly invisible — present but not competing.</div>
+  <div class="card"><strong>How you switch</strong>Click ART or SPIRIT. Hover makes them brighten so you know they're clickable.</div>
+</div>
+
+<hr>
+
+<!-- ════ ART SCHOOL ════ -->
+<div class="section-label">On the Art school (ceramics) page</div>
+
+<nav class="gn">
+  <div class="gn__inner">
+
+    <div class="school-words">
+      <a class="school-word school-word--active" href="/" title="Art studio — ceramics">
+        <img src="/design/logo-word-art.svg" alt="Art">
+      </a>
+
+      <a class="school-word school-word--inactive" href="/handpan/" title="Handpan school">
+        <img src="/design/logo-word-music.svg" alt="Music">
+      </a>
+
+      <a class="school-word school-word--inactive" href="/spirit/" title="Spirit school">
+        <img src="/design/logo-word-spirit.svg" alt="Spirit">
+      </a>
+    </div>
+
+    <div class="gn__links">
+      <a href="#classes">Classes</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#people">People</a>
+      <a href="#visit">Visit</a>
+      <a class="pill pill--orange" href="#book">Book a class ↗</a>
+    </div>
+
+  </div>
+</nav>
+
+<hr>
+
+<!-- ════ HOVER HINT ════ -->
+<div class="section-label">Hover on an inactive school (try it)</div>
+<p class="note" style="margin-bottom:28px">Hovering ART when you're on MUSIC brightens it to ~55% and adds a sand background pill — makes it feel clickable without being distracting at rest.</p>
+
+<nav class="gn">
+  <div class="gn__inner">
+
+    <div class="school-words">
+      <!-- simulated hover state on ART -->
+      <a class="school-word" href="/" title="Art studio" style="opacity:.55;background:var(--sand)">
+        <img src="/design/logo-word-art.svg" alt="Art">
+      </a>
+
+      <a class="school-word school-word--active" href="/handpan/" title="Music">
+        <img src="/design/logo-word-music.svg" alt="Music">
+      </a>
+
+      <a class="school-word school-word--inactive" href="/spirit/" title="Spirit">
+        <img src="/design/logo-word-spirit.svg" alt="Spirit">
+      </a>
+    </div>
+
+    <div class="gn__links">
+      <a href="#formats">Занятия</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#pricing">Цены</a>
+      <a href="#teachers">Преподаватель</a>
+      <a class="pill pill--purple" href="#book">Записаться ↗</a>
+    </div>
+
+  </div>
+</nav>
+
+</body>
+</html>

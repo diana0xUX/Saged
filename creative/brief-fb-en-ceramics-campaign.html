@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Brief — Facebook/Instagram Ad Campaign · Saged.club</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #F9F4ED;
+    --sand: #F1E9DA;
+    --ink: #2A2520;
+    --muted: #6B5F54;
+    --terracotta: #9F4D2D;
+    --orange: #FF7A23;
+    --sage: #6E7F5A;
+    --line: #E1D6C5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px 48px 96px;
+  }
+
+  /* Header */
+  .doc-header {
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 32px;
+    margin-bottom: 52px;
+  }
+
+  .doc-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  h1 span { color: var(--orange); }
+
+  .doc-subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta-row strong { color: var(--ink); font-weight: 500; }
+
+  /* Sections */
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-top: 56px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  h3 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  p { color: var(--muted); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  p strong, li strong { color: var(--ink); font-weight: 500; }
+
+  ul, ol { padding-left: 20px; color: var(--muted); margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+
+  /* Format cards */
+  .formats { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+
+  .format-card {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0 20px;
+    align-items: start;
+  }
+
+  .format-badge {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .format-badge .dims {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    display: block;
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+
+  .format-body h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .format-body p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Copy block */
+  .copy-block {
+    margin: 12px 0;
+  }
+
+  .copy-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .copy-text {
+    background: var(--ink);
+    color: #F9F4ED;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 16px 20px;
+    border-radius: 8px;
+    white-space: pre-line;
+  }
+
+  .copy-text .orange { color: var(--orange); }
+  .copy-text .small {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.7;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* Photo block */
+  .photo-block {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 12px 0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .photo-status {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-top: 2px;
+  }
+
+  .photo-status.use { background: var(--sage); color: white; }
+  .photo-status.no { background: #C0392B; color: white; }
+
+  .photo-body p { font-size: 14px; }
+  .photo-body code { font-size: 12px; }
+
+  /* Colour swatches */
+  .swatches {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .swatch-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+  }
+
+  .swatch-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .swatch-hex {
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-bottom: 1.5px solid var(--line);
+  }
+
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    vertical-align: top;
+  }
+
+  td:first-child { color: var(--ink); font-weight: 500; }
+
+  /* Deliverable boxes */
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .deliverable-box {
+    background: var(--sand);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .deliverable-box .ratio {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .deliverable-box .px {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .deliverable-box .name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Success callout */
+  .success-box {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+
+  .success-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .success-box p {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--bg);
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 12px;
+    background: #EDE7DC;
+    color: var(--ink);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .doc-footer {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-eyebrow">Creative Brief · Meta Ads · August 2026</div>
+    <h1>Facebook & Instagram<br>Ad Campaign — <span>EN Ceramics</span></h1>
+    <div class="doc-subtitle">Saged.club · English-speaking expats in Valencia</div>
+    <div class="meta-row">
+      <span><strong>For:</strong> Visual designer</span>
+      <span><strong>Deliverables:</strong> 3 ad format variants</span>
+      <span><strong>Goal:</strong> WhatsApp inquiry</span>
+      <span><strong>Reference:</strong> Open <code>creative/brand-board.html</code> in Chrome first</span>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <h2>Why This Campaign Exists</h2>
+  <p>English-speaking residents in Valencia have no organic way to discover Saged. The Russian and Ukrainian audience reaches the studio through Koritsia's personal network. English-speakers don't. A paid ad is their only path.</p>
+  <p>This is not a brand awareness campaign. The only metric that matters is someone opening WhatsApp and writing: <strong>"Hi, when is the next ceramics class?"</strong></p>
+  <p>The best-performing ad on record for this studio — an English-language video, "Saged.club is for..." — achieved <strong>CTR 5.17% and CPC €0.01 for three consecutive weeks</strong>. That outperformed Russian/Ukrainian variants by 5–6×. This campaign continues that bet with static image formats.</p>
+
+  <!-- AUDIENCE -->
+  <h2>The Audience</h2>
+  <p><strong>English-speaking expats and long-term residents of Valencia, 25–45. Not tourists.</strong></p>
+  <p>They're looking for something to do that isn't another bar or gym. They haven't found "their thing" in Valencia yet. Ceramics sounds interesting but they've never tried it. They're comfortable spending €60 on a real experience. When they see an ad, they DM — they don't click through to a booking page. They want to ask a question first.</p>
+  <p>What they feel before seeing the ad: mild FOMO about not having found their people yet.<br>What the ad should make them feel: <strong>this is the obvious answer.</strong></p>
+
+  <!-- OFFER -->
+  <h2>The Offer</h2>
+  <table>
+    <tr><th>What</th><th>Value</th></tr>
+    <tr><td>Workshop</td><td>2-day pottery wheel class</td></tr>
+    <tr><td>Instructor</td><td>Koritsia — professional ceramic artist</td></tr>
+    <tr><td>Language</td><td>Taught in English</td></tr>
+    <tr><td>Schedule</td><td>Every Thursday</td></tr>
+    <tr><td>Location</td><td>Old City, Valencia — C/ de la Correu, 8</td></tr>
+    <tr><td>Duration</td><td>2 sessions × 2 hours each</td></tr>
+    <tr><td>Group size</td><td>Up to 6 people</td></tr>
+    <tr><td>Price</td><td>€60 all-in, materials included</td></tr>
+    <tr><td>Take-home</td><td>Your own piece — thrown on the wheel, glazed, yours</td></tr>
+  </table>
+  <p>The take-home piece is important. It's not just a class. You leave with something you made with your hands.</p>
+
+  <!-- DELIVERABLES -->
+  <h2>Deliverables — 3 Formats</h2>
+  <p>Design them as a set — same visual language, adapted to canvas. Start with Format 1 and adapt from there.</p>
+
+  <div class="deliverables">
+    <div class="deliverable-box">
+      <div class="ratio">4:5</div>
+      <div class="px">1080 × 1350 px</div>
+      <div class="name">Instagram Feed<br>(primary)</div>
+    </div>
+    <div class="deliverable-box">
+      <div class="ratio">1:1</div>
+      <div class="px">1080 × 1080 px</div>
+      <div class="name">Facebook + Instagram<br>Square Feed</div>
+    </div>
+    <div class="deliverable-box">
+      <div class="ratio">9:16</div>
+      <div class="px">1080 × 1920 px</div>
+      <div class="name">Stories + Reels<br>(top/bottom safe zones)</div>
+    </div>
+  </div>
+
+  <div class="formats">
+    <div class="format-card">
+      <div class="format-badge">Feed 4:5<span class="dims">1080 × 1350</span></div>
+      <div class="format-body">
+        <h4>Instagram Feed — Primary</h4>
+        <p>Most screen real estate on mobile. This is the anchor. A reference version exists at <code>creative/ad-en-ceramics-v4.svg</code> — use it as a starting point. Bring better photos and tighter execution.</p>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-badge">Feed 1:1<span class="dims">1080 × 1080</span></div>
+      <div class="format-body">
+        <h4>Square — Facebook & Instagram</h4>
+        <p>Compress the 4:5 layout: photo takes the top half, info block below. Price blob stays visible without scrolling. Works on Facebook desktop feed.</p>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-badge">Story 9:16<span class="dims">1080 × 1920</span></div>
+      <div class="format-body">
+        <h4>Stories + Reels</h4>
+        <p>Full-screen vertical. Top 250px and bottom 340px must stay clear (Meta UI overlays). Active design lives in the middle 66%. One big image + the essential info + the WhatsApp number. Don't try to fit everything from the feed ad.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISUAL DIRECTION -->
+  <h2>Visual Direction</h2>
+  <p><strong>The reference:</strong> <code>creative/library/05-ads/koritsia-ceramics/1080x1350-preview.jpg</code> — this is the Russian version that proved the design language works. Match its energy exactly.</p>
+  <p><strong>The feeling:</strong> A door left slightly open. Warm light inside. Sounds of work. No pressure to enter. The piece you take home is lopsided and you love it more for that.</p>
+
+  <h3>What this looks like on canvas</h3>
+  <ul>
+    <li>Warm cream background (<code>#F9F4ED</code>) — never white, never grey</li>
+    <li>Big confident headline in Costa font — two words max per line at display size</li>
+    <li>A real photo of someone working with clay — not a product shot, not stock</li>
+    <li>Orange price blob, visible without scrolling (<code>#FF7A23</code>)</li>
+    <li>WhatsApp number as the CTA — not "Book Now", not a website link</li>
+    <li>3–5 illustrated brand figures scattered at the edges at opacity 0.45–0.55</li>
+    <li>Organic blob shapes, not geometric grids</li>
+  </ul>
+
+  <h3>What this is NOT</h3>
+  <ul>
+    <li>Spa / wellness aesthetic</li>
+    <li>Minimalist-cold white space with tiny sans-serif type</li>
+    <li>Stock photography energy — models pretending to make pottery</li>
+    <li>Banner-ad layout (text block dropped over a blurred photo)</li>
+  </ul>
+
+  <!-- COPY -->
+  <h2>Approved Copy</h2>
+  <p>Lock this copy. Do not improvise. All headline text is in Costa font at display size.</p>
+
+  <div class="copy-block">
+    <div class="copy-label">Headline (Costa · 120–180px · 2 lines)</div>
+    <div class="copy-text">CERAMICS<br><span class="orange">IN VALENCIA</span><span class="small">"CERAMICS" in dark ink #2A2520 · "IN VALENCIA" in orange #FF7A23</span></div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Positioning badge (pill, dark fill, white text)</div>
+    <div class="copy-text" style="font-family:'Inter',sans-serif;font-size:16px;font-weight:600;letter-spacing:0.1em;">IN ENGLISH<span class="small">This is the differentiator — every other ceramics class in Valencia is in Spanish. Make it unmissable.</span></div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Schedule badge (orange pill, white text)</div>
+    <div class="copy-text" style="font-family:'Inter',sans-serif;font-size:15px;">EVERY THURSDAY<br><span style="font-size:13px;opacity:0.8;">OLD CITY · VALENCIA</span></div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Body copy (Inter · 23–24px · muted colour)</div>
+    <div class="copy-text" style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;">2-day pottery course<br>Throw · glaze · take your piece home<br>Small group · all materials included</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Price blob (orange ellipse · white text)</div>
+    <div class="copy-text"><span class="orange" style="font-size:36px;">€60</span><br><span class="small">2 sessions · 2h each · up to 6</span></div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">CTA + footer</div>
+    <div class="copy-text" style="font-family:'Inter',sans-serif;font-size:15px;">WhatsApp +34 695 73 19 00<br><span style="opacity:0.7;font-size:13px;">C/ de la Correu, 8 · Casco Antiguo, Valencia<br>saged.club  @saged_diana</span></div>
+  </div>
+
+  <!-- PHOTOS -->
+  <h2>Photos to Use</h2>
+
+  <div class="photo-block">
+    <div class="photo-status use">Use this</div>
+    <div class="photo-body">
+      <p><strong>Workshop teaching scene</strong><br>
+      <code>creative/library/03-photos/workshop/workshop-teaching.jpg</code><br>
+      Candlelit workshop, warm brick wall, instructor at the wheel with students. Real studio, real work, no staging.</p>
+    </div>
+  </div>
+
+  <div class="photo-block">
+    <div class="photo-status use">Browse</div>
+    <div class="photo-body">
+      <p><strong>Boosi professional shoot — 65 shots</strong><br>
+      <code>photos/Boosi photos/</code><br>
+      Pick 1–2 that show a human moment — hands in clay, a finished piece being held, someone laughing. Not product shots.</p>
+    </div>
+  </div>
+
+  <div class="photo-block">
+    <div class="photo-status use">Optional</div>
+    <div class="photo-body">
+      <p><strong>Instructor portrait</strong><br>
+      <code>creative/library/03-photos/koritsia/koritsya-portrait.png</code><br>
+      Use if you want to show a face. Works well in the story format.</p>
+    </div>
+  </div>
+
+  <div class="photo-block">
+    <div class="photo-status no">Do not use</div>
+    <div class="photo-body">
+      <p><strong>koritsa-editorial.jpg</strong><br>
+      Fashion editorial photo — woman with elaborate beaded necklace and feathers. Wrong context entirely.</p>
+    </div>
+  </div>
+
+  <!-- COLOURS -->
+  <h2>Colour System</h2>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#F9F4ED;"></div>
+      <div class="swatch-label">Background</div>
+      <div class="swatch-hex">#F9F4ED</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#2A2520;"></div>
+      <div class="swatch-label">Ink</div>
+      <div class="swatch-hex">#2A2520</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#6B5F54;"></div>
+      <div class="swatch-label">Muted</div>
+      <div class="swatch-hex">#6B5F54</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#FF7A23;"></div>
+      <div class="swatch-label">Orange</div>
+      <div class="swatch-hex">#FF7A23</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-dot" style="background:#E1D6C5;"></div>
+      <div class="swatch-label">Line</div>
+      <div class="swatch-hex">#E1D6C5</div>
+    </div>
+  </div>
+
+  <h3>Fonts — 2 only</h3>
+  <ul>
+    <li><strong>Costa Light</strong> — display headlines only. File: <code>assets/fonts/costa-light.otf</code></li>
+    <li><strong>Inter 400/500</strong> — all body copy, labels, CTA. Google Fonts.</li>
+  </ul>
+  <p>Do not introduce other fonts.</p>
+
+  <!-- LAYOUT -->
+  <h2>Layout Rules</h2>
+  <ul>
+    <li><strong>3 focal points max.</strong> Headline + photo + price blob. Everything else supports these three.</li>
+    <li><strong>Z-pattern.</strong> Top-left "SAGED CLUB" → logo top-right → diagonal across photo → price blob bottom-right. Design to this eye path.</li>
+    <li><strong>Squint test.</strong> Half-close your eyes. The headline or the instructor's face must read first. If the address block or figures read first, the hierarchy is wrong.</li>
+    <li><strong>Price always visible without scrolling.</strong> Bottom half, orange blob. If the viewer can't see €60 without scrolling, the layout fails.</li>
+    <li><strong>Figures at edges only.</strong> 3–5 illustrated characters from <code>creative/library/02-figures/</code> — corners and edges, opacity 0.45–0.55, never centred.</li>
+  </ul>
+
+  <!-- SPECS -->
+  <h2>Technical Specs</h2>
+  <table>
+    <tr><th>Spec</th><th>Value</th></tr>
+    <tr><td>Colour space</td><td>sRGB</td></tr>
+    <tr><td>Resolution</td><td>72 dpi, export at 1× pixel dimensions</td></tr>
+    <tr><td>File format</td><td>PNG or JPG delivery + editable source (SVG, Figma, Penpot, AI)</td></tr>
+    <tr><td>Max text area</td><td>Under 20% of image (Meta rule — more text = reduced delivery)</td></tr>
+    <tr><td>Body text minimum</td><td>24px</td></tr>
+    <tr><td>Label text minimum</td><td>18px</td></tr>
+    <tr><td>Story safe zones</td><td>Top 250px and bottom 340px must be empty (Meta UI overlays here)</td></tr>
+  </table>
+
+  <!-- SUCCESS -->
+  <h2>What Success Looks Like</h2>
+  <div class="success-box">
+    <div class="label">The only metric that counts</div>
+    <p>Someone sees this while scrolling on a Thursday morning. They stop. They read "IN ENGLISH" and think "finally, something for me." They see €60 and think "that's a reasonable dinner out." They screenshot the WhatsApp number — or tap the ad — and send a message.</p>
+    <p style="margin-top:16px;">They don't visit the website. They don't book online. They send a WhatsApp and ask:<br><strong style="color:var(--orange);">"When's the next class?"</strong></p>
+  </div>
+
+  <!-- FILE NAMING -->
+  <h2>Files to Hand Back</h2>
+  <table>
+    <tr><th>Format</th><th>Filename</th></tr>
+    <tr><td>Instagram Feed 4:5</td><td><code>ad-en-ceramics-feed-4x5.png</code></td></tr>
+    <tr><td>Square Feed 1:1</td><td><code>ad-en-ceramics-feed-1x1.png</code></td></tr>
+    <tr><td>Story / Reels 9:16</td><td><code>ad-en-ceramics-story-9x16.png</code></td></tr>
+  </table>
+  <p>Editable source file alongside each PNG.</p>
+
+  <div class="doc-footer">
+    <div>
+      Brief: 2026-08-29 · Diana Sage · WhatsApp +34 695 73 19 00 · @saged_diana
+    </div>
+    <div>saged.club</div>
+  </div>
+
+</div>
+</body>
+</html>
