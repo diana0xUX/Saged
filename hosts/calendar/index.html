@@ -20,9 +20,16 @@
   .header p{font-size:14px;color:var(--muted);margin-top:5px;max-width:560px;line-height:1.55}
 
   /* Color legend */
-  .legend{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap}
-  .legend-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
-  .legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+  .legend-item{border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px}
+  .legend-item--events {background:rgba(244,81,30,.1);border:1.5px solid rgba(244,81,30,.3)}
+  .legend-item--classes{background:rgba(11,128,67,.1);border:1.5px solid rgba(11,128,67,.3)}
+  .legend-swatch{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:grid;place-items:center}
+  .legend-swatch--events {background:var(--col-events)}
+  .legend-swatch--classes{background:var(--col-classes)}
+  .legend-swatch svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.5}
+  .legend-text strong{display:block;font-size:14px;font-weight:700;margin-bottom:2px}
+  .legend-text span{font-size:12px;color:var(--muted);line-height:1.4}
 
   /* Subscribe cards */
   .subscribe{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
@@ -47,9 +54,8 @@
   .cal-wrap iframe{display:block;width:100%;border:none}
 
   @media(max-width:600px){
-    .subscribe{grid-template-columns:1fr}
+    .subscribe,.legend{grid-template-columns:1fr}
     body{padding:20px 16px 40px}
-    .legend{gap:14px}
   }
 </style>
 </head>
@@ -63,13 +69,23 @@
 
   <!-- Color legend -->
   <div class="legend">
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--col-events)"></div>
-      Мероприятия и события
+    <div class="legend-item legend-item--events">
+      <div class="legend-swatch legend-swatch--events">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+      </div>
+      <div class="legend-text">
+        <strong style="color:var(--col-events)">Мероприятия</strong>
+        <span>Мастер-классы, вечера,<br>разовые события</span>
+      </div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:var(--col-classes)"></div>
-      Занятия керамикой
+    <div class="legend-item legend-item--classes">
+      <div class="legend-swatch legend-swatch--classes">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="legend-text">
+        <strong style="color:var(--col-classes)">Занятия керамикой</strong>
+        <span>Регулярные слоты,<br>расписание группы</span>
+      </div>
     </div>
   </div>
 
