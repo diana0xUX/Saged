@@ -1,578 +1,397 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Hosts — Saged</title>
-<meta name="robots" content="noindex">
-<link rel="icon" href="/assets/images/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hosts — Saged Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
 <style>
-@font-face {
-  font-family: SagedCyr;
-  src: url('/assets/fonts/saged-display-cyrillic-v1.396.woff') format('woff');
-  font-display: swap;
-}
-@font-face {
-  font-family: Costa;
-  src: url('/assets/fonts/costa-light.otf') format('opentype');
-  font-display: swap;
-}
+@font-face{font-family:Costa;src:url('https://saged.club/assets/fonts/costa-light.otf') format('opentype');font-display:swap}
 
-:root {
-  --paper:      #f9f4ed;
-  --sand:       #efe5d6;
-  --ink:        #2a2520;
-  --muted:      #6b5f54;
-  --line:       #ded1bf;
-  --clay:       #9f4d2d;
-  --clay-light: #faf0e6;
-  --white:      #fffdf8;
-  --radius:     16px;
+:root{
+  --ink:#2a2520;--muted:#6b5f54;--subtle:#9a8e84;
+  --paper:#f9f4ed;--sand:#efe5d6;--line:#e2d5c3;
+  --bg:#e4ddd4;
+  --art:#FF7A23;--music:#7643EB;--spirit:#43EB8F;--spirit-dark:#18a875;
+  --shadow-sm:0 1px 3px rgba(42,37,32,.05),0 4px 16px rgba(42,37,32,.06);
+  --shadow-md:0 2px 8px rgba(42,37,32,.07),0 12px 32px rgba(42,37,32,.08);
+  --r:20px;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; }
+/* ── Layout ── */
+.page{max-width:900px;margin:0 auto;padding:48px 24px 100px}
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+/* ── Brand strip ── */
+.brand-strip{display:flex;height:3px;border-radius:2px;overflow:hidden;margin-bottom:48px}
+.brand-strip__art{flex:1;background:var(--art)}
+.brand-strip__music{flex:1;background:var(--music)}
+.brand-strip__spirit{flex:1;background:var(--spirit)}
 
-.nav{padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(249,244,237,.96);backdrop-filter:blur(8px);z-index:20}
-.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
-.nav-links a:hover,.nav-links a.active{color:var(--ink)}
-.nav-cta{font-size:13px;font-weight:600;color:var(--clay);text-decoration:none;border:1.5px solid var(--clay);padding:8px 18px;border-radius:100px;transition:all .15s}
-.nav-cta:hover{background:var(--clay);color:var(--white)}
-@media(max-width:640px){.nav-links{display:none}.nav{padding:16px 20px}}
+/* ── Header ── */
+.site-header{margin-bottom:56px}
+.site-header__eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--music);margin-bottom:12px}
+.site-header__title{font-family:Costa,Georgia,serif;font-size:clamp(44px,7vw,68px);letter-spacing:-.04em;line-height:.92;color:var(--ink);margin-bottom:16px}
+.site-header__desc{font-size:15px;color:var(--muted);line-height:1.65;max-width:460px}
 
-.wrap {
-  width: min(calc(100% - 40px), 920px);
-  margin: 0 auto;
-  padding: 52px 0 100px;
-}
+/* ── Pill actions ── */
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:64px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);transition:all .15s;cursor:pointer}
+.pill:hover{border-color:var(--ink);box-shadow:var(--shadow-sm)}
+.pill--primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pill--primary:hover{opacity:.85;box-shadow:none}
+.pill__dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 
-.page-eyebrow {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .18em;
-  color: var(--clay); font-weight: 700; margin-bottom: 14px;
-}
-.page-title {
-  font-family: Costa, SagedCyr, Georgia, serif;
-  font-size: clamp(42px, 8vw, 68px);
-  line-height: .91; letter-spacing: -.04em;
-  color: var(--ink); margin-bottom: 22px;
-}
-.page-lead {
-  font-size: 17px; color: var(--muted); line-height: 1.65;
-  max-width: 500px; margin-bottom: 44px;
-}
+/* ── Section ── */
+.section{margin-bottom:72px}
+.kicker{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--subtle);margin-bottom:12px}
+.section-title{font-family:Costa,Georgia,serif;font-size:clamp(30px,4vw,42px);letter-spacing:-.03em;line-height:.96;margin-bottom:28px}
 
-.filter-bar {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 36px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid var(--line);
-}
-.filter-btn {
-  font-family: Inter, sans-serif;
-  font-size: 13px; font-weight: 500;
-  color: var(--muted); background: transparent;
-  border: 1px solid var(--line);
-  padding: 7px 16px; border-radius: 100px;
-  cursor: pointer; transition: all .15s;
-  line-height: 1;
-}
-.filter-btn:hover { border-color: var(--clay); color: var(--clay); }
-.filter-btn.active { background: var(--clay); color: var(--white); border-color: var(--clay); }
+/* ── Calendar layout ── */
+.cal-layout{display:grid;grid-template-columns:1fr 268px;gap:20px;align-items:start}
+.cal-main{min-width:0;display:flex;flex-direction:column;gap:12px}
 
-.hosts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 64px;
-}
+/* ── Legend ── */
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.legend-item{border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:9px}
+.legend-item--art  {background:rgba(255,122,35,.08);border:1px solid rgba(255,122,35,.22)}
+.legend-item--mu   {background:rgba(118,67,235,.08);border:1px solid rgba(118,67,235,.22)}
+.legend-item--sp   {background:rgba(67,235,143,.10);border:1px solid rgba(67,235,143,.28)}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.legend-label{font-size:11px;font-weight:700;letter-spacing:.06em}
+.legend-sub{font-size:10px;color:var(--subtle);margin-top:1px;line-height:1.3}
 
-@media (max-width: 700px) { .hosts-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 420px) { .hosts-grid { grid-template-columns: 1fr; } }
+/* ── Calendar embed ── */
+.cal-embed{background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm)}
+.cal-embed iframe{display:block;width:100%;border:none}
 
-.host-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 0;
-  text-decoration: none;
-  color: inherit;
-  display: flex; flex-direction: column;
-  transition: border-color .15s, box-shadow .15s, transform .15s;
-  cursor: pointer;
-  position: relative;
-  overflow: visible;
-}
-.host-card:hover {
-  border-color: var(--clay);
-  box-shadow: 0 6px 20px rgba(159,77,45,.09);
-  transform: translateY(-1px);
-}
-.host-card.is-hidden { display: none; }
+/* ── Subscribe row ── */
+.cal-sub-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cal-sub-btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:700;text-decoration:none;transition:opacity .15s}
+.cal-sub-btn:hover{opacity:.82}
+.cal-sub-btn--ev{background:var(--art);color:#fff}
+.cal-sub-btn--cl{background:var(--spirit-dark);color:#fff}
 
-.host-cover {
-  height: 130px;
-  border-radius: var(--radius) var(--radius) 0 0;
-  overflow: hidden;
-  position: relative;
-  background: var(--sand);
-  flex-shrink: 0;
-}
-.host-cover-photo {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-.host-cover-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(42,37,32,.28) 0%, transparent 65%);
-}
-a[data-cat="ceramics"] .host-cover { background: linear-gradient(135deg, #e0c0a0, #b87a50); }
-a[data-cat="sound"]    .host-cover { background: linear-gradient(135deg, #c8a8e0, #8060b0); }
-a[data-cat="art"]      .host-cover { background: linear-gradient(135deg, #a8d0a0, #507850); }
-a[data-cat="movement"] .host-cover { background: linear-gradient(135deg, #a0c8d8, #407090); }
-a[data-cat="therapy"]  .host-cover { background: linear-gradient(135deg, #e0a8b8, #903050); }
-a[data-cat="ceremony"] .host-cover { background: linear-gradient(135deg, #e8d8a0, #b09030); }
-a[data-cat="pending"]  .host-cover { background: var(--sand); }
+/* ── Booking card (sidebar) ── */
+.booking-card{background:var(--paper);border-radius:var(--r);padding:24px 22px;box-shadow:var(--shadow-md);position:sticky;top:28px}
+.booking-card__title{font-family:Costa,Georgia,serif;font-size:22px;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+.booking-card__sub{font-size:12px;color:var(--subtle);margin-bottom:22px}
+.booking-steps{display:flex;flex-direction:column;gap:18px;margin-bottom:24px}
+.booking-step{display:flex;gap:14px}
+.booking-step__num{font-family:Costa,Georgia,serif;font-size:28px;color:rgba(42,37,32,.13);line-height:1;flex-shrink:0;width:26px;text-align:right;margin-top:-2px}
+.booking-step__title{font-size:13px;font-weight:700;margin-bottom:3px;color:var(--ink)}
+.booking-step__text{font-size:12px;color:var(--muted);line-height:1.55}
+.booking-divider{height:1px;background:var(--line);margin-bottom:18px}
+.booking-actions{display:flex;flex-direction:column;gap:8px}
+.booking-btn{display:block;text-align:center;padding:11px 16px;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;transition:all .15s}
+.booking-btn--primary{background:var(--ink);color:var(--paper)}
+.booking-btn--primary:hover{opacity:.85}
+.booking-btn--ghost{border:1.5px solid var(--line);color:var(--ink)}
+.booking-btn--ghost:hover{border-color:var(--muted)}
 
-.avatar {
-  position: absolute;
-  top: 92px;
-  left: 16px;
-  width: 68px; height: 68px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2.5px solid var(--white);
-  box-shadow: 0 4px 12px rgba(42,37,32,.18);
-  background: var(--sand);
-  z-index: 2;
-  flex-shrink: 0;
-}
-.avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
+/* ── Rules ── */
+.standards{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow:hidden}
+.standard{display:grid;grid-template-columns:52px 1fr;gap:0;padding:20px 24px;border-bottom:1px solid var(--line);transition:background .15s}
+.standard:last-child{border-bottom:none}
+.standard:hover{background:rgba(239,229,214,.4)}
+.standard__num{font-family:Costa,Georgia,serif;font-size:40px;color:rgba(42,37,32,.10);line-height:1;text-align:right;padding-right:16px;margin-top:-4px;flex-shrink:0}
+.standard__body{padding:2px 0}
+.standard__title{font-size:14px;font-weight:700;margin-bottom:5px}
+.standard__text{font-size:13px;color:var(--muted);line-height:1.65}
+.standard__text em{font-style:normal;color:var(--ink);font-weight:600}
 
-.host-card-body {
-  padding: 46px 20px 18px;
-  display: flex; flex-direction: column; gap: 8px;
-  flex: 1;
-}
+/* ── Resource card ── */
+.res-card{background:var(--paper);border-radius:var(--r);padding:24px 26px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:20px}
+.res-card__icon{font-size:26px;flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--sand);display:grid;place-items:center}
+.res-card__body{flex:1}
+.res-card__title{font-size:15px;font-weight:700;margin-bottom:3px}
+.res-card__desc{font-size:13px;color:var(--muted);line-height:1.5}
+.res-card__link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--music);margin-top:10px;transition:opacity .15s}
+.res-card__link:hover{opacity:.75}
 
-.host-name {
-  font-family: Costa, Georgia, serif;
-  font-size: 16px; font-weight: 400; color: var(--ink);
-  line-height: 1.25; margin-top: 2px;
-  letter-spacing: -.01em;
-}
-.host-practice {
-  font-size: 13px; color: var(--muted); line-height: 1.45;
-  margin-top: 2px;
-}
+/* ── Association ── */
+.assoc{background:var(--ink);border-radius:var(--r);padding:36px 36px 32px;color:var(--paper)}
+.assoc__eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(249,244,237,.45);margin-bottom:14px}
+.assoc__title{font-family:Costa,Georgia,serif;font-size:32px;letter-spacing:-.03em;line-height:.96;margin-bottom:16px}
+.assoc__intro{font-size:14px;color:rgba(249,244,237,.65);line-height:1.7;margin-bottom:30px;max-width:480px}
+.assoc-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.assoc-step{background:rgba(249,244,237,.06);border:1px solid rgba(249,244,237,.1);border-radius:14px;padding:18px 16px}
+.assoc-step__num{font-family:Costa,Georgia,serif;font-size:32px;color:var(--art);line-height:1;margin-bottom:10px}
+.assoc-step__title{font-size:13px;font-weight:700;margin-bottom:6px;color:var(--paper)}
+.assoc-step__text{font-size:12px;color:rgba(249,244,237,.55);line-height:1.6}
+.assoc-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;background:var(--art);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:opacity .15s}
+.assoc-cta:hover{opacity:.87}
 
-.cat {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11px; font-weight: 600;
-  padding: 4px 10px; border-radius: 100px;
-  margin-top: auto; align-self: flex-start;
+/* ── Responsive ── */
+@media(max-width:680px){
+  .cal-layout{grid-template-columns:1fr}
+  .booking-card{position:static}
+  .legend{grid-template-columns:1fr}
+  .cal-sub-row{grid-template-columns:1fr}
+  .assoc-steps{grid-template-columns:1fr}
+  .assoc{padding:28px 22px 26px}
+  .page{padding:32px 16px 80px}
+  .pill-row{gap:6px}
 }
-.cat-ceramics { background: #fdf4ee; color: #c8704a; border: 1px solid #e8c0a8; }
-.cat-art      { background: #f0f5ee; color: #4a8858; border: 1px solid #a0c8a8; }
-.cat-sound    { background: #f4f0fa; color: #8a60a8; border: 1px solid #c8a8d8; }
-.cat-movement { background: #ecf4f4; color: #3a8070; border: 1px solid #90c0b8; }
-.cat-therapy  { background: #fdf0f3; color: #a84060; border: 1px solid #d8a0b0; }
-.cat-ceremony { background: #fdf8ee; color: #b89040; border: 1px solid #d8c080; }
-.cat-pending  { background: var(--sand); color: var(--muted); border: 1px solid var(--line); }
-
-.filter-btn[data-cat="ceramics"]{color:#c8704a;border-color:#e8c0a8}
-.filter-btn[data-cat="art"]     {color:#4a8858;border-color:#a0c8a8}
-.filter-btn[data-cat="sound"]   {color:#8a60a8;border-color:#c8a8d8}
-.filter-btn[data-cat="movement"]{color:#3a8070;border-color:#90c0b8}
-.filter-btn[data-cat="therapy"] {color:#a84060;border-color:#d8a0b0}
-.filter-btn[data-cat="ceremony"]{color:#b89040;border-color:#d8c080}
-.filter-btn[data-cat="ceramics"].active,.filter-btn[data-cat="art"].active,.filter-btn[data-cat="sound"].active,.filter-btn[data-cat="movement"].active,.filter-btn[data-cat="therapy"].active,.filter-btn[data-cat="ceremony"].active{color:var(--white);background:var(--ink);border-color:var(--ink)}
-
-.card-link {
-  font-size: 12px; font-weight: 500; color: var(--clay);
-  margin-top: 4px;
-}
-
-.no-results {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 72px 0;
-  color: var(--muted);
-  font-size: 15px;
-  display: none;
-}
-
-.cta-block {
-  padding: 30px 32px;
-  background: var(--sand);
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 24px; flex-wrap: wrap;
-}
-.cta-block p { font-size: 15px; color: var(--muted); }
-.btn {
-  display: inline-block;
-  background: var(--ink); color: var(--white);
-  font-size: 14px; font-weight: 600; font-family: inherit;
-  padding: 13px 24px; border-radius: 100px;
-  text-decoration: none; white-space: nowrap;
-  transition: opacity .15s;
-}
-.btn:hover { opacity: .85; }
 </style>
-  <script defer data-domain="saged.club" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+<div class="page">
 
-<div class="draft-bar" style="background:#2a2520;color:#f0e8df;font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.04em">Prototype · <a href="/prototype.html" style="color:#F08A60;text-decoration:none">← Home</a> · <a href="/events/" style="color:#F08A60;text-decoration:none">Events</a> · <a href="/space/" style="color:#F08A60;text-decoration:none">Space</a></div>
-
-<nav class="nav">
-  <a class="nav-logo" href="/prototype.html"><img src="/assets/images/logo-saged-club.svg" alt="Saged" height="26"></a>
-  <div class="nav-links">
-    <a href="/events/">What's on</a>
-    <a href="/hosts/" class="active">Hosts</a>
-    <a href="/space/">Space</a>
-    <a href="/join/">Join</a>
-  </div>
-  <a class="nav-cta" href="/join/host/">Become a host</a>
-</nav>
-
-<main class="wrap">
-
-  <p class="page-eyebrow">Saged club · 23 hosts</p>
-  <h1 class="page-title">Hosts &<br>facilitators</h1>
-  <p class="page-lead">Artists, therapists, musicians and makers who create the club programme at C/ de les Cuines, 8.</p>
-
-  <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" data-cat="all">All</button>
-    <button class="filter-btn" data-cat="ceramics">Ceramics</button>
-    <button class="filter-btn" data-cat="art">Painting</button>
-    <button class="filter-btn" data-cat="sound">Sound & music</button>
-    <button class="filter-btn" data-cat="movement">Movement</button>
-    <button class="filter-btn" data-cat="therapy">Wellness</button>
-    <button class="filter-btn" data-cat="ceremony">Ceremonies</button>
+  <!-- Brand strip -->
+  <div class="brand-strip">
+    <div class="brand-strip__art"></div>
+    <div class="brand-strip__music"></div>
+    <div class="brand-strip__spirit"></div>
   </div>
 
-  <div class="hosts-grid" id="hostsGrid">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header__eyebrow">Saged Club · Hosts</div>
+    <h1 class="site-header__title">Твоё место<br>в студии.</h1>
+    <p class="site-header__desc">Всё что нужно для работы в Saged — расписание, стандарты, оформление членства. Рады, что ты здесь.</p>
+  </header>
 
-    <a class="host-card" href="/hosts/diana/" data-cat="ceremony">
-      <div class="host-cover"><img class="host-cover-photo" src="/assets/images/diana-portrait.jpg" alt=""><div class="host-cover-overlay"></div></div>
-      <div class="avatar"><img src="/assets/images/diana-portrait.jpg" alt="Diana"></div>
-      <div class="host-card-body">
-        <div class="host-name">Diana Sage</div>
-        <div class="host-practice">Studio founder · clay rituals and talisman making</div>
-        <span class="cat cat-ceremony">✨ Ceremonies</span>
-        <span class="card-link">Profile →</span>
-      </div>
+  <!-- Quick actions -->
+  <div class="pill-row">
+    <a class="pill pill--primary" href="https://t.me/sagedclub" target="_blank" rel="noopener">
+      Чат хостов
     </a>
-
-    <a class="host-card" href="/hosts/koritsa/" data-cat="ceramics">
-      <div class="host-cover"><img class="host-cover-photo" src="/assets/images/koritsa-editorial.jpg" alt=""><div class="host-cover-overlay"></div></div>
-      <div class="avatar"><img src="/design/koritsa.png" alt="Koritsa"></div>
-      <div class="host-card-body">
-        <div class="host-name">Koritsa Kokoko</div>
-        <div class="host-practice">Studio ceramics — wheel throwing and hand building</div>
-        <span class="cat cat-ceramics">🏺 Ceramics</span>
-        <span class="card-link">Profile →</span>
-      </div>
+    <a class="pill" href="https://wa.me/34605543300" target="_blank" rel="noopener">
+      <span class="pill__dot" style="background:var(--spirit-dark)"></span>
+      Написать Диане
     </a>
-
-    <a class="host-card" href="/hosts/helena/" data-cat="movement">
-      <div class="host-cover"><img class="host-cover-photo" src="/oct/saged-helena-tea-cinematic.png" alt=""><div class="host-cover-overlay"></div></div>
-      <div class="avatar"><img src="/design/helena.png" alt="Helena"></div>
-      <div class="host-card-body">
-        <div class="host-name">Helena</div>
-        <div class="host-practice">Kundalini yoga · tea circles</div>
-        <span class="cat cat-movement">🌿 Movement</span>
-        <span class="card-link">Profile →</span>
-      </div>
+    <a class="pill" href="/join/">
+      <span class="pill__dot" style="background:var(--art)"></span>
+      Оформить членство
     </a>
-
-    <a class="host-card" href="/hosts/tanya-tantra/" data-cat="therapy">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/000.png" alt="Tanya"></div>
-      <div class="host-card-body">
-        <div class="host-name">Tanya Tantra Touch</div>
-        <div class="host-practice">Somatic practices</div>
-        <span class="cat cat-therapy">✦ Wellness</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/yulia-polyanchich/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 1.png" alt="Yulia"></div>
-      <div class="host-card-body">
-        <div class="host-name">Yulia Polyanchich</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/polina/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/Diana.png" alt="Polina"></div>
-      <div class="host-card-body">
-        <div class="host-name">Polina</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/katya-nownow/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 19.png" alt="Katya"></div>
-      <div class="host-card-body">
-        <div class="host-name">Katya Nownow</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/lilia-volovelska/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 22.png" alt="Lilia"></div>
-      <div class="host-card-body">
-        <div class="host-name">Lilia Volovelska</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/veronica-imasheva/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 27.png" alt="Veronica"></div>
-      <div class="host-card-body">
-        <div class="host-name">Veronica Imasheva</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/yulia-bogdan/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 24.png" alt="Yulia B"></div>
-      <div class="host-card-body">
-        <div class="host-name">Yulia Bogdan</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/elizaveta/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/liza.png" alt="Elizaveta"></div>
-      <div class="host-card-body">
-        <div class="host-name">Elizaveta</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/agate/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/Vlada.png" alt="Agate"></div>
-      <div class="host-card-body">
-        <div class="host-name">Agate</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/maksim-rysenko/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/000.png" alt="Maksim"></div>
-      <div class="host-card-body">
-        <div class="host-name">Maksim Rysenko</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/renata/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 1.png" alt="Renata"></div>
-      <div class="host-card-body">
-        <div class="host-name">Renata</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/artemiy-starod/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/Diana.png" alt="Artemiy"></div>
-      <div class="host-card-body">
-        <div class="host-name">Artemiy Starod</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/evgeny-baturinsky/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 19.png" alt="Evgeny"></div>
-      <div class="host-card-body">
-        <div class="host-name">Evgeny Baturinsky</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/daria-koblova/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 22.png" alt="Daria"></div>
-      <div class="host-card-body">
-        <div class="host-name">Daria Koblova</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/lera-ayushieva/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 27.png" alt="Lera"></div>
-      <div class="host-card-body">
-        <div class="host-name">Lera Ayushieva</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/denys-balykhin/" data-cat="sound">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/zhenya.png" alt="Denys"></div>
-      <div class="host-card-body">
-        <div class="host-name">Denys Balykhin</div>
-        <div class="host-practice">Handpan school</div>
-        <span class="cat cat-sound">🎵 Sound & music</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/anita/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 24.png" alt="Anita"></div>
-      <div class="host-card-body">
-        <div class="host-name">Anita</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/nataliia-lavrova/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/Vlada.png" alt="Nataliia"></div>
-      <div class="host-card-body">
-        <div class="host-name">Nataliia Lavrova</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/victoria-horshkova/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/000.png" alt="Victoria"></div>
-      <div class="host-card-body">
-        <div class="host-name">Victoria Horshkova</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/yevhen/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 1.png" alt="Yevhen"></div>
-      <div class="host-card-body">
-        <div class="host-name">Yevhen</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <a class="host-card" href="/hosts/anna/" data-cat="pending">
-      <div class="host-cover"></div>
-      <div class="avatar"><img src="/design/figure 19.png" alt="Anna"></div>
-      <div class="host-card-body">
-        <div class="host-name">Anna</div>
-        <div class="host-practice">—</div>
-        <span class="cat cat-pending">Coming soon</span>
-        <span class="card-link">Profile →</span>
-      </div>
-    </a>
-
-    <div class="no-results" id="noResults">No hosts in this category yet.</div>
-
   </div>
 
-  <div class="cta-block">
-    <p>Want to teach classes or run events at Saged?</p>
-    <a class="btn" href="/join/host/">Become a host →</a>
+  <!-- ① Calendar — first, because that's why hosts are here -->
+  <div class="section">
+    <div class="kicker">Расписание</div>
+    <h2 class="section-title">Текущий календарь</h2>
+
+    <div class="cal-layout">
+
+      <div class="cal-main">
+        <!-- Legend -->
+        <div class="legend">
+          <div class="legend-item legend-item--art">
+            <div class="legend-dot" style="background:var(--art)"></div>
+            <div>
+              <div class="legend-label" style="color:var(--art)">ART</div>
+              <div class="legend-sub">Керамика, мастерские</div>
+            </div>
+          </div>
+          <div class="legend-item legend-item--mu">
+            <div class="legend-dot" style="background:var(--music)"></div>
+            <div>
+              <div class="legend-label" style="color:var(--music)">MUSIC</div>
+              <div class="legend-sub">Хэндпан, гамс, саундхилинг</div>
+            </div>
+          </div>
+          <div class="legend-item legend-item--sp">
+            <div class="legend-dot" style="background:var(--spirit-dark)"></div>
+            <div>
+              <div class="legend-label" style="color:var(--spirit-dark)">SPIRIT</div>
+              <div class="legend-sub">Практики, встречи</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Embed -->
+        <div class="cal-embed">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=15c7cc628d7b51d2cb05cffe6d00f408a779fe60225fc6b69fde7d939cae1080%40group.calendar.google.com&color=%23F4511E&src=53ff9c9371aeb43d6f2eae70be1fdcb3b6fd9be2286fd966f8ebb4fb7125afa8%40group.calendar.google.com&color=%230B8043&ctz=Europe%2FMadrid&hl=ru&mode=WEEK&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0"
+            height="540"
+            frameborder="0"
+            scrolling="no">
+          </iframe>
+        </div>
+
+        <!-- Subscribe -->
+        <div class="cal-sub-row">
+          <a class="cal-sub-btn cal-sub-btn--ev"
+             href="https://calendar.google.com/calendar/r?cid=MTVjN2NjNjI4ZDdiNTFkMmNiMDVjZmZlNmQwMGY0MDhhNzc5ZmU2MDIyNWZjNmI2OWZkZTdkOTM5Y2FlMTA4MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+             target="_blank" rel="noopener">
+            + Мероприятия
+          </a>
+          <a class="cal-sub-btn cal-sub-btn--cl"
+             href="https://calendar.google.com/calendar/r?cid=NTNmZjljOTM3MWFlYjQzZDZmMmVhZTcwYmUxZmRjYjNiNmZkOWJlMjI4NmZkOTY2ZjhlYmI0ZmI3MTI1YWZhOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+             target="_blank" rel="noopener">
+            + Занятия
+          </a>
+        </div>
+      </div>
+
+      <!-- Booking sidebar -->
+      <div>
+        <div class="booking-card">
+          <div class="booking-card__title">Занять слот</div>
+          <div class="booking-card__sub">Четыре шага — и дата твоя</div>
+
+          <div class="booking-steps">
+            <div class="booking-step">
+              <div class="booking-step__num">1</div>
+              <div>
+                <div class="booking-step__title">Проверь расписание</div>
+                <div class="booking-step__text">Найди свободное время — убедись, что студия не занята.</div>
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step__num">2</div>
+              <div>
+                <div class="booking-step__title">Добавь календарь</div>
+                <div class="booking-step__text">Подпишись ниже — видишь расписание у себя в Google Calendar.</div>
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step__num">3</div>
+              <div>
+                <div class="booking-step__title">Создай событие</div>
+                <div class="booking-step__text">Добавь своё мероприятие в Google Calendar на нужное время.</div>
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step__num">4</div>
+              <div>
+                <div class="booking-step__title">Напиши нам</div>
+                <div class="booking-step__text">Подтвердим, что слот свободен и ничего не пересекается.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-divider"></div>
+
+          <div class="booking-actions">
+            <a class="booking-btn booking-btn--primary" href="https://t.me/sagedclub" target="_blank" rel="noopener">
+              Написать в чат хостов
+            </a>
+            <a class="booking-btn booking-btn--ghost" href="https://wa.me/34605543300?text=Привет! Хочу забронировать слот в студии" target="_blank" rel="noopener">
+              Написать Диане
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-</main>
+  <!-- ② Standards — framed as professional knowledge, not restrictions -->
+  <div class="section">
+    <div class="kicker">Стандарты</div>
+    <h2 class="section-title">Как мы работаем вместе</h2>
 
-<script>
-const filterBar = document.getElementById('filterBar');
-const noResults = document.getElementById('noResults');
+    <div class="standards">
+      <div class="standard">
+        <div class="standard__num">1</div>
+        <div class="standard__body">
+          <div class="standard__title">30 минут до и 30 после</div>
+          <div class="standard__text">Входишь за 30 минут до начала, уходишь через 30 минут после завершения. Если до тебя идёт другое мероприятие — не приходи заранее, это мешает участникам.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">2</div>
+        <div class="standard__body">
+          <div class="standard__title">Оставь пространство как нашёл</div>
+          <div class="standard__text">После события убираешь студию сам. Пылесос, швабра, чистящие средства — в кладовке. Минимум — подмести. Идеал — помыть пол. Буквально пара минут.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">3</div>
+        <div class="standard__body">
+          <div class="standard__title">Проверь оборудование после</div>
+          <div class="standard__text">Коврики, ковры, инструменты — проверь состояние. Если что-то повредилось — <em>напиши сразу</em>. Не оставляй сюрпризов следующему гостю.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">4</div>
+        <div class="standard__body">
+          <div class="standard__title">Еда и напитки — уносишь с собой</div>
+          <div class="standard__text">Ничего съедобного не остаётся в студии. Окна на уровне улицы и часто открыты из-за печи — местная живность очень любит угощения.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">5</div>
+        <div class="standard__body">
+          <div class="standard__title">Свечи — осторожно с воском</div>
+          <div class="standard__text">Используй аккуратно. <em>Чёрные свечи</em> — в ящике под лестницей в кладовке. Электросвечи включаются все сразу через пульт.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">6</div>
+        <div class="standard__body">
+          <div class="standard__title">Свечи общие — пополняй иногда</div>
+          <div class="standard__text">Доступны всем хостам. Пользуйся — но иногда хорошо пополнять запас.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">7</div>
+        <div class="standard__body">
+          <div class="standard__title">25–30 авторских чашек для церемоний</div>
+          <div class="standard__text">Каждая уникальна. Доступны для какао-церемоний, чайных ритуалов и других практик. Береги их.</div>
+        </div>
+      </div>
+      <div class="standard">
+        <div class="standard__num">8</div>
+        <div class="standard__body">
+          <div class="standard__title">Проблемы — пиши в группу</div>
+          <div class="standard__text">Что-то пошло не так — телеграм-чат хостов. Разберёмся вместе.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-filterBar.addEventListener('click', e => {
-  const btn = e.target.closest('.filter-btn');
-  if (!btn) return;
+  <!-- ③ Resources -->
+  <div class="section">
+    <div class="kicker">Ресурсы</div>
+    <h2 class="section-title">Для публикации событий</h2>
 
-  filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+    <div class="res-card">
+      <div class="res-card__icon">💬</div>
+      <div class="res-card__body">
+        <div class="res-card__title">Чат хостов</div>
+        <div class="res-card__desc">Координация, вопросы, объявления о событиях. Если тебя ещё нет в группе — попроси добавить.</div>
+        <a class="res-card__link" href="https://t.me/dvoroneca" target="_blank" rel="noopener">
+          Написать Диане в Telegram ↗
+        </a>
+      </div>
+    </div>
+  </div>
 
-  const cat = btn.dataset.cat;
-  const cards = document.querySelectorAll('.host-card');
-  let visible = 0;
+  <!-- ④ Membership — admin last, styled as achievement -->
+  <div class="assoc">
+    <div class="assoc__eyebrow">Членство · Asociación Cultural Saged</div>
+    <h2 class="assoc__title">Официальный статус<br>члена ассоциации</h2>
+    <p class="assoc__intro">Saged Club — зарегистрированная культурная ассоциация в Испании. По закону все, кто проводит мероприятия в помещении ассоциации, должны быть её членами. Это защищает тебя, гостей и студию.</p>
 
-  cards.forEach(card => {
-    const match = cat === 'all' || card.dataset.cat === cat;
-    card.classList.toggle('is-hidden', !match);
-    if (match) visible++;
-  });
+    <div class="assoc-steps">
+      <div class="assoc-step">
+        <div class="assoc-step__num">1</div>
+        <div class="assoc-step__title">Заполни форму</div>
+        <div class="assoc-step__text">Имя, контакт, NIE, адрес и электронная подпись. Пара минут.</div>
+      </div>
+      <div class="assoc-step">
+        <div class="assoc-step__num">2</div>
+        <div class="assoc-step__title">Годовой взнос</div>
+        <div class="assoc-step__text">€20 в год. Покрывает страховку ответственности и административные расходы.</div>
+      </div>
+      <div class="assoc-step">
+        <div class="assoc-step__num">3</div>
+        <div class="assoc-step__title">Готово</div>
+        <div class="assoc-step__text">Ты официальный член — можешь проводить мероприятия. Действует 12 месяцев.</div>
+      </div>
+    </div>
 
-  noResults.style.display = visible === 0 ? 'block' : 'none';
-});
-</script>
+    <a class="assoc-cta" href="/join/">
+      Оформить членство →
+    </a>
+  </div>
 
+</div>
 </body>
 </html>
