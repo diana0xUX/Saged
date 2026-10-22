@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Расписание — Saged Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#2a2520;--muted:#6b5f54;--paper:#f9f4ed;--sand:#efe5d6;--line:#ded1bf;--orange:#c25e33}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:#e8e2d9;color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;padding:32px 20px 60px}
+  .wrap{max-width:900px;margin:0 auto}
+
+  .header{margin-bottom:28px}
+  .header h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+  .header p{font-size:14px;color:var(--muted);margin-top:5px}
+
+  /* Add-to-calendar cards */
+  .subscribe{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .sub-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+  .sub-card__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .sub-card__name{font-size:16px;font-weight:700}
+  .sub-card__btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--orange);color:#fff;font-size:13px;font-weight:700;text-decoration:none;transition:opacity .15s;align-self:flex-start}
+  .sub-card__btn:hover{opacity:.85}
+  .sub-card__btn svg{width:16px;height:16px;flex-shrink:0}
+
+  /* Calendar embed */
+  .cal-wrap{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .cal-wrap iframe{display:block;width:100%;border:none}
+
+  @media(max-width:600px){
+    .subscribe{grid-template-columns:1fr}
+    body{padding:20px 16px 40px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <h1>Расписание Saged Club</h1>
+    <p>Добавьте оба календаря к себе — так вы всегда будете видеть актуальное расписание.</p>
+  </div>
+
+  <!-- Subscribe buttons -->
+  <div class="subscribe">
+
+    <div class="sub-card">
+      <div class="sub-card__label">Основной</div>
+      <div class="sub-card__name">Saged Club — расписание</div>
+      <a class="sub-card__btn"
+         href="https://calendar.google.com/calendar/r?cid=MTVjN2NjNjI4ZDdiNTFkMmNiMDVjZmZlNmQwMGY0MDhhNzc5ZmU2MDIyNWZjNmI2OWZkZTdkOTM5Y2FlMTA4MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Добавить в Google Calendar
+      </a>
+    </div>
+
+    <div class="sub-card">
+      <div class="sub-card__label">Классы</div>
+      <div class="sub-card__name">Saged.club Классы</div>
+      <a class="sub-card__btn"
+         href="https://calendar.google.com/calendar/r?cid=NTNmZjljOTM3MWFlYjQzZDZmMmVhZTcwYmUxZmRjYjNiNmZkOWJlMjI4NmZkOTY2ZjhlYmI0ZmI3MTI1YWZhOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Добавить в Google Calendar
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Embedded calendar — both calendars together -->
+  <div class="cal-wrap">
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=15c7cc628d7b51d2cb05cffe6d00f408a779fe60225fc6b69fde7d939cae1080%40group.calendar.google.com&src=53ff9c9371aeb43d6f2eae70be1fdcb3b6fd9be2286fd966f8ebb4fb7125afa8%40group.calendar.google.com&ctz=Europe%2FMadrid&hl=ru&mode=WEEK&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=1"
+      height="640"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
+  </div>
+
+</div>
+</body>
+</html>
