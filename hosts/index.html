@@ -38,6 +38,19 @@ a{color:inherit;text-decoration:none}
 .site-header__title{font-family:SagedCyr,Georgia,serif;font-size:clamp(44px,7vw,68px);letter-spacing:-.02em;line-height:.92;color:var(--ink);margin-bottom:16px}
 .site-header__desc{font-size:15px;color:var(--muted);line-height:1.65;max-width:460px}
 
+/* ── Getting started checklist ── */
+.checklist-card{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow-md);padding:22px 24px;margin-bottom:28px;border-left:3px solid var(--art)}
+.checklist-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--art);margin-bottom:14px}
+.checklist-item{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:opacity .15s}
+.checklist-item:last-child{border-bottom:none;padding-bottom:0}
+.checklist-item:first-of-type{padding-top:0}
+.checklist-item:hover{opacity:.7}
+.checklist-box{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);flex-shrink:0;display:grid;place-items:center;color:transparent;background:var(--sand)}
+.checklist-body{flex:1}
+.checklist-item__title{font-size:14px;font-weight:700;margin-bottom:2px}
+.checklist-item__desc{font-size:12px;color:var(--muted);line-height:1.4}
+.checklist-arrow{font-size:16px;color:var(--muted);flex-shrink:0}
+
 /* ── Pill actions ── */
 .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:64px}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);transition:all .15s;cursor:pointer}
@@ -155,6 +168,31 @@ a{color:inherit;text-decoration:none}
     <h1 class="site-header__title">Твоё место<br>в студии.</h1>
     <p class="site-header__desc">Всё что нужно для работы в Saged — расписание, стандарты, оформление членства. Рады, что ты здесь.</p>
   </header>
+
+  <!-- Getting started checklist -->
+  <div class="checklist-card">
+    <div class="checklist-title">Начни здесь</div>
+    <a class="checklist-item" href="/join/">
+      <div class="checklist-box">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="checklist-body">
+        <div class="checklist-item__title">Оформить членство в ассоциации</div>
+        <div class="checklist-item__desc">Обязательно для проведения мероприятий · €20 в год · занимает 5 минут</div>
+      </div>
+      <div class="checklist-arrow">→</div>
+    </a>
+    <a class="checklist-item" href="https://calendar.google.com/calendar/r?cid=MTVjN2NjNjI4ZDdiNTFkMmNiMDVjZmZlNmQwMGY0MDhhNzc5ZmU2MDIyNWZjNmI2OWZkZTdkOTM5Y2FlMTA4MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener">
+      <div class="checklist-box">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="checklist-body">
+        <div class="checklist-item__title">Добавить календарь студии</div>
+        <div class="checklist-item__desc">Мероприятия + занятия · видишь расписание в своём Google Calendar</div>
+      </div>
+      <div class="checklist-arrow">→</div>
+    </a>
+  </div>
 
   <!-- Quick actions -->
   <div class="pill-row">
