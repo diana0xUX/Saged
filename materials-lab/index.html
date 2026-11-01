@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pigment Lab: Colour from Spanish Earth — Saged Club</title>
-<meta name="description" content="Pigment Lab is Saged Club's first cultural research project. Painter Katya collects natural pigments from Spanish minerals, earths and plants, and tests them on paper and ceramics.">
+<meta name="description" content="Pigment Lab is Saged Club's first cultural research project. Artist Ekaterina Shárova researches natural pigments from Spanish minerals, earths and plants, and their behaviour on paper and ceramics.">
 <meta property="og:title" content="Pigment Lab: Colour from Spanish Earth — Saged Club">
 <meta property="og:description" content="A year-long research project on natural pigments from Spanish earth, for paper and ceramics. Season 1: November 2026 – November 2027.">
 <meta property="og:type" content="website">
@@ -425,9 +425,13 @@
   .credits {
     background: var(--bg-sand);
     border: 1px solid var(--line);
-    border-radius: 4px; padding: 28px 32px;
+    border-radius: 4px; padding: 8px 32px; margin: 0;
   }
-  .credits p { max-width: 60ch; }
+  .credits > div { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .credits > div:last-child { border-bottom: none; }
+  .credits dt { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; font-family: 'Inter', sans-serif; padding-top: 3px; }
+  .credits dd { margin: 0; font-size: 15px; line-height: 1.6; }
+  @media (max-width: 640px) { .credits > div { grid-template-columns: 1fr; gap: 4px; } }
   .funder-slot {
     margin-top: 24px; padding-top: 20px;
     border-top: 1px solid var(--line);
@@ -483,10 +487,10 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Pigment Lab · Saged Club cultural research project</span>
+        <span class="eyebrow">Pigment Lab · A research project of Asociación Cultural Saged</span>
         <span class="season-tag">Season 1 · Nov 2026 – Nov 2027</span>
         <h1>Colour from Spanish <em>earth</em></h1>
-        <p class="lead">Our first cultural research project. Painter Katya is building a collection of natural pigments made only from Spanish earth — minerals, soils and plants — and testing how they behave on paper and on clay.</p>
+        <p class="lead">A year-long artistic research project by Ekaterina Shárova. The project assembles a collection of natural pigments obtained exclusively from Spanish minerals, earths and plants, and documents their behaviour on paper and in ceramics.</p>
         <div class="swatches" aria-hidden="true">
           <span class="swatch s1" title="Ochre"></span>
           <span class="swatch s2" title="Sienna"></span>
@@ -510,12 +514,12 @@
     <div class="grid-2col">
       <div>
         <span class="section-label">The project</span>
-        <h2>What we're researching and why</h2>
+        <h2>About the project</h2>
       </div>
       <div>
-        <p>Before paint came in tubes, colour came from the ground. Ochres, umbers, green and blue minerals, roots, leaves and flowers were gathered, ground and washed by hand. The painter's knowledge was inseparable from the land.</p>
-        <p>In the Pigment Lab, Katya sets out to gather as complete a collection of natural pigments as she can, using only what Spanish earth gives — minerals and plants. Starting with a course in traditional pigment extraction, she then collects material across the Valencian region, Granada and Andalusia, and Galicia.</p>
-        <p>The lab works for both paper and ceramics. Pigments that don't survive the kiln still find a use on paper. The aim is the widest possible palette, and a way to pass this knowledge on, so other artists can make their own colours instead of buying synthetic or laboratory ones.</p>
+        <p>Before industrial paint, colour was obtained directly from the land. Ochres, umbers, green and blue minerals, roots, leaves and flowers were collected, ground and washed by hand, and the painter's knowledge was inseparable from the material.</p>
+        <p>Pigment Lab aims to assemble as complete a collection as possible of natural pigments sourced solely from Spanish territory, both mineral and botanical. Following training in traditional pigment extraction, the artist collects material in the Valencian Community, Granada and Andalusia, and Galicia.</p>
+        <p>The research addresses two media: paper and ceramics. Pigments unsuitable for firing remain valuable for work on paper. The project seeks the widest possible palette and a method that can be transmitted to other artists, enabling them to prepare their own colours rather than rely on synthetic or laboratory-made products.</p>
       </div>
     </div>
 
@@ -545,14 +549,14 @@
 
     <!-- Outcomes -->
     <div style="margin-top: 56px;">
-      <span class="section-label">What Season 1 produces</span>
-      <p style="color: var(--muted); max-width: 60ch;">Nobody knows in advance how many pigments the land will give. Finding that out is the research. So the result isn't a number, it's:</p>
+      <span class="section-label">Expected outcomes</span>
+      <p style="color: var(--muted); max-width: 60ch;">The number of pigments cannot be known in advance; establishing it is part of the research. The outcomes are therefore defined qualitatively:</p>
       <ul class="goals-list">
-        <li><span class="dash">—</span> A map of sources, including the places and materials that didn't give a pigment</li>
-        <li><span class="dash">—</span> A pigment library, with brushstrokes and test pieces on paper and on clay</li>
-        <li><span class="dash">—</span> A written-down method, so others can repeat it</li>
-        <li><span class="dash">—</span> Unexpected textures and "defects", which count as results too</li>
-        <li><span class="dash">—</span> Two public events: a working lab day in May 2027 and a final exhibition in November 2027</li>
+        <li><span class="dash">—</span> A map of sources, including locations and materials that did not yield a usable pigment</li>
+        <li><span class="dash">—</span> A pigment library with brushstroke samples and test pieces on paper and clay</li>
+        <li><span class="dash">—</span> A documented, reproducible method</li>
+        <li><span class="dash">—</span> A record of unexpected textures and "defects", treated as findings in their own right</li>
+        <li><span class="dash">—</span> Two public events: an open laboratory presentation (May 2027) and a final exhibition (November 2027)</li>
       </ul>
     </div>
   </div>
@@ -566,16 +570,16 @@
         <span class="section-label">Methodology</span>
         <h2>The process, step by step</h2>
       </div>
-      <p style="color: var(--muted);">Every material goes through the same steps, so results can be compared and shared. The base method comes from Katya's November 2026 course at the King's Foundation School of Traditional Arts.</p>
+      <p style="color: var(--muted);">Each material follows the same sequence of steps so that results are comparable. The base method draws on the artist's training at The King's Foundation School of Traditional Arts (November 2026).</p>
     </div>
 
     <ol class="steps">
-      <li><span class="num">1</span><h3>Source</h3><p>Collect the mineral, earth or plant and record where it came from.</p></li>
-      <li><span class="num">2</span><h3>Extract</h3><p>Grind and wash minerals; extract colour from plants.</p></li>
-      <li><span class="num">3</span><h3>Refine</h3><p>Settle out and dry the finest pigment.</p></li>
-      <li><span class="num">4</span><h3>Paper</h3><p>Make paint, test brushstrokes and light-fastness on paper.</p></li>
-      <li><span class="num">5</span><h3>Clay</h3><p>Paint test pieces and fire them; record how the colour changes.</p></li>
-      <li><span class="num">6</span><h3>Record</h3><p>Add the result to the map and library — including what didn't work.</p></li>
+      <li><span class="num">1</span><h3>Source</h3><p>Collection of the mineral, earth or plant, with its place of origin recorded.</p></li>
+      <li><span class="num">2</span><h3>Extract</h3><p>Grinding and washing of minerals; extraction of colour from plants.</p></li>
+      <li><span class="num">3</span><h3>Refine</h3><p>Settling and drying of the finest pigment fraction.</p></li>
+      <li><span class="num">4</span><h3>Paper tests</h3><p>Preparation of paint; brushstroke and lightfastness tests on paper.</p></li>
+      <li><span class="num">5</span><h3>Ceramic tests</h3><p>Painted test pieces, fired to record changes in colour.</p></li>
+      <li><span class="num">6</span><h3>Record</h3><p>Entry into the map and library, including unsuccessful results.</p></li>
     </ol>
 
     <p class="photo-strip-label">From the process</p>
@@ -600,7 +604,7 @@
         <span class="section-label">Timeline</span>
         <h2>Season 1 at a glance</h2>
       </div>
-      <p style="color: var(--muted);">One year, three regions, two public events. The research runs from November 2026 to the final exhibition in November 2027.</p>
+      <p style="color: var(--muted);">Twelve months, three regions and two public events, from November 2026 to the final exhibition in November 2027.</p>
     </div>
 
     <div class="timeline">
@@ -675,7 +679,7 @@
         <span class="section-label">Journal</span>
         <h2>Updates from the lab</h2>
       </div>
-      <p style="color: var(--muted);">Notes from the research as it develops: places visited, materials found, tests run, surprises. We'll add a post roughly once a month.</p>
+      <p style="color: var(--muted);">Periodic notes on the research: sites visited, materials collected, tests carried out and observations. Updates are published approximately once a month.</p>
     </div>
 
     <div class="journal-posts">
@@ -688,11 +692,11 @@
           <span class="post-tag">course</span>
         </div>
         <div class="post-body">
-          <h3>Season 1 begins</h3>
-          <p>Pigment Lab is Saged Club's first cultural research project, and it starts this month. Painter Katya is spending the next year collecting colour from Spanish earth — minerals, soils and plants — and learning how each one behaves on paper and on clay.</p>
-          <p>It starts with learning. In November Katya studies pigment extraction at the King's Foundation School of Traditional Arts, working with both minerals and plants. That course gives the base method she'll use for every material after it.</p>
-          <p>Then the collecting begins: the Valencian region this winter, Granada and Andalusia in spring, Galicia in summer. Everything found, and everything that doesn't work, goes onto the map.</p>
-          <p>We'll post updates here as the work develops.</p>
+          <h3>Opening of Season 1</h3>
+          <p>Pigment Lab is the first research project of Asociación Cultural Saged. Over the coming year, Ekaterina Shárova will collect colour from Spanish minerals, earths and plants, and study the behaviour of each pigment on paper and in ceramics.</p>
+          <p>The project opens with training. In November the artist studies pigment extraction from minerals and plants at The King's Foundation School of Traditional Arts. This establishes the base method applied to every subsequent material.</p>
+          <p>Fieldwork follows: the Valencian Community in winter, Granada and Andalusia in spring, and Galicia in summer. All findings, including unsuccessful ones, are recorded on the map of sources.</p>
+          <p>Further updates will be published here as the work progresses.</p>
         </div>
       </article>
 
@@ -706,24 +710,24 @@
     <div class="grid-2col" style="margin-bottom: 32px; align-items: end;">
       <div>
         <span class="section-label">Public events</span>
-        <h2>Two events, two different purposes</h2>
+        <h2>Two events</h2>
       </div>
-      <p style="color: var(--muted);">The first shows the method and what it's good for. The second shows the creative result.</p>
+      <p style="color: var(--muted);">The first presents the method and its applications; the second presents the artistic outcome.</p>
     </div>
 
     <div class="event-card">
       <span class="event-when">May 2027 · date to be announced</span>
       <h3>Inside the Pigment Lab</h3>
-      <p>An open look at the working lab: what the pigments look like, brushstrokes, test pieces on clay and on paper, and one or two illustrations showing how they can be used. For ceramicists and artists interested in making their own paints.</p>
-      <p style="color: var(--muted); font-size: 15px;">If there's interest, this can grow into a series of classes for artists.</p>
+      <p>A presentation of the working laboratory: pigments, brushstroke samples, test pieces on clay and paper, and illustrations demonstrating their application. Intended for ceramicists and artists interested in preparing their own paints.</p>
+      <p style="color: var(--muted); font-size: 15px;">Depending on interest, the presentation may be followed by a training programme for artists.</p>
     </div>
 
     <div class="show-block" id="show" style="margin-top: 32px;">
       <div>
         <span class="show-label">Season 1 finale</span>
         <h2>Colour from Spanish earth</h2>
-        <p>The final event is about the creative result, not the method. It's about the land, the region, its traditions and the symbolism of colour, shown through ceramic and paper works made with the year's pigments.</p>
-        <a href="mailto:hello@saged.club?subject=Pigment Lab — I'd like to come" class="cta cta--on-dark">Register your interest</a>
+        <p>The closing exhibition focuses on the artistic result rather than the method: the land, the region, its traditions and the symbolism of colour, presented through ceramic and paper works made with the pigments gathered during the year.</p>
+        <a href="mailto:hello@saged.club?subject=Pigment Lab — I'd like to come" class="cta cta--on-dark">Register interest</a>
       </div>
       <div>
         <span class="show-date">November 2027</span>
@@ -737,16 +741,23 @@
 <section id="credits">
   <div class="wrap">
     <span class="section-label">Credits</span>
-    <div class="credits">
-      <p>A research project by <strong>Katya</strong>, hosted and supported by Asociación Cultural Saged at Saged Club. The studio documents the process and co-curates the events. The recipes and findings remain Katya's own work.</p>
-</div>
+    <dl class="credits">
+      <div><dt>Artist and researcher</dt><dd>Ekaterina Shárova</dd></div>
+      <div><dt>Project</dt><dd>Pigment Lab: Colour from Spanish Earth — Season 1, November 2026 – November 2027</dd></div>
+      <div><dt>Host organisation</dt><dd>Asociación Cultural Saged, a non-profit cultural association<br>
+        Registro de Asociaciones de la Comunitat Valenciana, file no. ASINS/46/2026/0756 (registration in progress)</dd></div>
+      <div><dt>Venue</dt><dd>Saged Club, C/ de les Cuines, 8, Ciutat Vella, 46001 València, Spain</dd></div>
+      <div><dt>Role of the Association</dt><dd>Provides the studio and documents the research; co-curates the public events.</dd></div>
+      <div><dt>Authorship</dt><dd>All recipes, methods and findings remain the intellectual property of the artist.</dd></div>
+      <div><dt>Contact</dt><dd><a href="mailto:hello@saged.club?subject=Pigment Lab">hello@saged.club</a></dd></div>
+    </dl>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>Pigment Lab is Saged Club's first cultural research project.</span>
-    <span>Asociación Cultural Saged · C/ de les Cuines 8, Ciutat Vella, Valencia · <a href="/">saged.club</a></span>
+    <span>Pigment Lab · Season 1 · Asociación Cultural Saged</span>
+    <span>C/ de les Cuines, 8, Ciutat Vella, 46001 València · <a href="mailto:hello@saged.club">hello@saged.club</a> · <a href="/">saged.club</a></span>
   </div>
 </footer>
 
