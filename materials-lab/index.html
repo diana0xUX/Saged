@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Materials Lab: Natural Pigments — Season 1 — Saged Club</title>
-<meta name="description" content="Materials Lab is Saged Club's first cultural research project. Painter Katya explores how natural stones become pigments for painting on clay.">
-<meta property="og:title" content="Materials Lab: Natural Pigments — Saged Club">
-<meta property="og:description" content="A year-long research project on making ceramic pigments from stone. Season 1: October 2026 – October 2027.">
+<title>Pigment Lab: Colour from Spanish Earth — Saged Club</title>
+<meta name="description" content="Pigment Lab is Saged Club's first cultural research project. Painter Katya collects natural pigments from Spanish minerals, earths and plants, and tests them on paper and ceramics.">
+<meta property="og:title" content="Pigment Lab: Colour from Spanish Earth — Saged Club">
+<meta property="og:description" content="A year-long research project on natural pigments from Spanish earth, for paper and ceramics. Season 1: November 2026 – November 2027.">
 <meta property="og:type" content="website">
 
 <!-- Costa Light: works when opened on Diana's Mac. Falls back to Playfair Display for Katya. -->
@@ -265,7 +265,7 @@
   }
 
   /* ─── Methodology steps ─── */
-  .steps { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .steps { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
   .steps li {
     background: var(--bg-sand);
     border: 1px solid var(--line);
@@ -299,11 +299,11 @@
   }
   .timeline-fill {
     position: absolute; top: 0; left: 0;
-    width: 14%; height: 100%;
+    width: 7%; height: 100%;
     background: var(--terracotta); border-radius: 2px;
   }
   .timeline-nodes {
-    display: grid; grid-template-columns: repeat(5, 1fr);
+    display: grid; grid-template-columns: repeat(7, 1fr);
     position: relative; margin-top: 0;
   }
   .tnode { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 0; }
@@ -409,6 +409,18 @@
   .cta--on-dark { background: transparent; border-color: rgba(255,255,255,.4); color: var(--bg); }
   .cta--on-dark:hover { background: var(--bg); color: var(--terracotta); border-color: var(--bg); }
 
+  /* ─── Research question parts ─── */
+  .rq-parts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .rq-part { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 18px 20px; }
+  .rq-part .num { display: block; color: var(--terracotta); font-weight: 600; font-family: 'Inter', sans-serif; font-size: 13px; margin-bottom: 6px; }
+  .rq-part h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .rq-part p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── Event card (May) ─── */
+  .event-card { background: var(--bg-sand); border: 1px solid var(--line); border-radius: 4px; padding: clamp(28px, 4vw, 48px); }
+  .event-when { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--terracotta); font-weight: 600; font-family: 'Inter', sans-serif; margin-bottom: 12px; }
+  .event-card h3 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 12px; }
+
   /* ─── Credits ─── */
   .credits {
     background: var(--bg-sand);
@@ -435,6 +447,9 @@
   /* ─── Responsive ─── */
   @media (max-width: 860px) {
     .steps { grid-template-columns: 1fr 1fr; }
+    .rq-parts { grid-template-columns: 1fr; }
+    .timeline-nodes { grid-template-columns: repeat(4, 1fr); row-gap: 28px; }
+    .timeline-bar { display: none; }
     .show-block { grid-template-columns: 1fr; gap: 24px; }
   }
   @media (max-width: 640px) {
@@ -459,7 +474,7 @@
 <nav>
   <div class="wrap">
     <a href="/" class="nav-home">← Saged Club</a>
-    <span class="nav-label">Materials Lab · Season 1</span>
+    <span class="nav-label">Pigment Lab · Season 1</span>
   </div>
 </nav>
 
@@ -468,10 +483,10 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Saged Club · Cultural Research Project</span>
-        <span class="season-tag">Season 1 · October 2026 – October 2027</span>
-        <h1>From stone to <em>pigment</em> to clay</h1>
-        <p class="lead">Our first cultural research project. Painter Katya explores how natural stones become pigments for painting on ceramic.</p>
+        <span class="eyebrow">Pigment Lab · Saged Club cultural research project</span>
+        <span class="season-tag">Season 1 · Nov 2026 – Nov 2027</span>
+        <h1>Colour from Spanish <em>earth</em></h1>
+        <p class="lead">Our first cultural research project. Painter Katya is building a collection of natural pigments made only from Spanish earth — minerals, soils and plants — and testing how they behave on paper and on clay.</p>
         <div class="swatches" aria-hidden="true">
           <span class="swatch s1" title="Ochre"></span>
           <span class="swatch s2" title="Sienna"></span>
@@ -498,12 +513,12 @@
         <h2>What we're researching and why</h2>
       </div>
       <div>
-        <p>Before paint came in tubes, colour came from the ground. Ochres, umbers, and blue and green minerals were crushed, washed, and ground by hand. The painter's knowledge was inseparable from the material.</p>
-        <p>In the Materials Lab, Katya is reviving that knowledge for ceramics. She makes pigments from natural stones and tests them on clay slabs — fired and unfired — to understand how colour changes through heat.</p>
-        <p>The focus is the methodology: a repeatable, documented way to make pigment from stone, written down step by step so the knowledge can be shared. Stones from around Valencia join the palette wherever they can.</p>
+        <p>Before paint came in tubes, colour came from the ground. Ochres, umbers, green and blue minerals, roots, leaves and flowers were gathered, ground and washed by hand. The painter's knowledge was inseparable from the land.</p>
+        <p>In the Pigment Lab, Katya sets out to gather as complete a collection of natural pigments as she can, using only what Spanish earth gives — minerals and plants. Starting with a course in traditional pigment extraction, she then collects material across the Valencian region, Granada and Andalusia, and Galicia.</p>
+        <p>The lab works for both paper and ceramics. Pigments that don't survive the kiln still find a use on paper. The aim is the widest possible palette, and a way to pass this knowledge on, so other artists can make their own colours instead of buying synthetic or laboratory ones.</p>
 
         <div class="katya-note">
-          Add 1–2 sentences in your own words about why you wanted to work with natural pigments, and why on clay specifically. What drew you to this material research?
+          Add 1–2 sentences in your own words about why you want to work with colour from the land. What drew you to this research?
         </div>
 
         <div class="photo-placeholder photo-placeholder-wide">
@@ -516,28 +531,41 @@
       </div>
     </div>
 
-    <!-- Goals -->
-    <div style="margin-top: 56px;">
-      <span class="section-label">Season 1 goals</span>
-      <ul class="goals-list">
-        <li><span class="dash">—</span> Develop a repeatable, documented method for making ceramic pigments from natural stone</li>
-        <li><span class="dash">—</span> Build a pigment library and a set of painted sample slabs</li>
-        <li><span class="dash">—</span> Test how stone pigments behave fired and unfired, and record the differences</li>
-        <li><span class="dash">—</span> Share the knowledge in a public open session and a sample show at the studio</li>
-        <li><span class="dash">—</span> Include stones from the Spanish landscape wherever possible</li>
-      </ul>
-      <div class="katya-note">
-        Do these goals feel right to you? Add, remove, or reword anything — these are your goals, we just drafted a starting point.
-      </div>
-    </div>
-
     <!-- Research question -->
     <div class="research-q">
       <span class="label">Research question</span>
-      <blockquote>"How can natural stones be processed into stable pigments for painting on clay?"</blockquote>
+      <blockquote>"Which pigments can be made from the minerals, earths and plants of Spain without synthetic additives — and how do they behave on paper and in ceramics?"</blockquote>
     </div>
-    <div class="katya-note">
-      Is this your question, or would you phrase it differently? This sentence anchors the whole project — take your time with it.
+
+    <div class="rq-parts">
+      <div class="rq-part">
+        <span class="num">1</span>
+        <h3>What the land holds</h3>
+        <p>Which minerals, earths and plants in each region can give colour.</p>
+      </div>
+      <div class="rq-part">
+        <span class="num">2</span>
+        <h3>On paper</h3>
+        <p>How each pigment works on paper, including how well it holds up to light.</p>
+      </div>
+      <div class="rq-part">
+        <span class="num">3</span>
+        <h3>In ceramics</h3>
+        <p>Which minerals work on clay through firing, beyond the familiar iron oxide.</p>
+      </div>
+    </div>
+
+    <!-- Outcomes -->
+    <div style="margin-top: 56px;">
+      <span class="section-label">What Season 1 produces</span>
+      <p style="color: var(--muted); max-width: 60ch;">Nobody knows in advance how many pigments the land will give. Finding that out is the research. So the result isn't a number, it's:</p>
+      <ul class="goals-list">
+        <li><span class="dash">—</span> A map of sources, including the places and materials that didn't give a pigment</li>
+        <li><span class="dash">—</span> A pigment library, with brushstrokes and test pieces on paper and on clay</li>
+        <li><span class="dash">—</span> A written-down method, so others can repeat it</li>
+        <li><span class="dash">—</span> Unexpected textures and "defects", which count as results too</li>
+        <li><span class="dash">—</span> Two public events: a working lab day in May 2027 and a final exhibition in November 2027</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -550,15 +578,16 @@
         <span class="section-label">Methodology</span>
         <h2>The process, step by step</h2>
       </div>
-      <p style="color: var(--muted);">Every stone goes through the same five steps, so results can be compared and shared. The method is the product — not just the pigments it produces.</p>
+      <p style="color: var(--muted);">Every material goes through the same steps, so results can be compared and shared. The base method comes from Katya's November 2026 course at the King's Foundation School of Traditional Arts.</p>
     </div>
 
     <ol class="steps">
-      <li><span class="num">1</span><h3>Select</h3><p>Choose and identify the stone — name, source, mineral family.</p></li>
-      <li><span class="num">2</span><h3>Grind</h3><p>Crush and grind by hand into a fine powder.</p></li>
-      <li><span class="num">3</span><h3>Refine</h3><p>Wash and settle out the finest particle pigment.</p></li>
-      <li><span class="num">4</span><h3>Paint</h3><p>Bind the pigment and paint test slabs, fired and unfired.</p></li>
-      <li><span class="num">5</span><h3>Fire</h3><p>Fire some slabs and record exactly how the colour changes.</p></li>
+      <li><span class="num">1</span><h3>Source</h3><p>Collect the mineral, earth or plant and record where it came from.</p></li>
+      <li><span class="num">2</span><h3>Extract</h3><p>Grind and wash minerals; extract colour from plants.</p></li>
+      <li><span class="num">3</span><h3>Refine</h3><p>Settle out and dry the finest pigment.</p></li>
+      <li><span class="num">4</span><h3>Paper</h3><p>Make paint, test brushstrokes and light-fastness on paper.</p></li>
+      <li><span class="num">5</span><h3>Clay</h3><p>Paint test pieces and fire them; record how the colour changes.</p></li>
+      <li><span class="num">6</span><h3>Record</h3><p>Add the result to the map and library — including what didn't work.</p></li>
     </ol>
 
     <p class="photo-strip-label">From the process</p>
@@ -570,11 +599,11 @@
     </div>
 
     <div class="katya-note" style="margin-top: 20px;">
-      You have a fuller 10-step method in your project framework. Would you like to show all the steps here, or keep these 5 public-facing ones? Either works — just let Diana know.
+      I drafted these 6 steps from your message. After the November course, would you like to correct them or swap in the method you learn there?
     </div>
 
     <div class="safety-note">
-      <strong>Safety and care.</strong> Wet grinding is used throughout to minimise dust. Toxic or suspect minerals are excluded from the palette. All painted pieces produced in the lab are <strong>decorative only and not suitable for food use</strong>.
+      <strong>Safety and care.</strong> Wet grinding is used throughout to minimise dust. Toxic or suspect minerals are excluded from the palette. All painted ceramic pieces produced in the lab are <strong>decorative only and not suitable for food use</strong>.
     </div>
   </div>
 </section>
@@ -587,7 +616,7 @@
         <span class="section-label">Timeline</span>
         <h2>Season 1 at a glance</h2>
       </div>
-      <p style="color: var(--muted);">One year, five milestones, two public events. The research runs from October 2026 to the final show in October 2027.</p>
+      <p style="color: var(--muted);">One year, three regions, two public events. The research runs from November 2026 to the final exhibition in November 2027.</p>
     </div>
 
     <div class="timeline">
@@ -596,48 +625,60 @@
         <div class="tnode active">
           <div class="tnode-dot"></div>
           <div>
-            <div class="tnode-when">Oct 2026</div>
-            <div class="tnode-label">Kickoff</div>
-            <div class="tnode-sub">Research begins</div>
+            <div class="tnode-when">Nov 2026</div>
+            <div class="tnode-label">Course</div>
+            <div class="tnode-sub">Base method, minerals and botany</div>
           </div>
         </div>
         <div class="tnode">
           <div class="tnode-dot"></div>
           <div>
-            <div class="tnode-when">Winter 2026–27</div>
-            <div class="tnode-label">Research & testing</div>
-            <div class="tnode-sub">Stones, grinding, firing tests</div>
+            <div class="tnode-when">Winter</div>
+            <div class="tnode-label">Valencian region</div>
+            <div class="tnode-sub">Collecting close to home</div>
           </div>
         </div>
         <div class="tnode">
           <div class="tnode-dot"></div>
           <div>
-            <div class="tnode-when">Spring 2027</div>
-            <div class="tnode-label">Sample selection</div>
-            <div class="tnode-sub">Pigment library takes shape</div>
+            <div class="tnode-when">Spring</div>
+            <div class="tnode-label">Granada &amp; Andalusia</div>
+            <div class="tnode-sub">Collecting trip</div>
           </div>
         </div>
         <div class="tnode">
           <div class="tnode-dot"></div>
           <div>
-            <div class="tnode-when">TBC · 2027</div>
-            <div class="tnode-label">Open session</div>
-            <div class="tnode-sub">Live demo at the studio</div>
+            <div class="tnode-when">May 2027</div>
+            <div class="tnode-label">First event</div>
+            <div class="tnode-sub">Inside the Pigment Lab</div>
           </div>
         </div>
         <div class="tnode">
           <div class="tnode-dot"></div>
           <div>
-            <div class="tnode-when">Oct 2027</div>
-            <div class="tnode-label">Final show</div>
-            <div class="tnode-sub">Exact date to be announced</div>
+            <div class="tnode-when">Summer</div>
+            <div class="tnode-label">Galicia</div>
+            <div class="tnode-sub">An extra region</div>
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">Autumn</div>
+            <div class="tnode-label">Final collection</div>
+            <div class="tnode-sub">Library and artworks</div>
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="tnode-dot"></div>
+          <div>
+            <div class="tnode-when">Nov 2027</div>
+            <div class="tnode-label">Final event</div>
+            <div class="tnode-sub">Exhibition</div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="katya-note" style="margin-top: 28px;">
-      Does this timeline feel realistic? If you already have rough dates for the open session, add them. If you'd like to break the research into phases (e.g. earth tones first, then blues), we can add those too.
     </div>
   </div>
 </section>
@@ -650,7 +691,7 @@
         <span class="section-label">Journal</span>
         <h2>Updates from the lab</h2>
       </div>
-      <p style="color: var(--muted);">Notes from the research as it develops — stones found, tests run, surprises discovered. We'll add a post roughly once a month.</p>
+      <p style="color: var(--muted);">Notes from the research as it develops: places visited, materials found, tests run, surprises. We'll add a post roughly once a month.</p>
     </div>
 
     <div class="journal-posts">
@@ -658,16 +699,16 @@
       <!-- Post 1 -->
       <article class="post">
         <div class="post-meta">
-          <span class="post-date">October 2026</span>
+          <span class="post-date">November 2026</span>
           <span class="post-tag">kickoff</span>
-          <span class="post-tag">methodology</span>
+          <span class="post-tag">course</span>
         </div>
         <div class="post-body">
           <h3>Season 1 begins</h3>
-          <p>Materials Lab is Saged Club's first cultural research project, and it starts this month. Painter Katya is spending the next year learning how natural stones become pigments for painting on clay.</p>
-          <p>The focus isn't just making pigments — it's writing the method down. A repeatable, step-by-step process that anyone can follow, adapt, and build on. At the end of Season 1 we'll share it at a public open session and a sample show here at the studio.</p>
-          <p>The approach: every stone goes through the same five steps — select, grind, refine, paint, fire. The method stays constant. The variable is the stone. That's how you learn what the stone is actually doing.</p>
-          <p>We'll post updates here as the work develops. First stones coming soon.</p>
+          <p>Pigment Lab is Saged Club's first cultural research project, and it starts this month. Painter Katya is spending the next year collecting colour from Spanish earth — minerals, soils and plants — and learning how each one behaves on paper and on clay.</p>
+          <p>It starts with learning. In November Katya studies pigment extraction at the King's Foundation School of Traditional Arts, working with both minerals and plants. That course gives the base method she'll use for every material after it.</p>
+          <p>Then the collecting begins: the Valencian region this winter, Granada and Andalusia in spring, Galicia in summer. Everything found, and everything that doesn't work, goes onto the map.</p>
+          <p>We'll post updates here as the work develops.</p>
           <div class="photo-placeholder photo-placeholder-wide" style="margin-top:20px;">
             <span class="icon">📷</span>
             <span>[photo TBC — add a photo of you in the studio or with your materials]</span>
@@ -681,29 +722,23 @@
       <!-- Post 2 — template -->
       <article class="post post--draft">
         <div class="post-meta">
-          <span class="post-date">November 2026</span>
+          <span class="post-date">December 2026</span>
           <span class="draft-badge">Draft</span>
-          <span class="post-tag">stones</span>
-          <span class="post-tag">grinding</span>
+          <span class="post-tag">course</span>
+          <span class="post-tag">method</span>
         </div>
         <div class="post-body">
-          <h3>First stones</h3>
+          <h3>What I learned at the course</h3>
           <div class="katya-note" style="margin-top: 0;">
             This is the template for your second post. Fill in:
             <ul>
-              <li>Which stones did you start with? (names if you know them)</li>
-              <li>Where did you find or source them?</li>
-              <li>What did the first grinding session feel like?</li>
-              <li>Any surprises?</li>
-              <li>1–2 photos: the stones before grinding, or the powder after.</li>
+              <li>What was the course like? What surprised you?</li>
+              <li>Which minerals and plants did you work with?</li>
+              <li>What's the base method you're bringing back to Valencia?</li>
+              <li>1–2 photos: the course, your first pigments, or the brushstrokes.</li>
             </ul>
             Send the text and photos to Diana and she'll publish this post.
           </div>
-          <img
-            class="photo photo-wide"
-            src="https://images.unsplash.com/photo-1595351298020-038700609878?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200"
-            alt="Hands at a pottery wheel — the clay surface that will carry the pigment"
-            style="margin-top:16px;">
         </div>
       </article>
 
@@ -715,25 +750,40 @@
   </div>
 </section>
 
-<!-- ─── Final show ─── -->
-<section id="show">
+<!-- ─── Events ─── -->
+<section id="events">
   <div class="wrap">
-    <div class="show-block">
+    <div class="grid-2col" style="margin-bottom: 32px; align-items: end;">
+      <div>
+        <span class="section-label">Public events</span>
+        <h2>Two events, two different purposes</h2>
+      </div>
+      <p style="color: var(--muted);">The first shows the method and what it's good for. The second shows the creative result.</p>
+    </div>
+
+    <div class="event-card">
+      <span class="event-when">May 2027 · date to be announced</span>
+      <h3>Inside the Pigment Lab</h3>
+      <p>An open look at the working lab: what the pigments look like, brushstrokes, test pieces on clay and on paper, and one or two illustrations showing how they can be used. For ceramicists and artists interested in making their own paints.</p>
+      <p style="color: var(--muted); font-size: 15px;">If there's interest, this can grow into a series of classes for artists.</p>
+    </div>
+    <div class="katya-note">
+      You said you'd like to discuss both events, so the exact dates and format are still open. Is this description close to what you have in mind?
+    </div>
+
+    <div class="show-block" id="show" style="margin-top: 32px;">
       <div>
         <span class="show-label">Season 1 finale</span>
-        <h2>The sample show</h2>
-        <p>At the end of Season 1, Katya presents the pigment library and painted sample slabs — one year of research made visible. The studio will host an open session with a live pigment-making demonstration, followed by the sample show.</p>
-        <a href="mailto:hello@saged.club?subject=Materials Lab — I'd like to come" class="cta cta--on-dark">Register your interest</a>
-        <p style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.6;">
-          ✏ <em>Katya —</em> One event or two (demo + show on separate days)? Any preference for timing in October 2027?
-        </p>
+        <h2>Colour from Spanish earth</h2>
+        <p>The final event is about the creative result, not the method. It's about the land, the region, its traditions and the symbolism of colour, shown through ceramic and paper works made with the year's pigments.</p>
+        <a href="mailto:hello@saged.club?subject=Pigment Lab — I'd like to come" class="cta cta--on-dark">Register your interest</a>
       </div>
       <div>
-        <span class="show-date">October 2027</span>
+        <span class="show-date">November 2027</span>
         <span class="show-tbc">Exact date to be announced</span>
         <div class="photo-placeholder photo-placeholder-sq" style="margin-top:24px; border-radius:4px;">
           <span class="icon">📷</span>
-          <span>[photo TBC — Katya's sample slabs or pigment library]</span>
+          <span>[photo TBC — pigment library or finished works]</span>
         </div>
       </div>
     </div>
@@ -745,7 +795,7 @@
   <div class="wrap">
     <span class="section-label">Credits &amp; support</span>
     <div class="credits">
-      <p>A research project by <strong>Katya</strong>, hosted and supported by Asociación Cultural Saged at Saged Club. The studio documents the process and co-curates the show.</p>
+      <p>A research project by <strong>Katya</strong>, hosted and supported by Asociación Cultural Saged at Saged Club. The studio documents the process and co-curates the events. The recipes and findings remain Katya's own work.</p>
       <div class="katya-note">
         Add your full name if you'd like — "A research project by Katya [Surname]". Also: do you have a website, Instagram, or other link you'd like credited here?
       </div>
@@ -761,10 +811,11 @@
 
 <footer>
   <div class="wrap">
-    <span>Materials Lab is Saged Club's first cultural research project.</span>
+    <span>Pigment Lab is Saged Club's first cultural research project.</span>
     <span>Asociación Cultural Saged · C/ de les Cuines 8, Ciutat Vella, Valencia · <a href="/">saged.club</a></span>
   </div>
 </footer>
 
 </body>
+
 </html>
