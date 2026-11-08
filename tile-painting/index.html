@@ -107,7 +107,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 15%;
+      object-position: center top;
     }
 
     .hero-overlay {
@@ -300,154 +300,181 @@
       margin-top: 0.75rem;
     }
 
-    /* Slot picker */
-    .slot-section-label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-
-    /* Date chips — horizontal scroll */
-    .date-chips-outer {
-      position: relative;
-      margin-bottom: 1.25rem;
-    }
-
-    .date-chips-wrap {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      margin: 0 -1.25rem;
-      padding: 0 1.25rem;
-    }
-
-    .date-chips-wrap::-webkit-scrollbar { display: none; }
-
-    .date-chips {
-      display: flex;
-      gap: 0.5rem;
-      width: max-content;
-      padding-bottom: 2px;
-      padding-right: 3rem;
-    }
-
-    /* Fade + scroll arrow on right */
-    .chips-scroll-btn {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 3rem;
+    /* Show dates button */
+    .show-dates-btn {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: linear-gradient(to right, transparent, var(--bg-sand) 60%);
+      gap: 0.6rem;
+      background: var(--orange);
+      color: #fff;
       border: none;
+      border-radius: 100px;
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 1.1rem;
-      color: var(--ink);
-      padding: 0;
-      transition: opacity 0.15s;
+      font-family: inherit;
+      transition: background 0.15s, transform 0.1s;
+      margin-bottom: 1rem;
     }
 
-    .chips-scroll-btn:hover { color: var(--orange); }
-    .chips-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+    .show-dates-btn:hover { background: var(--orange-dk); }
+    .show-dates-btn:active { transform: scale(0.97); }
 
-    .date-chip {
+    /* Modal overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.45);
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    @media (min-width: 520px) {
+      .modal-overlay { align-items: center; }
+    }
+
+    .modal {
       background: #fff;
-      border: 2px solid var(--line);
-      border-radius: 12px;
-      padding: 0.6rem 0.9rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.12s;
-      min-width: 64px;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @media (min-width: 520px) {
+      .modal { border-radius: 20px; }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.25rem 0;
       flex-shrink: 0;
     }
 
-    .date-chip:hover { border-color: var(--orange); }
-
-    .date-chip.selected {
-      background: var(--orange);
-      border-color: var(--orange);
-      color: #fff;
-    }
-
-    .date-chip .chip-day {
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      opacity: 0.65;
-      display: block;
-    }
-
-    .date-chip.selected .chip-day { opacity: 0.85; }
-
-    .date-chip .chip-num {
-      font-family: 'Costa', Georgia, serif;
-      font-size: 1.5rem;
-      font-weight: 300;
-      line-height: 1.1;
-      display: block;
-    }
-
-    .date-chip .chip-mon {
-      font-size: 0.72rem;
-      opacity: 0.65;
-      display: block;
-    }
-
-    .date-chip.selected .chip-mon { opacity: 0.85; }
-
-    /* Time buttons — shown after date selected */
-    .time-buttons {
-      display: none;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .time-buttons.visible { display: flex; }
-
-    .time-btn {
-      flex: 1;
-      background: #fff;
-      border: 2px solid var(--line);
-      border-radius: 14px;
-      padding: 1.1rem 0.75rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.12s;
-      font-family: inherit;
-    }
-
-    .time-btn:hover { border-color: var(--orange); }
-
-    .time-btn.selected {
-      background: var(--orange);
-      border-color: var(--orange);
-      color: #fff;
-    }
-
-    .time-btn .t-time {
+    .modal-title {
       font-family: 'Costa', Georgia, serif;
       font-size: 1.6rem;
       font-weight: 300;
-      display: block;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 0.25rem;
       line-height: 1;
-      margin-bottom: 0.3rem;
     }
 
-    .time-btn .t-label {
-      font-size: 0.78rem;
-      opacity: 0.6;
-      display: block;
+    .modal-close:hover { color: var(--ink); }
+
+    /* People row inside modal */
+    .modal-people {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
     }
 
-    .time-btn.selected .t-label { opacity: 0.85; }
+    .modal-people-label { font-weight: 600; }
+    .modal-people-sub { font-size: 0.85rem; color: var(--muted); }
+
+    .modal-people-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-people-ctrl button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--line);
+      background: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      transition: border-color 0.1s;
+    }
+
+    .modal-people-ctrl button:hover { border-color: var(--ink); }
+    .modal-people-ctrl span { font-weight: 600; min-width: 24px; text-align: center; }
+
+    /* Scrollable date list */
+    .modal-body {
+      overflow-y: auto;
+      flex: 1;
+      padding: 0 1.25rem 1.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-month {
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1.1rem 0 0.6rem;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1;
+    }
+
+    .modal-day-group { margin-bottom: 0.25rem; }
+
+    .modal-day-heading {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+      padding: 0.75rem 0 0.4rem;
+    }
+
+    .modal-slot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      background: #fff;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      transition: border-color 0.12s, background 0.12s;
+    }
+
+    .modal-slot:hover { border-color: var(--orange); }
+
+    .modal-slot.selected {
+      border-color: var(--orange);
+      background: #fff8f4;
+    }
+
+    .modal-slot-time { font-weight: 600; font-size: 1rem; display: block; }
+    .modal-slot-dur { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+    .modal-slot-price { font-weight: 700; font-size: 1rem; color: var(--ink); flex-shrink: 0; }
+
+    .modal-footer {
+      padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line);
+      flex-shrink: 0;
+    }
 
     /* Confirm row */
     .confirm-row {
@@ -556,6 +583,8 @@
 
     @media (max-width: 600px) {
       body { padding-bottom: 5rem; }
+      .hero-desc { display: none; }
+      .hero h1 { font-size: 1.75rem; }
     }
   </style>
 </head>
@@ -633,30 +662,14 @@
         </div>
         <p class="people-total" id="people-total">Total: €60</p>
         <div class="group-note" id="group-note">
-          Booking for a group? Pick a slot below — we'll confirm the booking over WhatsApp and send your group payment link.
+          Booking for a group? Choose your slot and pay online — Stripe will charge the full group total automatically.
         </div>
       </div>
 
-      <!-- Slot picker -->
-      <p class="slot-section-label" style="margin-top:1.75rem;">Pick a date</p>
-      <div class="date-chips-outer">
-        <div class="date-chips-wrap" id="date-chips-wrap">
-          <div class="date-chips" id="date-chips"></div>
-        </div>
-        <button class="chips-scroll-btn" id="chips-scroll-btn" aria-label="See more dates">›</button>
-      </div>
-
-      <p class="slot-section-label" id="time-label" style="display:none;">Pick a time</p>
-      <div class="time-buttons" id="time-buttons">
-        <button class="time-btn" data-time="10:00">
-          <span class="t-time">10:00</span>
-          <span class="t-label">morning · 10–12</span>
-        </button>
-        <button class="time-btn" data-time="14:00">
-          <span class="t-time">14:00</span>
-          <span class="t-label">afternoon · 14–16</span>
-        </button>
-      </div>
+      <!-- Show dates button -->
+      <button class="show-dates-btn" id="show-dates-btn">
+        📅 Show dates
+      </button>
 
       <!-- Confirm row -->
       <div class="confirm-row" id="confirm-row">
@@ -710,6 +723,38 @@
   <footer>
     <p>© 2026 Saged Club · <a href="/">saged.club</a></p>
   </footer>
+
+  <!-- Date picker modal -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Select a date and time">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Select a time</span>
+        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-people">
+        <div>
+          <div class="modal-people-label" id="modal-people-label">1 person</div>
+          <div class="modal-people-sub">€60 per person</div>
+        </div>
+        <div class="modal-people-ctrl">
+          <button id="modal-minus" aria-label="Remove person">−</button>
+          <span id="modal-count">1</span>
+          <button id="modal-plus" aria-label="Add person">+</button>
+        </div>
+      </div>
+
+      <div class="modal-body" id="modal-body">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-full" id="modal-confirm" disabled style="opacity:0.4;">
+          Choose a slot above
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Sticky CTA -->
   <div class="sticky-cta">
@@ -774,50 +819,131 @@
       });
     }
 
-    function buildSlots() {
-      const chips = document.getElementById('date-chips');
-      const timeBtns = document.getElementById('time-buttons');
-      const timeLabel = document.getElementById('time-label');
+    function relativeDay(date) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+      const diff = Math.round((d - today) / 86400000);
+      if (diff === 0) return 'Today';
+      if (diff === 1) return 'Tomorrow';
+      return date.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'Europe/Madrid' });
+    }
 
+    // ── Modal ─────────────────────────────────────────────────────
+    function buildModal() {
+      const body = document.getElementById('modal-body');
+      body.innerHTML = '';
+      const months = {};
       getUpcomingDates().forEach(date => {
-        const dayName = date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'Europe/Madrid' });
-        const dayNum  = date.toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'Europe/Madrid' });
-        const monName = date.toLocaleDateString('en-GB', { month: 'short', timeZone: 'Europe/Madrid' });
-
-        const chip = document.createElement('button');
-        chip.className = 'date-chip';
-        chip.innerHTML = `
-          <span class="chip-day">${dayName}</span>
-          <span class="chip-num">${dayNum}</span>
-          <span class="chip-mon">${monName}</span>
-        `;
-
-        chip.addEventListener('click', () => {
-          document.querySelectorAll('.date-chip').forEach(c => c.classList.remove('selected'));
-          chip.classList.add('selected');
-          selectedDate = date;
-          selectedTime = null;
-          document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
-          timeBtns.classList.add('visible');
-          timeLabel.style.display = 'block';
-          updateConfirm();
-          timeBtns.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-
-        chips.appendChild(chip);
+        const mon = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'Europe/Madrid' });
+        if (!months[mon]) months[mon] = [];
+        months[mon].push(date);
       });
-
-      // Time button handlers
-      timeBtns.querySelectorAll('.time-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          timeBtns.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-          selectedTime = btn.dataset.time;
-          updateConfirm();
-          document.getElementById('confirm-row').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      Object.entries(months).forEach(([mon, days]) => {
+        const monthEl = document.createElement('div');
+        monthEl.className = 'modal-month';
+        monthEl.textContent = mon;
+        body.appendChild(monthEl);
+        days.forEach(date => {
+          const dayGroup = document.createElement('div');
+          dayGroup.className = 'modal-day-group';
+          const relDay = relativeDay(date);
+          const dayNum = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Europe/Madrid' });
+          dayGroup.innerHTML = `<div class="modal-day-heading">${relDay}, ${dayNum}</div>`;
+          TIMES.forEach(time => {
+            const slot = document.createElement('div');
+            slot.className = 'modal-slot';
+            slot.innerHTML = `
+              <div class="modal-slot-time">${time} Valencia time</div>
+              <div class="modal-slot-price">€${people * PRICE_PER_PERSON}</div>
+            `;
+            slot.addEventListener('click', () => {
+              document.querySelectorAll('.modal-slot').forEach(s => s.classList.remove('selected'));
+              slot.classList.add('selected');
+              selectedDate = date;
+              selectedTime = time;
+              updateModalConfirm();
+            });
+            dayGroup.appendChild(slot);
+          });
+          body.appendChild(dayGroup);
         });
       });
     }
+
+    function updateModalConfirm() {
+      const btn = document.getElementById('modal-confirm');
+      if (!selectedDate || !selectedTime) {
+        btn.disabled = true;
+        btn.style.opacity = '0.4';
+        btn.textContent = 'Choose a slot above';
+        return;
+      }
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      const total = people * PRICE_PER_PERSON;
+      btn.textContent = people > 1
+        ? `Book for ${people} people · €${total}`
+        : `Book now · €${total}`;
+    }
+
+    function openModal() {
+      buildModal();
+      updateModalConfirm();
+      document.getElementById('modal-count').textContent = people;
+      document.getElementById('modal-people-label').textContent =
+        people === 1 ? '1 person' : `${people} people`;
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('show-dates-btn').addEventListener('click', openModal);
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-overlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    document.getElementById('modal-minus').addEventListener('click', () => {
+      if (people > 1) {
+        people--;
+        updatePeople();
+        document.getElementById('modal-count').textContent = people;
+        document.getElementById('modal-people-label').textContent =
+          people === 1 ? '1 person' : `${people} people`;
+        document.querySelectorAll('.modal-slot-price').forEach(el => {
+          el.textContent = `€${people * PRICE_PER_PERSON}`;
+        });
+        updateModalConfirm();
+      }
+    });
+
+    document.getElementById('modal-plus').addEventListener('click', () => {
+      if (people < MAX_PEOPLE) {
+        people++;
+        updatePeople();
+        document.getElementById('modal-count').textContent = people;
+        document.getElementById('modal-people-label').textContent =
+          people === 1 ? '1 person' : `${people} people`;
+        document.querySelectorAll('.modal-slot-price').forEach(el => {
+          el.textContent = `€${people * PRICE_PER_PERSON}`;
+        });
+        updateModalConfirm();
+      }
+    });
+
+    document.getElementById('modal-confirm').addEventListener('click', () => {
+      closeModal();
+      updateConfirm();
+      setTimeout(() => {
+        document.getElementById('confirm-row').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 300);
+    });
 
     // ── Confirm & book ────────────────────────────────────────────
     function updateConfirm() {
@@ -840,38 +966,14 @@
         ${people} person${people > 1 ? 's' : ''} &nbsp;·&nbsp; <span class="conf-price">€${total}</span>
       `;
 
-      if (people === 1) {
-        bookBtn.textContent = `Book now · Pay €${total}`;
-        bookBtn.href = STRIPE_LINK;
-        bookBtn.target = '_blank';
-      } else {
-        const msg = encodeURIComponent(
-          `Hi! I'd like to book the Tile Painting workshop 🎨\n\nDate: ${dateStr}\nTime: ${selectedTime}\nGroup size: ${people} people\nTotal: €${total}\n\n(from the website)`
-        );
-        bookBtn.textContent = `Book group · ${people} people · €${total}`;
-        bookBtn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-        bookBtn.target = '_blank';
-      }
+      bookBtn.textContent = people > 1
+        ? `Book for ${people} people · Pay €${total}`
+        : `Book now · Pay €${total}`;
+      bookBtn.href = `${STRIPE_LINK}?prefilled_quantity=${people}`;
+      bookBtn.target = '_blank';
     }
 
-    buildSlots();
     updatePeople();
-
-    // ── Scroll arrow ──────────────────────────────────────────────
-    const chipsWrap = document.getElementById('date-chips-wrap');
-    const scrollBtn = document.getElementById('chips-scroll-btn');
-
-    function updateScrollBtn() {
-      const atEnd = chipsWrap.scrollLeft + chipsWrap.clientWidth >= chipsWrap.scrollWidth - 8;
-      scrollBtn.classList.toggle('hidden', atEnd);
-    }
-
-    scrollBtn.addEventListener('click', () => {
-      chipsWrap.scrollBy({ left: 220, behavior: 'smooth' });
-    });
-
-    chipsWrap.addEventListener('scroll', updateScrollBtn, { passive: true });
-    updateScrollBtn();
   </script>
 
 </body>
