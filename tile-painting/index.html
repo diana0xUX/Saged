@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spanish Tile Painting Workshop · Saged Club · Valencia</title>
+  <meta name="description" content="A two-hour Spanish tile-painting workshop with ceramic artist Ekaterina, in Valencia's Old Town. €60 per person. Book your session online.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Costa';
+      src: url('../assets/fonts/costa-light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg:        #FAF7F2;
+      --bg-sand:   #F1E9DA;
+      --ink:       #2A2520;
+      --muted:     #6B5F54;
+      --orange:    #FF7A23;
+      --orange-dk: #E56610;
+      --line:      #E1D6C5;
+      --r:         12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    h1, h2, h3 {
+      font-family: 'Costa', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.1;
+      margin: 0 0 0.4em;
+    }
+
+    h1 { font-size: clamp(2.4rem, 8vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+    h3 { font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 600; }
+
+    p { margin: 0 0 1em; }
+    p:last-child { margin-bottom: 0; }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section { padding: 3rem 0; }
+    section + section { border-top: 1px solid var(--line); }
+
+    /* Nav */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Costa', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 90svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      padding: 0;
+      border: none;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,20,10,0.75) 0%, rgba(30,20,10,0.1) 55%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem 1.5rem 2.5rem;
+      color: #fff;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 { color: #fff; margin-bottom: 0.6rem; }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 1.25rem;
+      max-width: 420px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s, transform 0.1s;
+      text-align: center;
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: var(--orange-dk); color: #fff; }
+    .btn-ghost { background: transparent; border: 2px solid var(--line); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-full { width: 100%; display: block; }
+
+    /* About */
+    .about-text {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Included */
+    .included-grid {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .included-grid li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .included-grid .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05em; }
+
+    /* ── Booking section ── */
+    #booking { background: var(--bg-sand); }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1.5rem;
+    }
+
+    .price {
+      font-family: 'Costa', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .price-currency {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      vertical-align: super;
+      margin-right: 0.05em;
+      color: var(--muted);
+    }
+
+    .price-label { font-size: 0.9rem; color: var(--muted); }
+
+    /* People picker */
+    .people-picker {
+      margin-bottom: 1.75rem;
+    }
+
+    .people-picker label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .people-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 2px solid var(--line);
+      border-radius: 100px;
+      overflow: hidden;
+      width: fit-content;
+    }
+
+    .people-btn {
+      background: none;
+      border: none;
+      width: 44px;
+      height: 44px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--ink);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .people-btn:hover { color: var(--orange); }
+
+    #people-count {
+      min-width: 48px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      background: none;
+      pointer-events: none;
+    }
+
+    .people-total {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .group-note {
+      display: none;
+      background: #fff3e0;
+      border: 1.5px solid var(--orange);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.85rem;
+      color: #7a4a00;
+      margin-top: 0.75rem;
+    }
+
+    /* Slot picker */
+    .slot-section-label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Date chips — horizontal scroll */
+    .date-chips-outer {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .date-chips-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin: 0 -1.25rem;
+      padding: 0 1.25rem;
+    }
+
+    .date-chips-wrap::-webkit-scrollbar { display: none; }
+
+    .date-chips {
+      display: flex;
+      gap: 0.5rem;
+      width: max-content;
+      padding-bottom: 2px;
+      padding-right: 3rem;
+    }
+
+    /* Fade + scroll arrow on right */
+    .chips-scroll-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, transparent, var(--bg-sand) 60%);
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--ink);
+      padding: 0;
+      transition: opacity 0.15s;
+    }
+
+    .chips-scroll-btn:hover { color: var(--orange); }
+    .chips-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+
+    .date-chip {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 0.6rem 0.9rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.12s;
+      min-width: 64px;
+      flex-shrink: 0;
+    }
+
+    .date-chip:hover { border-color: var(--orange); }
+
+    .date-chip.selected {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    .date-chip .chip-day {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.65;
+      display: block;
+    }
+
+    .date-chip.selected .chip-day { opacity: 0.85; }
+
+    .date-chip .chip-num {
+      font-family: 'Costa', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.1;
+      display: block;
+    }
+
+    .date-chip .chip-mon {
+      font-size: 0.72rem;
+      opacity: 0.65;
+      display: block;
+    }
+
+    .date-chip.selected .chip-mon { opacity: 0.85; }
+
+    /* Time buttons — shown after date selected */
+    .time-buttons {
+      display: none;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .time-buttons.visible { display: flex; }
+
+    .time-btn {
+      flex: 1;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      padding: 1.1rem 0.75rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.12s;
+      font-family: inherit;
+    }
+
+    .time-btn:hover { border-color: var(--orange); }
+
+    .time-btn.selected {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    .time-btn .t-time {
+      font-family: 'Costa', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .time-btn .t-label {
+      font-size: 0.78rem;
+      opacity: 0.6;
+      display: block;
+    }
+
+    .time-btn.selected .t-label { opacity: 0.85; }
+
+    /* Confirm row */
+    .confirm-row {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .confirm-row.visible { display: flex; }
+
+    .confirm-summary {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+      border: 1.5px solid var(--orange);
+    }
+
+    .confirm-summary strong { display: block; font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .confirm-summary .conf-price { font-weight: 600; color: var(--orange); }
+
+
+    /* Policies */
+    .policy-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .policy-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .policy-item h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .policy-item p { font-size: 0.95rem; margin: 0; }
+
+    /* Location */
+    .location-block {
+      background: var(--bg-sand);
+      border-radius: var(--r);
+      padding: 1.75rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .location-name { font-weight: 600; margin-bottom: 0.2rem; }
+    .location-addr { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.25rem; }
+
+    .location-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .location-links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--orange);
+      border: 2px solid var(--orange);
+      border-radius: 100px;
+      padding: 0.45rem 1.1rem;
+      transition: all 0.12s;
+    }
+
+    .location-links a:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    footer a { color: var(--muted); }
+
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0.75rem 1.25rem calc(0.75rem + env(safe-area-inset-bottom));
+      background: rgba(250,247,242,0.96);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (min-width: 601px) {
+      .sticky-cta { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      body { padding-bottom: 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Saged Club</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img
+      class="hero-img"
+      src="../creative/tile-class-ad/IMG_5918.jpg"
+      alt="Ekaterina holding her hand-painted Spanish tile at Saged Club studio"
+      fetchpriority="high"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Saged Club · Valencia</span>
+      <h1>Paint your own little piece of Valencia</h1>
+      <p class="hero-desc">A two-hour Spanish tile-painting workshop with ceramic artist Ekaterina, in Valencia's Old Town. In English, Spanish, or Russian.</p>
+      <div class="pills">
+        <span class="pill">2 hours</span>
+        <span class="pill">English · Español · Русский</span>
+        <span class="pill">Materials included</span>
+        <span class="pill">Up to 10 people</span>
+      </div>
+      <a href="#booking" class="btn btn-primary">Choose your date ↓</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section>
+    <div class="container">
+      <h2>About the workshop</h2>
+      <p class="about-text">
+        Step into our welcoming ceramics studio and turn a ceramic tile into something completely yours.
+        Discover Spanish tile designs, choose your colours and patterns, and paint with Ekaterina's guidance.
+        Enjoy two relaxed hours of creativity, drinks, light bites, and good company.
+      </p>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section>
+    <div class="container">
+      <h2>What's included</h2>
+      <ul class="included-grid">
+        <li><span class="icon">🏺</span><span>A ceramic tile to decorate and take home</span></li>
+        <li><span class="icon">🎨</span><span>Use of painting materials and tools</span></li>
+        <li><span class="icon">👩‍🎨</span><span>Guided instruction with Ekaterina throughout</span></li>
+        <li><span class="icon">🥂</span><span>Drinks and light bites</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="booking">
+    <div class="container">
+      <h2>Book your workshop</h2>
+
+      <div class="price-row">
+        <span class="price"><span class="price-currency">€</span>60</span>
+        <span class="price-label">per person · payment secures your spot</span>
+      </div>
+
+      <!-- People picker -->
+      <div class="people-picker">
+        <label>How many people?</label>
+        <div class="people-row">
+          <button class="people-btn" id="people-minus" aria-label="Remove person">−</button>
+          <span id="people-count">1</span>
+          <button class="people-btn" id="people-plus" aria-label="Add person">+</button>
+        </div>
+        <p class="people-total" id="people-total">Total: €60</p>
+        <div class="group-note" id="group-note">
+          Booking for a group? Pick a slot below — we'll confirm the booking over WhatsApp and send your group payment link.
+        </div>
+      </div>
+
+      <!-- Slot picker -->
+      <p class="slot-section-label" style="margin-top:1.75rem;">Pick a date</p>
+      <div class="date-chips-outer">
+        <div class="date-chips-wrap" id="date-chips-wrap">
+          <div class="date-chips" id="date-chips"></div>
+        </div>
+        <button class="chips-scroll-btn" id="chips-scroll-btn" aria-label="See more dates">›</button>
+      </div>
+
+      <p class="slot-section-label" id="time-label" style="display:none;">Pick a time</p>
+      <div class="time-buttons" id="time-buttons">
+        <button class="time-btn" data-time="10:00">
+          <span class="t-time">10:00</span>
+          <span class="t-label">morning · 10–12</span>
+        </button>
+        <button class="time-btn" data-time="14:00">
+          <span class="t-time">14:00</span>
+          <span class="t-label">afternoon · 14–16</span>
+        </button>
+      </div>
+
+      <!-- Confirm row -->
+      <div class="confirm-row" id="confirm-row">
+        <div class="confirm-summary" id="confirm-summary"></div>
+        <a id="book-btn" href="#" class="btn btn-primary btn-full" target="_blank" rel="noopener">Book now · Pay €60</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Policies -->
+  <section>
+    <div class="container">
+      <h2>Good to know</h2>
+      <div class="policy-grid">
+        <div class="policy-item">
+          <h3>Cancellation & rescheduling</h3>
+          <p>Cancel or reschedule up to 24 hours before your session — full refund or free rebooking. After that, no refund.</p>
+        </div>
+        <div class="policy-item">
+          <h3>Languages</h3>
+          <p>Sessions run in English, Spanish, or Russian — whatever works best for the group.</p>
+        </div>
+        <div class="policy-item">
+          <h3>Who can join</h3>
+          <p>All skill levels welcome — no experience needed. Suitable for adults and older teens. Groups up to 10 people.</p>
+        </div>
+        <div class="policy-item">
+          <h3>Your tile</h3>
+          <p>Take your painted tile home the same day. Want to send it to a loved one or ship it home after the trip? We can fire and ship it worldwide for €20 — just let us know when booking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section>
+    <div class="container">
+      <h2>Where to find us</h2>
+      <div class="location-block">
+        <p class="location-name">Saged Club</p>
+        <p class="location-addr">C/ de les Cuines, 8, Ciutat Vella, Valencia</p>
+        <div class="location-links">
+          <a href="https://maps.google.com/?q=C+de+les+Cuines+8+Valencia" target="_blank" rel="noopener">Open in Maps ↗</a>
+          <a id="contact-wa" href="https://wa.me/34605543300?text=Hi%21%20I%20have%20a%20question%20about%20the%20Tile%20Painting%20workshop%20at%20Saged%20Club%20%F0%9F%8E%A8%20%28from%20the%20website%29" target="_blank" rel="noopener">Ask a question on WhatsApp ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Saged Club · <a href="/">saged.club</a></p>
+  </footer>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta">
+    <a href="#booking" class="btn btn-primary btn-full">Book your spot ↓</a>
+  </div>
+
+  <script>
+    // ── Config ────────────────────────────────────────────────────
+    const PRICE_PER_PERSON = 60;
+    const MAX_PEOPLE = 10;
+    const STRIPE_LINK = 'https://buy.stripe.com/5kQ7sN5RYakeaei1LMffy0t';
+    const WA_NUMBER = '34605543300';
+    const VALID_DAYS = [1, 2, 3, 5]; // Mon Tue Wed Fri
+    const TIMES = ['10:00', '14:00'];
+    const WEEKS_AHEAD = 4;
+
+    // ── State ─────────────────────────────────────────────────────
+    let people = 1;
+    let selectedDate = null;
+    let selectedTime = null;
+
+    // ── People picker ─────────────────────────────────────────────
+    const countEl    = document.getElementById('people-count');
+    const totalEl    = document.getElementById('people-total');
+    const groupNote  = document.getElementById('group-note');
+
+    function getTotal() {
+      return people * PRICE_PER_PERSON;
+    }
+
+    function updatePeople() {
+      countEl.textContent = people;
+      totalEl.textContent = `Total: €${getTotal()}`;
+      groupNote.style.display = people > 1 ? 'block' : 'none';
+      updateConfirm();
+    }
+
+    document.getElementById('people-minus').addEventListener('click', () => {
+      if (people > 1) { people--; updatePeople(); }
+    });
+
+    document.getElementById('people-plus').addEventListener('click', () => {
+      if (people < MAX_PEOPLE) { people++; updatePeople(); }
+    });
+
+    // ── Generate upcoming dates ───────────────────────────────────
+    function getUpcomingDates() {
+      const dates = [];
+      const now = new Date();
+      for (let d = 1; d <= WEEKS_AHEAD * 7; d++) {
+        const date = new Date(now);
+        date.setDate(now.getDate() + d);
+        if (VALID_DAYS.includes(date.getDay())) dates.push(new Date(date));
+      }
+      return dates;
+    }
+
+    function formatDate(date) {
+      return date.toLocaleDateString('en-GB', {
+        weekday: 'long', day: 'numeric', month: 'long',
+        timeZone: 'Europe/Madrid'
+      });
+    }
+
+    function buildSlots() {
+      const chips = document.getElementById('date-chips');
+      const timeBtns = document.getElementById('time-buttons');
+      const timeLabel = document.getElementById('time-label');
+
+      getUpcomingDates().forEach(date => {
+        const dayName = date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'Europe/Madrid' });
+        const dayNum  = date.toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'Europe/Madrid' });
+        const monName = date.toLocaleDateString('en-GB', { month: 'short', timeZone: 'Europe/Madrid' });
+
+        const chip = document.createElement('button');
+        chip.className = 'date-chip';
+        chip.innerHTML = `
+          <span class="chip-day">${dayName}</span>
+          <span class="chip-num">${dayNum}</span>
+          <span class="chip-mon">${monName}</span>
+        `;
+
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.date-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          selectedDate = date;
+          selectedTime = null;
+          document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+          timeBtns.classList.add('visible');
+          timeLabel.style.display = 'block';
+          updateConfirm();
+          timeBtns.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        chips.appendChild(chip);
+      });
+
+      // Time button handlers
+      timeBtns.querySelectorAll('.time-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          timeBtns.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedTime = btn.dataset.time;
+          updateConfirm();
+          document.getElementById('confirm-row').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    }
+
+    // ── Confirm & book ────────────────────────────────────────────
+    function updateConfirm() {
+      const row = document.getElementById('confirm-row');
+      const summary = document.getElementById('confirm-summary');
+      const bookBtn = document.getElementById('book-btn');
+
+      if (!selectedDate || !selectedTime) {
+        row.classList.remove('visible');
+        return;
+      }
+
+      row.classList.add('visible');
+
+      const total = getTotal();
+      const dateStr = formatDate(selectedDate);
+
+      summary.innerHTML = `
+        <strong>${dateStr} · ${selectedTime} Valencia time</strong>
+        ${people} person${people > 1 ? 's' : ''} &nbsp;·&nbsp; <span class="conf-price">€${total}</span>
+      `;
+
+      if (people === 1) {
+        bookBtn.textContent = `Book now · Pay €${total}`;
+        bookBtn.href = STRIPE_LINK;
+        bookBtn.target = '_blank';
+      } else {
+        const msg = encodeURIComponent(
+          `Hi! I'd like to book the Tile Painting workshop 🎨\n\nDate: ${dateStr}\nTime: ${selectedTime}\nGroup size: ${people} people\nTotal: €${total}\n\n(from the website)`
+        );
+        bookBtn.textContent = `Book group · ${people} people · €${total}`;
+        bookBtn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+        bookBtn.target = '_blank';
+      }
+    }
+
+    buildSlots();
+    updatePeople();
+
+    // ── Scroll arrow ──────────────────────────────────────────────
+    const chipsWrap = document.getElementById('date-chips-wrap');
+    const scrollBtn = document.getElementById('chips-scroll-btn');
+
+    function updateScrollBtn() {
+      const atEnd = chipsWrap.scrollLeft + chipsWrap.clientWidth >= chipsWrap.scrollWidth - 8;
+      scrollBtn.classList.toggle('hidden', atEnd);
+    }
+
+    scrollBtn.addEventListener('click', () => {
+      chipsWrap.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+
+    chipsWrap.addEventListener('scroll', updateScrollBtn, { passive: true });
+    updateScrollBtn();
+  </script>
+
+</body>
+</html>
