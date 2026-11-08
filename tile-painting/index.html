@@ -779,7 +779,18 @@
   <script>
     const PRICE_PER_PERSON = 60;
     const MAX_PEOPLE = 10;
-    const STRIPE_LINK = 'https://buy.stripe.com/5kQ7sN5RYakeaei1LMffy0t';
+    const STRIPE_LINKS = {
+      1:  'https://buy.stripe.com/5kQ7sN5RYakeaei1LMffy0t',
+      2:  'https://buy.stripe.com/eVq14pfsyake726cqqffy0u',
+      3:  'https://buy.stripe.com/eVqcN74NU3VQgCG3TUffy0v',
+      4:  'https://buy.stripe.com/28E8wR4NU9ga86a622ffy0w',
+      5:  'https://buy.stripe.com/aFa3cxa8eeAu0DI622ffy0x',
+      6:  'https://buy.stripe.com/fZudRb4NU0JE9ae766ffy0y',
+      7:  'https://buy.stripe.com/4gMfZj80663Y2LQcqqffy0z',
+      8:  'https://buy.stripe.com/7sYcN7bci2RMeuyfCCffy0A',
+      9:  'https://buy.stripe.com/bJe14p4NU9gabim3TUffy0B',
+      10: 'https://buy.stripe.com/28E4gBgwC8c6bimgGGffy0C',
+    };
     const VALID_DAYS = [1, 2, 3, 5];
     const WEEKS_AHEAD = 4;
 
@@ -891,7 +902,7 @@
       document.getElementById('bk-sticky-total').textContent = `€${total}`;
 
       const btn = document.getElementById('book-btn');
-      btn.href = `${STRIPE_LINK}?prefilled_quantity=${people}`;
+      btn.href = STRIPE_LINKS[people];
     }
 
     buildDateChips();
