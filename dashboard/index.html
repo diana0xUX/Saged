@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saged Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #FAF7F2;
+      --surface:   #FFFFFF;
+      --sand:      #F1E9DA;
+      --border:    #E1D6C5;
+      --ink:       #2A2520;
+      --muted:     #6B5F54;
+      --terra:     #9F4D2D;
+      --terra-lt:  #FBF0EB;
+      --sage:      #6E7F5A;
+      --green:     #2D7A4F;
+      --green-bg:  #EAF5EF;
+      --green-bd:  #A8D8BC;
+      --amber:     #9A6010;
+      --amber-bg:  #FEF3DC;
+      --amber-bd:  #EAC878;
+      --red:       #B83030;
+      --red-bg:    #FDEAEA;
+      --red-bd:    #EAA8A8;
+      --blue:      #2362A8;
+      --blue-bg:   #EAF1FB;
+      --blue-bd:   #A8C8E8;
+      --sidebar-w: 280px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ═══════════════════════════════════════
+       TOP NAV
+    ═══════════════════════════════════════ */
+    .topnav {
+      height: 52px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      gap: 1rem;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topnav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--terra);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .topnav-sep {
+      width: 1px; height: 18px;
+      background: var(--border);
+    }
+    .topnav-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .topnav-spacer { flex: 1; }
+    .topnav-link {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background 0.1s;
+    }
+    .topnav-link:hover { background: var(--sand); color: var(--ink); }
+
+    /* ═══════════════════════════════════════
+       BODY LAYOUT (sidebar + main)
+    ═══════════════════════════════════════ */
+    .layout {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════
+       SIDEBAR
+    ═══════════════════════════════════════ */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Nav items */
+    .sidebar-section {
+      padding: 1rem 0.75rem 0.5rem;
+    }
+    .sidebar-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.1s, color 0.1s;
+      margin-bottom: 1px;
+    }
+    .nav-item:hover { background: var(--sand); color: var(--ink); }
+    .nav-item.active { background: var(--terra-lt); color: var(--terra); }
+    .nav-icon { width: 18px; text-align: center; font-size: 0.95rem; flex-shrink: 0; }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0.5rem 1rem;
+    }
+
+    /* Applications list */
+    .apps-header {
+      padding: 0.75rem 1.25rem 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .apps-header-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .apps-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--sand);
+      color: var(--muted);
+      border-radius: 100px;
+      padding: 0.1rem 0.5rem;
+    }
+
+    .apps-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 0.75rem 1rem;
+    }
+    .apps-list::-webkit-scrollbar { width: 4px; }
+    .apps-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .app-card {
+      border-radius: 8px;
+      padding: 0.7rem 0.75rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      margin-bottom: 3px;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .app-card:hover { background: var(--sand); }
+    .app-card.selected { background: var(--terra-lt); border-color: #DFB8A8; }
+
+    .app-card-name {
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .app-card-event {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 0.1rem;
+    }
+    .app-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+    }
+    .app-card-date {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .app-card-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+    }
+    .badge-new { background: var(--blue-bg); color: var(--blue); }
+
+    .apps-empty {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    .apps-empty-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+
+    /* ═══════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════ */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .main::-webkit-scrollbar { width: 6px; }
+    .main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── View: status ───────────────────── */
+    .view { display: none; flex-direction: column; flex: 1; }
+    .view.active { display: flex; }
+
+    /* ── Application detail view ────────── */
+    .detail-header {
+      padding: 1.5rem 2rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .detail-back {
+      font-size: 0.8rem;
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.6rem;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+    .detail-back:hover { color: var(--ink); }
+    .detail-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .detail-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .detail-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--terra); color: #fff; }
+    .btn-secondary { background: var(--sand); color: var(--ink); border: 1px solid var(--border); }
+
+    .detail-body {
+      padding: 1.5rem 2rem;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 700px) { .detail-grid { grid-template-columns: 1fr; } }
+
+    .detail-field {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+    }
+    .detail-field-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .detail-field-val {
+      font-size: 0.88rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .detail-field-val a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .detail-field.span2 { grid-column: span 2; }
+    @media (max-width: 700px) { .detail-field.span2 { grid-column: span 1; } }
+
+    .detail-section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 1.5rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Status page (embedded) ─────────── */
+    .status-wrap {
+      padding: 1.5rem 2rem;
+      max-width: 680px;
+    }
+
+    .st-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .st-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .st-subtitle { font-size: 0.82rem; color: var(--muted); margin-top: 0.1rem; }
+    .live-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid var(--green-bd);
+      border-radius: 100px;
+      padding: 0.3rem 0.75rem;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.75rem; color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .progress-label span:last-child { color: var(--green); font-weight: 600; }
+    .progress-bar {
+      height: 6px; background: var(--sand); border-radius: 100px; overflow: hidden; margin-bottom: 1.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), #5ECA8C);
+      border-radius: 100px;
+    }
+
+    .st-section-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin: 1.25rem 0 0.6rem;
+    }
+
+    .task {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.5rem;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .task.done    { border-color: #C2DFCE; background: #F2FAF5; }
+    .task.action  { border-color: var(--amber-bd); background: var(--amber-bg); }
+    .task.fergie  { border-color: var(--blue-bd); background: var(--blue-bg); }
+    .task.blocked { border-color: var(--red-bd); background: var(--red-bg); }
+
+    .task-icon { font-size: 1rem; flex-shrink: 0; width: 20px; text-align: center; margin-top: 0.1rem; }
+    .task-body { flex: 1; min-width: 0; }
+    .task-name { font-weight: 600; font-size: 0.85rem; color: var(--ink); margin-bottom: 0.15rem; }
+    .task.done .task-name { color: #3A7A54; }
+    .task-detail { font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+    .task-detail a { color: var(--blue); text-decoration: none; }
+    .task-detail a:hover { text-decoration: underline; }
+
+    .task-tag {
+      flex-shrink: 0; font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border-radius: 5px; padding: 0.15rem 0.45rem; margin-top: 0.1rem;
+    }
+    .tag-done    { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
+    .tag-you     { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-bd); }
+    .tag-me      { background: var(--blue-bg);  color: var(--blue);  border: 1px solid var(--blue-bd); }
+    .tag-blocked { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-bd); }
+
+    .task-cta {
+      display: inline-block; margin-top: 0.5rem;
+      background: var(--amber); color: #fff;
+      font-size: 0.75rem; font-weight: 700;
+      border-radius: 100px; padding: 0.3rem 0.8rem;
+      text-decoration: none; transition: opacity 0.15s;
+    }
+    .task-cta:hover { opacity: 0.85; }
+
+    .summary-box {
+      margin-top: 1.5rem;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .summary-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;
+    }
+    .summary-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem; padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border); gap: 1rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-label { color: var(--muted); }
+    .summary-val { font-weight: 600; }
+    .summary-val.g { color: var(--green); }
+    .summary-val.a { color: var(--amber); }
+
+    /* ── Mobile sidebar toggle ──────────── */
+    .mob-toggle {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: 0.3rem; color: var(--ink); font-size: 1.2rem;
+    }
+    .sidebar-overlay {
+      display: none;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 199;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed; left: -var(--sidebar-w); top: 52px; bottom: 0;
+        z-index: 200; width: var(--sidebar-w);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+      }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-overlay.open { display: block; }
+      .mob-toggle { display: flex; }
+      .layout { overflow: visible; }
+      .main { overflow-y: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top nav -->
+  <nav class="topnav">
+    <button class="mob-toggle" id="mob-toggle" aria-label="Menu">☰</button>
+    <a href="/" class="topnav-logo">Saged</a>
+    <div class="topnav-sep"></div>
+    <span class="topnav-label">Manager</span>
+    <div class="topnav-spacer"></div>
+    <a href="https://saged.club/tile-painting/" target="_blank" class="topnav-link">View site →</a>
+  </nav>
+
+  <div class="sidebar-overlay" id="overlay"></div>
+
+  <div class="layout">
+
+    <!-- ── Sidebar ─────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Views</div>
+        <a class="nav-item active" data-view="status" href="#">
+          <span class="nav-icon">🚀</span> Launch status
+        </a>
+        <a class="nav-item" data-view="bookings" href="#">
+          <span class="nav-icon">📅</span> Bookings
+        </a>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="apps-header">
+        <span class="apps-header-label">Event applications</span>
+        <span class="apps-count" id="apps-count">…</span>
+      </div>
+
+      <div class="apps-list" id="apps-list">
+        <div class="apps-empty">
+          <div class="apps-empty-icon">📬</div>
+          Loading…
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── Main ───────────────────────── -->
+    <main class="main" id="main">
+
+      <!-- VIEW: Launch status -->
+      <div class="view active" id="view-status">
+        <div class="status-wrap">
+
+          <div class="st-header">
+            <div>
+              <div class="st-title">🎨 Spanish Tile Painting</div>
+              <div class="st-subtitle">Campaign launch readiness</div>
+            </div>
+            <div class="live-badge"><div class="live-dot"></div>Page live</div>
+          </div>
+
+          <div class="progress-label">
+            <span>Launch readiness</span><span>72%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+
+          <div class="st-section-title">✅ Done</div>
+
+          <div class="task done">
+            <div class="task-icon">🌐</div>
+            <div class="task-body">
+              <div class="task-name">Landing page</div>
+              <div class="task-detail"><a href="https://saged.club/tile-painting/" target="_blank">saged.club/tile-painting/</a> — hero, Airbnb booking, date chips, time cards, sticky total bar.</div>
+            </div>
+            <div class="task-tag tag-done">Done</div>
+          </div>
+
+          <div class="task done">
+            <div class="task-icon">💳</div>
+            <div class="task-body">
+              <div class="task-name">Stripe payment links</div>
+              <div class="task-detail">10 locked links — €60 to €600. Each guest count has its own link.</div>
+            </div>
+            <div class="task-tag tag-done">Done</div>
+          </div>
+
+          <div class="task done">
+            <div class="task-icon">🗄️</div>
+            <div class="task-body">
+              <div class="task-name">Booking log (NocoDB)</div>
+              <div class="task-detail">Table "Tile Painting Bookings" live at <a href="https://admin.saged.club" target="_blank">admin.saged.club</a>. Pending → paid automatically.</div>
+            </div>
+            <div class="task-tag tag-done">Done</div>
+          </div>
+
+          <div class="task done">
+            <div class="task-icon">⚡</div>
+            <div class="task-body">
+              <div class="task-name">Stripe webhook</div>
+              <div class="task-detail">Fires on every payment → marks booking paid with customer name + email.</div>
+            </div>
+            <div class="task-tag tag-done">Done</div>
+          </div>
+
+          <div class="st-section-title">⚡ You need to do</div>
+
+          <div class="task action">
+            <div class="task-icon">💬</div>
+            <div class="task-body">
+              <div class="task-name">ManyChat API token</div>
+              <div class="task-detail">Token you shared was rejected. 2 min: ManyChat → Settings → Integrations → API → Generate.</div>
+              <a class="task-cta" href="https://manychat.com/fb/account" target="_blank">Open ManyChat →</a>
+            </div>
+            <div class="task-tag tag-you">You</div>
+          </div>
+
+          <div class="task action">
+            <div class="task-icon">🔑</div>
+            <div class="task-body">
+              <div class="task-name">Rotate Stripe secret key</div>
+              <div class="task-detail">Key was shared in chat. 5 min: Stripe → Developers → API keys → Roll key.</div>
+              <a class="task-cta" href="https://dashboard.stripe.com/apikeys" target="_blank">Open Stripe →</a>
+            </div>
+            <div class="task-tag tag-you">You</div>
+          </div>
+
+          <div class="st-section-title">🤖 Ready to build — say the word</div>
+
+          <div class="task fergie">
+            <div class="task-icon">📱</div>
+            <div class="task-body">
+              <div class="task-name">ManyChat confirmation DM</div>
+              <div class="task-detail">After valid token: auto-DM to customer after payment with date, time, what to bring.</div>
+            </div>
+            <div class="task-tag tag-me">Me</div>
+          </div>
+
+          <div class="task fergie">
+            <div class="task-icon">📢</div>
+            <div class="task-body">
+              <div class="task-name">Meta ads for tile painting</div>
+              <div class="task-detail">Creative ready (video + photos in project). RU + UA ad sets, correct Valencia geo, paused. <strong style="color:var(--blue)">You activate.</strong></div>
+            </div>
+            <div class="task-tag tag-me">Me</div>
+          </div>
+
+          <div class="st-section-title">🔴 Waiting on Meta</div>
+
+          <div class="task blocked">
+            <div class="task-icon">⏳</div>
+            <div class="task-body">
+              <div class="task-name">4 ads pending Business Admin approval</div>
+              <div class="task-detail">Ekaterina (EN + ES), Handpan image, Handpan video. Usually 1–3 business days.</div>
+            </div>
+            <div class="task-tag tag-blocked">Meta</div>
+          </div>
+
+          <div class="summary-box">
+            <div class="summary-title">Can you launch today?</div>
+            <div class="summary-row"><span class="summary-label">Page live</span><span class="summary-val g">✓ Yes</span></div>
+            <div class="summary-row"><span class="summary-label">Payment works</span><span class="summary-val g">✓ Yes</span></div>
+            <div class="summary-row"><span class="summary-label">Booking log</span><span class="summary-val g">✓ Yes</span></div>
+            <div class="summary-row"><span class="summary-label">Confirmation DM</span><span class="summary-val a">After ManyChat token</span></div>
+            <div class="summary-row"><span class="summary-label">Meta ads</span><span class="summary-val a">Say the word</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- VIEW: Bookings -->
+      <div class="view" id="view-bookings">
+        <div class="status-wrap">
+          <div class="st-header">
+            <div>
+              <div class="st-title">📅 Tile Painting Bookings</div>
+              <div class="st-subtitle">Live from NocoDB</div>
+            </div>
+            <a href="https://admin.saged.club" target="_blank" class="btn btn-secondary" style="font-size:0.78rem">Open NocoDB →</a>
+          </div>
+          <div id="bookings-content" style="color:var(--muted);font-size:0.85rem;padding:2rem 0;text-align:center;">
+            Loading bookings…
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW: Application detail -->
+      <div class="view" id="view-detail">
+        <div class="detail-header">
+          <button class="detail-back" id="detail-back">← Back to status</button>
+          <div class="detail-name" id="detail-name">—</div>
+          <div class="detail-subtitle" id="detail-subtitle">—</div>
+          <div class="detail-actions">
+            <a id="detail-whatsapp" href="#" class="btn btn-primary" target="_blank">💬 WhatsApp</a>
+            <button class="btn btn-secondary" onclick="window.print()">🖨 Print</button>
+          </div>
+        </div>
+        <div class="detail-body" id="detail-body"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    const SITE = "https://saged.club";
+
+    // ── View switching ────────────────────────────
+    document.querySelectorAll('.nav-item[data-view]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        switchView(el.dataset.view);
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        el.classList.add('active');
+        closeSidebar();
+      });
+    });
+
+    function switchView(id) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + id)?.classList.add('active');
+      if (id === 'bookings') loadBookings();
+    }
+
+    // ── Mobile sidebar ────────────────────────────
+    const sidebar  = document.getElementById('sidebar');
+    const overlay  = document.getElementById('overlay');
+    document.getElementById('mob-toggle').addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+    });
+    overlay.addEventListener('click', closeSidebar);
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    // ── Load applications ─────────────────────────
+    async function loadApplications() {
+      const list  = document.getElementById('apps-list');
+      const count = document.getElementById('apps-count');
+      try {
+        const res  = await fetch('/api/get-applications');
+        const data = await res.json();
+        const apps = data.submissions || [];
+        count.textContent = apps.length;
+
+        if (!apps.length) {
+          list.innerHTML = `<div class="apps-empty">
+            <div class="apps-empty-icon">📬</div>
+            No applications yet.<br>Share <strong>saged.club/apply</strong> to get started.
+          </div>`;
+          return;
+        }
+
+        list.innerHTML = '';
+        apps.forEach(app => {
+          const card = document.createElement('div');
+          card.className = 'app-card';
+          const date = new Date(app.created).toLocaleDateString('en-GB', { day:'numeric', month:'short' });
+          const isNew = Date.now() - new Date(app.created) < 48 * 3600 * 1000;
+          card.innerHTML = `
+            <div class="app-card-name">${esc(app.name)}</div>
+            <div class="app-card-event">${esc(app.event)}</div>
+            <div class="app-card-meta">
+              <span class="app-card-date">${date}</span>
+              ${isNew ? '<span class="app-card-badge badge-new">New</span>' : ''}
+            </div>`;
+          card.addEventListener('click', () => showDetail(app));
+          list.appendChild(card);
+        });
+      } catch {
+        count.textContent = '—';
+        list.innerHTML = '<div class="apps-empty"><div class="apps-empty-icon">⚠️</div>Could not load.</div>';
+      }
+    }
+
+    // ── Show application detail ───────────────────
+    function showDetail(app) {
+      document.querySelectorAll('.app-card').forEach(c => c.classList.remove('selected'));
+      event?.currentTarget?.classList.add('selected');
+
+      document.getElementById('detail-name').textContent = app.name;
+      document.getElementById('detail-subtitle').textContent = app.event + (app.price ? ` · €${app.price}/person` : '');
+
+      const wa = app.whatsapp.replace(/[^+\d]/g, '');
+      document.getElementById('detail-whatsapp').href = `https://wa.me/${wa}`;
+      if (!wa) document.getElementById('detail-whatsapp').style.display = 'none';
+
+      const days  = [].concat(app.days).filter(Boolean).join(', ')   || '—';
+      const times = [].concat(app.times).filter(Boolean).join(', ')  || '—';
+      const langs = [].concat(app.languages).filter(Boolean).join(', ') || '—';
+
+      document.getElementById('detail-body').innerHTML = `
+        <div class="detail-section-title">Contact</div>
+        <div class="detail-grid">
+          <div class="detail-field"><div class="detail-field-label">WhatsApp</div><div class="detail-field-val">${esc(app.whatsapp) || '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">Telegram</div><div class="detail-field-val">${esc(app.telegram||'') || '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">Instagram</div><div class="detail-field-val">${esc(app.instagram) || '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">Languages</div><div class="detail-field-val">${esc(langs)}</div></div>
+          <div class="detail-field span2"><div class="detail-field-label">Bio</div><div class="detail-field-val">${esc(app.bio) || '—'}</div></div>
+        </div>
+
+        <div class="detail-section-title">Event</div>
+        <div class="detail-grid">
+          <div class="detail-field"><div class="detail-field-label">Duration</div><div class="detail-field-val">${esc(app.duration) || '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">Price / person</div><div class="detail-field-val">${app.price ? '€'+app.price : '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">Group size</div><div class="detail-field-val">${app.minPeople||'—'} – ${app.maxPeople||'—'} guests</div></div>
+          <div class="detail-field"><div class="detail-field-label">Preferred days</div><div class="detail-field-val">${esc(days)}</div></div>
+          <div class="detail-field span2"><div class="detail-field-label">Preferred times</div><div class="detail-field-val">${esc(times)}</div></div>
+          <div class="detail-field span2"><div class="detail-field-label">What's included</div><div class="detail-field-val">${esc(app.included) || '—'}</div></div>
+          <div class="detail-field span2"><div class="detail-field-label">Description</div><div class="detail-field-val" style="white-space:pre-wrap">${esc(app.description) || '—'}</div></div>
+        </div>
+
+        <div class="detail-section-title">Video & Notes</div>
+        <div class="detail-grid">
+          <div class="detail-field span2"><div class="detail-field-label">Video link</div><div class="detail-field-val">${app.videoLink ? `<a href="${esc(app.videoLink)}" target="_blank">${esc(app.videoLink)}</a>` : '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">Teaching experience</div><div class="detail-field-val">${esc(app.experience) || '—'}</div></div>
+          <div class="detail-field"><div class="detail-field-label">How they found us</div><div class="detail-field-val">${esc(app.howFound) || '—'}</div></div>
+          <div class="detail-field span2"><div class="detail-field-label">Questions / notes</div><div class="detail-field-val" style="white-space:pre-wrap">${esc(app.notes) || '—'}</div></div>
+        </div>`;
+
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view-detail').classList.add('active');
+      document.getElementById('main').scrollTo(0, 0);
+      closeSidebar();
+    }
+
+    document.getElementById('detail-back').addEventListener('click', () => {
+      switchView('status');
+    });
+
+    // ── Load bookings from NocoDB ─────────────────
+    async function loadBookings() {
+      const el = document.getElementById('bookings-content');
+      try {
+        const res  = await fetch('https://admin.saged.club/api/v1/db/data/noco/p2txdvaha72xsn4/mx3t47j4h19x0mg?sort=-CreatedAt&limit=50', {
+          headers: { 'xc-token': 'niIrlNav-3NkyiB82YDtPznbKLfhs0pptRIg4HKb' }
+        });
+        const data = await res.json();
+        const rows = data.list || [];
+        if (!rows.length) {
+          el.innerHTML = '<p style="color:var(--muted)">No bookings yet. First one will appear here after a payment.</p>';
+          return;
+        }
+        const statusColor = s => s === 'paid' ? 'var(--green)' : s === 'pending' ? 'var(--amber)' : 'var(--muted)';
+        el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.82rem">
+          <thead><tr style="text-align:left;color:var(--muted);border-bottom:1px solid var(--border)">
+            <th style="padding:.5rem .75rem">Date</th><th style="padding:.5rem .75rem">Time</th>
+            <th style="padding:.5rem .75rem">Guests</th><th style="padding:.5rem .75rem">Amount</th>
+            <th style="padding:.5rem .75rem">Status</th><th style="padding:.5rem .75rem">Name</th>
+          </tr></thead>
+          <tbody>${rows.map(r => `<tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:.5rem .75rem">${r.Date||'—'}</td>
+            <td style="padding:.5rem .75rem">${r.Time||'—'}</td>
+            <td style="padding:.5rem .75rem">${r.People||'—'}</td>
+            <td style="padding:.5rem .75rem">€${r.Amount||'—'}</td>
+            <td style="padding:.5rem .75rem;font-weight:600;color:${statusColor(r.Status)}">${r.Status||'—'}</td>
+            <td style="padding:.5rem .75rem">${r.Name||'—'}</td>
+          </tr>`).join('')}</tbody>
+        </table>`;
+      } catch {
+        el.innerHTML = '<p style="color:var(--muted)">Could not load bookings.</p>';
+      }
+    }
+
+    function esc(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    loadApplications();
+  </script>
+
+</body>
+</html>
