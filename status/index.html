@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Status · Tile Painting · Saged</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:         #0F0D0B;
+      --surface:    #1A1612;
+      --surface2:   #231E19;
+      --border:     #2E2720;
+      --ink:        #F5F0E8;
+      --muted:      #8A7D70;
+      --green:      #4CAF74;
+      --green-bg:   #0D2318;
+      --amber:      #E8A030;
+      --amber-bg:   #261A06;
+      --red:        #E05454;
+      --red-bg:     #200E0E;
+      --blue:       #5B9BD5;
+      --blue-bg:    #0A1828;
+      --terra:      #CF6B44;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 4rem;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    .header {
+      padding: 1.4rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .header-left { display: flex; flex-direction: column; gap: 0.15rem; }
+    .header-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .header-event {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .live-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid #1e4a30;
+      border-radius: 100px;
+      padding: 0.3rem 0.75rem;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* ── Progress bar ───────────────────────── */
+    .progress-wrap {
+      padding: 1.5rem 1.5rem 0;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .progress-label span:last-child { color: var(--green); font-weight: 600; }
+    .progress-bar {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), #3DD68C);
+      border-radius: 100px;
+      transition: width 0.6s ease;
+    }
+
+    /* ── Section ────────────────────────────── */
+    .section {
+      padding: 1.5rem 1.5rem 0;
+    }
+    .section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── Task card ──────────────────────────── */
+    .task {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+    .task.done   { border-color: #1e3826; background: #111A14; }
+    .task.action { border-color: #3A2A10; background: #1A1308; }
+    .task.fergie { border-color: #18253A; background: #0D1520; }
+    .task.blocked { border-color: #2E1818; background: #160D0D; }
+
+    .task-icon {
+      font-size: 1.1rem;
+      margin-top: 0.05rem;
+      flex-shrink: 0;
+      width: 24px;
+      text-align: center;
+    }
+
+    .task-body { flex: 1; min-width: 0; }
+    .task-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .task.done .task-name { color: #6A8C72; }
+    .task-detail {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .task-detail a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .task-detail a:hover { text-decoration: underline; }
+
+    .task-tag {
+      flex-shrink: 0;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      margin-top: 0.15rem;
+    }
+    .tag-done    { background: var(--green-bg);  color: var(--green);  border: 1px solid #1e4a30; }
+    .tag-you     { background: var(--amber-bg);  color: var(--amber);  border: 1px solid #3a2808; }
+    .tag-me      { background: var(--blue-bg);   color: var(--blue);   border: 1px solid #182840; }
+    .tag-blocked { background: var(--red-bg);    color: var(--red);    border: 1px solid #3a1818; }
+
+    /* ── CTA button inside task ─────────────── */
+    .task-cta {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: var(--amber);
+      color: #0F0D0B;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .task-cta:hover { opacity: 0.85; }
+    .task-cta.blue {
+      background: var(--blue);
+    }
+
+    /* ── Summary strip ──────────────────────── */
+    .summary {
+      margin: 1.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+    }
+    .summary-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-label { color: var(--muted); }
+    .summary-val   { font-weight: 600; }
+    .summary-val.green  { color: var(--green); }
+    .summary-val.amber  { color: var(--amber); }
+    .summary-val.red    { color: var(--red); }
+
+    /* ── Footer ─────────────────────────────── */
+    .footer {
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <div class="header-title">Launch Status</div>
+      <div class="header-event">🎨 Spanish Tile Painting</div>
+    </div>
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Page live
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Launch readiness</span>
+      <span id="pct">72%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 72%"></div>
+    </div>
+  </div>
+
+  <!-- ── DONE ──────────────────────────────── -->
+  <div class="section">
+    <div class="section-title">✅ Done</div>
+
+    <div class="task done">
+      <div class="task-icon">🌐</div>
+      <div class="task-body">
+        <div class="task-name">Landing page</div>
+        <div class="task-detail">
+          <a href="https://saged.club/tile-painting/" target="_blank">saged.club/tile-painting/</a> —
+          hero image, Airbnb-style booking, date chips, time cards, sticky total bar.
+        </div>
+      </div>
+      <div class="task-tag tag-done">Done</div>
+    </div>
+
+    <div class="task done">
+      <div class="task-icon">💳</div>
+      <div class="task-body">
+        <div class="task-name">Stripe payment links</div>
+        <div class="task-detail">10 locked links — €60 to €600. Each guest count has its own link so the total can't be changed by the customer.</div>
+      </div>
+      <div class="task-tag tag-done">Done</div>
+    </div>
+
+    <div class="task done">
+      <div class="task-icon">🗄️</div>
+      <div class="task-body">
+        <div class="task-name">Booking log (NocoDB)</div>
+        <div class="task-detail">
+          Table "Tile Painting Bookings" live at
+          <a href="https://admin.saged.club" target="_blank">admin.saged.club</a>.
+          Every booking creates a row (pending → paid after Stripe confirms).
+        </div>
+      </div>
+      <div class="task-tag tag-done">Done</div>
+    </div>
+
+    <div class="task done">
+      <div class="task-icon">⚡</div>
+      <div class="task-body">
+        <div class="task-name">Stripe webhook</div>
+        <div class="task-detail">Stripe fires to saged.club/api/tile-stripe-webhook on every payment. Booking row automatically flips to "paid" with customer name + email.</div>
+      </div>
+      <div class="task-tag tag-done">Done</div>
+    </div>
+
+    <div class="task done">
+      <div class="task-icon">📋</div>
+      <div class="task-body">
+        <div class="task-name">Event application form</div>
+        <div class="task-detail">
+          <a href="https://saged.club/apply/" target="_blank">saged.club/apply/</a> —
+          for future hosts to submit their event details, photos, and video links.
+        </div>
+      </div>
+      <div class="task-tag tag-done">Done</div>
+    </div>
+  </div>
+
+  <!-- ── YOU DO THIS ────────────────────────── -->
+  <div class="section">
+    <div class="section-title">⚡ You need to do — 2 things</div>
+
+    <div class="task action">
+      <div class="task-icon">💬</div>
+      <div class="task-body">
+        <div class="task-name">ManyChat API token</div>
+        <div class="task-detail">
+          The token you gave me is in the wrong format — ManyChat rejected it.<br>
+          <strong style="color:#E8A030">2 minutes:</strong> ManyChat → Settings → Integrations → API → Generate new token → paste it here and I'll wire up the booking confirmation DM.
+        </div>
+        <a class="task-cta" href="https://manychat.com/fb/account" target="_blank">Open ManyChat Settings →</a>
+      </div>
+      <div class="task-tag tag-you">You</div>
+    </div>
+
+    <div class="task action">
+      <div class="task-icon">🔑</div>
+      <div class="task-body">
+        <div class="task-name">Rotate Stripe secret key</div>
+        <div class="task-detail">
+          Your sk_live_… key was sent in chat — it's now in conversation history.
+          Best to rotate it and give me the new one so I can update the webhook creation script.
+          <br><strong style="color:#E8A030">5 minutes:</strong> Stripe → Developers → API keys → Roll key.
+        </div>
+        <a class="task-cta" href="https://dashboard.stripe.com/apikeys" target="_blank">Open Stripe Keys →</a>
+      </div>
+      <div class="task-tag tag-you">You</div>
+    </div>
+  </div>
+
+  <!-- ── I DO THIS ──────────────────────────── -->
+  <div class="section">
+    <div class="section-title">🤖 I do this — waiting on you first</div>
+
+    <div class="task fergie">
+      <div class="task-icon">📱</div>
+      <div class="task-body">
+        <div class="task-name">ManyChat confirmation DM</div>
+        <div class="task-detail">
+          Once you share a valid token I'll create the flow: customer pays → they get a WhatsApp/IG DM confirming date, time, what to bring.
+          <br>Write the message text too, unless you want me to draft it.
+        </div>
+      </div>
+      <div class="task-tag tag-me">Me</div>
+    </div>
+
+    <div class="task fergie">
+      <div class="task-icon">📢</div>
+      <div class="task-body">
+        <div class="task-name">Meta ads for tile painting</div>
+        <div class="task-detail">
+          Creative already exists in the project — video ad (30s EN) + photos from the tile class.
+          I'll build the campaign: RU ad set + UA ad set, correct Valencia geo, correct locales, paused.
+          <strong style="color:#5B9BD5">You activate when ready.</strong>
+          <br>Say "build the tile painting ads" and I'll start.
+        </div>
+      </div>
+      <div class="task-tag tag-me">Me</div>
+    </div>
+  </div>
+
+  <!-- ── BLOCKED ────────────────────────────── -->
+  <div class="section">
+    <div class="section-title">🔴 Blocked — waiting on Meta</div>
+
+    <div class="task blocked">
+      <div class="task-icon">⏳</div>
+      <div class="task-body">
+        <div class="task-name">4 ads pending Business Admin approval</div>
+        <div class="task-detail">
+          Ekaterina (EN + ES), Handpan image, Handpan video — all submitted, waiting on Meta's Business Admin review.
+          Nothing you or I can do to speed this up. Usually 1–3 business days.
+        </div>
+      </div>
+      <div class="task-tag tag-blocked">Meta</div>
+    </div>
+  </div>
+
+  <!-- ── LAUNCH SEQUENCE ───────────────────── -->
+  <div class="summary">
+    <div class="summary-title">Launch sequence</div>
+    <div class="summary-row">
+      <span class="summary-label">Page live</span>
+      <span class="summary-val green">✓ Now</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Payment works</span>
+      <span class="summary-val green">✓ Now</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Booking log</span>
+      <span class="summary-val green">✓ Now</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Confirmation DM</span>
+      <span class="summary-val amber">After ManyChat token</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Meta ads live</span>
+      <span class="summary-val amber">After you say go</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">Can you take bookings today?</span>
+      <span class="summary-val green">Yes</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    Updated 8 Nov 2026 · <a href="https://saged.club/tile-painting/" target="_blank" style="color: inherit;">saged.club/tile-painting</a>
+  </div>
+
+</body>
+</html>
