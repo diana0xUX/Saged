@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Провести мероприятие в Saged · Valencia</title>
+  <meta name="description" content="Хотите провести мастер-класс или встречу в Saged Club? Расскажите о себе и своём событии — мы возьмём на себя продвижение и организацию.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Costa';
+      src: url('../assets/fonts/costa-light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Saged Cyrillic';
+      src: url('../assets/fonts/saged-display-cyrillic-v1.399.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg:          #FAF7F2;
+      --bg-sand:     #F1E9DA;
+      --ink:         #2A2520;
+      --muted:       #6B5F54;
+      --terracotta:  #9F4D2D;
+      --sage:        #6E7F5A;
+      --line:        #E1D6C5;
+      --r:           12px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .site-header {
+      padding: 1.4rem clamp(1.25rem, 4vw, 3rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header a { text-decoration: none; }
+    .logo {
+      font-family: 'Saged Cyrillic', 'Costa', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Hero ───────────────────────────────────────── */
+    .hero {
+      padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Saged Cyrillic', 'Costa', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      margin: 0 0 1.2rem;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0;
+    }
+
+    /* ── Form layout ────────────────────────────────── */
+    .form-wrap {
+      max-width: 720px;
+      padding: 0 clamp(1.25rem, 4vw, 3rem) 6rem;
+    }
+
+    .section-block {
+      margin-bottom: 3.5rem;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.6rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .field {
+      margin-bottom: 1.5rem;
+    }
+    .field label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+    }
+    .field .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field input[type="number"],
+    .field input[type="url"],
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r);
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--terracotta);
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B5F54' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    /* Two-column grid for short fields */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 520px) {
+      .field-row { grid-template-columns: 1fr; }
+    }
+
+    /* Checkboxes */
+    .check-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+    .check-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .check-pill input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: var(--terracotta);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-pill label {
+      font-size: 0.88rem;
+      cursor: pointer;
+      color: var(--ink);
+      white-space: nowrap;
+      font-weight: 400;
+    }
+
+    /* File upload */
+    .file-upload-area {
+      border: 2px dashed var(--line);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      text-align: center;
+      background: var(--bg-sand);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      position: relative;
+    }
+    .file-upload-area:hover { border-color: var(--terracotta); }
+    .file-upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .file-upload-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+    .file-upload-label { font-weight: 500; font-size: 0.9rem; }
+    .file-upload-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    .file-name-list {
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--sage);
+      text-align: left;
+    }
+
+    /* Reel cards */
+    .reel-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 520px) { .reel-cards { grid-template-columns: 1fr; } }
+    .reel-card {
+      background: var(--bg-sand);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 1rem 1.1rem;
+    }
+    .reel-card-num {
+      font-family: 'Costa', serif;
+      font-size: 1.5rem;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .reel-card-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 0.25rem;
+    }
+    .reel-card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .info-box {
+      background: var(--bg-sand);
+      border-left: 3px solid var(--terracotta);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+    .info-box strong { color: var(--ink); }
+
+    /* Submit */
+    .submit-wrap {
+      padding-top: 1rem;
+    }
+    .btn-submit {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 0.95rem 2.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-submit:hover { background: #8a3e22; }
+    .btn-submit:active { transform: scale(0.98); }
+    .submit-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    /* Success state */
+    .success-screen {
+      display: none;
+      padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+      max-width: 560px;
+    }
+    .success-screen h2 {
+      font-family: 'Saged Cyrillic', 'Costa', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin: 0 0 1rem;
+    }
+    .success-screen p { color: var(--muted); margin: 0; }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 0 0 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo">Saged</a>
+  </header>
+
+  <!-- Success screen (shown after submit) -->
+  <div class="success-screen" id="success">
+    <div style="font-size:2.5rem;margin-bottom:1rem;">🎉</div>
+    <h2>Получили, спасибо!</h2>
+    <p>Мы свяжемся с вами в течение 2–3 дней — обсудим детали и согласуем даты. Проверьте WhatsApp или Telegram.</p>
+  </div>
+
+  <!-- Form -->
+  <div id="form-container">
+
+    <div class="hero">
+      <span class="hero-eyebrow">Провести событие в Saged</span>
+      <h1>Расскажите<br>о себе</h1>
+      <p class="hero-desc">Заполните анкету — мы возьмём на себя страницу, рекламу, оплату и монтаж Reels. Вам останется только вести мастер-класс.</p>
+    </div>
+
+    <div class="form-wrap">
+      <form
+        name="event-application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        enctype="multipart/form-data"
+        id="apply-form"
+      >
+        <input type="hidden" name="form-name" value="event-application">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <!-- ── 1. О вас ───────────────────────────── -->
+        <div class="section-block">
+          <div class="section-label">01 — О вас</div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Имя *</label>
+              <input type="text" id="name" name="name" required placeholder="Екатерина">
+            </div>
+            <div class="field">
+              <label for="instagram">Instagram</label>
+              <input type="text" id="instagram" name="instagram" placeholder="@username">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="whatsapp">WhatsApp *</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+34 600 000 000">
+            </div>
+            <div class="field">
+              <label for="telegram">Telegram</label>
+              <input type="text" id="telegram" name="telegram" placeholder="@username">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bio">Пара слов о себе *</label>
+            <div class="hint">Кто вы, откуда, чем занимаетесь. 2–3 предложения.</div>
+            <textarea id="bio" name="bio" required rows="4" placeholder="Я керамист из Киева, живу в Валенсии 3 года. Провожу мастер-классы по росписи плитки в технике azulejo…"></textarea>
+          </div>
+
+          <div class="field">
+            <label>На каких языках вы можете вести мастер-класс? *</label>
+            <div class="check-group">
+              <label class="check-pill"><input type="checkbox" name="languages" value="RU"> <span>Русский</span></label>
+              <label class="check-pill"><input type="checkbox" name="languages" value="UA"> <span>Украинский</span></label>
+              <label class="check-pill"><input type="checkbox" name="languages" value="EN"> <span>English</span></label>
+              <label class="check-pill"><input type="checkbox" name="languages" value="ES"> <span>Español</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 2. О мероприятии ──────────────────── -->
+        <div class="section-block">
+          <div class="section-label">02 — О мероприятии</div>
+
+          <div class="field">
+            <label for="event-name">Название мастер-класса *</label>
+            <div class="hint">Коротко и ёмко — будет на странице и в рекламе.</div>
+            <input type="text" id="event-name" name="event-name" required placeholder="Роспись испанской плитки">
+          </div>
+
+          <div class="field">
+            <label for="description">Что будут делать участники? *</label>
+            <div class="hint">Опишите процесс и результат. Что они унесут домой?</div>
+            <textarea id="description" name="description" required rows="5" placeholder="Участники распишут две настоящие плитки в технике azulejo: выберут узор, нанесут глазурь и узнают историю испанской керамики. Плитки забирают с собой."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="included">Что входит в стоимость?</label>
+            <div class="hint">Материалы, еда, напитки — перечислите через запятую.</div>
+            <input type="text" id="included" name="included" placeholder="Все материалы, глазурь, лёгкие закуски, напитки">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="duration">Продолжительность *</label>
+              <select id="duration" name="duration" required>
+                <option value="">Выберите…</option>
+                <option value="1 час">1 час</option>
+                <option value="1.5 часа">1,5 часа</option>
+                <option value="2 часа">2 часа</option>
+                <option value="2.5 часа">2,5 часа</option>
+                <option value="3 часа">3 часа</option>
+                <option value="Полдня">Полдня (4–5 ч)</option>
+                <option value="Другое">Другое</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="max-people">Максимум участников *</label>
+              <input type="number" id="max-people" name="max-people" required min="1" max="30" placeholder="10">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="price">Цена за человека, € *</label>
+              <input type="number" id="price" name="price" required min="1" placeholder="60">
+            </div>
+            <div class="field">
+              <label for="min-people">Минимум участников для запуска</label>
+              <input type="number" id="min-people" name="min-people" min="1" placeholder="4">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Предпочтительные дни *</label>
+            <div class="check-group">
+              <label class="check-pill"><input type="checkbox" name="days" value="Пн"> <span>Пн</span></label>
+              <label class="check-pill"><input type="checkbox" name="days" value="Вт"> <span>Вт</span></label>
+              <label class="check-pill"><input type="checkbox" name="days" value="Ср"> <span>Ср</span></label>
+              <label class="check-pill"><input type="checkbox" name="days" value="Чт"> <span>Чт</span></label>
+              <label class="check-pill"><input type="checkbox" name="days" value="Пт"> <span>Пт</span></label>
+              <label class="check-pill"><input type="checkbox" name="days" value="Сб"> <span>Сб</span></label>
+              <label class="check-pill"><input type="checkbox" name="days" value="Вс"> <span>Вс</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Предпочтительное время *</label>
+            <div class="check-group">
+              <label class="check-pill"><input type="checkbox" name="times" value="Утро 10:00–12:00"> <span>Утро 10:00–12:00</span></label>
+              <label class="check-pill"><input type="checkbox" name="times" value="День 14:00–16:00"> <span>День 14:00–16:00</span></label>
+              <label class="check-pill"><input type="checkbox" name="times" value="Вечер 18:00–20:00"> <span>Вечер 18:00–20:00</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="special-needs">Нужно ли специальное оборудование или подготовка помещения?</label>
+            <textarea id="special-needs" name="special-needs" rows="3" placeholder="Например: нужен обжиговый киль, большой стол, раковина рядом…"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="experience">Есть ли у вас опыт ведения мастер-классов?</label>
+            <select id="experience" name="experience">
+              <option value="">Выберите…</option>
+              <option value="Нет, первый раз">Нет, первый раз</option>
+              <option value="1–3 раза">Немного — 1–3 раза</option>
+              <option value="Регулярно провожу">Регулярно провожу</option>
+              <option value="Это моя основная работа">Это моя основная работа</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ── 3. Фотографии ─────────────────────── -->
+        <div class="section-block">
+          <div class="section-label">03 — Фотографии</div>
+
+          <div class="info-box">
+            <strong>Зачем это нужно.</strong> Портрет появится на странице мастер-класса рядом с вашим именем. Фото процесса — в рекламе и соцсетях. Лучший кадр: хорошее естественное освещение, вы за работой, видно руки и материалы.
+          </div>
+
+          <div class="field">
+            <label>Ваш портрет (1 фото) *</label>
+            <div class="hint">Вы в студии или за работой. Вертикальный кадр предпочтителен. JPG или PNG, до 10 МБ.</div>
+            <div class="file-upload-area" id="portrait-area">
+              <input type="file" name="portrait" accept="image/*" required id="portrait-input">
+              <div class="file-upload-icon">📷</div>
+              <div class="file-upload-label">Нажмите или перетащите фото</div>
+              <div class="file-upload-sub">JPG, PNG · до 10 МБ</div>
+              <div class="file-name-list" id="portrait-names"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Фото процесса (3–5 фото) *</label>
+            <div class="hint">Крупный план рук, готовые работы, материалы, пространство. Без фильтров — мы сами обработаем.</div>
+            <div class="file-upload-area" id="gallery-area">
+              <input type="file" name="photos" accept="image/*" multiple required id="gallery-input">
+              <div class="file-upload-icon">🖼️</div>
+              <div class="file-upload-label">Нажмите или перетащите фото</div>
+              <div class="file-upload-sub">JPG, PNG · до 10 МБ каждое · несколько файлов</div>
+              <div class="file-name-list" id="gallery-names"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 4. Видео для Reels ─────────────────── -->
+        <div class="section-block">
+          <div class="section-label">04 — Видео для Reels</div>
+
+          <div class="info-box">
+            <strong>Как это работает.</strong> Вы снимаете 3–4 коротких клипа — сырой материал, без монтажа. Мы добавим к ним съёмку студии, логотипы Saged, текст и голосовое сопровождение. Получится готовый Reel для вашей страницы и нашей.
+          </div>
+
+          <p style="font-weight:500;font-size:0.9rem;margin:0 0 1rem;">Что снять:</p>
+          <div class="reel-cards">
+            <div class="reel-card">
+              <div class="reel-card-num">01</div>
+              <div class="reel-card-title">Крупный план — руки</div>
+              <div class="reel-card-desc">Снимите свои руки за работой: наносите краску, лепите, шьёте — что делаете. 15–30 секунд.</div>
+            </div>
+            <div class="reel-card">
+              <div class="reel-card-num">02</div>
+              <div class="reel-card-title">Общий план — вы</div>
+              <div class="reel-card-desc">Вы за рабочим столом или в пространстве. Видно и вас, и то, что вы делаете. 15–30 секунд.</div>
+            </div>
+            <div class="reel-card">
+              <div class="reel-card-num">03</div>
+              <div class="reel-card-title">Результат работы</div>
+              <div class="reel-card-desc">Готовое изделие или ключевой момент процесса. Крупно, красиво, хороший свет. 10–20 секунд.</div>
+            </div>
+            <div class="reel-card">
+              <div class="reel-card-num">04</div>
+              <div class="reel-card-title">Вы в кадре (опционально)</div>
+              <div class="reel-card-desc">Смотрите в камеру, скажите одну фразу — о чём мастер-класс. 10–15 секунд.</div>
+            </div>
+          </div>
+
+          <div class="info-box" style="margin-bottom:1.5rem;">
+            📐 <strong>Технические требования:</strong> вертикальный формат 9:16 (держите телефон вертикально), разрешение минимум 1080p (стандартная камера телефона подойдёт), хорошее естественное освещение (встаньте у окна). <strong>Монтаж не нужен</strong> — загружайте как есть.
+          </div>
+
+          <div class="field">
+            <label for="video-link">Ссылка на видео *</label>
+            <div class="hint">
+              Загрузите клипы в <strong>Google Drive</strong>, <strong>Dropbox</strong> или <strong>WeTransfer</strong> и вставьте ссылку с открытым доступом.<br>
+              <span style="color:var(--terracotta)">Google Drive: папка → ПКМ → «Открыть доступ» → «Все, у кого есть ссылка» → скопировать ссылку.</span>
+            </div>
+            <input type="url" id="video-link" name="video-link" required placeholder="https://drive.google.com/drive/folders/…">
+          </div>
+        </div>
+
+        <!-- ── 5. Дополнительно ───────────────────── -->
+        <div class="section-block">
+          <div class="section-label">05 — Ещё немного</div>
+
+          <div class="field">
+            <label for="how-found">Как вы узнали о Saged?</label>
+            <select id="how-found" name="how-found">
+              <option value="">Выберите…</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Telegram">Telegram-канал</option>
+              <option value="От друзей">От друзей / знакомых</option>
+              <option value="Был участником">Сам(а) был(а) на мастер-классе</option>
+              <option value="Другое">Другое</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="notes">Вопросы или пожелания</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Есть ли у вас конкретные даты? Хотите провести разовое событие или серию? Любые детали, которые помогут нам лучше подготовиться."></textarea>
+          </div>
+        </div>
+
+        <!-- ── Submit ─────────────────────────────── -->
+        <hr class="divider">
+        <div class="submit-wrap">
+          <button type="submit" class="btn-submit">Отправить анкету →</button>
+          <p class="submit-note">Мы ответим в течение 2–3 рабочих дней. Никакого спама — только по делу.</p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Show selected file names
+    function attachFileLabel(inputId, namesId) {
+      const input = document.getElementById(inputId);
+      const names = document.getElementById(namesId);
+      if (!input || !names) return;
+      input.addEventListener('change', () => {
+        const files = Array.from(input.files);
+        names.textContent = files.map(f => f.name).join(', ');
+      });
+    }
+    attachFileLabel('portrait-input', 'portrait-names');
+    attachFileLabel('gallery-input',  'gallery-names');
+
+    // Show success screen on submit
+    document.getElementById('apply-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = this;
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch('/', { method: 'POST', body: data });
+        if (res.ok) {
+          document.getElementById('form-container').style.display = 'none';
+          document.getElementById('success').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          alert('Что-то пошло не так. Попробуйте ещё раз или напишите нам в WhatsApp.');
+        }
+      } catch {
+        alert('Нет соединения. Проверьте интернет и попробуйте снова.');
+      }
+    });
+  </script>
+
+</body>
+</html>
