@@ -9,21 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:         #0F0D0B;
-      --surface:    #1A1612;
-      --surface2:   #231E19;
-      --border:     #2E2720;
-      --ink:        #F5F0E8;
-      --muted:      #8A7D70;
-      --green:      #4CAF74;
-      --green-bg:   #0D2318;
-      --amber:      #E8A030;
-      --amber-bg:   #261A06;
-      --red:        #E05454;
-      --red-bg:     #200E0E;
-      --blue:       #5B9BD5;
-      --blue-bg:    #0A1828;
-      --terra:      #CF6B44;
+      --bg:         #FAF7F2;
+      --surface:    #FFFFFF;
+      --surface2:   #F1E9DA;
+      --border:     #E1D6C5;
+      --ink:        #2A2520;
+      --muted:      #6B5F54;
+      --green:      #2D7A4F;
+      --green-bg:   #EAF5EF;
+      --amber:      #9A6010;
+      --amber-bg:   #FEF3DC;
+      --red:        #B83030;
+      --red-bg:     #FDEAEA;
+      --blue:       #2362A8;
+      --blue-bg:    #EAF1FB;
+      --terra:      #9F4D2D;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,7 +65,7 @@
       font-weight: 600;
       background: var(--green-bg);
       color: var(--green);
-      border: 1px solid #1e4a30;
+      border: 1px solid #A8D8BC;
       border-radius: 100px;
       padding: 0.3rem 0.75rem;
       white-space: nowrap;
@@ -133,10 +133,10 @@
       gap: 0.85rem;
       align-items: flex-start;
     }
-    .task.done   { border-color: #1e3826; background: #111A14; }
-    .task.action { border-color: #3A2A10; background: #1A1308; }
-    .task.fergie { border-color: #18253A; background: #0D1520; }
-    .task.blocked { border-color: #2E1818; background: #160D0D; }
+    .task.done   { border-color: #C2DFCE; background: #F2FAF5; }
+    .task.action { border-color: #F0D89A; background: #FFFBF0; }
+    .task.fergie { border-color: #BACED8; background: #F2F7FC; }
+    .task.blocked { border-color: #F0BEBE; background: #FDF5F5; }
 
     .task-icon {
       font-size: 1.1rem;
@@ -153,7 +153,7 @@
       color: var(--ink);
       margin-bottom: 0.2rem;
     }
-    .task.done .task-name { color: #6A8C72; }
+    .task.done .task-name { color: #3A7A54; }
     .task-detail {
       font-size: 0.8rem;
       color: var(--muted);
@@ -175,17 +175,17 @@
       padding: 0.2rem 0.5rem;
       margin-top: 0.15rem;
     }
-    .tag-done    { background: var(--green-bg);  color: var(--green);  border: 1px solid #1e4a30; }
-    .tag-you     { background: var(--amber-bg);  color: var(--amber);  border: 1px solid #3a2808; }
-    .tag-me      { background: var(--blue-bg);   color: var(--blue);   border: 1px solid #182840; }
-    .tag-blocked { background: var(--red-bg);    color: var(--red);    border: 1px solid #3a1818; }
+    .tag-done    { background: var(--green-bg);  color: var(--green);  border: 1px solid #A8D8BC; }
+    .tag-you     { background: var(--amber-bg);  color: var(--amber);  border: 1px solid #EAC878; }
+    .tag-me      { background: var(--blue-bg);   color: var(--blue);   border: 1px solid #A8C8E8; }
+    .tag-blocked { background: var(--red-bg);    color: var(--red);    border: 1px solid #EAA8A8; }
 
     /* ── CTA button inside task ─────────────── */
     .task-cta {
       display: inline-block;
       margin-top: 0.6rem;
       background: var(--amber);
-      color: #0F0D0B;
+      color: #fff;
       font-size: 0.78rem;
       font-weight: 700;
       border-radius: 100px;
@@ -332,7 +332,7 @@
         <div class="task-name">ManyChat API token</div>
         <div class="task-detail">
           The token you gave me is in the wrong format — ManyChat rejected it.<br>
-          <strong style="color:#E8A030">2 minutes:</strong> ManyChat → Settings → Integrations → API → Generate new token → paste it here and I'll wire up the booking confirmation DM.
+          <strong style="color:#9A6010">2 minutes:</strong> ManyChat → Settings → Integrations → API → Generate new token → paste it here and I'll wire up the booking confirmation DM.
         </div>
         <a class="task-cta" href="https://manychat.com/fb/account" target="_blank">Open ManyChat Settings →</a>
       </div>
@@ -346,7 +346,7 @@
         <div class="task-detail">
           Your sk_live_… key was sent in chat — it's now in conversation history.
           Best to rotate it and give me the new one so I can update the webhook creation script.
-          <br><strong style="color:#E8A030">5 minutes:</strong> Stripe → Developers → API keys → Roll key.
+          <br><strong style="color:#9A6010">5 minutes:</strong> Stripe → Developers → API keys → Roll key.
         </div>
         <a class="task-cta" href="https://dashboard.stripe.com/apikeys" target="_blank">Open Stripe Keys →</a>
       </div>
@@ -377,7 +377,7 @@
         <div class="task-detail">
           Creative already exists in the project — video ad (30s EN) + photos from the tile class.
           I'll build the campaign: RU ad set + UA ad set, correct Valencia geo, correct locales, paused.
-          <strong style="color:#5B9BD5">You activate when ready.</strong>
+          <strong style="color:#2362A8">You activate when ready.</strong>
           <br>Say "build the tile painting ads" and I'll start.
         </div>
       </div>
