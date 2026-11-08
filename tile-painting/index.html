@@ -905,6 +905,29 @@
       btn.href = STRIPE_LINKS[people];
     }
 
+    document.getElementById('book-btn').addEventListener('click', async function(e) {
+      e.preventDefault();
+      const href = this.href;
+      if (!href || href === '#' || href === location.href + '#') return;
+
+      const total   = people * PRICE_PER_PERSON;
+      const dateISO = selectedDate ? selectedDate.toISOString().split('T')[0] : '';
+
+      // Log pending booking (best effort — payment proceeds even if this fails)
+      try {
+        await fetch('/api/tile-booking-init', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ date: dateISO, time: selectedTime, people, amount: total }),
+        });
+      } catch (_) {}
+
+      // Anchor-click pattern preserves iOS deep-link behaviour
+      const a = document.createElement('a');
+      a.href = href; a.target = '_blank'; a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+
     buildDateChips();
   </script>
 
