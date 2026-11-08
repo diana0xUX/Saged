@@ -205,59 +205,91 @@
     .included-grid .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05em; }
 
     /* ── Booking section ── */
-    #booking { background: var(--bg-sand); }
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      margin: 0.75rem 0 1.5rem;
+    #booking {
+      background: var(--bg-sand);
+      padding: 0;
     }
 
-    .price {
+    .bk-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 7rem;
+    }
+
+    .bk-eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .bk-title {
       font-family: 'Costa', Georgia, serif;
-      font-size: 2.4rem;
+      font-size: clamp(2.4rem, 9vw, 3.4rem);
       font-weight: 300;
+      line-height: 1.05;
+      margin: 0 0 0.9rem;
       color: var(--ink);
     }
 
-    .price-currency {
+    .bk-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .bk-price {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
       font-family: 'Inter', sans-serif;
-      font-size: 1.3rem;
+    }
+
+    .bk-price-label {
+      font-size: 1rem;
+      color: var(--ink);
       font-weight: 400;
-      vertical-align: super;
-      margin-right: 0.05em;
+    }
+
+    .bk-incl {
+      font-size: 0.88rem;
       color: var(--muted);
+      margin: 0;
     }
 
-    .price-label { font-size: 0.9rem; color: var(--muted); }
-
-    /* People picker */
-    .people-picker {
-      margin-bottom: 1.75rem;
+    .bk-divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 1.25rem 0;
     }
 
-    .people-picker label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-    }
-
-    .people-row {
+    /* Guests row */
+    .bk-guests {
       display: flex;
       align-items: center;
-      gap: 0;
-      border: 2px solid var(--line);
-      border-radius: 100px;
-      overflow: hidden;
-      width: fit-content;
+      justify-content: space-between;
     }
 
-    .people-btn {
+    .bk-guests-label {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .bk-stepper {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--line);
+      border-radius: 100px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .bk-stepper button {
       background: none;
       border: none;
       width: 44px;
@@ -265,237 +297,229 @@
       font-size: 1.3rem;
       cursor: pointer;
       color: var(--ink);
-      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.1s;
     }
 
-    .people-btn:hover { color: var(--orange); }
+    .bk-stepper button:hover { background: rgba(0,0,0,0.05); }
 
-    #people-count {
-      min-width: 48px;
+    .bk-stepper-count {
+      min-width: 36px;
       text-align: center;
       font-weight: 600;
       font-size: 1rem;
-      border: none;
-      background: none;
-      pointer-events: none;
     }
 
-    .people-total {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .group-note {
-      display: none;
-      background: #fff3e0;
-      border: 1.5px solid var(--orange);
-      border-radius: 8px;
-      padding: 0.6rem 0.9rem;
-      font-size: 0.85rem;
-      color: #7a4a00;
-      margin-top: 0.75rem;
-    }
-
-    /* Show dates button */
-    .show-dates-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--orange);
-      color: #fff;
-      border: none;
-      border-radius: 100px;
-      padding: 0.85rem 1.75rem;
+    /* Choose a date */
+    .bk-section-title {
       font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s, transform 0.1s;
-      margin-bottom: 1rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      margin: 0 0 0.75rem;
     }
 
-    .show-dates-btn:hover { background: var(--orange-dk); }
-    .show-dates-btn:active { transform: scale(0.97); }
-
-    /* Modal overlay */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(0,0,0,0.45);
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .modal-overlay.open { display: flex; }
-
-    @media (min-width: 520px) {
-      .modal-overlay { align-items: center; }
-    }
-
-    .modal {
-      background: #fff;
-      border-radius: 20px 20px 0 0;
-      width: 100%;
-      max-width: 520px;
-      max-height: 90svh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    @media (min-width: 520px) {
-      .modal { border-radius: 20px; }
-    }
-
-    .modal-header {
+    .bk-month-nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 1.25rem 0;
-      flex-shrink: 0;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
     }
 
-    .modal-title {
-      font-family: 'Costa', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 300;
-    }
-
-    .modal-close {
+    .bk-month-nav button {
       background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      color: var(--muted);
-      padding: 0.25rem;
-      line-height: 1;
-    }
-
-    .modal-close:hover { color: var(--ink); }
-
-    /* People row inside modal */
-    .modal-people {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--line);
-      flex-shrink: 0;
-    }
-
-    .modal-people-label { font-weight: 600; }
-    .modal-people-sub { font-size: 0.85rem; color: var(--muted); }
-
-    .modal-people-ctrl {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .modal-people-ctrl button {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
       border: 1.5px solid var(--line);
-      background: none;
-      font-size: 1.1rem;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
       cursor: pointer;
+      color: var(--ink);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--ink);
+      flex-shrink: 0;
       transition: border-color 0.1s;
     }
 
-    .modal-people-ctrl button:hover { border-color: var(--ink); }
-    .modal-people-ctrl span { font-weight: 600; min-width: 24px; text-align: center; }
+    .bk-month-nav button:hover:not(:disabled) { border-color: var(--ink); }
+    .bk-month-nav button:disabled { opacity: 0.25; cursor: default; }
 
-    /* Scrollable date list */
-    .modal-body {
-      overflow-y: auto;
-      flex: 1;
-      padding: 0 1.25rem 1.5rem;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .modal-month {
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 1.1rem 0 0.6rem;
-      position: sticky;
-      top: 0;
-      background: #fff;
-      z-index: 1;
-    }
-
-    .modal-day-group { margin-bottom: 0.25rem; }
-
-    .modal-day-heading {
+    .bk-month-label {
       font-weight: 600;
       font-size: 0.95rem;
-      color: var(--ink);
-      padding: 0.75rem 0 0.4rem;
+      flex: 1;
+      text-align: center;
     }
 
-    .modal-slot {
+    .bk-date-chips {
       display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+
+    .bk-date-chips::-webkit-scrollbar { display: none; }
+
+    .bk-date-chip {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.25rem;
       border: 1.5px solid var(--line);
       border-radius: 12px;
-      padding: 0.9rem 1rem;
-      margin-bottom: 0.5rem;
+      padding: 0.7rem 0.6rem 0.65rem;
+      min-width: 62px;
       cursor: pointer;
       background: #fff;
-      width: 100%;
-      text-align: left;
       font-family: inherit;
+      flex-shrink: 0;
+      transition: border-color 0.12s, background 0.12s, color 0.12s;
+    }
+
+    .bk-date-chip:hover { border-color: var(--orange); }
+
+    .bk-date-chip.selected {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .bk-chip-day {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .bk-date-chip.selected .bk-chip-day { color: rgba(255,255,255,0.75); }
+
+    .bk-chip-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .bk-date-chip.selected .bk-chip-num { color: #fff; }
+
+    /* Time cards */
+    .bk-time-section { margin-top: 1.5rem; }
+    .bk-section-sub { font-size: 0.82rem; color: var(--muted); margin: -0.5rem 0 0.85rem; }
+
+    .bk-time-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .bk-time-card {
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1rem 0.85rem;
+      cursor: pointer;
+      background: #fff;
+      position: relative;
       transition: border-color 0.12s, background 0.12s;
     }
 
-    .modal-slot:hover { border-color: var(--orange); }
+    .bk-time-card:hover { border-color: var(--orange); }
 
-    .modal-slot.selected {
+    .bk-time-card.selected {
       border-color: var(--orange);
       background: #fff8f4;
     }
 
-    .modal-slot-time { font-weight: 600; font-size: 1rem; display: block; }
-    .modal-slot-dur { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 0.1rem; }
-    .modal-slot-price { font-weight: 700; font-size: 1rem; color: var(--ink); flex-shrink: 0; }
-
-    .modal-footer {
-      padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom));
-      border-top: 1px solid var(--line);
-      flex-shrink: 0;
+    .bk-time-main {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      color: var(--ink);
     }
 
-    /* Confirm row */
-    .confirm-row {
+    .bk-time-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .bk-check {
       display: none;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
+      position: absolute;
+      top: 0.75rem;
+      right: 0.8rem;
+      color: var(--orange);
+      font-size: 1rem;
+      font-weight: 700;
     }
 
-    .confirm-row.visible { display: flex; }
+    .bk-time-card.selected .bk-check { display: block; }
 
-    .confirm-summary {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      font-size: 0.95rem;
-      border: 1.5px solid var(--orange);
+    /* Sticky summary bar */
+    .bk-sticky {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg-sand);
+      border-top: 1px solid var(--line);
+      padding: 0.85rem 1.5rem calc(0.85rem + env(safe-area-inset-bottom));
+      display: none;
     }
 
-    .confirm-summary strong { display: block; font-size: 1.05rem; margin-bottom: 0.2rem; }
-    .confirm-summary .conf-price { font-weight: 600; color: var(--orange); }
+    .bk-sticky.visible { display: block; }
+
+    .bk-sticky-summary {
+      margin-bottom: 0.6rem;
+    }
+
+    .bk-sticky-date {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    .bk-sticky-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .bk-sticky-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .bk-sticky-total-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.1rem;
+    }
+
+    .bk-sticky-total {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+    }
+
+    #book-btn {
+      flex: 1;
+      text-align: center;
+    }
+
+    .bk-secure {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin: 0.55rem 0 0;
+    }
 
 
     /* Policies */
@@ -566,23 +590,12 @@
 
     footer a { color: var(--muted); }
 
-    /* Sticky CTA */
-    .sticky-cta {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 0.75rem 1.25rem calc(0.75rem + env(safe-area-inset-bottom));
-      background: rgba(250,247,242,0.96);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid var(--line);
-    }
-
     @media (min-width: 601px) {
-      .sticky-cta { display: none; }
+      .bk-sticky { max-width: 520px; left: 50%; transform: translateX(-50%); border-radius: 20px 20px 0 0; }
     }
 
     @media (max-width: 600px) {
-      body { padding-bottom: 5rem; }
+      body { padding-bottom: 0; }
       .hero-desc { display: none; }
       .hero h1 { font-size: 1.75rem; }
     }
@@ -644,37 +657,57 @@
 
   <!-- Booking -->
   <section id="booking">
-    <div class="container">
-      <h2>Book your workshop</h2>
+    <div class="bk-wrap">
 
-      <div class="price-row">
-        <span class="price"><span class="price-currency">€</span>60</span>
-        <span class="price-label">per person · payment secures your spot</span>
+      <span class="bk-eyebrow">Spanish Tile Painting</span>
+      <h2 class="bk-title">Book your workshop</h2>
+      <div class="bk-price-row">
+        <span class="bk-price">€60</span>
+        <span class="bk-price-label">per person</span>
+      </div>
+      <p class="bk-incl">Materials, drinks &amp; light bites included</p>
+
+      <hr class="bk-divider">
+
+      <!-- Guests -->
+      <div class="bk-guests">
+        <span class="bk-guests-label">Guests</span>
+        <div class="bk-stepper">
+          <button id="people-minus" aria-label="Remove person">−</button>
+          <span class="bk-stepper-count" id="people-count">1</span>
+          <button id="people-plus" aria-label="Add person">+</button>
+        </div>
       </div>
 
-      <!-- People picker -->
-      <div class="people-picker">
-        <label>How many people?</label>
-        <div class="people-row">
-          <button class="people-btn" id="people-minus" aria-label="Remove person">−</button>
-          <span id="people-count">1</span>
-          <button class="people-btn" id="people-plus" aria-label="Add person">+</button>
+      <hr class="bk-divider">
+
+      <!-- Date picker -->
+      <div>
+        <h3 class="bk-section-title">Choose a date</h3>
+        <div class="bk-month-nav">
+          <button id="month-prev" aria-label="Previous month">‹</button>
+          <span class="bk-month-label" id="month-label"></span>
+          <button id="month-next" aria-label="Next month">›</button>
         </div>
-        <p class="people-total" id="people-total">Total: €60</p>
-        <div class="group-note" id="group-note">
-          Booking for a group? Choose your slot and pay online — Stripe will charge the full group total automatically.
-        </div>
+        <div class="bk-date-chips" id="date-chips"></div>
       </div>
 
-      <!-- Show dates button -->
-      <button class="show-dates-btn" id="show-dates-btn">
-        📅 Show dates
-      </button>
-
-      <!-- Confirm row -->
-      <div class="confirm-row" id="confirm-row">
-        <div class="confirm-summary" id="confirm-summary"></div>
-        <a id="book-btn" href="#" class="btn btn-primary btn-full" target="_blank" rel="noopener">Book now · Pay €60</a>
+      <!-- Time picker (shown after date selected) -->
+      <div class="bk-time-section" id="time-section" style="display:none">
+        <h3 class="bk-section-title">Choose a time</h3>
+        <p class="bk-section-sub">Valencia local time</p>
+        <div class="bk-time-grid">
+          <div class="bk-time-card" data-time="10:00">
+            <div class="bk-time-main">10:00–12:00</div>
+            <div class="bk-time-label">Morning</div>
+            <span class="bk-check">✓</span>
+          </div>
+          <div class="bk-time-card" data-time="14:00">
+            <div class="bk-time-main">14:00–16:00</div>
+            <div class="bk-time-label">Afternoon</div>
+            <span class="bk-check">✓</span>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -724,83 +757,37 @@
     <p>© 2026 Saged Club · <a href="/">saged.club</a></p>
   </footer>
 
-  <!-- Date picker modal -->
-  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Select a date and time">
-    <div class="modal">
-      <div class="modal-header">
-        <span class="modal-title">Select a time</span>
-        <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
-      </div>
-
-      <div class="modal-people">
-        <div>
-          <div class="modal-people-label" id="modal-people-label">1 person</div>
-          <div class="modal-people-sub">€60 per person</div>
-        </div>
-        <div class="modal-people-ctrl">
-          <button id="modal-minus" aria-label="Remove person">−</button>
-          <span id="modal-count">1</span>
-          <button id="modal-plus" aria-label="Add person">+</button>
-        </div>
-      </div>
-
-      <div class="modal-body" id="modal-body">
-        <!-- Populated by JS -->
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-primary btn-full" id="modal-confirm" disabled style="opacity:0.4;">
-          Choose a slot above
-        </button>
-      </div>
+  <!-- Sticky summary bar -->
+  <div class="bk-sticky" id="bk-sticky">
+    <div class="bk-sticky-summary">
+      <div class="bk-sticky-date" id="bk-sticky-date"></div>
+      <div class="bk-sticky-sub" id="bk-sticky-sub"></div>
     </div>
-  </div>
-
-  <!-- Sticky CTA -->
-  <div class="sticky-cta">
-    <a href="#booking" class="btn btn-primary btn-full">Book your spot ↓</a>
+    <hr class="bk-divider" style="margin:0.6rem 0">
+    <div class="bk-sticky-row">
+      <div>
+        <div class="bk-sticky-total-label">Total</div>
+        <div class="bk-sticky-total" id="bk-sticky-total">€60</div>
+      </div>
+      <a id="book-btn" href="#" class="btn btn-primary" target="_blank" rel="noopener" style="flex:1;text-align:center;">
+        Continue to payment
+      </a>
+    </div>
+    <p class="bk-secure">🔒 Secure payment via Stripe</p>
   </div>
 
   <script>
-    // ── Config ────────────────────────────────────────────────────
     const PRICE_PER_PERSON = 60;
     const MAX_PEOPLE = 10;
     const STRIPE_LINK = 'https://buy.stripe.com/5kQ7sN5RYakeaei1LMffy0t';
-    const WA_NUMBER = '34605543300';
-    const VALID_DAYS = [1, 2, 3, 5]; // Mon Tue Wed Fri
-    const TIMES = ['10:00', '14:00'];
+    const VALID_DAYS = [1, 2, 3, 5];
     const WEEKS_AHEAD = 4;
 
-    // ── State ─────────────────────────────────────────────────────
     let people = 1;
     let selectedDate = null;
     let selectedTime = null;
 
-    // ── People picker ─────────────────────────────────────────────
-    const countEl    = document.getElementById('people-count');
-    const totalEl    = document.getElementById('people-total');
-    const groupNote  = document.getElementById('group-note');
-
-    function getTotal() {
-      return people * PRICE_PER_PERSON;
-    }
-
-    function updatePeople() {
-      countEl.textContent = people;
-      totalEl.textContent = `Total: €${getTotal()}`;
-      groupNote.style.display = people > 1 ? 'block' : 'none';
-      updateConfirm();
-    }
-
-    document.getElementById('people-minus').addEventListener('click', () => {
-      if (people > 1) { people--; updatePeople(); }
-    });
-
-    document.getElementById('people-plus').addEventListener('click', () => {
-      if (people < MAX_PEOPLE) { people++; updatePeople(); }
-    });
-
-    // ── Generate upcoming dates ───────────────────────────────────
+    // ── Dates ─────────────────────────────────────────────────────
     function getUpcomingDates() {
       const dates = [];
       const now = new Date();
@@ -812,168 +799,102 @@
       return dates;
     }
 
-    function formatDate(date) {
-      return date.toLocaleDateString('en-GB', {
-        weekday: 'long', day: 'numeric', month: 'long',
-        timeZone: 'Europe/Madrid'
-      });
+    const allDates = getUpcomingDates();
+    const monthGroups = {};
+    allDates.forEach(date => {
+      const key = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'Europe/Madrid' });
+      if (!monthGroups[key]) monthGroups[key] = [];
+      monthGroups[key].push(date);
+    });
+    const monthKeys = Object.keys(monthGroups);
+    let currentMonthIdx = 0;
+
+    // ── People ────────────────────────────────────────────────────
+    document.getElementById('people-minus').addEventListener('click', () => {
+      if (people > 1) { people--; updateCountEl(); updateSticky(); }
+    });
+    document.getElementById('people-plus').addEventListener('click', () => {
+      if (people < MAX_PEOPLE) { people++; updateCountEl(); updateSticky(); }
+    });
+    function updateCountEl() {
+      document.getElementById('people-count').textContent = people;
     }
 
-    function relativeDay(date) {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const d = new Date(date);
-      d.setHours(0, 0, 0, 0);
-      const diff = Math.round((d - today) / 86400000);
-      if (diff === 0) return 'Today';
-      if (diff === 1) return 'Tomorrow';
-      return date.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'Europe/Madrid' });
-    }
+    // ── Date chips ────────────────────────────────────────────────
+    function buildDateChips() {
+      const container = document.getElementById('date-chips');
+      container.innerHTML = '';
 
-    // ── Modal ─────────────────────────────────────────────────────
-    function buildModal() {
-      const body = document.getElementById('modal-body');
-      body.innerHTML = '';
-      const months = {};
-      getUpcomingDates().forEach(date => {
-        const mon = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'Europe/Madrid' });
-        if (!months[mon]) months[mon] = [];
-        months[mon].push(date);
-      });
-      Object.entries(months).forEach(([mon, days]) => {
-        const monthEl = document.createElement('div');
-        monthEl.className = 'modal-month';
-        monthEl.textContent = mon;
-        body.appendChild(monthEl);
-        days.forEach(date => {
-          const dayGroup = document.createElement('div');
-          dayGroup.className = 'modal-day-group';
-          const relDay = relativeDay(date);
-          const dayNum = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Europe/Madrid' });
-          dayGroup.innerHTML = `<div class="modal-day-heading">${relDay}, ${dayNum}</div>`;
-          TIMES.forEach(time => {
-            const slot = document.createElement('div');
-            slot.className = 'modal-slot';
-            slot.innerHTML = `
-              <div class="modal-slot-time">${time} Valencia time</div>
-              <div class="modal-slot-price">€${people * PRICE_PER_PERSON}</div>
-            `;
-            slot.addEventListener('click', () => {
-              document.querySelectorAll('.modal-slot').forEach(s => s.classList.remove('selected'));
-              slot.classList.add('selected');
-              selectedDate = date;
-              selectedTime = time;
-              updateModalConfirm();
-            });
-            dayGroup.appendChild(slot);
-          });
-          body.appendChild(dayGroup);
+      document.getElementById('month-label').textContent = monthKeys[currentMonthIdx];
+      document.getElementById('month-prev').disabled = currentMonthIdx === 0;
+      document.getElementById('month-next').disabled = currentMonthIdx === monthKeys.length - 1;
+
+      monthGroups[monthKeys[currentMonthIdx]].forEach(date => {
+        const chip = document.createElement('button');
+        chip.className = 'bk-date-chip';
+        if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
+          chip.classList.add('selected');
+        }
+        const dayName = date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'Europe/Madrid' });
+        const dayNum  = date.toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'Europe/Madrid' });
+        chip.innerHTML = `<span class="bk-chip-day">${dayName}</span><span class="bk-chip-num">${dayNum}</span>`;
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.bk-date-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          selectedDate = date;
+          selectedTime = null;
+          document.querySelectorAll('.bk-time-card').forEach(c => c.classList.remove('selected'));
+          document.getElementById('time-section').style.display = 'block';
+          document.getElementById('time-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          updateSticky();
         });
+        container.appendChild(chip);
       });
     }
 
-    function updateModalConfirm() {
-      const btn = document.getElementById('modal-confirm');
+    document.getElementById('month-prev').addEventListener('click', () => {
+      if (currentMonthIdx > 0) { currentMonthIdx--; buildDateChips(); }
+    });
+    document.getElementById('month-next').addEventListener('click', () => {
+      if (currentMonthIdx < monthKeys.length - 1) { currentMonthIdx++; buildDateChips(); }
+    });
+
+    // ── Time cards ────────────────────────────────────────────────
+    document.querySelectorAll('.bk-time-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.bk-time-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedTime = card.dataset.time;
+        updateSticky();
+      });
+    });
+
+    // ── Sticky summary ────────────────────────────────────────────
+    function updateSticky() {
+      const sticky = document.getElementById('bk-sticky');
       if (!selectedDate || !selectedTime) {
-        btn.disabled = true;
-        btn.style.opacity = '0.4';
-        btn.textContent = 'Choose a slot above';
+        sticky.classList.remove('visible');
         return;
       }
-      btn.disabled = false;
-      btn.style.opacity = '1';
+      sticky.classList.add('visible');
+
       const total = people * PRICE_PER_PERSON;
-      btn.textContent = people > 1
-        ? `Book for ${people} people · €${total}`
-        : `Book now · €${total}`;
+      const endTime = selectedTime === '10:00' ? '12:00' : '16:00';
+      const dateStr = selectedDate.toLocaleDateString('en-GB', {
+        weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/Madrid'
+      });
+
+      document.getElementById('bk-sticky-date').textContent =
+        `${dateStr} · ${selectedTime}–${endTime}`;
+      document.getElementById('bk-sticky-sub').textContent =
+        `${people} guest${people > 1 ? 's' : ''} · 2 hours`;
+      document.getElementById('bk-sticky-total').textContent = `€${total}`;
+
+      const btn = document.getElementById('book-btn');
+      btn.href = `${STRIPE_LINK}?prefilled_quantity=${people}`;
     }
 
-    function openModal() {
-      buildModal();
-      updateModalConfirm();
-      document.getElementById('modal-count').textContent = people;
-      document.getElementById('modal-people-label').textContent =
-        people === 1 ? '1 person' : `${people} people`;
-      document.getElementById('modal-overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('modal-overlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('show-dates-btn').addEventListener('click', openModal);
-    document.getElementById('modal-close').addEventListener('click', closeModal);
-    document.getElementById('modal-overlay').addEventListener('click', e => {
-      if (e.target === e.currentTarget) closeModal();
-    });
-
-    document.getElementById('modal-minus').addEventListener('click', () => {
-      if (people > 1) {
-        people--;
-        updatePeople();
-        document.getElementById('modal-count').textContent = people;
-        document.getElementById('modal-people-label').textContent =
-          people === 1 ? '1 person' : `${people} people`;
-        document.querySelectorAll('.modal-slot-price').forEach(el => {
-          el.textContent = `€${people * PRICE_PER_PERSON}`;
-        });
-        updateModalConfirm();
-      }
-    });
-
-    document.getElementById('modal-plus').addEventListener('click', () => {
-      if (people < MAX_PEOPLE) {
-        people++;
-        updatePeople();
-        document.getElementById('modal-count').textContent = people;
-        document.getElementById('modal-people-label').textContent =
-          people === 1 ? '1 person' : `${people} people`;
-        document.querySelectorAll('.modal-slot-price').forEach(el => {
-          el.textContent = `€${people * PRICE_PER_PERSON}`;
-        });
-        updateModalConfirm();
-      }
-    });
-
-    document.getElementById('modal-confirm').addEventListener('click', () => {
-      closeModal();
-      updateConfirm();
-      setTimeout(() => {
-        document.getElementById('confirm-row').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 300);
-    });
-
-    // ── Confirm & book ────────────────────────────────────────────
-    function updateConfirm() {
-      const row = document.getElementById('confirm-row');
-      const summary = document.getElementById('confirm-summary');
-      const bookBtn = document.getElementById('book-btn');
-
-      if (!selectedDate || !selectedTime) {
-        row.classList.remove('visible');
-        return;
-      }
-
-      row.classList.add('visible');
-
-      const total = getTotal();
-      const dateStr = formatDate(selectedDate);
-
-      summary.innerHTML = `
-        <strong>${dateStr} · ${selectedTime} Valencia time</strong>
-        ${people} person${people > 1 ? 's' : ''} &nbsp;·&nbsp; <span class="conf-price">€${total}</span>
-      `;
-
-      bookBtn.textContent = people > 1
-        ? `Book for ${people} people · Pay €${total}`
-        : `Book now · Pay €${total}`;
-      bookBtn.href = `${STRIPE_LINK}?prefilled_quantity=${people}`;
-      bookBtn.target = '_blank';
-    }
-
-    updatePeople();
+    buildDateChips();
   </script>
 
 </body>
