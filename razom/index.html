@@ -366,6 +366,8 @@
       color: var(--ink);
     }
     .bk-date-chip.selected .bk-chip-num { color: #fff; }
+    .bk-chip-lang { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
+    .bk-date-chip.selected .bk-chip-lang { color: rgba(255,255,255,0.75); }
 
     /* Sticky summary bar */
     .bk-sticky {
@@ -638,18 +640,27 @@
   <script>
     // Sat = 6, Sun = 0
     const VALID_DAYS = [0, 6];
-    const WEEKS_AHEAD = 4;
+    const DAYS_AHEAD = 62; // ~2 months
 
     const UA_DAYS = ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
     const UA_MONTHS = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
     const UA_MONTHS_NOM = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
+    const STRIPE_BASE = 'https://buy.stripe.com/3cI7sNdkqdwqeuyduuffy0E';
 
     let selectedDate = null;
+
+    function dateToRef(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth()+1).padStart(2,'0');
+      const d = String(date.getDate()).padStart(2,'0');
+      const day = date.getDay() === 6 ? 'sub' : 'ned';
+      return `${y}${m}${d}_${day}`;
+    }
 
     function getUpcomingDates() {
       const dates = [];
       const now = new Date();
-      for (let d = 1; d <= WEEKS_AHEAD * 7; d++) {
+      for (let d = 1; d <= DAYS_AHEAD; d++) {
         const date = new Date(now);
         date.setDate(now.getDate() + d);
         if (VALID_DAYS.includes(date.getDay())) dates.push(new Date(date));
@@ -677,12 +688,11 @@
       monthGroups[monthKeys[currentMonthIdx]].forEach(date => {
         const chip = document.createElement('button');
         chip.className = 'bk-date-chip';
-        if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
-          chip.classList.add('selected');
-        }
-        const dayName = UA_DAYS[date.getDay()];
-        const dayNum  = date.getDate();
-        chip.innerHTML = `<span class="bk-chip-day">${dayName}</span><span class="bk-chip-num">${dayNum}</span>`;
+        if (selectedDate && date.toDateString() === selectedDate.toDateString()) chip.classList.add('selected');
+        const isSat = date.getDay() === 6;
+        const dayName = isSat ? 'сб' : 'нд';
+        const lang    = isSat ? 'укр' : 'рус';
+        chip.innerHTML = `<span class="bk-chip-day">${dayName}</span><span class="bk-chip-num">${date.getDate()}</span><span class="bk-chip-lang">${lang}</span>`;
         chip.addEventListener('click', () => {
           document.querySelectorAll('.bk-date-chip').forEach(c => c.classList.remove('selected'));
           chip.classList.add('selected');
@@ -704,11 +714,14 @@
       const sticky = document.getElementById('bk-sticky');
       if (!selectedDate) { sticky.classList.remove('visible'); return; }
       sticky.classList.add('visible');
-
-      const dayName = UA_DAYS[selectedDate.getDay()];
-      const fullDay = selectedDate.getDay() === 6 ? 'субота' : 'неділя';
+      const isSat = selectedDate.getDay() === 6;
+      const fullDay = isSat ? 'субота' : 'неділя';
+      const lang = isSat ? '· укр' : '· рус';
       const dateStr = `${fullDay}, ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
-      document.getElementById('bk-sticky-date').textContent = `${dateStr} · 12:00`;
+      document.getElementById('bk-sticky-date').textContent = `${dateStr} · 12:00 ${lang}`;
+      // Wire Stripe link with encoded date
+      const btn = document.getElementById('book-btn');
+      btn.href = `${STRIPE_BASE}?client_reference_id=${dateToRef(selectedDate)}`;
     }
 
     // WhatsApp fallback link
