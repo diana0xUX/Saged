@@ -648,11 +648,11 @@
         <div class="bk-sticky-total-label">Вартість</div>
         <div class="bk-sticky-total">€50</div>
       </div>
-      <button id="book-btn" class="btn btn-primary" style="flex:1;text-align:center;">
-        Написати «РАЗОМ»
-      </button>
+      <a id="book-btn" href="https://buy.stripe.com/3cI7sNdkqdwqeuyduuffy0E" target="_blank" rel="noopener" class="btn btn-primary" style="flex:1;text-align:center;">
+        Оплатити €50
+      </a>
     </div>
-    <p class="bk-secure">💬 Підтвердимо у WhatsApp і збережемо місце</p>
+    <p class="bk-secure">🔒 Безпечна оплата через Stripe · <span id="wa-fallback-link" style="text-decoration:underline;cursor:pointer;">або написати у WhatsApp</span></p>
   </div>
 
   <script>
@@ -731,11 +731,11 @@
       document.getElementById('bk-sticky-date').textContent = `${dateStr} · 12:00`;
     }
 
-    document.getElementById('book-btn').addEventListener('click', function() {
-      if (!selectedDate) return;
-      const fullDay = selectedDate.getDay() === 6 ? 'субота' : 'неділя';
-      const dateStr = `${fullDay} ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
-      const msg = `РАЗОМ · ${dateStr} · 12:00`;
+    // WhatsApp fallback link
+    document.getElementById('wa-fallback-link').addEventListener('click', function() {
+      const fullDay = selectedDate ? (selectedDate.getDay() === 6 ? 'субота' : 'неділя') : '';
+      const dateStr = selectedDate ? `${fullDay} ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}` : '';
+      const msg = dateStr ? `РАЗОМ · ${dateStr} · 12:00` : 'РАЗОМ';
       const a = document.createElement('a');
       a.href = `https://wa.me/34742003495?text=${encodeURIComponent(msg)}`;
       a.target = '_blank';
@@ -744,6 +744,13 @@
       a.click();
       a.remove();
     });
+
+    // Show thank-you after Stripe redirect
+    if (new URLSearchParams(location.search).get('paid') === '1') {
+      const sticky = document.getElementById('bk-sticky');
+      if (sticky) sticky.innerHTML = '<div style="padding:1.2rem 1rem;text-align:center;font-size:1rem;line-height:1.6"><strong>✅ Оплату отримано!</strong><br>Ми напишемо вам у WhatsApp з підтвердженням та адресою.</div>';
+      history.replaceState(null, '', location.pathname);
+    }
 
     // Contact WA link
     document.getElementById('contact-wa').addEventListener('click', function(e) {
