@@ -6,6 +6,25 @@ const NOCODB_BASE  = "p2txdvaha72xsn4";
 const NOCODB_TABLE = process.env.NOCODB_TILE_TABLE;
 const STRIPE_WHSEC = process.env.STRIPE_WEBHOOK_SECRET;
 const MC_TOKEN     = process.env.MANYCHAT_TOKEN;
+const TG_TOKEN     = process.env.TELEGRAM_BOT_TOKEN;
+const TG_CHAT_ID   = process.env.TELEGRAM_CHAT_ID;
+
+function verifyStripe(rawBody, header, secret) {
+  const parts = Object.fromEntries(header.split(",").map(p => p.split("=")));
+  const payload = `${parts.t}.${rawBody}`;
+  const expected = crypto.createHmac("sha256", secret).update(payload, "utf8").digest("hex");
+  if (Math.abs(Date.now() / 1000 - parseInt(parts.t)) > 300) throw new Error("stale");
+  if (!crypto.timingSafeEqual(Buffer.from(expected, "hex"), Buffer.from(parts.v1, "hex"))) throw new Error("sig");
+}
+
+async function sendTelegram(text) {
+  if (!TG_TOKEN || !TG_CHAT_ID) return;
+  await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: TG_CHAT_ID, text, parse_mode: "HTML" }),
+  });
+}
 
 async function sendManyChat(email, name) {
   if (!MC_TOKEN) return;
@@ -26,7 +45,7 @@ async function sendManyChat(email, name) {
         content: {
           messages: [{
             type: "text",
-            text: `✅ Оплата отримана, ${name || "дякуємо"}!\n\nВаше місце на майстер-клас з розпису плитки заброньовано. Ми напишемо вам за день до заняття з нагадуванням та адресою.\n\nSaged Club · saged.club/tile-painting/`
+            text: `✅ Payment received, ${name || "thank you"}!\n\nYour spot at the Spanish Tile Painting workshop is booked. We'll message you the day before with a reminder and address.\n\nSaged Club · saged.club/tile-painting/`
           }]
         }
       },
@@ -35,12 +54,17 @@ async function sendManyChat(email, name) {
   });
 }
 
-function verifyStripe(rawBody, header, secret) {
-  const parts = Object.fromEntries(header.split(",").map(p => p.split("=")));
-  const payload = `${parts.t}.${rawBody}`;
-  const expected = crypto.createHmac("sha256", secret).update(payload, "utf8").digest("hex");
-  if (Math.abs(Date.now() / 1000 - parseInt(parts.t)) > 300) throw new Error("stale");
-  if (!crypto.timingSafeEqual(Buffer.from(expected, "hex"), Buffer.from(parts.v1, "hex"))) throw new Error("sig");
+// client_reference_id format: YYYYMMDD_HHMM_N (e.g. 20261115_1000_3)
+function parseTileRef(ref) {
+  if (!ref) return { date: "", time: "", people: 1 };
+  const parts = ref.split("_");
+  const raw = parts[0];
+  const timePart = parts[1] || "";
+  const peoplePart = parts[2] || "1";
+  if (!raw || raw.length !== 8) return { date: "", time: timePart ? timePart.slice(0,2)+':'+timePart.slice(2) : "", people: parseInt(peoplePart) || 1 };
+  const y = raw.slice(0,4), m = raw.slice(4,6), d = raw.slice(6,8);
+  const time = timePart.length >= 4 ? timePart.slice(0,2)+':'+timePart.slice(2) : timePart;
+  return { date: `${y}-${m}-${d}`, time, people: parseInt(peoplePart) || 1 };
 }
 
 export default async (request) => {
@@ -61,6 +85,8 @@ export default async (request) => {
   const amountEur = session.amount_total / 100;
   const name  = session.customer_details?.name  ?? "";
   const email = session.customer_details?.email ?? "";
+  const phone = session.customer_details?.phone ?? "";
+  const { date, time, people } = parseTileRef(session.client_reference_id ?? "");
 
   // Find the most recent pending row with this amount
   const q = encodeURIComponent(`(Status,eq,pending)~and(Amount,eq,${amountEur})`);
@@ -73,6 +99,7 @@ export default async (request) => {
 
   if (!row) {
     console.error("[tile-stripe-webhook] no pending row for amount", amountEur);
+    await sendTelegram(`⚠️ <b>Tile Painting</b>\nОплата отримана, але pending row не знайдено!\nІм'я: ${name}\nEmail: ${email}${date ? `\nДата: ${date}` : ""}${time ? ` · ${time}` : ""}\nСума: €${amountEur}`);
     return new Response(JSON.stringify({ ok: false, reason: "no match" }), { status: 200 });
   }
 
@@ -81,10 +108,11 @@ export default async (request) => {
     {
       method: "PATCH",
       headers: { "xc-token": NOCODB_TOKEN, "Content-Type": "application/json" },
-      body: JSON.stringify({ "Status": "paid", "Name": name, "Email": email }),
+      body: JSON.stringify({ Status: "paid", Name: name, Email: email, Phone: phone, Date: date, Time: time, People: people }),
     }
   );
 
+  await sendTelegram(`💳 <b>Нове бронювання — Tile Painting</b>\nІм'я: ${name}\nEmail: ${email}${phone ? `\nТел: ${phone}` : ""}${date ? `\nДата: ${date}` : ""}${time ? ` · ${time}` : ""}\nГостей: ${people}\nСума: €${amountEur}`);
   await sendManyChat(email, name);
 
   return new Response(JSON.stringify({ ok: patchRes.ok }), { status: 200 });

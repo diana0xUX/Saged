@@ -792,7 +792,7 @@
       10: 'https://buy.stripe.com/28E4gBgwC8c6bimgGGffy0C',
     };
     const VALID_DAYS = [1, 2, 3, 5];
-    const WEEKS_AHEAD = 4;
+    const DAYS_AHEAD = 62;
 
     let people = 1;
     let selectedDate = null;
@@ -802,12 +802,19 @@
     function getUpcomingDates() {
       const dates = [];
       const now = new Date();
-      for (let d = 1; d <= WEEKS_AHEAD * 7; d++) {
+      for (let d = 1; d <= DAYS_AHEAD; d++) {
         const date = new Date(now);
         date.setDate(now.getDate() + d);
         if (VALID_DAYS.includes(date.getDay())) dates.push(new Date(date));
       }
       return dates;
+    }
+
+    function dateToRef(date, time, n) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}${m}${d}_${time.replace(':', '')}_${n}`;
     }
 
     const allDates = getUpcomingDates();
@@ -902,7 +909,8 @@
       document.getElementById('bk-sticky-total').textContent = `€${total}`;
 
       const btn = document.getElementById('book-btn');
-      btn.href = STRIPE_LINKS[people];
+      const ref = dateToRef(selectedDate, selectedTime, people);
+      btn.href = STRIPE_LINKS[people] + '?client_reference_id=' + encodeURIComponent(ref);
     }
 
     document.getElementById('book-btn').addEventListener('click', async function(e) {
@@ -927,6 +935,13 @@
       a.href = href; a.target = '_blank'; a.rel = 'noopener';
       document.body.appendChild(a); a.click(); a.remove();
     });
+
+    // Show thank-you after Stripe redirect
+    if (new URLSearchParams(location.search).get('paid') === '1') {
+      const sticky = document.getElementById('bk-sticky');
+      if (sticky) sticky.innerHTML = '<div style="padding:1.2rem 1rem;text-align:center;font-size:1rem;line-height:1.6"><strong>✅ Payment received!</strong><br>We\'ll send you a WhatsApp reminder the day before with the address.</div>';
+      history.replaceState(null, '', location.pathname);
+    }
 
     buildDateChips();
   </script>
