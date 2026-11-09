@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Батьки і діти · Кераміка · Saged Club · Валенсія</title>
-  <meta name="description" content="Півтори години тільки для вас і вашої дитини — ліпіть із глини разом. Щосуботи о 12:00. €50 за двох.">
+  <meta name="description" content="Півтори години тільки для вас і вашої дитини — ліпіть із глини разом. Щосуботи (укр) та щонеділі (рус) о 12:00. €50 за двох.">
   <meta property="og:title" content="Батьки і діти · Кераміка · Saged Club">
   <meta property="og:description" content="1,5 год · 50 € за двох · субота 12:00 · Старе місто Валенсії">
   <meta property="og:image" content="https://saged.club/assets/images/razom-hero.jpg">
@@ -498,7 +498,7 @@
         <span class="pill">1,5 год</span>
         <span class="pill">Від 5 років</span>
         <span class="pill">Усі матеріали включені</span>
-        <span class="pill">Щосуботи</span>
+        <span class="pill">Сб та нд · 12:00</span>
       </div>
       <a href="#booking" class="btn btn-primary">Обрати дату ↓</a>
     </div>
@@ -657,7 +657,7 @@
 
   <script>
     // Sat = 6, Sun = 0
-    const VALID_DAYS = [6];
+    const VALID_DAYS = [0, 6];
     const WEEKS_AHEAD = 4;
 
     const UA_DAYS = ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
@@ -726,14 +726,14 @@
       sticky.classList.add('visible');
 
       const dayName = UA_DAYS[selectedDate.getDay()];
-      const fullDay = 'субота';
+      const fullDay = selectedDate.getDay() === 6 ? 'субота' : 'неділя';
       const dateStr = `${fullDay}, ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
       document.getElementById('bk-sticky-date').textContent = `${dateStr} · 12:00`;
     }
 
     document.getElementById('book-btn').addEventListener('click', function() {
       if (!selectedDate) return;
-      const fullDay = 'субота';
+      const fullDay = selectedDate.getDay() === 6 ? 'субота' : 'неділя';
       const dateStr = `${fullDay} ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
       const msg = `РАЗОМ · ${dateStr} · 12:00`;
       const a = document.createElement('a');
