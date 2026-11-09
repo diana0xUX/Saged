@@ -209,13 +209,17 @@
     .sched-intro h2 { font-size: clamp(32px, 8.2vw, 48px); margin-bottom: 12px; }
     .sched-intro p { color: var(--muted); font-size: 16px; }
     .sched-figure { position: absolute; width: 72px; height: 112px; object-fit: cover; right: 20px; top: -8px; opacity: .55; mix-blend-mode: multiply; filter: contrast(1.5) brightness(1.1); transform: rotate(10deg); pointer-events: none; }
-    .sched-cards { display: grid; gap: 16px; margin-bottom: 24px; }
-    .sched-card { position: relative; min-width: 0; background: var(--bg-sand); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
-    .sched-card h3 { font: 300 clamp(20px, 5.5vw, 32px)/1.1 'SagedCyr', 'Costa', sans-serif; margin: 0 0 6px; text-transform: uppercase; }
-    .sched-time { display: block; font: 300 clamp(38px, 11vw, 60px)/1.05 'SagedCyr', 'Costa', sans-serif; letter-spacing: -.025em; }
-    .sched-language { display: flex; align-items: baseline; gap: 10px; font-size: 16px; line-height: 1.5; margin: 16px 0 0; }
-    .sched-language::before { content: ''; flex: 0 0 10px; height: 10px; background: var(--orange); border-radius: 50%; align-self: center; }
-    .sched-card--uk { border-left: 7px solid var(--orange); padding-left: 18px; }
+    .sched-rows { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .sched-row-day { display: grid; grid-template-columns: 80px 1fr; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .sched-row-day:last-child { border-bottom: none; }
+    .sched-row-label { font: 300 15px/1.3 'SagedCyr', 'Costa', sans-serif; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); padding: 16px 12px 16px 16px; display: flex; align-items: center; border-right: 1px solid var(--line); }
+    .sched-row-entries { display: flex; flex-direction: column; }
+    .sched-row-entry { display: flex; align-items: center; gap: 10px; padding: 14px 16px; }
+    .sched-row-entry + .sched-row-entry { border-top: 1px solid var(--line); }
+    .sched-row-entry.highlight { background: rgba(255,122,35,0.07); }
+    .sched-row-time { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 42px; }
+    .sched-row-name { font-size: 14px; font-weight: 500; flex: 1; }
+    .sched-row-meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
     .sched-note { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 16px; line-height: 1.6; margin: 0; }
     .sched-note-mark { color: var(--orange); font-size: 24px; line-height: 1.2; }
     .sched-book { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--orange); color: var(--ink); font-size: 16px; font-weight: 600; padding: 16px 22px; min-height: 56px; border-radius: 32px; margin-top: 24px; text-decoration: none; }
@@ -526,21 +530,25 @@
         <h2 id="kids-schedule-title">Розклад<br>для дітей</h2>
         <p>Глина й час разом.</p>
       </header>
-      <div class="sched-cards">
-        <article class="sched-card" aria-labelledby="sched-thursday">
-          <h3 id="sched-thursday">Четвер</h3>
-          <time class="sched-time" datetime="17:00">17:00</time>
-        </article>
-        <article class="sched-card sched-card--uk" aria-labelledby="sched-saturday">
-          <h3 id="sched-saturday">Субота</h3>
-          <time class="sched-time" datetime="12:00">12:00</time>
-          <p class="sched-language">Україномовний клас</p>
-        </article>
-        <article class="sched-card" aria-labelledby="sched-sunday">
-          <h3 id="sched-sunday">Неділя</h3>
-          <time class="sched-time" datetime="12:00">12:00</time>
-          <p class="sched-language">Російськомовний клас</p>
-        </article>
+      <div class="sched-rows">
+        <div class="sched-row-day">
+          <span class="sched-row-label">Четвер</span>
+          <div class="sched-row-entries">
+            <div class="sched-row-entry"><span class="sched-row-time">17:00</span><span class="sched-row-name">Кераміка для дітей</span><span class="sched-row-meta">8–15 р. · 1,5 год</span></div>
+          </div>
+        </div>
+        <div class="sched-row-day">
+          <span class="sched-row-label">Субота</span>
+          <div class="sched-row-entries">
+            <div class="sched-row-entry highlight"><span class="sched-row-time">12:00</span><span class="sched-row-name">Батьки і діти</span><span class="sched-row-meta">1,5 год · укр</span></div>
+          </div>
+        </div>
+        <div class="sched-row-day">
+          <span class="sched-row-label">Неділя</span>
+          <div class="sched-row-entries">
+            <div class="sched-row-entry highlight"><span class="sched-row-time">12:00</span><span class="sched-row-name">Батьки і діти</span><span class="sched-row-meta">1,5 год · рус</span></div>
+          </div>
+        </div>
       </div>
       <p class="sched-note"><span class="sched-note-mark" aria-hidden="true">✳</span><span>Усі заняття веде майстер Кориця.<br>Старе місто Валенсії.</span></p>
     </div>
@@ -638,8 +646,8 @@
   </div>
 
   <script>
-    // Sat = 6, Sun = 0
-    const VALID_DAYS = [0, 6];
+    // Thu = 4, Sat = 6, Sun = 0
+    const VALID_DAYS = [0, 4, 6];
     const DAYS_AHEAD = 62; // ~2 months
 
     const UA_DAYS = ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
@@ -653,7 +661,8 @@
       const y = date.getFullYear();
       const m = String(date.getMonth()+1).padStart(2,'0');
       const d = String(date.getDate()).padStart(2,'0');
-      const day = date.getDay() === 6 ? 'sub' : 'ned';
+      const dow = date.getDay();
+      const day = dow === 6 ? 'sub' : dow === 4 ? 'thu' : 'ned';
       return `${y}${m}${d}_${day}`;
     }
 
@@ -689,9 +698,9 @@
         const chip = document.createElement('button');
         chip.className = 'bk-date-chip';
         if (selectedDate && date.toDateString() === selectedDate.toDateString()) chip.classList.add('selected');
-        const isSat = date.getDay() === 6;
-        const dayName = isSat ? 'сб' : 'нд';
-        const lang    = isSat ? 'укр' : 'рус';
+        const dow = date.getDay();
+        const dayName = dow === 6 ? 'сб' : dow === 4 ? 'чт' : 'нд';
+        const lang    = dow === 6 ? 'укр' : dow === 4 ? '17:00' : 'рус';
         chip.innerHTML = `<span class="bk-chip-day">${dayName}</span><span class="bk-chip-num">${date.getDate()}</span><span class="bk-chip-lang">${lang}</span>`;
         chip.addEventListener('click', () => {
           document.querySelectorAll('.bk-date-chip').forEach(c => c.classList.remove('selected'));
@@ -714,11 +723,12 @@
       const sticky = document.getElementById('bk-sticky');
       if (!selectedDate) { sticky.classList.remove('visible'); return; }
       sticky.classList.add('visible');
-      const isSat = selectedDate.getDay() === 6;
-      const fullDay = isSat ? 'субота' : 'неділя';
-      const lang = isSat ? '· укр' : '· рус';
+      const dow = selectedDate.getDay();
+      const fullDay = dow === 6 ? 'субота' : dow === 4 ? 'четвер' : 'неділя';
+      const time = dow === 4 ? '17:00' : '12:00';
+      const lang = dow === 6 ? '· укр' : dow === 4 ? '' : '· рус';
       const dateStr = `${fullDay}, ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
-      document.getElementById('bk-sticky-date').textContent = `${dateStr} · 12:00 ${lang}`;
+      document.getElementById('bk-sticky-date').textContent = `${dateStr} · ${time} ${lang}`.trim();
       // Wire Stripe link with encoded date
       const btn = document.getElementById('book-btn');
       btn.href = `${STRIPE_BASE}?client_reference_id=${dateToRef(selectedDate)}`;

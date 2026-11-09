@@ -62,12 +62,11 @@ function parseDateRef(ref) {
   const y = raw.slice(0,4), m = raw.slice(4,6), d = raw.slice(6,8);
   const UA_MONTHS = ["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
   const mo = parseInt(m,10) - 1;
-  const dayName = day === "sub" ? "субота" : "неділя";
-  const lang = day === "sub" ? "укр" : "рус";
-  return {
-    date: `${y}-${m}-${d}`,
-    label: `${dayName}, ${parseInt(d,10)} ${UA_MONTHS[mo]} · 12:00 · ${lang}`,
-  };
+  const dayName = day === "sub" ? "субота" : day === "thu" ? "четвер" : "неділя";
+  const time = day === "thu" ? "17:00" : "12:00";
+  const lang = day === "sub" ? "укр" : day === "thu" ? "" : "рус";
+  const labelParts = [`${dayName}, ${parseInt(d,10)} ${UA_MONTHS[mo]} · ${time}`, lang].filter(Boolean);
+  return { date: `${y}-${m}-${d}`, label: labelParts.join(" · ") };
 }
 
 export default async (request) => {
