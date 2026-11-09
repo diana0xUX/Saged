@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Батьки і діти · Кераміка · Saged Club · Валенсія</title>
+  <meta name="description" content="Півтори години тільки для вас і вашої дитини — ліпіть із глини разом. Щосуботи о 12:00. €50 за двох.">
+  <meta property="og:title" content="Батьки і діти · Кераміка · Saged Club">
+  <meta property="og:description" content="1,5 год · 50 € за двох · субота 12:00 · Старе місто Валенсії">
+  <meta property="og:image" content="https://saged.club/assets/images/razom-hero.jpg">
+  <meta property="og:url" content="https://saged.club/razom/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="uk_UA">
+  <meta name="theme-color" content="#FF7A23">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Costa';
+      src: url('../assets/fonts/costa-light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SagedCyr';
+      src: url('../assets/fonts/saged-display-cyrillic-v1.401.woff') format('woff');
+      font-display: swap;
+    }
+
+    :root {
+      --bg:        #FAF7F2;
+      --bg-sand:   #F1E9DA;
+      --ink:       #2A2520;
+      --muted:     #6B5F54;
+      --orange:    #FF7A23;
+      --orange-dk: #E56610;
+      --line:      #E1D6C5;
+      --r:         12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    h1, h2, h3 {
+      font-family: 'SagedCyr', 'Costa', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.1;
+      margin: 0 0 0.4em;
+    }
+
+    h1 { font-size: clamp(2.4rem, 8vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+    h3 { font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 600; }
+
+    p { margin: 0 0 1em; }
+    p:last-child { margin-bottom: 0; }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section { padding: 3rem 0; }
+    section + section { border-top: 1px solid var(--line); }
+
+    /* Nav */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: 'SagedCyr', 'Costa', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 90svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: 0;
+      border: none;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(30,20,10,0.72) 0%, rgba(30,20,10,0.15) 52%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 5.5rem 1.5rem 2.5rem;
+      color: #fff;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 { color: #fff; margin-bottom: 0.6rem; font-family: 'SagedCyr', 'Costa', Georgia, serif; }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 1.25rem;
+      max-width: 420px;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .pill {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s, transform 0.1s;
+      text-align: center;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: var(--orange-dk); color: #fff; }
+    .btn-ghost { background: transparent; border: 2px solid var(--line); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-full { width: 100%; display: block; }
+
+    /* About */
+    .about-text {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Included */
+    .included-grid {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .included-grid li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .included-grid .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05em; }
+
+    /* Schedule */
+    .sched-day {
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .sched-day-label {
+      padding: 0.55rem 1rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--bg-sand);
+      border-bottom: 1px solid var(--line);
+    }
+    .sched-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .sched-row:last-child { border-bottom: none; }
+    .sched-time {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 3rem;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .sched-class { font-size: 0.88rem; color: var(--ink); flex: 1; }
+    .sched-age {
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .sched-row.highlight {
+      background: #FFF5EE;
+    }
+    .sched-row.highlight .sched-time { color: var(--orange); }
+    .sched-row.highlight .sched-class { font-weight: 600; color: var(--ink); }
+    .sched-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.15rem 0.45rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Booking section */
+    #booking {
+      background: var(--bg-sand);
+      padding: 0;
+    }
+    .bk-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 7rem;
+    }
+    .bk-eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .bk-title {
+      font-family: 'SagedCyr', 'Costa', Georgia, serif;
+      font-size: clamp(2.4rem, 9vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin: 0 0 0.9rem;
+      color: var(--ink);
+    }
+    .bk-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .bk-price {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+      font-family: 'Inter', sans-serif;
+    }
+    .bk-price-label {
+      font-size: 1rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .bk-incl {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .bk-divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 1.25rem 0;
+    }
+
+    /* Date picker */
+    .bk-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      margin: 0 0 0.75rem;
+    }
+    .bk-month-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+    .bk-month-nav button {
+      background: none;
+      border: 1.5px solid var(--line);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.1s;
+    }
+    .bk-month-nav button:hover:not(:disabled) { border-color: var(--ink); }
+    .bk-month-nav button:disabled { opacity: 0.25; cursor: default; }
+    .bk-month-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      flex: 1;
+      text-align: center;
+    }
+    .bk-date-chips {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .bk-date-chips::-webkit-scrollbar { display: none; }
+    .bk-date-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 0.7rem 0.6rem 0.65rem;
+      min-width: 62px;
+      cursor: pointer;
+      background: #fff;
+      font-family: inherit;
+      flex-shrink: 0;
+      transition: border-color 0.12s, background 0.12s, color 0.12s;
+    }
+    .bk-date-chip:hover { border-color: var(--orange); }
+    .bk-date-chip.selected {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+    .bk-chip-day {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .bk-date-chip.selected .bk-chip-day { color: rgba(255,255,255,0.75); }
+    .bk-chip-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .bk-date-chip.selected .bk-chip-num { color: #fff; }
+
+    /* Sticky summary bar */
+    .bk-sticky {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg-sand);
+      border-top: 1px solid var(--line);
+      padding: 0.85rem 1.5rem calc(0.85rem + env(safe-area-inset-bottom));
+      display: none;
+    }
+    .bk-sticky.visible { display: block; }
+    .bk-sticky-summary { margin-bottom: 0.6rem; }
+    .bk-sticky-date { font-weight: 700; font-size: 0.92rem; color: var(--ink); }
+    .bk-sticky-sub  { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+    .bk-sticky-row  { display: flex; align-items: center; gap: 1rem; }
+    .bk-sticky-total-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.1rem;
+    }
+    .bk-sticky-total {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+    }
+    #book-btn { flex: 1; text-align: center; }
+    .bk-secure {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin: 0.55rem 0 0;
+    }
+
+    /* Policies */
+    .policy-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    .policy-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .policy-item h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .policy-item p { font-size: 0.95rem; margin: 0; }
+
+    /* Location */
+    .location-block {
+      background: var(--bg-sand);
+      border-radius: var(--r);
+      padding: 1.75rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .location-name { font-weight: 600; margin-bottom: 0.2rem; }
+    .location-addr { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .location-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .location-links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--orange);
+      border: 2px solid var(--orange);
+      border-radius: 100px;
+      padding: 0.45rem 1.1rem;
+      transition: all 0.12s;
+    }
+    .location-links a:hover { background: var(--orange); color: #fff; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    footer a { color: var(--muted); }
+
+    @media (min-width: 601px) {
+      .bk-sticky { max-width: 520px; left: 50%; transform: translateX(-50%); border-radius: 20px 20px 0 0; }
+    }
+    @media (max-width: 600px) {
+      body { padding-bottom: 0; }
+      .hero-desc { display: none; }
+      .hero h1 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Saged Club</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img
+      class="hero-img"
+      src="../assets/images/razom-hero.jpg"
+      alt="Батьки і діти ліплять разом у Saged Club"
+      fetchpriority="high"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Saged Club · Валенсія</span>
+      <h1>Батьки<br>і діти</h1>
+      <p class="hero-desc">Півтори години тільки для вас і вашої дитини — ліпіть із глини разом, без телефонів і домашніх справ.</p>
+      <div class="pills">
+        <span class="pill">1,5 год</span>
+        <span class="pill">Від 5 років</span>
+        <span class="pill">Усі матеріали включені</span>
+        <span class="pill">Щосуботи</span>
+      </div>
+      <a href="#booking" class="btn btn-primary">Обрати дату ↓</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section>
+    <div class="container">
+      <h2>Про заняття</h2>
+      <p class="about-text">
+        Без телефонів, домашніх справ і прибирання — ліпіть із глини, експериментуйте та створюйте щось своє.
+        Досвід не потрібен. Майстер Кориця проведе вас крок за кроком. Прийдіть просто так — і підете з тим, що зробили своїми руками разом.
+      </p>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section>
+    <div class="container">
+      <h2>Що входить</h2>
+      <ul class="included-grid">
+        <li><span class="icon">🏺</span><span>Глина та всі матеріали</span></li>
+        <li><span class="icon">🎨</span><span>Інструменти для ліплення</span></li>
+        <li><span class="icon">👩‍🎨</span><span>Супровід майстра Кориці протягом усього заняття</span></li>
+        <li><span class="icon">📸</span><span>Час на фінальний результат та фото</span></li>
+        <li><span class="icon">🏠</span><span>Виріб можна забрати після випалу</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section>
+    <div class="container">
+      <h2>Розклад занять для дітей</h2>
+
+      <div class="sched-day">
+        <div class="sched-day-label">Четвер</div>
+        <div class="sched-row">
+          <span class="sched-time">10:20</span>
+          <span class="sched-class">Терапія казкою</span>
+          <span class="sched-age">від 5 р.</span>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">16:00</span>
+          <span class="sched-class">Кераміка для дітей</span>
+          <span class="sched-age">8–15 р.</span>
+        </div>
+      </div>
+
+      <div class="sched-day">
+        <div class="sched-day-label">Субота</div>
+        <div class="sched-row">
+          <span class="sched-time">10:20</span>
+          <span class="sched-class">Терапія казкою</span>
+          <span class="sched-age">від 5 р.</span>
+        </div>
+        <div class="sched-row highlight">
+          <span class="sched-time">12:00</span>
+          <span class="sched-class">Батьки і діти</span>
+          <span class="sched-badge">Ця сторінка</span>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">15:00</span>
+          <span class="sched-class">Кераміка для дітей</span>
+          <span class="sched-age">8–15 р.</span>
+        </div>
+      </div>
+
+      <div class="sched-day">
+        <div class="sched-day-label">Неділя</div>
+        <div class="sched-row">
+          <span class="sched-time">10:20</span>
+          <span class="sched-class">Терапія казкою</span>
+          <span class="sched-age">від 5 р.</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.82rem;color:var(--muted);margin-top:0.75rem;">Всі заняття веде майстер Кориця · Старе місто Валенсії</p>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="booking">
+    <div class="bk-wrap">
+
+      <span class="bk-eyebrow">Батьки і діти · Кераміка</span>
+      <h2 class="bk-title">Запишіться на заняття</h2>
+      <div class="bk-price-row">
+        <span class="bk-price">€50</span>
+        <span class="bk-price-label">за двох · 1,5 год</span>
+      </div>
+      <p class="bk-incl">Глина, матеріали та супровід майстра включені</p>
+
+      <hr class="bk-divider">
+
+      <!-- Date picker -->
+      <div>
+        <h3 class="bk-section-title">Оберіть дату</h3>
+        <div class="bk-month-nav">
+          <button id="month-prev" aria-label="Попередній місяць">‹</button>
+          <span class="bk-month-label" id="month-label"></span>
+          <button id="month-next" aria-label="Наступний місяць">›</button>
+        </div>
+        <div class="bk-date-chips" id="date-chips"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Policies -->
+  <section>
+    <div class="container">
+      <h2>Корисно знати</h2>
+      <div class="policy-grid">
+        <div class="policy-item">
+          <h3>Скасування</h3>
+          <p>Скасуйте або перенесіть до 24 годин до заняття — повернемо бронювання або перенесемо безкоштовно.</p>
+        </div>
+        <div class="policy-item">
+          <h3>Мова</h3>
+          <p>Заняття проводяться українською та російською мовами.</p>
+        </div>
+        <div class="policy-item">
+          <h3>Хто може прийти</h3>
+          <p>Дорослий + дитина від 5 років. Досвід не потрібен — це ваш перший раз або сотий. Маленькі групи.</p>
+        </div>
+        <div class="policy-item">
+          <h3>Ваш виріб</h3>
+          <p>Забираєте виріб після випалу. Зазвичай 1–2 тижні. Повідомимо, коли буде готово.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section>
+    <div class="container">
+      <h2>Де ми знаходимось</h2>
+      <div class="location-block">
+        <p class="location-name">Saged Club</p>
+        <p class="location-addr">C/ de les Cuines, 8, Ciutat Vella, Валенсія</p>
+        <div class="location-links">
+          <a href="https://maps.app.goo.gl/RqsReEo929aeUAPN9" target="_blank" rel="noopener">Відкрити на картах ↗</a>
+          <a id="contact-wa" href="#" target="_blank" rel="noopener">Запитати у WhatsApp ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Saged Club · <a href="/">saged.club</a></p>
+  </footer>
+
+  <!-- Sticky summary bar -->
+  <div class="bk-sticky" id="bk-sticky">
+    <div class="bk-sticky-summary">
+      <div class="bk-sticky-date" id="bk-sticky-date"></div>
+      <div class="bk-sticky-sub" id="bk-sticky-sub">двоє · 1,5 год · 12:00</div>
+    </div>
+    <hr class="bk-divider" style="margin:0.6rem 0">
+    <div class="bk-sticky-row">
+      <div>
+        <div class="bk-sticky-total-label">Вартість</div>
+        <div class="bk-sticky-total">€50</div>
+      </div>
+      <button id="book-btn" class="btn btn-primary" style="flex:1;text-align:center;">
+        Написати «РАЗОМ»
+      </button>
+    </div>
+    <p class="bk-secure">💬 Підтвердимо у WhatsApp і збережемо місце</p>
+  </div>
+
+  <script>
+    // Sat = 6, Sun = 0
+    const VALID_DAYS = [6];
+    const WEEKS_AHEAD = 4;
+
+    const UA_DAYS = ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    const UA_MONTHS = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
+    const UA_MONTHS_NOM = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
+
+    let selectedDate = null;
+
+    function getUpcomingDates() {
+      const dates = [];
+      const now = new Date();
+      for (let d = 1; d <= WEEKS_AHEAD * 7; d++) {
+        const date = new Date(now);
+        date.setDate(now.getDate() + d);
+        if (VALID_DAYS.includes(date.getDay())) dates.push(new Date(date));
+      }
+      return dates;
+    }
+
+    const allDates = getUpcomingDates();
+    const monthGroups = {};
+    allDates.forEach(date => {
+      const key = `${UA_MONTHS_NOM[date.getMonth()]} ${date.getFullYear()}`;
+      if (!monthGroups[key]) monthGroups[key] = [];
+      monthGroups[key].push(date);
+    });
+    const monthKeys = Object.keys(monthGroups);
+    let currentMonthIdx = 0;
+
+    function buildDateChips() {
+      const container = document.getElementById('date-chips');
+      container.innerHTML = '';
+      document.getElementById('month-label').textContent = monthKeys[currentMonthIdx];
+      document.getElementById('month-prev').disabled = currentMonthIdx === 0;
+      document.getElementById('month-next').disabled = currentMonthIdx === monthKeys.length - 1;
+
+      monthGroups[monthKeys[currentMonthIdx]].forEach(date => {
+        const chip = document.createElement('button');
+        chip.className = 'bk-date-chip';
+        if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
+          chip.classList.add('selected');
+        }
+        const dayName = UA_DAYS[date.getDay()];
+        const dayNum  = date.getDate();
+        chip.innerHTML = `<span class="bk-chip-day">${dayName}</span><span class="bk-chip-num">${dayNum}</span>`;
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.bk-date-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          selectedDate = date;
+          updateSticky();
+        });
+        container.appendChild(chip);
+      });
+    }
+
+    document.getElementById('month-prev').addEventListener('click', () => {
+      if (currentMonthIdx > 0) { currentMonthIdx--; buildDateChips(); }
+    });
+    document.getElementById('month-next').addEventListener('click', () => {
+      if (currentMonthIdx < monthKeys.length - 1) { currentMonthIdx++; buildDateChips(); }
+    });
+
+    function updateSticky() {
+      const sticky = document.getElementById('bk-sticky');
+      if (!selectedDate) { sticky.classList.remove('visible'); return; }
+      sticky.classList.add('visible');
+
+      const dayName = UA_DAYS[selectedDate.getDay()];
+      const fullDay = 'субота';
+      const dateStr = `${fullDay}, ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
+      document.getElementById('bk-sticky-date').textContent = `${dateStr} · 12:00`;
+    }
+
+    document.getElementById('book-btn').addEventListener('click', function() {
+      if (!selectedDate) return;
+      const fullDay = 'субота';
+      const dateStr = `${fullDay} ${selectedDate.getDate()} ${UA_MONTHS[selectedDate.getMonth()]}`;
+      const msg = `РАЗОМ · ${dateStr} · 12:00`;
+      const a = document.createElement('a');
+      a.href = `https://wa.me/34742003495?text=${encodeURIComponent(msg)}`;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    // Contact WA link
+    document.getElementById('contact-wa').addEventListener('click', function(e) {
+      e.preventDefault();
+      const a = document.createElement('a');
+      a.href = `https://wa.me/34742003495?text=${encodeURIComponent('Привіт! Є запитання про заняття Батьки і діти 🧡')}`;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    buildDateChips();
+  </script>
+
+</body>
+</html>
