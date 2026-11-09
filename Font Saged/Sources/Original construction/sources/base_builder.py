@@ -24,17 +24,17 @@ OUT = ROOT.parents[1] / "outputs" / "fonts" / "saged-display-cyrillic"
 FULL_SET_DIR = ROOT / "src" / "glyph-sources" / "batch-v1.381-originals"
 COSTA_SOURCE = ROOT.parents[1] / "brand-system" / "design-system" / "public" / "fonts" / "costa-light.otf"
 GE_SOURCE = ROOT / "src" / "glyph-sources" / "ge-user.svg"
-BE_SOURCE = ROOT / "src" / "glyph-sources" / "be-user-v4.svg"
+BE_SOURCE = ROOT / "src" / "glyph-sources" / "Б - Be.svg"
 DE_SOURCE = ROOT / "src" / "glyph-sources" / "de-user-v3.svg"
 ZHE_SOURCE = ROOT / "src" / "glyph-sources" / "zhe-user-v2.svg"
 EURO_SOURCE = ROOT / "src" / "glyph-sources" / "euro-user-v4.svg"
 SHORT_I_SOURCE = ROOT / "src" / "glyph-sources" / "short-i-user-v2.svg"
-UKRAINIAN_I_SOURCE = ROOT / "src" / "glyph-sources" / "ukrainian-i-user-v1.svg"
+UKRAINIAN_I_SOURCE = ROOT / "src" / "glyph-sources" / "І - Ukrainian I.svg"
 EL_SOURCE = ROOT / "src" / "glyph-sources" / "el-user.svg"
 EM_SOURCE = ROOT / "src" / "glyph-sources" / "em-user-v2.svg"
 PE_SOURCE = ROOT / "src" / "glyph-sources" / "pe-user-v2.svg"
-U_SOURCE = ROOT / "src" / "glyph-sources" / "u-user-v1.svg"
-EF_SOURCE = ROOT / "src" / "glyph-sources" / "ef-user-vector-v11.svg"
+U_SOURCE = ROOT / "src" / "glyph-sources" / "У - U.svg"
+EF_SOURCE = ROOT / "src" / "glyph-sources" / "Ф - Ef.svg"
 SHA_SOURCE = ROOT / "src" / "glyph-sources" / "sha-user-v2.svg"
 SHCHA_SOURCE = ROOT / "src" / "glyph-sources" / "shcha-user-v2.svg"
 HARD_SIGN_SOURCE = ROOT / "src" / "glyph-sources" / "hard-sign-user-v3.svg"
@@ -44,17 +44,17 @@ YERY_SOURCE = ROOT / "src" / "glyph-sources" / "yery-user-v2.svg"
 SOFT_SIGN_SOURCE = ROOT / "src" / "glyph-sources" / "soft-sign-user-v2.svg"
 YU_SOURCE = ROOT / "src" / "glyph-sources" / "yu-user.svg"
 SUPPLIED_RUSSIAN_SOURCES = {
-    "А": "letter-0410-А.svg", "Б": "letter-0411-Б-open.svg", "В": "letter-0412-В.svg",
-    "Г": "Vector-4.svg", "Д": "Vector-14.svg", "Е": "letter-0415-Е.svg",
-    "Ё": "letter-0401-Ё.svg", "Ж": "Vector-15.svg", "З": "letter-0417-З.svg",
-    "И": "letter-0418-И.svg", "Й": "Vector.svg", "К": "Vector-1.svg",
-    "Л": "Vector-8.svg", "М": "M-final.svg", "Н": "letter-041d-Н.svg",
-    "О": "letter-041e-О.svg", "П": "Vector-3.svg", "Р": "letter-0420-Р.svg",
-    "С": "letter-0421-С.svg", "Т": "letter-0422-Т.svg", "У": "letter-0423-У.svg",
-    "Ф": "Vector-13.svg", "Х": "letter-0425-Х.svg", "Ц": "Vector-12.svg",
-    "Ч": "letter-0427-Ч.svg", "Ш": "Vector-10.svg", "Щ": "Vector-11.svg",
-    "Ъ": "Vector-6.svg", "Ы": "letter-042b-Ы.svg", "Ь": "letter-042c-Ь.svg",
-    "Э": "Vector-5.svg", "Ю": "Vector-2.svg", "Я": "letter-042f-Я.svg",
+    "А": "А - A.svg", "Б": "letter-0411-Б-open.svg", "В": "В - Ve.svg",
+    "Г": "Г - Ge.svg", "Д": "Д - De.svg", "Е": "Е - Ie.svg",
+    "Ё": "Ё - Io.svg", "Ж": "Ж - Zhe.svg", "З": "З - Ze.svg",
+    "И": "И - I.svg", "Й": "Vector.svg", "К": "К - Ka.svg",
+    "Л": "Л - El.svg", "М": "М - Em.svg", "Н": "Н - En.svg",
+    "О": "О - O.svg", "П": "П - Pe.svg", "Р": "Р - Er.svg",
+    "С": "С - Es.svg", "Т": "Т - Te.svg", "У": "letter-0423-У.svg",
+    "Ф": "Vector-13.svg", "Х": "Х - Ha.svg", "Ц": "Ц - Tse.svg",
+    "Ч": "Ч - Che.svg", "Ш": "Ш - Sha.svg", "Щ": "Щ - Shcha.svg",
+    "Ъ": "Ъ - Hard sign.svg", "Ы": "letter-042b-Ы.svg", "Ь": "Ь - Soft sign.svg",
+    "Э": "Э - Reversed E.svg", "Ю": "Vector-2.svg", "Я": "Я - Ya.svg",
 }
 COSTA_VISUAL_EQUIVALENTS = {
     "А": "A", "В": "B", "Е": "E", "З": "three", "К": "K", "М": "M", "Н": "H",
@@ -222,12 +222,12 @@ def derived_ukrainian_letter(ch):
         oval(pen, center + 40, 810, center + 100, 870)
         return pen.glyph(), advance
     if ch == "Є":
-        source, advance = supplied_svg_glyph(FULL_SET_DIR / "Vector-5.svg")
+        source, advance = supplied_svg_glyph(FULL_SET_DIR / "Э - Reversed E.svg")
         pen = TTGlyphPen(None)
         source.draw(TransformPen(pen, (-1, 0, 0, 1, advance, 0)), None)
         return pen.glyph(), advance
     if ch == "Ґ":
-        source, advance = supplied_svg_glyph(FULL_SET_DIR / "Vector-4.svg")
+        source, advance = supplied_svg_glyph(FULL_SET_DIR / "Г - Ge.svg")
         coordinates, _, _ = source.getCoordinates(None)
         x_max = max(point[0] for point in coordinates)
         pen = TTGlyphPen(None)

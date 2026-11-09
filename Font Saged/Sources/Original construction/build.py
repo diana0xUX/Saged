@@ -10,7 +10,7 @@ HERE=Path(__file__).resolve().parent
 OLD=Path('/Users/diana/Downloads/codex-design-studio/projects/saged-display-cyrillic')
 # Snapshot editable construction source and all dependencies for reproducibility.
 if not (HERE/'sources/glyph-sources').exists(): shutil.copytree(OLD/'src/glyph-sources',HERE/'sources/glyph-sources')
-for name in ['euro sign.svg','letter-042b-Ы.svg','Vector.svg','Group 441.png']:
+for name in ['€ - Euro sign.svg','Ы - Yery.svg','Ю - Yu.svg','Й - Short I - reference.png']:
  if not (HERE/'sources'/name).exists(): shutil.copy2(HERE.parent/name,HERE/'sources'/name)
 costa=OLD.parents[1]/'brand-system/design-system/public/fonts/costa-light.otf'
 if not (HERE/'sources/costa-light.otf').exists(): shutil.copy2(costa,HERE/'sources/costa-light.otf')
