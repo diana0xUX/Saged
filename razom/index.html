@@ -6,7 +6,7 @@
   <title>Батьки і діти · Кераміка · Saged Club · Валенсія</title>
   <meta name="description" content="Півтори години тільки для вас і вашої дитини — ліпіть із глини разом. Щосуботи (укр) та щонеділі (рус) о 12:00. €50 за двох.">
   <meta property="og:title" content="Батьки і діти · Кераміка · Saged Club">
-  <meta property="og:description" content="1,5 год · 50 € за двох · субота 12:00 · Старе місто Валенсії">
+  <meta property="og:description" content="1,5 год · 50 € за двох · субота та неділя 12:00 · Старе місто Валенсії">
   <meta property="og:image" content="https://saged.club/assets/images/razom-hero.jpg">
   <meta property="og:url" content="https://saged.club/razom/">
   <meta property="og:type" content="website">
@@ -203,45 +203,32 @@
     }
     .included-grid .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05em; }
 
-    /* Schedule: Saged typography, quiet colour and one original brand figure. */
+    /* Kids schedule: three Saged cards matching the approved reference. */
     .kids-schedule .container { padding-inline: 24px; }
     .sched-intro { position: relative; padding-right: 66px; margin-bottom: 28px; }
     .sched-intro h2 { font-size: clamp(32px, 8.2vw, 48px); margin-bottom: 12px; }
     .sched-intro p { color: var(--muted); font-size: 16px; }
     .sched-figure { position: absolute; width: 72px; height: 112px; object-fit: cover; right: 20px; top: -8px; opacity: .55; mix-blend-mode: multiply; filter: contrast(1.5) brightness(1.1); transform: rotate(10deg); pointer-events: none; }
-    .sched-day { margin-bottom: 24px; min-width: 0; }
-    .sched-day-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 10px; }
-    .sched-day-label { font: 300 26px/1.2 'SagedCyr', sans-serif; margin: 0; }
-    .sched-count { color: var(--muted); font-size: 12px; letter-spacing: .05em; white-space: nowrap; }
-    .sched-list { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
-    .sched-row { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; padding: 18px 16px; min-height: 88px; color: inherit; text-decoration: none; position: relative; }
-    .sched-row + .sched-row { border-top: 1px solid var(--line); }
-    .sched-time { font-size: 20px; font-weight: 600; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
-    .sched-detail { min-width: 0; }
-    .sched-class { display: block; font-size: 16px; line-height: 1.35; overflow-wrap: break-word; }
-    .sched-age { display: block; font-size: 14px; line-height: 1.5; margin-top: 5px; color: var(--muted); }
-    .sched-row.highlight { background: var(--bg-sand); padding-right: 34px; }
-    .sched-row.highlight::before { content: ''; position: absolute; left: 0; top: 20px; bottom: 20px; width: 4px; background: var(--orange); border-radius: 0 4px 4px 0; }
-    .sched-row.highlight::after { content: '↗'; position: absolute; right: 12px; font-size: 22px; color: var(--orange-dk); }
-    .sched-row.highlight .sched-time { color: #9F4D2D; }
-    .sched-row.highlight .sched-class { font-weight: 600; }
-    .sched-badge { color: #9F4D2D; font-size: 12px; font-weight: 600; white-space: nowrap; margin-left: 8px; }
-    .sched-badge::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); margin-right: 5px; vertical-align: middle; }
+    .sched-cards { display: grid; gap: 16px; margin-bottom: 24px; }
+    .sched-card { position: relative; min-width: 0; background: var(--bg-sand); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+    .sched-card h3 { font: 300 clamp(32px, 8.5vw, 48px)/1.1 'SagedCyr', 'Costa', sans-serif; margin: 0 0 8px; text-transform: uppercase; }
+    .sched-time { display: block; font: 300 clamp(56px, 16vw, 80px)/1.05 'SagedCyr', 'Costa', sans-serif; letter-spacing: -.025em; }
+    .sched-language { display: flex; align-items: baseline; gap: 10px; font-size: 16px; line-height: 1.5; margin: 16px 0 0; }
+    .sched-language::before { content: ''; flex: 0 0 10px; height: 10px; background: var(--orange); border-radius: 50%; align-self: center; }
+    .sched-card--uk { border-left: 7px solid var(--orange); padding-left: 18px; }
     .sched-note { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 16px; line-height: 1.6; margin: 0; }
     .sched-note-mark { color: var(--orange); font-size: 24px; line-height: 1.2; }
     .sched-book { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--orange); color: var(--ink); font-size: 16px; font-weight: 600; padding: 16px 22px; min-height: 56px; border-radius: 32px; margin-top: 24px; text-decoration: none; }
     .sched-book span { font-size: 24px; }
-    .sched-row.highlight:hover { background: #EBDFCD; }
     .sched-book:hover { background: #FF8B40; }
-    .sched-row:focus-visible, .sched-book:focus-visible { outline: 3px solid var(--ink); outline-offset: -5px; }
+    .sched-book:focus-visible { outline: 3px solid var(--ink); outline-offset: -5px; }
     @media (min-width: 601px) {
       .sched-intro { padding-right: 110px; }
       .sched-figure { width: 100px; height: 148px; top: -18px; }
-      .sched-row { grid-template-columns: 90px minmax(0, 1fr); padding: 20px 24px; }
-      .sched-class { font-size: 18px; }
-      .sched-age { font-size: 16px; }
-      .sched-row.highlight { padding-right: 48px; }
-      .sched-row.highlight::after { right: 24px; }
+      .sched-cards { gap: 20px; }
+      .sched-card { padding: 28px 32px; border-radius: 28px; }
+      .sched-card--uk { padding-left: 26px; }
+      .sched-language { font-size: 20px; }
     }
 
     /* Booking section */
@@ -535,29 +522,23 @@
       <header class="sched-intro">
         <img class="sched-figure" src="../assets/images/kids-schedule-figure.png" alt="" aria-hidden="true" loading="lazy" width="100" height="148">
         <h2 id="kids-schedule-title">Розклад<br>для дітей</h2>
-        <p>Казки, глина й час разом.</p>
+        <p>Глина й час разом.</p>
       </header>
-      <div class="sched-day" role="group" aria-labelledby="sched-day-0">
-        <div class="sched-day-head"><h3 class="sched-day-label" id="sched-day-0">Четвер</h3><span class="sched-count">02 заняття</span></div>
-        <div class="sched-list">
-          <div class="sched-row"><time class="sched-time" datetime="10:20">10:20</time><span class="sched-detail"><span class="sched-class">Терапія казкою</span><span class="sched-age">від 5 р. · 1,5 год</span></span></div>
-          <div class="sched-row"><time class="sched-time" datetime="17:00">17:00</time><span class="sched-detail"><span class="sched-class">Кераміка для дітей</span><span class="sched-age">8–15 р. · 1,5 год</span></span></div>
-        </div>
-      </div>
-      <div class="sched-day" role="group" aria-labelledby="sched-day-1">
-        <div class="sched-day-head"><h3 class="sched-day-label" id="sched-day-1">Субота</h3><span class="sched-count">03 заняття</span></div>
-        <div class="sched-list">
-          <div class="sched-row"><time class="sched-time" datetime="10:20">10:20</time><span class="sched-detail"><span class="sched-class">Терапія казкою</span><span class="sched-age">від 5 р. · 1,5 год</span></span></div>
-          <a class="sched-row highlight" href="#booking"><time class="sched-time" datetime="12:00">12:00</time><span class="sched-detail"><span class="sched-class">Батьки і діти</span><span class="sched-age">1,5 год · укр<span class="sched-badge">Ви тут</span></span></span></a>
-          <div class="sched-row"><time class="sched-time" datetime="15:00">15:00</time><span class="sched-detail"><span class="sched-class">Кераміка для дітей</span><span class="sched-age">8–15 р. · 1,5 год</span></span></div>
-        </div>
-      </div>
-      <div class="sched-day" role="group" aria-labelledby="sched-day-2">
-        <div class="sched-day-head"><h3 class="sched-day-label" id="sched-day-2">Неділя</h3><span class="sched-count">02 заняття</span></div>
-        <div class="sched-list">
-          <div class="sched-row"><time class="sched-time" datetime="10:20">10:20</time><span class="sched-detail"><span class="sched-class">Терапія казкою</span><span class="sched-age">від 5 р. · 1,5 год</span></span></div>
-          <div class="sched-row"><time class="sched-time" datetime="12:00">12:00</time><span class="sched-detail"><span class="sched-class">Батьки і діти</span><span class="sched-age">1,5 год · рус</span></span></div>
-        </div>
+      <div class="sched-cards">
+        <article class="sched-card" aria-labelledby="sched-thursday">
+          <h3 id="sched-thursday">Четвер</h3>
+          <time class="sched-time" datetime="17:00">17:00</time>
+        </article>
+        <article class="sched-card sched-card--uk" aria-labelledby="sched-saturday">
+          <h3 id="sched-saturday">Субота</h3>
+          <time class="sched-time" datetime="12:00">12:00</time>
+          <p class="sched-language">Україномовний клас</p>
+        </article>
+        <article class="sched-card" aria-labelledby="sched-sunday">
+          <h3 id="sched-sunday">Неділя</h3>
+          <time class="sched-time" datetime="12:00">12:00</time>
+          <p class="sched-language">Російськомовний клас</p>
+        </article>
       </div>
       <p class="sched-note"><span class="sched-note-mark" aria-hidden="true">✳</span><span>Усі заняття веде майстер Кориця.<br>Старе місто Валенсії.</span></p>
       <a class="sched-book" href="#booking">Записатися на заняття<span aria-hidden="true">↗</span></a>
