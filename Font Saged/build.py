@@ -1,4 +1,4 @@
-"""Rebuild Saged 1.401 with Diana's І, Ї and updated Д artwork."""
+"""Rebuild Saged 1.402 with Diana's І, Ї and updated Д artwork."""
 from pathlib import Path
 from xml.etree import ElementTree as ET
 from fontTools.ttLib import TTFont
@@ -26,11 +26,11 @@ for char, filename, bottom in [('І', 'І - Ukrainian I.svg', 110), ('Ї', 'Ї -
         font['hmtx'][name] = (round(width * scale + 128), glyph.xMin)
 
 for record in font['name'].names:
-    value = record.toUnicode().replace('1.399', '1.401').replace('1399', '1401')
+    value = record.toUnicode().replace('1.399', '1.402').replace('1399', '1402')
     record.string = value.encode(record.getEncoding())
-font['head'].fontRevision = 1.401
+font['head'].fontRevision = 1.402
 font.recalcTimestamp = False
-font.save(HERE / 'Font files/saged-v1.401.ttf')
+font.save(HERE / 'Font files/saged-v1.402.ttf')
 font.flavor = 'woff'
-font.save(HERE / 'Font files/saged-display-cyrillic-v1.401.woff')
-print('Built Saged 1.401 TTF and WOFF')
+font.save(HERE / 'Font files/saged-display-cyrillic-v1.402.woff')
+print('Built Saged 1.402 TTF and WOFF')

@@ -1,6 +1,6 @@
 # Saged font
 
-Current version: **1.401**.
+Current version: **1.402**.
 
 - **Font files** — current desktop TTF and website WOFF.
 - **Preview** — current alphabet and Ukrainian word samples.
@@ -14,3 +14,5 @@ Current version: **1.401**.
 Superseded releases, duplicate files, ZIPs with already-extracted artwork, and unused Summer font references were moved to macOS Trash on 2026-11-09. Originals used by websites, videos or installed fonts were left in place. The required 1.399 base is retained inside Sources because the current build depends on it. Previous collection manifests describe the collection before this cleanup; consult the cleanup record for moved folders.
 
 Д updated from supplied PNG on 2026-11-09, traced into editable Д - De.svg. Audit: zero errors; raster trace has an outline-complexity warning. Only Д/д changed; coverage and vertical metrics retained. Not installed or published.
+
+Latest update: v1.402 replaces Д/д from the new 144×110 Frame 104.png. Source PNG and traced SVG are in Sources/Latest letters. Previous Д artwork preserved under Letter variations. Russian and Ukrainian share this Cyrillic Д. Only Д/д outline and width changed; coverage and vertical metrics preserved. Audit zero errors, traced-outline complexity warning (428 points). 2.0 draft and website unchanged.
