@@ -5,6 +5,35 @@ const NOCODB_TOKEN = process.env.NOCODB_TOKEN;
 const NOCODB_BASE  = "p2txdvaha72xsn4";
 const NOCODB_TABLE = process.env.NOCODB_TILE_TABLE;
 const STRIPE_WHSEC = process.env.STRIPE_WEBHOOK_SECRET;
+const MC_TOKEN     = process.env.MANYCHAT_TOKEN;
+
+async function sendManyChat(email, name) {
+  if (!MC_TOKEN) return;
+  const findRes = await fetch(
+    `https://api.manychat.com/fb/subscriber/findBySystemField?field=email&value=${encodeURIComponent(email)}`,
+    { headers: { Authorization: `Bearer ${MC_TOKEN}` } }
+  );
+  const findData = await findRes.json();
+  const sub = findData.data?.[0];
+  if (!sub) return;
+  await fetch("https://api.manychat.com/fb/sending/send_content", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${MC_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      subscriber_id: sub.id,
+      data: {
+        version: "v2",
+        content: {
+          messages: [{
+            type: "text",
+            text: `✅ Оплата отримана, ${name || "дякуємо"}!\n\nВаше місце на майстер-клас з розпису плитки заброньовано. Ми напишемо вам за день до заняття з нагадуванням та адресою.\n\nSaged Club · saged.club/tile-painting/`
+          }]
+        }
+      },
+      message_tag: "CONFIRMED_EVENT_UPDATE"
+    })
+  });
+}
 
 function verifyStripe(rawBody, header, secret) {
   const parts = Object.fromEntries(header.split(",").map(p => p.split("=")));
@@ -55,6 +84,8 @@ export default async (request) => {
       body: JSON.stringify({ "Status": "paid", "Name": name, "Email": email }),
     }
   );
+
+  await sendManyChat(email, name);
 
   return new Response(JSON.stringify({ ok: patchRes.ok }), { status: 200 });
 };
