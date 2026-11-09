@@ -1,6 +1,6 @@
 # Saged font
 
-Current version: **1.402**.
+Current version: **1.403**.
 
 - **Font files** — current desktop TTF and website WOFF.
 - **Preview** — current alphabet and Ukrainian word samples.
@@ -16,3 +16,5 @@ Superseded releases, duplicate files, ZIPs with already-extracted artwork, and u
 Д updated from supplied PNG on 2026-11-09, traced into editable Д - De.svg. Audit: zero errors; raster trace has an outline-complexity warning. Only Д/д changed; coverage and vertical metrics retained. Not installed or published.
 
 Latest update: v1.402 replaces Д/д from the new 144×110 Frame 104.png. Source PNG and traced SVG are in Sources/Latest letters. Previous Д artwork preserved under Letter variations. Russian and Ukrainian share this Cyrillic Д. Only Д/д outline and width changed; coverage and vertical metrics preserved. Audit zero errors, traced-outline complexity warning (428 points). 2.0 draft and website unchanged.
+
+Version 1.403 imports the original Frame 134 SVG for Д/д (140×110). A zero-area source fragment is ignored. Two real contours and one counter verified; no errors or warnings for updated letters. Other outlines/coverage/vertical metrics unchanged. Previous Д preserved as v1.402 variations.
