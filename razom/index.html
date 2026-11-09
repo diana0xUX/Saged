@@ -211,8 +211,8 @@
     .sched-figure { position: absolute; width: 72px; height: 112px; object-fit: cover; right: 20px; top: -8px; opacity: .55; mix-blend-mode: multiply; filter: contrast(1.5) brightness(1.1); transform: rotate(10deg); pointer-events: none; }
     .sched-cards { display: grid; gap: 16px; margin-bottom: 24px; }
     .sched-card { position: relative; min-width: 0; background: var(--bg-sand); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
-    .sched-card h3 { font: 300 clamp(32px, 8.5vw, 48px)/1.1 'SagedCyr', 'Costa', sans-serif; margin: 0 0 8px; text-transform: uppercase; }
-    .sched-time { display: block; font: 300 clamp(56px, 16vw, 80px)/1.05 'SagedCyr', 'Costa', sans-serif; letter-spacing: -.025em; }
+    .sched-card h3 { font: 300 clamp(20px, 5.5vw, 32px)/1.1 'SagedCyr', 'Costa', sans-serif; margin: 0 0 6px; text-transform: uppercase; }
+    .sched-time { display: block; font: 300 clamp(38px, 11vw, 60px)/1.05 'SagedCyr', 'Costa', sans-serif; letter-spacing: -.025em; }
     .sched-language { display: flex; align-items: baseline; gap: 10px; font-size: 16px; line-height: 1.5; margin: 16px 0 0; }
     .sched-language::before { content: ''; flex: 0 0 10px; height: 10px; background: var(--orange); border-radius: 50%; align-self: center; }
     .sched-card--uk { border-left: 7px solid var(--orange); padding-left: 18px; }
@@ -517,7 +517,7 @@
   </section>
 
   <!-- Schedule -->
-  <section class="kids-schedule" id="kids-schedule" aria-labelledby="kids-schedule-title">
+  <section class="kids-schedule" id="kids-schedule" aria-labelledby="kids-schedule-title" style="background:var(--bg-sand);">
     <div class="container">
       <header class="sched-intro">
         <img class="sched-figure" src="../assets/images/kids-schedule-figure.png" alt="" aria-hidden="true" loading="lazy" width="100" height="148">
