@@ -748,8 +748,14 @@
       a.remove();
     });
 
+    // InitiateCheckout when payment button is clicked
+    document.getElementById('book-btn').addEventListener('click', function() {
+      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { currency: 'EUR', value: 50, num_items: 1 });
+    });
+
     // Show thank-you after Stripe redirect
     if (new URLSearchParams(location.search).get('paid') === '1') {
+      if (typeof fbq !== 'undefined') fbq('track', 'Purchase', { currency: 'EUR', value: 50 });
       const sticky = document.getElementById('bk-sticky');
       if (sticky) sticky.innerHTML = '<div style="padding:1.2rem 1rem;text-align:center;font-size:1rem;line-height:1.6"><strong>✅ Оплату отримано!</strong><br>Ми напишемо вам у WhatsApp з підтвердженням та адресою.</div>';
       history.replaceState(null, '', location.pathname);

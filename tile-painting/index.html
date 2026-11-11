@@ -921,6 +921,8 @@
       const total   = people * PRICE_PER_PERSON;
       const dateISO = selectedDate ? selectedDate.toISOString().split('T')[0] : '';
 
+      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { currency: 'EUR', value: total, num_items: people });
+
       // Log pending booking (best effort — payment proceeds even if this fails)
       try {
         await fetch('/api/tile-booking-init', {
@@ -938,6 +940,7 @@
 
     // Show thank-you after Stripe redirect
     if (new URLSearchParams(location.search).get('paid') === '1') {
+      if (typeof fbq !== 'undefined') fbq('track', 'Purchase', { currency: 'EUR', value: PRICE_PER_PERSON });
       const sticky = document.getElementById('bk-sticky');
       if (sticky) sticky.innerHTML = '<div style="padding:1.2rem 1rem;text-align:center;font-size:1rem;line-height:1.6"><strong>✅ Payment received!</strong><br>We\'ll send you a WhatsApp reminder the day before with the address.</div>';
       history.replaceState(null, '', location.pathname);
@@ -945,6 +948,19 @@
 
     buildDateChips();
   </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1533639615120579');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', { content_name: 'tile-painting-landing', currency: 'EUR', value: 60 });
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1533639615120579&ev=PageView&noscript=1"/></noscript>
 
 </body>
 </html>
