@@ -946,7 +946,13 @@
       history.replaceState(null, '', location.pathname);
     }
 
+    // Pre-select the nearest date and morning slot so the payment button is visible immediately
+    selectedDate = allDates[0];
+    selectedTime = '10:00';
+    document.querySelector('.bk-time-card[data-time="10:00"]').classList.add('selected');
+    document.getElementById('time-section').style.display = 'block';
     buildDateChips();
+    updateSticky();
   </script>
 
   <!-- Meta Pixel -->

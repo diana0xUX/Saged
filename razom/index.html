@@ -773,7 +773,10 @@
       a.remove();
     });
 
+    // Pre-select the nearest available date so the payment button is visible immediately
+    selectedDate = allDates[0];
     buildDateChips();
+    updateSticky();
   </script>
 
   <!-- Meta Pixel -->
