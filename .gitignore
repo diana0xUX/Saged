@@ -30,6 +30,7 @@ Thumbs.db
 # Data dumps (don't commit raw Meta exports)
 data/raw/
 data/cache/
+data/contacts/
 *.parquet
 *.duckdb
 .loop-state.json
